@@ -43,3 +43,32 @@ Adding or modifying `app/controllers/api/v1/` endpoints requires Minitest behavi
 - For securities providers, follow [adding a securities provider](docs/llm-guides/adding-a-securities-provider.md).
 - For AI transports, AI HTTP clients, AI usage rows or tracing, follow the [AI pipeline guide](docs/llm-guides/ai-pipeline.md).
 - For feature rollout, follow [preview-feature gating](docs/llm-guides/gating-a-preview-feature.md); for goals, read the [Goals guide](docs/llm-guides/goals.md).
+
+## Multi-agent coordination: Use Orca; DO NOT use Codex subagents
+
+- When a task needs to be broken down, executed in parallel, delegated to another agent, or managed via a Directed Acyclic Graph (DAG): You MUST load and utilize the `orchestration` (Orca) skill.
+- DO NOT, under any circumstances, use `spawn_agent`, built-in Codex subagent/multi-agent tools, or any other agent-spawning mechanism outside of Orca.
+- Before coordinating, consult the version-specific reference documentation provided by `orca` itself (as instructed within the skill); do not guess command syntax.
+- Standard coordinator workflow:
+  1. Break work into tasks: `orca orchestration task-create ...`
+  2. Delegate work to a worker: `orca orchestration dispatch --inject ...` (or `orca orchestration run`)
+  3. Monitor: `orca orchestration task-list --json`, `orca orchestration dispatch-show --task <id> --json`
+  4. Wait for the worker to report completion or an escalation before synthesizing the results.
+- If you are simply handing off a task entirely to another agent/worktree without the need for ongoing supervision, use the `orca-cli` skill instead of `orchestration`.
+- If `orca` is not in your PATH or no Orca runtime is active: STOP and notify me. Do not fall back to Codex subagents.
+- For simple, single-step tasks: perform the work directly; no coordination is required.
+
+## Language Policy
+
+- Always communicate with the user in Vietnamese.
+- All explanations, progress updates, summaries, review findings,
+  orchestration reports, error explanations, and final responses must be in Vietnamese.
+- Code, identifiers, class names, method names, variable names, filenames,
+  CLI commands, configuration keys, API names, protocol names, and technical
+  terms may remain in English when appropriate.
+- Do not translate source code identifiers.
+- Comments in code should follow the existing repository convention.
+- Ticket titles, commit messages, and pull request titles should follow
+  the existing project convention unless explicitly requested otherwise.
+- When quoting existing English requirements or documentation, preserve the
+  original text when exact wording matters, then explain it in Vietnamese.
