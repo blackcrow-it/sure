@@ -7,10 +7,12 @@ class ApplyRulesJob < ApplicationJob
   # A failing rule is recorded as a failed RuleRun and the remaining rules still
   # run. The job itself does not fail, because a retry would re-run every rule.
   def perform(family, execution_type: "scheduled")
-    Rule::Runner.new(
-      family,
-      rules: family.rules.where(active: true),
-      execution_type: execution_type
-    ).run
+    I18n.with_locale(family&.locale.presence || I18n.default_locale) do
+      Rule::Runner.new(
+        family,
+        rules: family.rules.where(active: true),
+        execution_type: execution_type
+      ).run
+    end
   end
 end

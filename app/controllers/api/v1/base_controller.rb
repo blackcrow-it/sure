@@ -28,6 +28,7 @@ class Api::V1::BaseController < ApplicationController
   # Resolve the family zone only after the API identity has populated Current.
   skip_around_action :switch_timezone
   around_action :switch_timezone
+  around_action :with_api_locale
   before_action :check_api_key_rate_limit
   before_action :log_api_access
 
@@ -35,7 +36,7 @@ class Api::V1::BaseController < ApplicationController
 
   # Override Doorkeeper's default behavior to return JSON instead of redirecting
   def doorkeeper_unauthorized_render_options(error: nil)
-    { json: { error: "unauthorized", message: "Access token is invalid, expired, or missing" } }
+    { json: { error: "unauthorized", message: localized_api_message("token_missing") } }
   end
 
   # Error handling for common API errors
@@ -45,6 +46,15 @@ class Api::V1::BaseController < ApplicationController
   rescue_from InvalidFilterError, with: :handle_invalid_filter
 
   private
+
+    def localized_api_message(key, **options)
+      locale = locale_from_param || locale_from_user || locale_from_accept_language || locale_from_family || I18n.default_locale
+      I18n.t("vietnamese_ui.api.#{key}", locale: locale, **options)
+    end
+
+    def with_api_locale(&action)
+      switch_locale(&action)
+    end
 
     # Force JSON format for all API requests
     def force_json_format
@@ -70,7 +80,7 @@ class Api::V1::BaseController < ApplicationController
       has_sufficient_scope = access_token&.scopes&.include?("read") || access_token&.scopes&.include?("read_write")
 
       unless access_token&.accessible? && has_sufficient_scope
-        render_json({ error: "unauthorized", message: "Access token is invalid, expired, or missing required scope" }, status: :unauthorized)
+        render_json({ error: "unauthorized", message: localized_api_message("token_scope") }, status: :unauthorized)
         return false
       end
 
@@ -83,17 +93,17 @@ class Api::V1::BaseController < ApplicationController
         # If user doesn't exist, the token is invalid (user was deleted)
         unless @current_user
           Rails.logger.warn "API OAuth Token Invalid: Access token resource_owner_id #{doorkeeper_token.resource_owner_id} does not exist"
-          render_json({ error: "unauthorized", message: "Access token is invalid - user not found" }, status: :unauthorized)
+          render_json({ error: "unauthorized", message: localized_api_message("token_user") }, status: :unauthorized)
           return false
         end
 
         unless @current_user.active?
-          render_json({ error: "unauthorized", message: "Account has been deactivated" }, status: :unauthorized)
+          render_json({ error: "unauthorized", message: localized_api_message("account_deactivated") }, status: :unauthorized)
           return false
         end
       else
         Rails.logger.warn "API OAuth Token Invalid: Access token missing resource_owner_id"
-        render_json({ error: "unauthorized", message: "Access token is invalid - missing resource owner" }, status: :unauthorized)
+        render_json({ error: "unauthorized", message: localized_api_message("token_owner") }, status: :unauthorized)
         return false
       end
 
@@ -115,7 +125,7 @@ class Api::V1::BaseController < ApplicationController
 
       @current_user = @api_key.user
       unless @current_user.active?
-        render_json({ error: "unauthorized", message: "Account has been deactivated" }, status: :unauthorized)
+        render_json({ error: "unauthorized", message: localized_api_message("account_deactivated") }, status: :unauthorized)
         return false
       end
 
@@ -154,7 +164,7 @@ class Api::V1::BaseController < ApplicationController
 
       render_json({
         error: "rate_limit_exceeded",
-        message: "Rate limit exceeded. Try again in #{usage_info[:reset_time]} seconds.",
+        message: localized_api_message("rate_limit", seconds: usage_info[:reset_time]),
         details: {
           limit: usage_info[:rate_limit],
           current: usage_info[:current_count],
@@ -172,7 +182,7 @@ class Api::V1::BaseController < ApplicationController
 
     # Render unauthorized response
     def render_unauthorized
-      render_json({ error: "unauthorized", message: "Access token or API key is invalid, expired, or missing" }, status: :unauthorized)
+      render_json({ error: "unauthorized", message: localized_api_message("credentials_invalid") }, status: :unauthorized)
     end
 
     # Returns the user that owns the access token or API key
@@ -211,7 +221,7 @@ class Api::V1::BaseController < ApplicationController
 
       unless has_access
         Rails.logger.warn "API Insufficient Scope: User #{current_resource_owner&.email} attempted to access #{required_scope} but only has #{scopes}"
-        render_json({ error: "insufficient_scope", message: "This action requires the '#{required_scope}' scope" }, status: :forbidden)
+        render_json({ error: "insufficient_scope", message: localized_api_message("required_scope", permission: required_scope) }, status: :forbidden)
         return false
       end
       true
@@ -226,7 +236,7 @@ class Api::V1::BaseController < ApplicationController
     def reject_guest_writes!
       return true unless current_resource_owner&.guest?
 
-      render_json({ error: "forbidden", message: "Guests cannot modify family configuration" }, status: :forbidden)
+      render_json({ error: "forbidden", message: localized_api_message("guest_configuration") }, status: :forbidden)
       false
     end
 
@@ -264,17 +274,17 @@ class Api::V1::BaseController < ApplicationController
     # Error handlers
     def handle_not_found(exception)
       Rails.logger.warn "API Record Not Found: #{exception.message}"
-      render_json({ error: "record_not_found", message: "The requested resource was not found" }, status: :not_found)
+      render_json({ error: "record_not_found", message: localized_api_message("resource_not_found") }, status: :not_found)
     end
 
     def handle_unauthorized(exception)
       Rails.logger.warn "API Unauthorized: #{exception.message}"
-      render_json({ error: "unauthorized", message: "Access token is invalid or expired" }, status: :unauthorized)
+      render_json({ error: "unauthorized", message: localized_api_message("token_expired") }, status: :unauthorized)
     end
 
     def handle_bad_request(exception)
       Rails.logger.warn "API Bad Request: #{exception.message}"
-      render_json({ error: "bad_request", message: "Required parameters are missing or invalid" }, status: :bad_request)
+      render_json({ error: "bad_request", message: localized_api_message("parameters_invalid") }, status: :bad_request)
     end
 
     def handle_invalid_filter(exception)
@@ -293,7 +303,7 @@ class Api::V1::BaseController < ApplicationController
     def parse_date_param(key)
       Date.iso8601(params[key].to_s)
     rescue ArgumentError
-      raise InvalidFilterError, "#{key} must be an ISO 8601 date"
+      raise InvalidFilterError, localized_api_message("iso_date", field: key)
     end
 
     # Log API access for monitoring and debugging
@@ -318,7 +328,7 @@ class Api::V1::BaseController < ApplicationController
 
       unless resource.family_id == current_resource_owner.family_id
         Rails.logger.warn "API Forbidden: User #{current_resource_owner.email} attempted to access resource from family #{resource.family_id}"
-        render_json({ error: "forbidden", message: "Access denied to this resource" }, status: :forbidden)
+        render_json({ error: "forbidden", message: localized_api_message("resource_forbidden") }, status: :forbidden)
         return false
       end
 
@@ -346,7 +356,7 @@ class Api::V1::BaseController < ApplicationController
     # Check if AI features are enabled for the current user
     def require_ai_enabled
       unless current_resource_owner&.ai_enabled?
-        render_json({ error: "feature_disabled", message: "AI features are not enabled for this user" }, status: :forbidden)
+        render_json({ error: "feature_disabled", message: localized_api_message("ai_disabled") }, status: :forbidden)
       end
     end
 end

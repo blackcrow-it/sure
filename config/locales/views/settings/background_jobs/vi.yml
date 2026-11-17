@@ -1,0 +1,51 @@
+---
+vi:
+  settings:
+    background_jobs:
+      show:
+        page_title: Tác vụ nền
+        title: Trạng thái tiến trình nền
+        subtitle: 'Trạng thái Sidekiq trực tiếp: tiến trình nền, độ dài hàng đợi và tập tác vụ thử lại/thất bại
+          cuối cùng.'
+        redis_unreachable: Không thể lấy trạng thái Sidekiq (không kết nối được Redis). Chưa rõ tình trạng hoạt
+          động nên các thao tác bị tắt.
+        operations_title: Thao tác đang thực hiện
+        operations_subtitle: Đồng bộ, nhập và xuất trên mọi hộ gia đình chưa đạt trạng thái kết thúc. Thao tác không
+          hoạt động hơn 30 phút và không thấy tác vụ được coi là đã mất và có thể đánh dấu như vậy.
+        empty: Không có thao tác đang thực hiện.
+        missing_value: '-'
+        stats:
+          workers: Tiến trình nền
+          busy: Đang bận
+          enqueued: Đã đưa vào hàng đợi
+          retries: Lần thử lại
+          scheduled: Đã lên lịch
+          dead: Thất bại cuối cùng
+          queue_label: '%{name}: %{size} · trễ %{latency} giây'
+        table:
+          type: Thao tác
+          family: Hộ gia đình
+          status: Trạng thái
+          last_activity: Hoạt động gần nhất
+          liveness: Tình trạng hoạt động
+          action: Hành động
+      operation:
+        ago: '%{time} trước'
+        sync_label: Đồng bộ · %{type}
+        running: Đang chạy
+        queued: Đang chờ
+        recent: Gần đây
+        unknown: Không xác định
+        stuck: Bị kẹt — được coi là đã mất
+        confirm: Đánh dấu thao tác này đã mất? Bản ghi chuyển sang trạng thái kết thúc để có thể thử lại. Dữ liệu
+          bên dưới không bị thay đổi.
+        missing_value: '-'
+        actions:
+          mark_stale: Đánh dấu quá hạn
+          mark_failed: Đánh dấu thất bại
+          release_claim: Giải phóng quyền xử lý
+      cancel:
+        cancelled: Đã đánh dấu %{type} đã mất.
+        not_cancellable: Hiện chưa thể sửa thao tác này vì tác vụ có thể vẫn trong hàng đợi hoặc đang chạy. Thử
+          lại sau khi không hoạt động 30 phút.
+        cancelled_error: Quản trị viên đã đánh dấu thất bại vì tác vụ nền được coi là đã mất.

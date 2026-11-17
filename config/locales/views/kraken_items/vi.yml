@@ -4,8 +4,8 @@ vi:
     provider_connection:
       default_name: Kraken
       default_description: Liên kết với tài khoản sàn giao dịch Kraken
-      name: "Kraken - %{name}"
-      description: "Liên kết với %{name}"
+      name: Kraken - %{name}
+      description: Liên kết với %{name}
     create:
       default_name: Kraken
       success: Đã kết nối thành công với Kraken. Tài khoản sàn giao dịch của bạn đang được đồng bộ.
@@ -35,19 +35,18 @@ vi:
     setup_accounts:
       title: Nhập tài khoản Kraken
       subtitle: Chọn tài khoản sàn giao dịch để theo dõi
-      instructions: Kraken nhập một tài khoản sàn giao dịch tiền điện tử kết hợp cho kết nối này, chỉ với các tài sản nắm giữ và lệnh giao ngay.
+      instructions: Kraken nhập một tài khoản sàn giao dịch tiền điện tử kết hợp cho kết nối này, chỉ với các tài
+        sản nắm giữ và lệnh giao ngay.
       no_accounts: Tất cả tài khoản Kraken đã được nhập.
       accounts_count:
-        one: "%{count} tài khoản có sẵn"
-        other: "%{count} tài khoản có sẵn"
+        other: '%{count} tài khoản có sẵn'
       select_all: Chọn tất cả
       import_selected: Nhập đã chọn
       cancel: Hủy
       creating: Đang nhập...
     complete_account_setup:
       success:
-        one: "Đã nhập %{count} tài khoản"
-        other: "Đã nhập %{count} tài khoản"
+        other: Đã nhập %{count} tài khoản
       none_selected: Chưa chọn tài khoản nào
       no_accounts: Không có tài khoản nào để nhập
     kraken_item:
@@ -58,11 +57,10 @@ vi:
       sync_status:
         no_accounts: Không tìm thấy tài khoản
         all_synced:
-          one: "%{count} tài khoản đã đồng bộ"
-          other: "%{count} tài khoản đã đồng bộ"
-        partial_sync: "%{linked_count} đã đồng bộ, %{unlinked_count} cần thiết lập"
-      status: "Đồng bộ lần cuối %{timestamp} trước"
-      status_with_summary: "Đồng bộ lần cuối %{timestamp} trước - %{summary}"
+          other: '%{count} tài khoản đã đồng bộ'
+        partial_sync: '%{linked_count} đã đồng bộ, %{unlinked_count} cần thiết lập'
+      status: Đồng bộ lần cuối %{timestamp} trước
+      status_with_summary: Đồng bộ lần cuối %{timestamp} trước - %{summary}
       status_never: Chưa bao giờ đồng bộ
       delete: Xóa
       no_accounts_title: Không tìm thấy tài khoản
@@ -71,7 +69,8 @@ vi:
       setup_description: Nhập kết nối Kraken này dưới dạng tài khoản sàn giao dịch tiền điện tử.
       setup_action: Nhập tài khoản
       import_accounts_menu: Nhập tài khoản
-      stale_rate_warning: "Số dư là xấp xỉ vì tỷ giá hối đoái chính xác cho ngày %{date} không có sẵn. Sẽ cập nhật lần đồng bộ tiếp theo."
+      stale_rate_warning: Số dư là xấp xỉ vì tỷ giá hối đoái chính xác cho ngày %{date} không có sẵn. Sẽ cập nhật
+        lần đồng bộ tiếp theo.
   kraken_item:
     syncer:
       checking_credentials: Đang kiểm tra thông tin xác thực...
@@ -79,7 +78,6 @@ vi:
       importing_accounts: Đang nhập tài khoản từ Kraken...
       checking_configuration: Đang kiểm tra cấu hình tài khoản...
       accounts_need_setup:
-        one: "%{count} tài khoản cần thiết lập"
-        other: "%{count} tài khoản cần thiết lập"
+        other: '%{count} tài khoản cần thiết lập'
       processing_accounts: Đang xử lý dữ liệu tài khoản...
       calculating_balances: Đang tính toán số dư...

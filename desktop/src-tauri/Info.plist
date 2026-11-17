@@ -3,6 +3,13 @@
 <!-- Merged by Tauri into the app bundle's Info.plist. -->
 <plist version="1.0">
 <dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>en</string>
+    <string>vi</string>
+  </array>
   <!-- macOS asks for Local Network access before the app can reach a
        self-hosted server on a LAN address; without this key it is refused. -->
   <key>NSLocalNetworkUsageDescription</key>

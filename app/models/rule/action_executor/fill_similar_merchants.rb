@@ -3,7 +3,7 @@
 # Free, so offered without a provider. Never overrides a lock.
 class Rule::ActionExecutor::FillSimilarMerchants < Rule::ActionExecutor
   def label
-    "Fill missing merchants from similar transactions (no AI)"
+    I18n.t("vietnamese_ui.rules.actions.fill_similar_merchants")
   end
 
   def claimed_attributes

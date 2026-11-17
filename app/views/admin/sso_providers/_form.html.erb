@@ -18,7 +18,7 @@
   </div>
 <% end %>
 
-<%= styled_form_with model: [:admin, sso_provider], class: "space-y-6", data: { controller: "admin-sso-form" } do |form| %>
+<%= styled_form_with model: [:admin, sso_provider], class: "space-y-6", data: { controller: "admin-sso-form", admin_sso_form_labels_value: t("vietnamese_ui.sso", issuer: "%{issuer}", error: "%{error}").to_json } do |form| %>
   <div class="space-y-4">
     <h3 class="font-medium text-primary"><%= t("admin.sso_providers.form.basic_information") %></h3>
 

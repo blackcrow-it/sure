@@ -107,4 +107,55 @@ class AssistantConfigurableTest < ActiveSupport::TestCase
     assert_includes config[:instructions],
       "Never mention internal tool or function names in your responses"
   end
+  test "response language follows the user without changing the static prefix or currency" do
+    chat = chats(:one)
+    chat.user.update!(locale: "vi")
+    chat.user.family.update!(locale: "en", currency: "USD")
+
+    instructions = Assistant.config_for(chat)[:instructions]
+
+    assert instructions.start_with?(Assistant::Configurable::STATIC_INSTRUCTIONS)
+    assert_includes instructions, "Response language: vi"
+    assert_includes instructions, "unless the user explicitly requests another language"
+    assert_includes instructions, "Preferred currency: USD"
+  end
+
+  test "response language falls back to the family and preserves its custom prompt" do
+    chat = chats(:one)
+    chat.user.update!(locale: nil)
+    chat.user.family.update!(locale: "vi", ai_prompt_chat_system: "CUSTOM IDENTITY")
+
+    instructions = Assistant.config_for(chat)[:instructions]
+
+    assert instructions.start_with?("CUSTOM IDENTITY")
+    assert_includes instructions, "Response language: vi"
+  end
+
+  test "onboarding responds in the user's language without tools" do
+    chat = chats(:intro)
+    chat.user.update!(locale: "vi")
+
+    config = Assistant.config_for(chat)
+
+    assert_empty config[:functions]
+    assert_includes config[:instructions], "## Session context"
+    assert_includes config[:instructions], "Response language: vi"
+  end
+
+  test "English users retain English responses" do
+    chat = chats(:one)
+    chat.user.update!(locale: "en")
+    chat.user.family.update!(locale: "vi")
+
+    assert_includes Assistant.config_for(chat)[:instructions], "Response language: en"
+  end
+
+  test "response language falls back to the application default without preferences" do
+    chat = chats(:one)
+    chat.user.stubs(:locale).returns(nil)
+    chat.user.family.stubs(:locale).returns(nil)
+
+    assert_includes Assistant.config_for(chat)[:instructions], "Response language: #{I18n.default_locale}"
+  end
+
 end

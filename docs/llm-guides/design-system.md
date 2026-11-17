@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/design-system.md)
+
 # Design system
 
 Consult [`app/assets/tailwind/sure-design-system.css`](../../app/assets/tailwind/sure-design-system.css)

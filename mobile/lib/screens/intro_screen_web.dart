@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:html' as html;
 import 'dart:ui_web' as ui;
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 class IntroScreenPlatform extends StatefulWidget {
   const IntroScreenPlatform({super.key, this.onStartChat});
@@ -15,6 +17,7 @@ class _IntroScreenPlatformState extends State<IntroScreenPlatform> {
   static int _nextViewId = 0;
 
   late final String _viewType;
+  late final html.IFrameElement _frame;
 
   @override
   void initState() {
@@ -23,15 +26,23 @@ class _IntroScreenPlatformState extends State<IntroScreenPlatform> {
     _nextViewId += 1;
     _viewType = 'intro-screen-web-$currentId';
 
-    ui.platformViewRegistry.registerViewFactory(_viewType, (int viewId) {
-      final frame = html.IFrameElement()
-        ..srcdoc = _introHtmlContent
-        ..style.width = '100%'
-        ..style.height = '100%'
-        ..style.border = '0';
+    _frame = html.IFrameElement()
+      ..style.width = '100%'
+      ..style.height = '100%'
+      ..style.border = '0';
+    ui.platformViewRegistry.registerViewFactory(_viewType, (int viewId) => _frame);
+  }
 
-      return frame;
-    });
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final l = AppLocalizations.of(context);
+    const escape = HtmlEscape();
+    _frame.srcdoc = _introHtmlContent
+        .replaceAll('@@LANG@@', escape.convert(l.localeName))
+        .replaceAll('@@TITLE@@', escape.convert(l.introTitle))
+        .replaceAll('@@BODY@@', escape.convert(l.introBody));
+    _frame.title = l.navIntro;
   }
 
   @override
@@ -46,7 +57,7 @@ class _IntroScreenPlatformState extends State<IntroScreenPlatform> {
 
 const String _introHtmlContent = '''
 <!doctype html>
-<html>
+<html lang="@@LANG@@">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -230,9 +241,9 @@ const String _introHtmlContent = '''
     <main class="grow overflow-y-auto px-3 lg:px-10 pt-0 pb-4 w-full mx-auto max-w-5xl" data-app-layout-target="content">
       <div class="mx-auto max-w-3xl intro-card-shell">
         <div class="bg-container shadow-border-xs rounded-2xl p-8 text-center space-y-4">
-          <h2 class="text-xl font-semibold text-primary">Intro experience coming soon</h2>
+          <h2 class="text-xl font-semibold text-primary">@@TITLE@@</h2>
           <p class="text-secondary">
-            We're building a richer onboarding journey to learn about your goals, milestones, and day-to-day needs. For now, head over to the chat sidebar to start a conversation with Sure and let us know where you are in your financial journey.
+            @@BODY@@
           </p>
         </div>
       </div>

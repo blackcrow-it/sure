@@ -29,7 +29,7 @@ class Api::V1::FamilyExportsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -41,7 +41,7 @@ class Api::V1::FamilyExportsController < Api::V1::BaseController
     if unsupported_create_params?
       render json: {
         error: "invalid_params",
-        message: "Family export creation does not accept request parameters"
+        message: t("vietnamese_ui.api.export_parameters")
       }, status: :unprocessable_entity
       return
     end
@@ -56,7 +56,7 @@ class Api::V1::FamilyExportsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -64,7 +64,7 @@ class Api::V1::FamilyExportsController < Api::V1::BaseController
     unless @family_export.downloadable?
       render json: {
         error: "export_not_ready",
-        message: "Export is not ready for download"
+        message: t("vietnamese_ui.api.export_not_ready")
       }, status: :conflict
       return
     end
@@ -80,7 +80,7 @@ class Api::V1::FamilyExportsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -105,7 +105,7 @@ class Api::V1::FamilyExportsController < Api::V1::BaseController
 
       render json: {
         error: "forbidden",
-        message: "Family exports require a family admin"
+        message: t("vietnamese_ui.api.export_admin")
       }, status: :forbidden
     end
 

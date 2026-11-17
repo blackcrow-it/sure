@@ -75,4 +75,19 @@ class RuleNotificationMailerTest < ActionMailer::TestCase
       RuleNotificationMailer.digest(rule: rule, transactions: [ txn ]).deliver_now
     end
   end
+  test "digest uses the admin recipient locale instead of the worker locale" do
+    rule = rules(:one)
+    rule.family.users.where(role: %w[admin super_admin]).update_all(locale: "vi")
+    transaction = create_transaction(date: Date.current, account: rule.family.accounts.first,
+                                     amount: 100, name: "Coffee").transaction
+
+    I18n.with_locale(:en) do
+      mail = RuleNotificationMailer.digest(rule: rule, transactions: [ transaction ])
+      assert_equal I18n.t("rule_notification_mailer.digest.subject", locale: :vi, count: 1,
+                         product_name: Rails.configuration.x.product_name), mail.subject
+      assert_includes mail.html_part.body.decoded, I18n.t("rule_notification_mailer.digest.cta", locale: :vi)
+      assert_equal :en, I18n.locale
+    end
+  end
+
 end

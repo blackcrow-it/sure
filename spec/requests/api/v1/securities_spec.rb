@@ -80,6 +80,8 @@ RSpec.describe 'API V1 Securities', type: :request do
 
   path '/api/v1/securities' do
     get 'List securities referenced by family investment data' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language; a saved user locale takes precedence. Error codes remain unchanged.'
       tags 'Securities'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -137,6 +139,10 @@ RSpec.describe 'API V1 Securities', type: :request do
               schema: { type: :string, format: :uuid }
 
     get 'Retrieve a security referenced by family investment data' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language; a saved user locale takes precedence. Error codes remain unchanged.'
       tags 'Securities'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

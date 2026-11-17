@@ -172,7 +172,7 @@ module Api
         code = sso_exchange_params
 
         if code.blank?
-          render json: { error: "invalid_or_expired_code", message: "Authorization code is required" }, status: :unauthorized
+          render json: { error: "invalid_or_expired_code", message: t("vietnamese_ui.api.authorization_code_required") }, status: :unauthorized
           return
         end
 
@@ -180,14 +180,14 @@ module Api
         cached = Rails.cache.read(cache_key)
 
         unless cached.present?
-          render json: { error: "invalid_or_expired_code", message: "Authorization code is invalid or expired" }, status: :unauthorized
+          render json: { error: "invalid_or_expired_code", message: t("vietnamese_ui.api.authorization_code_invalid") }, status: :unauthorized
           return
         end
 
         # Atomic delete — only the request that successfully deletes the key may proceed.
         # This prevents a race where two concurrent requests both read the same code.
         unless Rails.cache.delete(cache_key)
-          render json: { error: "invalid_or_expired_code", message: "Authorization code is invalid or expired" }, status: :unauthorized
+          render json: { error: "invalid_or_expired_code", message: t("vietnamese_ui.api.authorization_code_invalid") }, status: :unauthorized
           return
         end
 

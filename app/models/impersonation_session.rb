@@ -26,14 +26,14 @@ class ImpersonationSession < ApplicationRecord
 
   private
     def impersonator_is_super_admin
-      errors.add(:impersonator, "must be a super admin to impersonate") unless impersonator.super_admin?
+      errors.add(:impersonator, I18n.t("vietnamese_ui.validation.impersonator_role")) unless impersonator.super_admin?
     end
 
     def impersonated_is_not_super_admin
-      errors.add(:impersonated, "cannot be a super admin") if impersonated.super_admin?
+      errors.add(:impersonated, I18n.t("vietnamese_ui.validation.impersonated_role")) if impersonated.super_admin?
     end
 
     def impersonator_different_from_impersonated
-      errors.add(:impersonator, "cannot be the same as the impersonated user") if impersonator == impersonated
+      errors.add(:impersonator, I18n.t("vietnamese_ui.validation.impersonation_self")) if impersonator == impersonated
     end
 end

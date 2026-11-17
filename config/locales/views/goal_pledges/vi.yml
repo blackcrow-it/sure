@@ -1,0 +1,21 @@
+---
+vi:
+  goal_pledges:
+    new:
+      helper_transfer: Sure sẽ tìm khoản nạp khớp trong tài khoản liên kết. Cam kết chờ trong 7 ngày và tự xác nhận
+        khi Sure phát hiện khoản đó.
+      helper_manual: Sure sẽ ghi nhận vào lần sửa số dư thủ công tiếp theo và xác nhận khoản đóng góp.
+      amount_label: Số tiền
+      account_label: Vào tài khoản
+      submit: Ghi nhận cam kết
+      preview_zero: Hiện đã tiết kiệm {current} trên {target}.
+      preview_nonzero: Đạt {percent}%, {newTotal} trên {target}.
+      preview_reached: Đạt mức mục tiêu {target}. Đã đạt mục tiêu.
+    create:
+      success: Đã ghi nhận cam kết. Sure sẽ xác nhận trong lần đồng bộ tiếp theo.
+    renew:
+      success: Đã gia hạn cam kết thêm 7 ngày.
+      not_open: Chỉ có thể gia hạn cam kết đang mở.
+    destroy:
+      success: Đã hủy cam kết.
+      not_open: Chỉ có thể hủy cam kết đang mở.

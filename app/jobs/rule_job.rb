@@ -11,17 +11,19 @@ class RuleJob < ApplicationJob
   discard_on Rule::SafeRegex::TimeoutError
 
   def perform(rule, ignore_attribute_locks: false, execution_type: "manual")
-    runner = Rule::Runner.new(
-      rule.family,
-      rules: [ rule ],
-      execution_type: execution_type,
-      ignore_attribute_locks: ignore_attribute_locks
-    )
-    rule_runs = runner.run
+    I18n.with_locale(rule.family&.locale.presence || I18n.default_locale) do
+      runner = Rule::Runner.new(
+        rule.family,
+        rules: [ rule ],
+        execution_type: execution_type,
+        ignore_attribute_locks: ignore_attribute_locks
+      )
+      rule_runs = runner.run
 
-    # The RuleRun records the failure; re-raise so the job is marked failed.
-    # A failing rule above is only recorded, because a retry would re-run all
-    # rules above as well. The applied rule runs last, so its error is last.
-    raise runner.errors.last if rule_runs.last&.status == "failed"
+      # The RuleRun records the failure; re-raise so the job is marked failed.
+      # A failing rule above is only recorded, because a retry would re-run all
+      # rules above as well. The applied rule runs last, so its error is last.
+      raise runner.errors.last if rule_runs.last&.status == "failed"
+    end
   end
 end

@@ -1053,7 +1053,7 @@ class Account < ApplicationRecord
       owner_user = User.lock.find_by(id: owner_id)
       return if owner_user&.family_id == family_id
 
-      errors.add(:owner, :invalid, message: "must belong to the same family as the account")
+      errors.add(:owner, :invalid, message: I18n.t("vietnamese_ui.validation.same_family_account"))
     end
 
     # AASM transition callbacks run after the timestamp is set and before the

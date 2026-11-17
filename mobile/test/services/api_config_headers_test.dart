@@ -22,6 +22,7 @@ void main() {
       'X-Auth-Secret': 'secret',
       'Authorization': 'Bearer token',
       'Accept': 'application/json',
+      'Accept-Language': 'en',
     });
   });
 
@@ -34,12 +35,14 @@ void main() {
       'X-Mobile-Bypass': 'pass',
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'Accept-Language': 'en',
     });
   });
 
   test('drops headers with reserved names', () {
     ApiConfig.setCustomProxyHeaders([
       CustomProxyHeader(name: 'Accept', value: 'text/plain'),
+      CustomProxyHeader(name: 'aCcEpT-LaNgUaGe', value: 'fr'),
       CustomProxyHeader(name: 'Authorization', value: 'should-be-dropped'),
       CustomProxyHeader(name: 'X-Api-Key', value: 'should-be-dropped-too'),
       CustomProxyHeader(name: 'Content-Type', value: 'application/xml'),
@@ -67,12 +70,14 @@ void main() {
   test('app managed headers win over custom headers', () {
     ApiConfig.setCustomProxyHeaders([
       CustomProxyHeader(name: 'Accept', value: 'text/plain'),
+      CustomProxyHeader(name: 'aCcEpT-LaNgUaGe', value: 'fr'),
       CustomProxyHeader(name: 'X-Auth-Id', value: 'id'),
     ]);
 
     expect(ApiConfig.htmlHeaders(), {
       'X-Auth-Id': 'id',
       'Accept': 'text/html',
+      'Accept-Language': 'en',
     });
   });
 }

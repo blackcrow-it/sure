@@ -2,8 +2,8 @@
 vi:
   providers:
     ibkr:
-      named_connection: "Interactive Brokers (%{name})"
-      named_connection_description: "Liên kết tài khoản từ truy vấn Flex %{name}"
+      named_connection: Interactive Brokers (%{name})
+      named_connection_description: Liên kết tài khoản từ truy vấn Flex %{name}
       name: Interactive Brokers
       connection_description: Kết nối báo cáo Flex Web Service của Interactive Brokers
       institution_name: Interactive Brokers
@@ -42,15 +42,15 @@ vi:
       available_accounts:
         title: Tài khoản có sẵn
         account_type_investment: Đầu tư
-        account_summary: "%{account_type} • Số dư: %{balance}"
-        account_id: "Mã tài khoản: %{account_id}"
+        account_summary: '%{account_type} • Số dư: %{balance}'
+        account_id: 'Mã tài khoản: %{account_id}'
       link_existing:
         description: Hoặc liên kết tài khoản IBKR đã phát hiện với tài khoản đầu tư thủ công hiện có.
-        manual_account_option: "%{name} (%{balance})"
+        manual_account_option: '%{name} (%{balance})'
         select_prompt: Chọn một tài khoản...
       linked_accounts:
         title: Đã liên kết
-        linked_to_html: "Liên kết với: %{account}"
+        linked_to_html: 'Liên kết với: %{account}'
       buttons:
         refresh: Làm mới
         cancel: Hủy
@@ -61,13 +61,12 @@ vi:
     sync_status:
       no_accounts: Chưa phát hiện tài khoản IBKR nào
       all_linked:
-        one: 1 tài khoản đã liên kết
-        other: "%{count} tài khoản đã liên kết"
-      partial: "%{linked} đã liên kết, %{unlinked} cần thiết lập"
+        other: '%{count} tài khoản đã liên kết'
+      partial: '%{linked} đã liên kết, %{unlinked} cần thiết lập'
     select_existing_account:
       title: Liên kết tài khoản Interactive Brokers
       no_accounts_available: Chưa có tài khoản Interactive Brokers chưa được liên kết.
-      run_sync_hint: "Chạy đồng bộ từ Cài đặt > Nhà cung cấp sau khi cập nhật truy vấn Flex."
+      run_sync_hint: Chạy đồng bộ từ Cài đặt > Nhà cung cấp sau khi cập nhật truy vấn Flex.
       wait_for_sync: Chờ quá trình đồng bộ phát hiện tài khoản hoàn tất.
       balance: Số dư
       link: Liên kết
@@ -88,7 +87,6 @@ vi:
       failed: Liên kết tài khoản Interactive Brokers thất bại.
     complete_account_setup:
       success:
-        one: Đã tạo thành công %{count} tài khoản Interactive Brokers.
         other: Đã tạo thành công %{count} tài khoản Interactive Brokers.
       none_selected: Không có tài khoản nào được chọn.
       none_created: Không có tài khoản nào được tạo.

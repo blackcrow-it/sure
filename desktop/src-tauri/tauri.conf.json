@@ -27,7 +27,7 @@
       },
       {
         "label": "prefs",
-        "title": "Preferences",
+        "title": "Sure",
         "width": 420,
         "height": 520,
         "visible": false,
@@ -47,6 +47,10 @@
     "icon": ["icons/icon.icns"],
     "category": "public.app-category.finance",
     "macOS": {
+      "files": {
+        "Resources/en.lproj/InfoPlist.strings": "locales/en.lproj/InfoPlist.strings",
+        "Resources/vi.lproj/InfoPlist.strings": "locales/vi.lproj/InfoPlist.strings"
+      },
       "signingIdentity": "-"
     }
   },

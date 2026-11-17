@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/api/rails_provider_generator.md)
+
 # Rails `Provider` Generator Guide
 
 This guide explains how to use the `Provider` generators, which make it easy to add new

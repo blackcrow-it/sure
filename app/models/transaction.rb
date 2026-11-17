@@ -57,11 +57,11 @@ class Transaction < ApplicationRecord
 
     def exchange_rate_must_be_valid
       if extra&.dig("exchange_rate_invalid")
-        errors.add(:exchange_rate, "must be a number")
+        errors.add(:exchange_rate, I18n.t("vietnamese_ui.validation.number"))
       elsif exchange_rate.present?
         numeric_rate = Float(exchange_rate) rescue nil
         if numeric_rate.nil? || !numeric_rate.finite? || numeric_rate <= 0
-          errors.add(:exchange_rate, "must be greater than 0")
+          errors.add(:exchange_rate, I18n.t("vietnamese_ui.validation.positive"))
         end
       end
     end

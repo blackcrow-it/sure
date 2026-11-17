@@ -1,0 +1,9 @@
+---
+vi:
+  activerecord:
+    models:
+      rule_group:
+        other: Nhóm
+    attributes:
+      rule_group:
+        name: Tên

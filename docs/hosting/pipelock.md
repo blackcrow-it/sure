@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/pipelock.md)
+
 # Pipelock: AI Agent Security Proxy
 
 [Pipelock](https://github.com/pipelab-org/pipelock) is an optional security proxy that scans AI agent traffic flowing through Sure. It protects against secret exfiltration, prompt injection, and tool poisoning.

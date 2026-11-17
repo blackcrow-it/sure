@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/api-endpoint-consistency.md)
+
 # API endpoint consistency (post-commit checklist)
 
 When adding or modifying API v1 endpoints, follow this checklist after every API endpoint commit so behavior, docs, and auth stay consistent. Runtime endpoints also support OAuth; the API-key-only requirement below applies to the behavioral test and documentation patterns.

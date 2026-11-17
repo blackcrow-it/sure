@@ -69,6 +69,8 @@ RSpec.describe 'API V1 Balances', type: :request do
 
   path '/api/v1/balances' do
     get 'List balance history records' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Balances'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -126,6 +128,10 @@ RSpec.describe 'API V1 Balances', type: :request do
               schema: { type: :string, format: :uuid }
 
     get 'Retrieve a balance history record' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Balances'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

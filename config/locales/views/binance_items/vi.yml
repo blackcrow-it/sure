@@ -14,18 +14,18 @@ vi:
       instructions: Chọn các danh mục đầu tư Binance bạn muốn nhập. Chỉ hiển thị các danh mục có số dư.
       no_accounts: Tất cả tài khoản đã được nhập.
       accounts_count:
-        one: "%{count} tài khoản có sẵn"
-        other: "%{count} tài khoản có sẵn"
+        other: '%{count} tài khoản có sẵn'
       select_all: Chọn tất cả
       import_selected: Nhập đã chọn
       cancel: Hủy
       creating: Đang nhập...
+      historical_import: Nhập lịch sử
     complete_account_setup:
       success:
-        one: "Đã nhập %{count} tài khoản"
-        other: "Đã nhập %{count} tài khoản"
+        other: Đã nhập %{count} tài khoản
       none_selected: Chưa chọn tài khoản nào
       no_accounts: Không có tài khoản nào để nhập
+      invalid_sync_start_date: Ngày bắt đầu đồng bộ phải là ngày hợp lệ trong quá khứ.
     binance_item:
       provider_name: Binance
       syncing: Đang đồng bộ...
@@ -34,11 +34,10 @@ vi:
       sync_status:
         no_accounts: Không tìm thấy tài khoản
         all_synced:
-          one: "%{count} tài khoản đã đồng bộ"
-          other: "%{count} tài khoản đã đồng bộ"
-        partial_sync: "%{linked_count} đã đồng bộ, %{unlinked_count} cần thiết lập"
-      status: "Đồng bộ lần cuối %{timestamp} trước"
-      status_with_summary: "Đồng bộ lần cuối %{timestamp} trước - %{summary}"
+          other: '%{count} tài khoản đã đồng bộ'
+        partial_sync: '%{linked_count} đã đồng bộ, %{unlinked_count} cần thiết lập'
+      status: Đồng bộ lần cuối %{timestamp} trước
+      status_with_summary: Đồng bộ lần cuối %{timestamp} trước - %{summary}
       status_never: Chưa bao giờ đồng bộ
       update_credentials: Cập nhật thông tin xác thực
       delete: Xóa
@@ -48,13 +47,14 @@ vi:
       setup_description: Chọn danh mục đầu tư Binance bạn muốn theo dõi.
       setup_action: Nhập tài khoản
       import_accounts_menu: Nhập tài khoản
-      stale_rate_warning: "Số dư là xấp xỉ — tỷ giá hối đoái chính xác cho ngày %{date} không có sẵn. Sẽ cập nhật lần đồng bộ tiếp theo."
+      stale_rate_warning: Số dư là xấp xỉ — tỷ giá hối đoái chính xác cho ngày %{date} không có sẵn. Sẽ cập nhật
+        lần đồng bộ tiếp theo.
     select_existing_account:
       title: Liên kết tài khoản Binance
       no_accounts_found: Không tìm thấy tài khoản Binance nào.
       wait_for_sync: Chờ Binance hoàn tất đồng bộ
       check_provider_health: Kiểm tra xem thông tin API Binance của bạn có hợp lệ không
-      currently_linked_to: "Hiện đang liên kết với: %{account_name}"
+      currently_linked_to: 'Hiện đang liên kết với: %{account_name}'
       link: Liên kết
       cancel: Hủy
     link_existing_account:
@@ -62,6 +62,10 @@ vi:
       errors:
         only_manual: Chỉ tài khoản thủ công mới có thể liên kết với Binance
         invalid_binance_account: Tài khoản Binance không hợp lệ
+    select_accounts:
+      connection_unavailable: Kết nối Binance đó không khả dụng. Chọn kết nối trong Cài đặt nhà cung cấp.
+      no_credentials_configured: Kết nối Binance trong Cài đặt nhà cung cấp trước khi thêm tài khoản.
+      select_connection: Chọn kết nối Binance trong Cài đặt nhà cung cấp.
   binance_item:
     syncer:
       checking_credentials: Đang kiểm tra thông tin xác thực...
@@ -69,7 +73,6 @@ vi:
       importing_accounts: Đang nhập tài khoản từ Binance...
       checking_configuration: Đang kiểm tra cấu hình tài khoản...
       accounts_need_setup:
-        one: "%{count} tài khoản cần thiết lập"
-        other: "%{count} tài khoản cần thiết lập"
+        other: '%{count} tài khoản cần thiết lập'
       processing_accounts: Đang xử lý dữ liệu tài khoản...
       calculating_balances: Đang tính toán số dư...

@@ -87,6 +87,8 @@ RSpec.describe 'API V1 Transactions', type: :request do
 
   path '/api/v1/transactions' do
     get 'List transactions' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       description 'Returns global ledger history for accessible accounts, including disabled accounts but excluding accounts pending deletion.'
@@ -154,6 +156,10 @@ RSpec.describe 'API V1 Transactions', type: :request do
     end
 
     post 'Create transaction' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'
@@ -273,6 +279,10 @@ RSpec.describe 'API V1 Transactions', type: :request do
     parameter name: :id, in: :path, schema: { type: :string, format: :uuid }, required: true, description: 'Transaction ID'
 
     get 'Retrieve a transaction' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -295,6 +305,10 @@ RSpec.describe 'API V1 Transactions', type: :request do
     end
 
     patch 'Update a transaction' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'
@@ -361,6 +375,10 @@ RSpec.describe 'API V1 Transactions', type: :request do
     end
 
     delete 'Delete a transaction' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

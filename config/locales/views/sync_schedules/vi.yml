@@ -1,0 +1,19 @@
+---
+vi:
+  sync_schedules:
+    menu_item: Tần suất đồng bộ
+    intervals:
+      minutes: Mỗi %{count} phút
+      hours:
+        other: Mỗi %{count} giờ
+    edit:
+      title: Tần suất đồng bộ
+      description: Mỗi kết nối đồng bộ cùng hộ gia đình, một lần mỗi ngày với hầu hết nhà cung cấp. Chọn khoảng
+        lặp để đồng bộ riêng %{name} thêm trong ngày.
+      interval_label: Đồng bộ
+      no_schedule: Chỉ đồng bộ thông thường
+      hint: Đồng bộ thường xuyên tính vào giới hạn nhà cung cấp và một số nhà cung cấp tính phí mỗi yêu cầu.
+      save: Lưu
+    update:
+      updated: Đã lưu tần suất đồng bộ.
+      cleared: Đã xóa tần suất đồng bộ. Kết nối trở về lịch đồng bộ thông thường.

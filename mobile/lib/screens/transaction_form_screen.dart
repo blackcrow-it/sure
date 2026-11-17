@@ -166,7 +166,7 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
         amount: canonicalAmount,
         currency: widget.account.currency,
         nature: _nature,
-        notes: 'This transaction via mobile app.',
+        notes: l.transactionFormDefaultNotes,
         categoryId: _selectedCategory?.id,
         categoryName: _selectedCategory?.name,
       );

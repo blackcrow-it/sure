@@ -10,6 +10,7 @@ import '../providers/merchants_provider.dart';
 import '../providers/tags_provider.dart';
 import '../providers/transactions_provider.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 
 class TransactionEditScreen extends StatefulWidget {
   final OfflineTransaction transaction;
@@ -133,7 +134,7 @@ class _TransactionEditScreenState extends State<TransactionEditScreen> {
         content: Text(
           success
               ? l.transactionEditUpdated
-              : transactionsProvider.error ?? l.transactionEditUpdateFailed,
+              : l.displayError(transactionsProvider.error ?? l.transactionEditUpdateFailed),
         ),
         backgroundColor: success ? Colors.green : Colors.red,
       ),

@@ -23,10 +23,11 @@ class Import < ApplicationRecord
   end
 
   # User-facing (shown as the import's error in the UI). Resolved at reap
-  # time; the sweep runs from cron so this snapshots the default locale.
-  def self.interrupted_error_message
+  # time; cron callers pass the owning family locale explicitly.
+  def self.interrupted_error_message(locale: I18n.locale)
     I18n.t(
       "imports.errors.interrupted",
+      locale: locale,
       default: "The background worker was interrupted before this finished. Imported data was rolled back — you can safely try again."
     )
   end
@@ -163,12 +164,12 @@ class Import < ApplicationRecord
 
         previous_status = import.status
         if previous_status == "reverting"
-          import.update!(status: :revert_failed, error: interrupted_error_message)
+          import.update!(status: :revert_failed, error: interrupted_error_message(locale: family.locale))
         elsif import.data_committed?
           import.update!(status: :complete, error: nil)
           needs_sync = true
         else
-          import.update!(status: :failed, error: interrupted_error_message)
+          import.update!(status: :failed, error: interrupted_error_message(locale: family.locale))
         end
 
         DebugLogEntry.capture(
@@ -836,26 +837,26 @@ class Import < ApplicationRecord
       return if account.nil?
       return if account.family_id == family_id
 
-      errors.add(:account, "must belong to your family")
+      errors.add(:account, I18n.t("vietnamese_ui.validation.own_family"))
     end
 
     def import_session_belongs_to_family
       return if import_session.nil?
       return if import_session.family_id == family_id
 
-      errors.add(:import_session, "must belong to your family")
+      errors.add(:import_session, I18n.t("vietnamese_ui.validation.own_family"))
     end
 
     def session_chunk_metadata
       return if import_session.nil?
 
-      errors.add(:sequence, "must be present for import session chunks") if sequence.blank?
-      errors.add(:checksum, "must be present for import session chunks") if checksum.blank?
+      errors.add(:sequence, I18n.t("vietnamese_ui.validation.import_chunk")) if sequence.blank?
+      errors.add(:checksum, I18n.t("vietnamese_ui.validation.import_chunk")) if checksum.blank?
     end
 
     def session_payloads_are_json_objects
-      errors.add(:summary, "must be an object") unless summary.is_a?(Hash)
-      errors.add(:error_details, "must be an object") unless error_details.is_a?(Hash)
+      errors.add(:summary, I18n.t("vietnamese_ui.validation.object_required")) unless summary.is_a?(Hash)
+      errors.add(:error_details, I18n.t("vietnamese_ui.validation.object_required")) unless error_details.is_a?(Hash)
     end
 
     def rows_to_skip_within_file_bounds
@@ -865,7 +866,7 @@ class Import < ApplicationRecord
       line_count = raw_file_str.lines.count
 
       if rows_to_skip.to_i >= line_count
-        errors.add(:rows_to_skip, "must be less than the number of lines in the file (#{line_count})")
+        errors.add(:rows_to_skip, I18n.t("vietnamese_ui.validation.rows_to_skip", count: line_count))
       end
     end
 end

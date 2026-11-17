@@ -1,3 +1,5 @@
+import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/account.dart';
@@ -99,7 +101,7 @@ class AccountCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  account.displayAccountType,
+                  AppLocalizations.of(context).accountType(account.accountType),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),
@@ -154,18 +156,18 @@ class AccountCard extends StatelessWidget {
             color: Colors.blue,
             borderRadius: BorderRadius.circular(SureTokens.radiusLg),
           ),
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SureIcon(
+              const SureIcon(
                 SureIcons.receipt,
                 color: Colors.white,
                 size: SureIconSize.xl,
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Text(
-                'Transactions',
-                style: TextStyle(color: Colors.white, fontSize: 12),
+                AppLocalizations.of(context).accountTransactions,
+                style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
             ],
           ),

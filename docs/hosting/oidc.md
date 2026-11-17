@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/oidc.md)
+
 # Configuring OpenID Connect, SAML, and SSO Providers
 
 This guide shows how to enable OpenID Connect (OIDC), SAML 2.0, and other single sign-on (SSO) providers for Sure using Google, GitHub, or another identity provider (e.g. Keycloak, Authentik, Okta, Azure AD).

@@ -28,3 +28,18 @@ fn macos_bundle_can_reach_a_server_on_the_local_network() {
     let config: Value = serde_json::from_str(include_str!("../tauri.conf.json")).unwrap();
     assert_eq!(config["bundle"]["macOS"]["signingIdentity"], "-");
 }
+
+#[test]
+fn bundles_localized_network_permission_descriptions() {
+    let config: Value = serde_json::from_str(include_str!("../tauri.conf.json")).unwrap();
+    for locale in ["en", "vi"] {
+        let destination = format!("Resources/{locale}.lproj/InfoPlist.strings");
+        let source = config["bundle"]["macOS"]["files"][&destination]
+            .as_str()
+            .expect("localized InfoPlist is mapped into the macOS bundle");
+        let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join(source);
+        let contents = std::fs::read_to_string(path).expect("mapped localization file exists");
+        assert!(contents.contains("NSLocalNetworkUsageDescription"));
+        assert!(contents.contains(if locale == "vi" { "máy chủ Sure" } else { "Sure server" }));
+    }
+}

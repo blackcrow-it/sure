@@ -31,7 +31,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -43,7 +43,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -53,7 +53,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     if family.categories_locked?
       return render json: {
         error: "unprocessable_entity",
-        message: "Categories are locked. Unlock them to add a new category."
+        message: t("vietnamese_ui.api.categories_locked")
       }, status: :unprocessable_entity
     end
 
@@ -62,7 +62,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     if attrs[:parent_id].present? && !family.categories.exists?(id: attrs[:parent_id])
       return render json: {
         error: "unprocessable_entity",
-        message: "Parent must be a category in your family"
+        message: t("vietnamese_ui.api.category_parent")
       }, status: :unprocessable_entity
     end
 
@@ -87,7 +87,7 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     rescue ActiveRecord::RecordNotFound
       render json: {
         error: "not_found",
-        message: "Category not found"
+        message: t("vietnamese_ui.api.category_not_found")
       }, status: :not_found
     end
 

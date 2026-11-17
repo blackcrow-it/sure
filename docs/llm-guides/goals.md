@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/goals.md)
+
 # Working with the Goals feature
 
 Reference for changes to the savings-goals feature. Covers the data

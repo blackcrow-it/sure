@@ -22,7 +22,7 @@ class Api::V1::AccountsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -30,7 +30,7 @@ class Api::V1::AccountsController < Api::V1::BaseController
     unless valid_uuid?(params[:id])
       render json: {
         error: "not_found",
-        message: "Account not found"
+        message: t("vietnamese_ui.api.account_not_found")
       }, status: :not_found
       return
     end
@@ -41,7 +41,7 @@ class Api::V1::AccountsController < Api::V1::BaseController
   rescue ActiveRecord::RecordNotFound
     render json: {
       error: "not_found",
-      message: "Account not found"
+      message: t("vietnamese_ui.api.account_not_found")
     }, status: :not_found
   rescue => e
     Rails.logger.error "AccountsController#show error: #{e.message}"
@@ -49,7 +49,7 @@ class Api::V1::AccountsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 

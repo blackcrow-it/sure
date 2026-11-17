@@ -1247,4 +1247,296 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cashFlowTransactionsLoadFailed => 'Couldn\'t load transactions';
+
+  @override
+  String get introTitle => 'Intro experience coming soon';
+
+  @override
+  String get introBody =>
+      'We\'re building a richer onboarding journey to learn about your goals, milestones, and day-to-day needs. For now, head over to the chat sidebar to start a conversation with Sure and let us know where you are in your financial journey.';
+
+  @override
+  String get navTogglePrivacy => 'Toggle privacy';
+
+  @override
+  String get dashboardNetWorth => 'Net Worth';
+
+  @override
+  String get syncPending => 'Pending';
+
+  @override
+  String get syncDeleting => 'Deleting';
+
+  @override
+  String get syncFailed => 'Failed';
+
+  @override
+  String get syncPendingSemantics => 'Transaction pending sync';
+
+  @override
+  String get syncDeletingSemantics => 'Transaction pending deletion';
+
+  @override
+  String buttonLoading(String label) {
+    return '$label, loading';
+  }
+
+  @override
+  String get biometricUnlockReason => 'Unlock Sure to continue';
+
+  @override
+  String get accountTypeDepository => 'Bank Account';
+
+  @override
+  String get accountTypeCreditCard => 'Credit Card';
+
+  @override
+  String get accountTypeInvestment => 'Investment';
+
+  @override
+  String get accountTypeLoan => 'Loan';
+
+  @override
+  String get accountTypeProperty => 'Property';
+
+  @override
+  String get accountTypeVehicle => 'Vehicle';
+
+  @override
+  String get accountTypeCrypto => 'Crypto';
+
+  @override
+  String get accountTypeOtherAsset => 'Other Asset';
+
+  @override
+  String get accountTypeOtherLiability => 'Other Liability';
+
+  @override
+  String get proxyHeaderNameRequired => 'Header name is required';
+
+  @override
+  String get proxyHeaderNameInvalid => 'Use a valid HTTP header name';
+
+  @override
+  String get proxyHeaderReserved => 'This header is managed by the app';
+
+  @override
+  String get proxyHeaderValueRequired => 'Header value is required';
+
+  @override
+  String get proxyHeaderValueInvalid =>
+      'Header value contains control characters';
+
+  @override
+  String get updateTitle => 'Update available';
+
+  @override
+  String updateBody(
+      String appName, String storeVersion, String installedVersion) {
+    return '$appName $storeVersion is now available — you have $installedVersion.\n\nWhat\'s new? Check the store for release notes.';
+  }
+
+  @override
+  String get updateNow => 'Update now';
+
+  @override
+  String get updateLater => 'Later';
+
+  @override
+  String get errorNetworkUnavailable => 'Network unavailable';
+
+  @override
+  String get errorTimeout => 'Request timed out';
+
+  @override
+  String get errorInvalidResponse => 'Invalid response from server';
+
+  @override
+  String get errorUnexpected => 'An unexpected error occurred';
+
+  @override
+  String get errorLogin => 'Login failed';
+
+  @override
+  String get errorSignup => 'Signup failed';
+
+  @override
+  String get errorTokenRefresh => 'Token refresh failed';
+
+  @override
+  String errorLoginStatus(String code) {
+    return 'Login failed (status $code)';
+  }
+
+  @override
+  String get errorSsoLogin => 'SSO login failed';
+
+  @override
+  String get errorSsoCallback => 'Invalid SSO callback response';
+
+  @override
+  String get errorTokenExchange => 'Token exchange failed';
+
+  @override
+  String get errorAuthorizationCode => 'Failed to exchange authorization code';
+
+  @override
+  String get errorAccountLink => 'Failed to link account';
+
+  @override
+  String get errorAccountCreate => 'Failed to create account';
+
+  @override
+  String get errorNetwork => 'Network error';
+
+  @override
+  String errorNetworkDetails(String error) {
+    return 'Network error: $error';
+  }
+
+  @override
+  String get errorInvalidMfa =>
+      'Invalid authentication code. Please try again.';
+
+  @override
+  String get errorConnectRetry =>
+      'Unable to connect. Please check your network and try again.';
+
+  @override
+  String get errorBrowser => 'Unable to open browser for sign-in.';
+
+  @override
+  String get errorStartSignIn => 'Unable to start sign-in. Please try again.';
+
+  @override
+  String get errorSignInRetry => 'Sign-in failed. Please try again.';
+
+  @override
+  String get errorNoSsoSession =>
+      'No pending SSO session. Please try signing in again.';
+
+  @override
+  String get errorAccountLinkRetry =>
+      'Failed to link account. Please try again.';
+
+  @override
+  String get errorAccountCreateRetry =>
+      'Failed to create account. Please try again.';
+
+  @override
+  String get errorRetry => 'Something went wrong. Please try again.';
+
+  @override
+  String get errorChatCreate => 'Failed to create chat';
+
+  @override
+  String get errorChatSend => 'Failed to send message';
+
+  @override
+  String get errorChatUpdate => 'Failed to update chat';
+
+  @override
+  String get errorChatRetry => 'Failed to retry message';
+
+  @override
+  String get errorChatNotFound => 'Chat not found';
+
+  @override
+  String get errorAiDisabled => 'AI features not enabled';
+
+  @override
+  String get errorAssistantTimeout =>
+      'The assistant took too long to respond. Please try again.';
+
+  @override
+  String get errorAccountsOffline =>
+      'You are offline. Please connect to the internet to load accounts.';
+
+  @override
+  String get errorNetworkRetry =>
+      'Network error. Please check your internet connection and try again.';
+
+  @override
+  String get errorTimeoutRetry =>
+      'Request timed out. Please check your connection and try again.';
+
+  @override
+  String get errorServerRetry =>
+      'Server response error. Please try again later.';
+
+  @override
+  String get errorSecureConnection =>
+      'Secure connection error. Please check your internet connection and try again.';
+
+  @override
+  String get biometricHint => 'Verify identity';
+
+  @override
+  String get biometricNotRecognized => 'Not recognized. Try again.';
+
+  @override
+  String get biometricSuccess => 'Success';
+
+  @override
+  String get biometricRequired => 'Biometric required';
+
+  @override
+  String get biometricCredentialsRequired => 'Device credentials required';
+
+  @override
+  String get biometricGoToSettings => 'Go to settings';
+
+  @override
+  String get biometricAndroidSetup =>
+      'Biometric authentication is not set up on your device. Go to \'Settings > Security\' to add biometric authentication.';
+
+  @override
+  String get biometricAuthenticationRequired => 'Authentication required';
+
+  @override
+  String get biometricLockout =>
+      'Biometric authentication is disabled. Please lock and unlock your screen to enable it.';
+
+  @override
+  String get biometricIosSetup =>
+      'Biometric authentication is not set up on your device. Please either enable Touch ID or Face ID on your phone.';
+
+  @override
+  String get biometricOk => 'OK';
+
+  @override
+  String get accountTransactions => 'Transactions';
+
+  @override
+  String get chatThinking => 'Thinking';
+
+  @override
+  String get errorUploadTransaction =>
+      'Failed to upload transaction. It will sync when online.';
+
+  @override
+  String get errorEditOffline =>
+      'Connect to the internet before editing synced transactions.';
+
+  @override
+  String get errorSyncOffline => 'Cannot sync while offline';
+
+  @override
+  String get errorSyncInProgress => 'Sync already in progress';
+
+  @override
+  String get errorNoFields => 'No fields to update';
+
+  @override
+  String errorDeleteTransactionsCount(String count) {
+    return 'Failed to delete $count transactions';
+  }
+
+  @override
+  String errorDeleteTransactionDetails(String error) {
+    return 'Failed to delete transaction: $error';
+  }
+
+  @override
+  String get transactionFormDefaultNotes => 'This transaction via mobile app.';
 }

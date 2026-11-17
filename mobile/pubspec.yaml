@@ -31,6 +31,9 @@ dependencies:
   flutter_svg: ^2.2.0
   package_info_plus: ^8.0.0
   local_auth: ^2.3.0
+  # Existing platform implementations expose localized native dialog messages.
+  local_auth_android: ^1.0.52
+  local_auth_darwin: ^1.6.0
   flutter_markdown: ^0.7.2
   sentry_flutter: ^8.14.2
   upgrader: ^13.5.0

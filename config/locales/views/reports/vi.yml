@@ -15,23 +15,32 @@ vi:
       date_range:
         from: Từ
         to: Đến
-      showing_period: "Hiển thị dữ liệu từ %{start} đến %{end}"
-      previous_period: "Kỳ trước"
-      next_period: "Kỳ tiếp"
-      today: "Hôm nay"
+      showing_period: Hiển thị dữ liệu từ %{start} đến %{end}
+      previous_period: Kỳ trước
+      next_period: Kỳ tiếp
+      today: Hôm nay
       period_label:
-        quarterly: "Q%{quarter} %{year}"
-        ytd: "Từ đầu năm %{year}"
-        past_year: "%{year}"
-        last_6_months: "%{start} – %{end}"
+        quarterly: Quý %{quarter} %{year}
+        ytd: Từ đầu năm %{year}
+        past_year: '%{year}'
+        last_6_months: '%{start} – %{end}'
       period_picker:
-        quarter: "Q%{quarter} %{year}"
-        ytd: "Từ đầu năm %{year}"
-      previous_year: "Năm trước"
-      next_year: "Năm tiếp"
-      previous_decade: "Thập kỷ trước"
-      next_decade: "Thập kỷ tiếp"
-    invalid_date_range: "Ngày kết thúc không thể trước ngày bắt đầu. Các ngày đã được hoán đổi."
+        quarter: Quý %{quarter} %{year}
+        ytd: Từ đầu năm %{year}
+      previous_year: Năm trước
+      next_year: Năm tiếp
+      previous_decade: Thập kỷ trước
+      next_decade: Thập kỷ tiếp
+      tag_filter:
+        all: Tất cả nhãn
+        selected:
+          other: '%{count} nhãn'
+        search: Tìm nhãn
+        apply: Áp dụng
+      section_aria: Phần %{title}. Nhấn Enter hoặc Space để chọn sắp xếp, rồi dùng phím mũi tên để di chuyển.
+      sections_aria: Các phần báo cáo
+      shortcut_hint: '%{action} (%{key})'
+    invalid_date_range: Ngày kết thúc không thể trước ngày bắt đầu. Các ngày đã được hoán đổi.
     summary:
       total_income: Tổng thu nhập
       total_expenses: Tổng chi tiêu
@@ -48,7 +57,7 @@ vi:
       remaining: Còn lại
       over_by: Vượt
       shared: chia sẻ
-      suggested_daily: "%{amount} đề xuất mỗi ngày cho %{days} ngày còn lại"
+      suggested_daily: '%{amount} đề xuất mỗi ngày cho %{days} ngày còn lại'
       no_budgets: Chưa thiết lập danh mục ngân sách tháng này
       status:
         good: Đúng kế hoạch
@@ -74,13 +83,14 @@ vi:
       avg_per_transaction: Tb mỗi giao dịch
       transactions: Giao dịch
       insight_title: Thông tin
-      insight_higher_weekend: "Bạn chi %{percent}% nhiều hơn mỗi giao dịch vào cuối tuần so với ngày thường"
-      insight_higher_weekday: "Bạn chi %{percent}% nhiều hơn mỗi giao dịch vào ngày thường so với cuối tuần"
-      insight_similar: "Chi tiêu mỗi giao dịch của bạn tương tự vào ngày thường và cuối tuần"
+      insight_higher_weekend: Bạn chi %{percent}% nhiều hơn mỗi giao dịch vào cuối tuần so với ngày thường
+      insight_higher_weekday: Bạn chi %{percent}% nhiều hơn mỗi giao dịch vào ngày thường so với cuối tuần
+      insight_similar: Chi tiêu mỗi giao dịch của bạn tương tự vào ngày thường và cuối tuần
       no_spending_data: Không có dữ liệu chi tiêu cho kỳ này
     empty_state:
       title: Không có dữ liệu
-      description: Bắt đầu theo dõi tài chính bằng cách thêm giao dịch hoặc kết nối tài khoản để xem báo cáo toàn diện
+      description: Bắt đầu theo dõi tài chính bằng cách thêm giao dịch hoặc kết nối tài khoản để xem báo cáo toàn
+        diện
       add_transaction: Thêm giao dịch
       add_account: Thêm tài khoản
     transactions_breakdown:
@@ -118,18 +128,16 @@ vi:
         income: Thu nhập
         uncategorized: Chưa phân loại
         entries:
-          one: "%{count} mục"
-          other: "%{count} mục"
-        percentage: "% Tổng"
+          other: '%{count} mục'
+        percentage: '% Tổng'
       pagination:
         showing:
-          one: Hiển thị %{count} mục
           other: Hiển thị %{count} mục
         previous: Trước
         next: Tiếp
     net_worth:
-      title: Tài sản ròng
-      current_net_worth: Tài sản ròng hiện tại
+      title: Giá trị tài sản ròng
+      current_net_worth: Giá trị tài sản ròng hiện tại
       period_change: Thay đổi trong kỳ
       assets_vs_liabilities: Tài sản vs Nợ
       total_assets: Tài sản
@@ -142,7 +150,7 @@ vi:
       total_return: Tổng lợi nhuận
       contributions: Đóng góp trong kỳ
       withdrawals: Rút tiền trong kỳ
-      top_holdings: Danh mục nắm giữ hàng đầu
+      top_holdings: Khoản nắm giữ hàng đầu
       holding: Nắm giữ
       weight: Tỷ trọng
       value: Giá trị
@@ -153,17 +161,18 @@ vi:
       realized_gains: Lợi nhuận đã thực hiện
       total_gains: Tổng lợi nhuận
       taxable_realized_note: Các khoản lợi nhuận này có thể phải chịu thuế
-      no_data: "-"
+      no_data: '-'
       view_details: Xem chi tiết
       holdings_count:
-        one: "%{count} nắm giữ"
-        other: "%{count} nắm giữ"
+        other: '%{count} nắm giữ'
       sells_count:
-        one: "%{count} lần bán"
-        other: "%{count} lần bán"
-      holdings: Danh mục nắm giữ
+        other: '%{count} lần bán'
+      holdings: Khoản nắm giữ
       sell_trades: Giao dịch bán
-      and_more: "+%{count} khác"
+      and_more: +%{count} khác
+      period_return: Lợi nhuận trong kỳ
+      unconverted_note:
+        other: '%{count} khoản lợi nhuận chưa được tính: chưa có tỷ giá sang %{currency}'
     investment_flows:
       title: Dòng tiền đầu tư
       description: Theo dõi tiền chảy vào và ra khỏi tài khoản đầu tư qua đóng góp và rút tiền.
@@ -174,12 +183,12 @@ vi:
       net_flow: Dòng tiền thuần
       net_flow_description: Tổng thay đổi thuần
     google_sheets_instructions:
-      title_no_key: "Cần khóa API"
+      title_no_key: Cần khóa API
       need_key: Để nhập dữ liệu vào Google Sheets, bạn cần khóa API.
-      step1: "Vào Cài đặt → Khóa API"
-      step2: "Tạo khóa API mới với quyền \"đọc\""
+      step1: Vào Cài đặt → Khóa API
+      step2: Tạo khóa API mới với quyền "đọc"
       step3: Sao chép khóa API
-      step4: "Thêm vào URL như sau: &api_key=YOUR_KEY"
+      step4: 'Thêm vào URL như sau: &api_key=YOUR_KEY'
       example: Ví dụ
       then_use: Sau đó dùng URL đầy đủ với =IMPORTDATA() trong Google Sheets.
       go_to_api_keys: Đến Khóa API
@@ -187,18 +196,18 @@ vi:
     print:
       document_title: Báo cáo tài chính
       title: Báo cáo tài chính
-      generated_on: "Tạo ngày %{date}"
+      generated_on: Tạo ngày %{date}
       summary:
         title: Tóm tắt
         income: Thu nhập
         expenses: Chi tiêu
         net_savings: Tiết kiệm thuần
         budget: Ngân sách
-        vs_prior: "%{percent}% so với kỳ trước"
-        of_income: "%{percent}% thu nhập"
+        vs_prior: '%{percent}% so với kỳ trước'
+        of_income: '%{percent}% thu nhập'
         used: đã dùng
       net_worth:
-        title: Tài sản ròng
+        title: Giá trị tài sản ròng
         current_balance: Số dư hiện tại
         this_period: kỳ này
         assets: Tài sản
@@ -212,7 +221,7 @@ vi:
         net: Thuần
         savings_rate: Tỷ lệ tiết kiệm
         average: Trung bình
-        current_month_note: "* Tháng hiện tại (dữ liệu một phần)"
+        current_month_note: '* Tháng hiện tại (dữ liệu một phần)'
       investments:
         title: Đầu tư
         portfolio_value: Giá trị danh mục
@@ -220,16 +229,47 @@ vi:
         contributions: Đóng góp
         withdrawals: Rút tiền
         this_period: kỳ này
-        top_holdings: Danh mục nắm giữ hàng đầu
+        top_holdings: Khoản nắm giữ hàng đầu
         holding: Nắm giữ
         weight: Tỷ trọng
         value: Giá trị
         return: Lợi nhuận
+        period_return: Lợi nhuận trong kỳ
       spending:
         title: Chi tiêu theo danh mục
         income: Thu nhập
         expenses: Chi tiêu
         category: Danh mục
         amount: Số tiền
-        percent: "%"
-        more_categories: "+ %{count} danh mục khác"
+        percent: '%'
+        more_categories: + %{count} danh mục khác
+    spending_vs_normal:
+      title: Chi tiêu so với thông thường
+      summary_html: Đã chi %{total} trong kỳ này. Mức thông thường cho khoảng thời gian tương đương là %{normal},
+        dựa trên %{baseline_start} đến %{baseline_end}.
+      summary_so_far_html: Đã chi %{total} đến nay. Mức thông thường cho số ngày này là %{normal}, dựa trên %{baseline_start}
+        đến %{baseline_end}.
+      no_history_html: Đã chi %{total} trong kỳ này. Chưa đủ lịch sử trước đó để xác định mức thông thường.
+      no_history_short: Chưa đủ lịch sử trước đó để so sánh.
+      no_spending: Không có chi tiêu trong kỳ này.
+      no_changes: Chi tiêu khớp mức thông thường ở mọi danh mục.
+      treemap_title: Tiền đã đi đâu
+      changes_title: Điều gì thay đổi
+      direct: '%{category} (không có danh mục con)'
+      tooltip:
+        path: '%{parent} › %{category}'
+        total: '%{category}: %{amount}'
+        normal: 'Thông thường: %{amount}'
+        more: Cao hơn thông thường %{amount} (%{percent})
+        less: Thấp hơn thông thường %{amount} (%{percent})
+        more_no_percent: Cao hơn thông thường %{amount}
+        less_no_percent: Thấp hơn thông thường %{amount}
+        no_normal: Chưa có lịch sử trước đó để so sánh
+        open: Chọn để xem các giao dịch này
+      legend:
+        less: Thấp hơn 50–100%
+        slightly_less: Thấp hơn 15–50%
+        normal: Gần mức thông thường
+        slightly_more: Cao hơn 15–50%
+        more: Cao hơn 50–100%
+        much_more: Cao hơn từ 100%

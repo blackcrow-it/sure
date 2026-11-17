@@ -19,6 +19,7 @@ export default class extends Controller {
   ];
 
   static values = {
+    contrastMessage: String,
     presetColors: Array,
   };
 
@@ -148,9 +149,7 @@ export default class extends Controller {
 
   handleContrastValidation(contrastRatio) {
     if (contrastRatio < 4.5) {
-      this.colorInputTarget.setCustomValidity(
-        "Poor contrast, choose darker color or auto-adjust.",
-      );
+      this.colorInputTarget.setCustomValidity(this.contrastMessageValue);
 
       this.showFlex(this.validationMessageTarget);
     } else {

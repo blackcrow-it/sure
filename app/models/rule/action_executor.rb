@@ -14,7 +14,7 @@ class Rule::ActionExecutor
   end
 
   def label
-    key.humanize
+    I18n.t("vietnamese_ui.rules.actions.#{key}", default: key.humanize)
   end
 
   def type

@@ -7,6 +7,7 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
 import 'app_localizations_sv.dart';
+import 'app_localizations_vi.dart';
 
 // ignore_for_file: type=lint
 
@@ -63,7 +64,7 @@ import 'app_localizations_sv.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -86,16 +87,17 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
     Locale('sv'),
+    Locale('vi')
   ];
 
   /// Application title shown in the OS task switcher.
@@ -2281,6 +2283,529 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t load transactions'**
   String get cashFlowTransactionsLoadFailed;
+
+  /// Localized introTitle displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Intro experience coming soon'**
+  String get introTitle;
+
+  /// Localized introBody displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'re building a richer onboarding journey to learn about your goals, milestones, and day-to-day needs. For now, head over to the chat sidebar to start a conversation with Sure and let us know where you are in your financial journey.'**
+  String get introBody;
+
+  /// Localized navTogglePrivacy displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle privacy'**
+  String get navTogglePrivacy;
+
+  /// Localized dashboardNetWorth displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Net Worth'**
+  String get dashboardNetWorth;
+
+  /// Localized syncPending displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get syncPending;
+
+  /// Localized syncDeleting displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting'**
+  String get syncDeleting;
+
+  /// Localized syncFailed displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get syncFailed;
+
+  /// Localized syncPendingSemantics displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction pending sync'**
+  String get syncPendingSemantics;
+
+  /// Localized syncDeletingSemantics displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction pending deletion'**
+  String get syncDeletingSemantics;
+
+  /// Localized buttonLoading displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'{label}, loading'**
+  String buttonLoading(String label);
+
+  /// Localized biometricUnlockReason displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock Sure to continue'**
+  String get biometricUnlockReason;
+
+  /// Localized accountTypeDepository displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank Account'**
+  String get accountTypeDepository;
+
+  /// Localized accountTypeCreditCard displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit Card'**
+  String get accountTypeCreditCard;
+
+  /// Localized accountTypeInvestment displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment'**
+  String get accountTypeInvestment;
+
+  /// Localized accountTypeLoan displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan'**
+  String get accountTypeLoan;
+
+  /// Localized accountTypeProperty displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Property'**
+  String get accountTypeProperty;
+
+  /// Localized accountTypeVehicle displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle'**
+  String get accountTypeVehicle;
+
+  /// Localized accountTypeCrypto displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Crypto'**
+  String get accountTypeCrypto;
+
+  /// Localized accountTypeOtherAsset displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Asset'**
+  String get accountTypeOtherAsset;
+
+  /// Localized accountTypeOtherLiability displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Liability'**
+  String get accountTypeOtherLiability;
+
+  /// Localized proxyHeaderNameRequired displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Header name is required'**
+  String get proxyHeaderNameRequired;
+
+  /// Localized proxyHeaderNameInvalid displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a valid HTTP header name'**
+  String get proxyHeaderNameInvalid;
+
+  /// Localized proxyHeaderReserved displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'This header is managed by the app'**
+  String get proxyHeaderReserved;
+
+  /// Localized proxyHeaderValueRequired displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Header value is required'**
+  String get proxyHeaderValueRequired;
+
+  /// Localized proxyHeaderValueInvalid displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Header value contains control characters'**
+  String get proxyHeaderValueInvalid;
+
+  /// Localized updateTitle displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Update available'**
+  String get updateTitle;
+
+  /// Localized updateBody displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'{appName} {storeVersion} is now available — you have {installedVersion}.\n\nWhat\'s new? Check the store for release notes.'**
+  String updateBody(
+      String appName, String storeVersion, String installedVersion);
+
+  /// Localized updateNow displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Update now'**
+  String get updateNow;
+
+  /// Localized updateLater displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get updateLater;
+
+  /// Localized errorNetworkUnavailable displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Network unavailable'**
+  String get errorNetworkUnavailable;
+
+  /// Localized errorTimeout displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Request timed out'**
+  String get errorTimeout;
+
+  /// Localized errorInvalidResponse displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid response from server'**
+  String get errorInvalidResponse;
+
+  /// Localized errorUnexpected displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred'**
+  String get errorUnexpected;
+
+  /// Localized errorLogin displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed'**
+  String get errorLogin;
+
+  /// Localized errorSignup displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Signup failed'**
+  String get errorSignup;
+
+  /// Localized errorTokenRefresh displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Token refresh failed'**
+  String get errorTokenRefresh;
+
+  /// Localized errorLoginStatus displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed (status {code})'**
+  String errorLoginStatus(String code);
+
+  /// Localized errorSsoLogin displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'SSO login failed'**
+  String get errorSsoLogin;
+
+  /// Localized errorSsoCallback displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid SSO callback response'**
+  String get errorSsoCallback;
+
+  /// Localized errorTokenExchange displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Token exchange failed'**
+  String get errorTokenExchange;
+
+  /// Localized errorAuthorizationCode displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to exchange authorization code'**
+  String get errorAuthorizationCode;
+
+  /// Localized errorAccountLink displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to link account'**
+  String get errorAccountLink;
+
+  /// Localized errorAccountCreate displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to create account'**
+  String get errorAccountCreate;
+
+  /// Localized errorNetwork displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error'**
+  String get errorNetwork;
+
+  /// Localized errorNetworkDetails displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error: {error}'**
+  String errorNetworkDetails(String error);
+
+  /// Localized errorInvalidMfa displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid authentication code. Please try again.'**
+  String get errorInvalidMfa;
+
+  /// Localized errorConnectRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to connect. Please check your network and try again.'**
+  String get errorConnectRetry;
+
+  /// Localized errorBrowser displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to open browser for sign-in.'**
+  String get errorBrowser;
+
+  /// Localized errorStartSignIn displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to start sign-in. Please try again.'**
+  String get errorStartSignIn;
+
+  /// Localized errorSignInRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in failed. Please try again.'**
+  String get errorSignInRetry;
+
+  /// Localized errorNoSsoSession displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'No pending SSO session. Please try signing in again.'**
+  String get errorNoSsoSession;
+
+  /// Localized errorAccountLinkRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to link account. Please try again.'**
+  String get errorAccountLinkRetry;
+
+  /// Localized errorAccountCreateRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to create account. Please try again.'**
+  String get errorAccountCreateRetry;
+
+  /// Localized errorRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get errorRetry;
+
+  /// Localized errorChatCreate displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to create chat'**
+  String get errorChatCreate;
+
+  /// Localized errorChatSend displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to send message'**
+  String get errorChatSend;
+
+  /// Localized errorChatUpdate displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update chat'**
+  String get errorChatUpdate;
+
+  /// Localized errorChatRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to retry message'**
+  String get errorChatRetry;
+
+  /// Localized errorChatNotFound displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat not found'**
+  String get errorChatNotFound;
+
+  /// Localized errorAiDisabled displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'AI features not enabled'**
+  String get errorAiDisabled;
+
+  /// Localized errorAssistantTimeout displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'The assistant took too long to respond. Please try again.'**
+  String get errorAssistantTimeout;
+
+  /// Localized errorAccountsOffline displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'You are offline. Please connect to the internet to load accounts.'**
+  String get errorAccountsOffline;
+
+  /// Localized errorNetworkRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error. Please check your internet connection and try again.'**
+  String get errorNetworkRetry;
+
+  /// Localized errorTimeoutRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Request timed out. Please check your connection and try again.'**
+  String get errorTimeoutRetry;
+
+  /// Localized errorServerRetry displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Server response error. Please try again later.'**
+  String get errorServerRetry;
+
+  /// Localized errorSecureConnection displayed by the mobile application.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure connection error. Please check your internet connection and try again.'**
+  String get errorSecureConnection;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify identity'**
+  String get biometricHint;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Not recognized. Try again.'**
+  String get biometricNotRecognized;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get biometricSuccess;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric required'**
+  String get biometricRequired;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Device credentials required'**
+  String get biometricCredentialsRequired;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to settings'**
+  String get biometricGoToSettings;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric authentication is not set up on your device. Go to \'Settings > Security\' to add biometric authentication.'**
+  String get biometricAndroidSetup;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication required'**
+  String get biometricAuthenticationRequired;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric authentication is disabled. Please lock and unlock your screen to enable it.'**
+  String get biometricLockout;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric authentication is not set up on your device. Please either enable Touch ID or Face ID on your phone.'**
+  String get biometricIosSetup;
+
+  /// Native biometric authentication dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get biometricOk;
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'Transactions'**
+  String get accountTransactions;
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'Thinking'**
+  String get chatThinking;
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to upload transaction. It will sync when online.'**
+  String get errorUploadTransaction;
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to the internet before editing synced transactions.'**
+  String get errorEditOffline;
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot sync while offline'**
+  String get errorSyncOffline;
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync already in progress'**
+  String get errorSyncInProgress;
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'No fields to update'**
+  String get errorNoFields;
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete {count} transactions'**
+  String errorDeleteTransactionsCount(String count);
+
+  /// Localized mobile interface or transaction error text.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete transaction: {error}'**
+  String errorDeleteTransactionDetails(String error);
+
+  /// Default note for a newly created mobile transaction; existing notes are never translated.
+  ///
+  /// In en, this message translates to:
+  /// **'This transaction via mobile app.'**
+  String get transactionFormDefaultNotes;
 }
 
 class _AppLocalizationsDelegate
@@ -2294,7 +2819,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en', 'sv'].contains(locale.languageCode);
+      <String>['en', 'sv', 'vi'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -2307,12 +2832,13 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsEn();
     case 'sv':
       return AppLocalizationsSv();
+    case 'vi':
+      return AppLocalizationsVi();
   }
 
   throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
-  );
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

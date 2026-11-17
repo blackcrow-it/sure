@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/ui.md)
+
 # Views, components and interaction
 
 Design tokens, `DS::*` reuse and reviewer severity live in the

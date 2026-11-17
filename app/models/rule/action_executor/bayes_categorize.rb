@@ -3,7 +3,7 @@
 # Free, so offered without a provider. Never overrides a lock.
 class Rule::ActionExecutor::BayesCategorize < Rule::ActionExecutor
   def label
-    "Categorize with the classifier (no AI)"
+    I18n.t("vietnamese_ui.rules.actions.bayes_categorize")
   end
 
   def claimed_attributes

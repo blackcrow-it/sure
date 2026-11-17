@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/api/users.md)
+
 # Users API Documentation
 
 The Users API allows external applications to manage user account data within Sure. The OpenAPI description is generated directly from executable request specs, ensuring it always reflects the behaviour of the running Rails application.

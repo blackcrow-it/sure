@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/onboarding/guide.md)
+
 # Welcome to Sure!
 
 This guide aims to assist new users through:

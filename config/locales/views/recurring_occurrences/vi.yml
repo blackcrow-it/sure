@@ -1,0 +1,56 @@
+---
+vi:
+  recurring_occurrences:
+    history_status:
+      paid: Đã thanh toán
+      skipped: Đã bỏ qua
+      missed: Đã lỡ
+      scheduled: Mở
+    show:
+      due_on: Đến hạn %{date}
+      paid_of: Đã trả %{paid} trên %{expected}
+      paid_headline: Đã trả %{amount}
+      remaining: Còn lại %{amount}
+      settled: Đã trả đủ
+      overpaid: nhiều hơn dự kiến
+      skipped: Đã bỏ qua
+      missed: Đã đánh dấu bỏ lỡ
+      payments: Thanh toán
+      manual_payment: Thanh toán thủ công
+      unlink: Hủy liên kết
+      review_heading: Xem lại khoản thanh toán
+      find_heading: Tìm khoản thanh toán
+      add_heading: Thêm khoản thanh toán khác
+      other_matches: Kết quả khớp có khả năng khác
+      no_ranked_candidates: Chưa có giao dịch nào giống khoản thanh toán cho hóa đơn này.
+      search_all: Tìm trong tất cả giao dịch
+      search_placeholder: Tìm giao dịch
+      no_candidates: Không có giao dịch gần đây để liên kết.
+      no_search_results: Không có kết quả khớp %{query}.
+      link_payment: Liên kết khoản thanh toán
+      amount_left: '%{amount} còn lại'
+      used_up: Đã dùng hết
+      used_up_hint: Các hóa đơn khác đã dùng toàn bộ số tiền giao dịch này.
+      not_this_one: Không phải khoản này
+      cant_find: Không tìm thấy giao dịch?
+      manual_explainer: Ghi nhận khoản thanh toán bạn biết đã thực hiện khi không có giao dịch nào ở đây khớp.
+      manual_amount_label: Số tiền
+      manual_date_label: Ngày
+      record_payment: Ghi nhận thanh toán
+      mark_paid: Đánh dấu đã trả
+      mark_paid_hint: Thanh toán phần còn lại mà không ghi giao dịch.
+      skip: Bỏ qua
+      snooze_week: Hoãn một tuần
+      reopen: Mở lại
+      view_bill: Xem hóa đơn
+    mark_paid:
+      success: Đã đánh dấu hóa đơn đã trả
+    skip:
+      success: Đã bỏ qua hóa đơn
+    reopen:
+      success: Đã mở lại hóa đơn
+    snooze:
+      success: Hoãn đến %{date}
+      invalid_date: Không thể đọc ngày đó
+    override_amount:
+      success: Đã cập nhật số tiền dự kiến

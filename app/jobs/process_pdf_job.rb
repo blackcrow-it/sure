@@ -41,7 +41,7 @@ class ProcessPdfJob < ApplicationJob
       final_status = statement_with_transactions?(document_type) && pdf_import.rows_count > 0 ? :pending : :complete
       pdf_import.update!(status: final_status)
     rescue StandardError => e
-      sanitized_error = sanitize_error_message(e)
+      sanitized_error = sanitize_error_message(e, locale: pdf_import.family.locale)
       Rails.logger.error("PDF processing failed for import #{pdf_import.id}: #{e.class.name} - #{sanitized_error}")
       begin
         pdf_import.update!(status: :failed, error: sanitized_error)
@@ -54,14 +54,14 @@ class ProcessPdfJob < ApplicationJob
 
   private
 
-    def sanitize_error_message(error)
+    def sanitize_error_message(error, locale: I18n.locale)
       case error
       when Provider::Error, RuntimeError, ArgumentError
         I18n.t("imports.pdf_import.processing_failed_with_message",
-               message: error.message.truncate(500))
+               message: error.message.truncate(500), locale: locale)
       else
         I18n.t("imports.pdf_import.processing_failed_generic",
-               error: error.class.name.demodulize)
+               error: error.class.name.demodulize, locale: locale)
       end
     end
 

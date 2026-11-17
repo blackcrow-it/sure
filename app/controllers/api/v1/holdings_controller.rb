@@ -37,7 +37,7 @@ class Api::V1::HoldingsController < Api::V1::BaseController
     def set_holding
       @holding = accessible_holdings.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      render json: { error: "not_found", message: "Holding not found" }, status: :not_found
+      render json: { error: "not_found", message: t("vietnamese_ui.api.holding_not_found") }, status: :not_found
     end
 
     # Holdings restricted to accounts the token owner can access (owned or shared),
@@ -97,7 +97,7 @@ class Api::V1::HoldingsController < Api::V1::BaseController
     def parse_date!(value, param_name)
       Date.parse(value)
     rescue Date::Error, ArgumentError, TypeError
-      raise ArgumentError, "Invalid #{param_name} format"
+      raise ArgumentError, t("vietnamese_ui.api.invalid_format", parameter: param_name)
     end
 
     def render_validation_error(message, errors)
@@ -113,7 +113,7 @@ class Api::V1::HoldingsController < Api::V1::BaseController
       Rails.logger.error exception.backtrace.join("\n")
       render json: {
         error: "internal_server_error",
-        message: "An unexpected error occurred"
+        message: t("vietnamese_ui.api.unexpected_error")
       }, status: :internal_server_error
     end
 end

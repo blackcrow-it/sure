@@ -1,0 +1,15 @@
+---
+vi:
+  portfolios:
+    empty_state:
+      add_account: Thêm tài khoản đầu tư
+      description: Tài khoản môi giới, hưu trí và tiền mã hóa được đưa vào tài chính và báo cáo sẽ được liệt kê
+        tại đây cùng số dư.
+      title: Không có tài khoản đầu tư để hiển thị
+    sections:
+      accounts: Tài khoản
+    show:
+      section_aria: Phần %{title}. Nhấn Enter hoặc Space để chọn sắp xếp, rồi dùng phím mũi tên để di chuyển.
+      sections_aria: Các phần danh mục đầu tư
+      subtitle: Tài khoản đầu tư của bạn và giá trị từng tài khoản.
+      title: Danh mục đầu tư

@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../../docs/vi/mobile/docs/SIGNING_SETUP.md)
+
 # Android Signing Setup Guide
 
 ## GitHub Secrets Configuration

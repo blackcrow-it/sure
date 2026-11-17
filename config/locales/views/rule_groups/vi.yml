@@ -1,0 +1,22 @@
+---
+vi:
+  rule_groups:
+    new:
+      title: Nhóm quy tắc mới
+    edit:
+      title: Đổi tên nhóm "%{name}"
+    form:
+      name_label: Tên
+      name_placeholder: 'ví dụ: Thực phẩm'
+      hint: Nhóm chỉ sắp xếp danh sách quy tắc. Quy tắc vẫn chạy từ trên xuống.
+    create:
+      success: Đã tạo nhóm
+    update:
+      success: Đã đổi tên nhóm
+    destroy:
+      success: Đã xóa nhóm. Quy tắc giữ nguyên vị trí và không thuộc nhóm.
+    activation:
+      activated: Đã bật mọi quy tắc trong "%{name}"
+      deactivated: Đã tắt mọi quy tắc trong "%{name}"
+      partially_switched:
+        other: Không thể chuyển trạng thái %{count} quy tắc. Mở để xem lý do.

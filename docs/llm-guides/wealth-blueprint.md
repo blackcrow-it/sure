@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/wealth-blueprint.md)
+
 > [!NOTE]
 > **This document specifies a system that lives outside Sure.** Sure does not
 > implement the pipeline, the numbered deltas, the tax layer or the Excel

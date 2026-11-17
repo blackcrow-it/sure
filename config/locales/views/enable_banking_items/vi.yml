@@ -2,15 +2,16 @@
 vi:
   enable_banking_items:
     errors:
-      api_error: "Đã xảy ra lỗi giao tiếp với ngân hàng."
-      network_unreachable: "Dịch vụ ngân hàng tạm thời không khả dụng. Vui lòng thử lại sau."
-      session_invalid: "Phiên đã hết hạn. Vui lòng kết nối lại ngân hàng của bạn."
-      unexpected: "Đã xảy ra lỗi không mong muốn trong quá trình đồng bộ."
+      api_error: Đã xảy ra lỗi giao tiếp với ngân hàng.
+      network_unreachable: Dịch vụ ngân hàng tạm thời không khả dụng. Vui lòng thử lại sau.
+      session_invalid: Phiên đã hết hạn. Vui lòng kết nối lại ngân hàng của bạn.
+      unexpected: Đã xảy ra lỗi không mong muốn trong quá trình đồng bộ.
     authorize:
-      authorization_failed: "Không thể khởi tạo ủy quyền: %{message}"
+      authorization_failed: 'Không thể khởi tạo ủy quyền: %{message}'
       bank_required: Vui lòng chọn ngân hàng.
       invalid_redirect: URL ủy quyền nhận được không hợp lệ. Vui lòng thử lại.
-      redirect_uri_not_allowed: Chuyển hướng không được phép. Vui lòng cấu hình `%{callback_url}` trong cài đặt ứng dụng Enable Banking của bạn.
+      redirect_uri_not_allowed: Chuyển hướng không được phép. Vui lòng cấu hình `%{callback_url}` trong cài đặt
+        ứng dụng Enable Banking của bạn.
       unexpected_error: Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.
     callback:
       authorization_error: Ủy quyền thất bại
@@ -49,8 +50,7 @@ vi:
       delete: Xóa
       setup_needed: Cần thiết lập
       setup_needed_description:
-        one: 1 tài khoản được nhập từ Enable Banking cần thiết lập
-        other: "%{count} tài khoản được nhập từ Enable Banking cần thiết lập"
+        other: '%{count} tài khoản được nhập từ Enable Banking cần thiết lập'
       set_up_accounts: Thiết lập tài khoản
       no_accounts_found: Không tìm thấy tài khoản
       no_accounts_found_description: Không tìm thấy tài khoản từ Enable Banking. Hãy thử đồng bộ lại.
@@ -65,20 +65,24 @@ vi:
     setup_accounts:
       title: Thiết lập tài khoản Enable Banking của bạn
       header_subtitle: Chọn đúng loại tài khoản cho các tài khoản đã nhập
-      choose_account_type: "Chọn đúng loại tài khoản cho mỗi tài khoản Enable Banking:"
-      historical_data_range: "Phạm vi dữ liệu lịch sử:"
-      sync_start_date_label: "Bắt đầu đồng bộ giao dịch từ:"
+      choose_account_type: 'Chọn đúng loại tài khoản cho mỗi tài khoản Enable Banking:'
+      historical_data_range: 'Phạm vi dữ liệu lịch sử:'
+      sync_start_date_label: 'Bắt đầu đồng bộ giao dịch từ:'
       sync_start_date_help: Chọn khoảng thời gian lịch sử giao dịch bạn muốn đồng bộ. Tối đa 2 năm lịch sử có sẵn.
-      account_type_label: "Loại tài khoản:"
+      account_type_label: 'Loại tài khoản:'
       balance: Số dư
       create_accounts: Tạo tài khoản
       creating_accounts: Đang tạo tài khoản...
       cancel: Hủy
+      skip_notice: 'Tài khoản bị bỏ qua được ghi nhớ: Sure ngừng nhập cho đến khi bạn liên kết chúng với tài khoản.'
+      psd2_savings_notice: 'Lưu ý: Một số tài khoản tiết kiệm được quản lý tại Pháp (Livret A, PEL, LEP, LDDS) có
+        thể bị hạn chế hoặc không truy cập được qua Open Banking (PSD2). Nếu thiếu tài khoản tiết kiệm, bạn có thể
+        thêm thủ công.'
     new:
       link_enable_banking_title: Liên kết Enable Banking
       session_expired: Phiên hết hạn - cần ủy quyền lại
       connected_bank: Ngân hàng đã kết nối
-      session_expires: "Phiên hết hạn"
+      session_expires: Phiên hết hạn
       unknown: Không rõ
       connection: Kết nối
       configured: Đã cấu hình
@@ -91,9 +95,9 @@ vi:
       add_connection: Thêm kết nối
       not_configured: Kết nối Enable Banking chưa được cấu hình
       not_configured_description: Trước khi liên kết tài khoản Enable Banking, bạn cần cấu hình kết nối Enable Banking.
-      setup_steps_title: "Các bước thiết lập:"
-      setup_step_1_html: "Đi đến <strong>Cài đặt → Nhà cung cấp</strong>"
-      setup_step_2_html: "Tìm phần <strong>Enable Banking</strong>"
+      setup_steps_title: 'Các bước thiết lập:'
+      setup_step_1_html: Đi đến <strong>Cài đặt → Nhà cung cấp</strong>
+      setup_step_2_html: Tìm phần <strong>Enable Banking</strong>
       setup_step_3: Nhập thông tin xác thực Enable Banking của bạn
       setup_step_4: Quay lại đây để liên kết tài khoản
       go_to_provider_settings: Đi đến Cài đặt nhà cung cấp

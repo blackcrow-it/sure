@@ -3,9 +3,10 @@ vi:
   properties:
     edit:
       edit: Chỉnh sửa %{account}
+      title: Nhập bất động sản thủ công
     form:
       address_line1: Địa chỉ đường phố
-      address_line1_placeholder: 123 Main St
+      address_line1_placeholder: 123 đường Main
       area: Diện tích sử dụng
       area_placeholder: '2000'
       area_unit: Đơn vị đo lường
@@ -23,38 +24,71 @@ vi:
       year_built_placeholder: '2000'
     new:
       title: Nhập bất động sản thủ công
-      next: "Tiếp theo"
+      next: Tiếp theo
+      avm_option: Thêm qua %{provider}
+      avm_title: Thêm bất động sản qua %{provider}
+      avm_description: Nhập tên và địa chỉ bất động sản. %{provider} sẽ tra cứu thông tin và giá trị thị trường
+        ước tính cho bạn.
+      avm_us_only: '%{provider} chỉ hỗ trợ bất động sản tại Hoa Kỳ.'
+      avm_uk_only: '%{provider} chỉ hỗ trợ bất động sản nhà ở tại Vương quốc Anh.'
+      avm_uprn_label: UPRN
+      avm_uprn_placeholder: '100023336956'
+      avm_uprn_help: Mã tham chiếu bất động sản duy nhất (UPRN, tối đa 12 chữ số) xác định từng địa chỉ tại Anh.
+        Tìm trên findmyaddress.co.uk của GeoPlace hoặc hỏi chính quyền địa phương. %{provider} dùng mã này để định
+        giá miễn phí.
+      avm_county_label: Hạt (tùy chọn)
+      avm_town_label: Thị trấn hoặc thành phố
+      avm_postcode_label: Mã bưu chính
+      avm_submit: Tra cứu bất động sản
+      avm_preview_title: Xác nhận thông tin bất động sản
+      avm_preview_description: Đây là kết quả %{provider} tìm được. Kiểm tra thông tin trước khi thêm; chưa có dữ
+        liệu nào được tạo.
+      avm_preview_no_record: '%{provider} không tìm thấy hồ sơ bất động sản tại địa chỉ này, nên giá trị hiển thị
+        là ước tính từ khu vực xung quanh. Kiểm tra lại địa chỉ trước khi tiếp tục.'
+      avm_preview_back: Quay lại
+      avm_preview_uprn: UPRN
+      avm_preview_range: Khoảng ước tính
+      avm_preview_confidence: Độ tin cậy
+      avm_confidence:
+        high: Cao
+        medium: Trung bình
+        low: Thấp
+      avm_attribution_chimnie: Dữ liệu định giá từ Chimnie. Chứa dữ liệu OS © Crown copyright and database right,
+        dữ liệu Royal Mail © Royal Mail copyright and database right và dữ liệu HM Land Registry © Crown copyright
+        and database right, được cấp phép theo Open Government Licence v3.0.
+      avm_preview_confirm: Thêm bất động sản
     address:
-      title: "Nhập bất động sản thủ công"
-      address_line1_label: "Địa chỉ dòng 1"
-      address_line1_placeholder: "123 Main Street"
-      city_label: "Thành phố"
-      city_placeholder: "San Francisco"
-      state_region_label: "Tỉnh/Bang"
-      state_region_placeholder: "CA"
-      postal_code_label: "Mã bưu điện"
-      postal_code_placeholder: "12345"
-      country_label: "Quốc gia"
-      country_placeholder: "USA"
-      save: "Lưu"
+      title: Nhập bất động sản thủ công
+      address_line1_label: Địa chỉ dòng 1
+      address_line1_placeholder: 123 đường Main
+      city_label: Thành phố
+      city_placeholder: San Francisco
+      state_region_label: Tỉnh/Bang
+      state_region_placeholder: CA
+      postal_code_label: Mã bưu điện
+      postal_code_placeholder: '12345'
+      country_label: Quốc gia
+      country_placeholder: Hoa Kỳ
+      save: Lưu
     balances:
-      title: "Nhập bất động sản thủ công"
-      market_value_label: "Giá trị thị trường ước tính"
-      market_value_tooltip: "Giá trị thị trường ước tính của bất động sản. Con số này thường có thể tìm thấy trên các trang như Zillow hoặc Redfin và không bao giờ là con số chính xác."
-      save: "Lưu"
-      next: "Tiếp theo"
+      title: Nhập bất động sản thủ công
+      market_value_label: Giá trị thị trường ước tính
+      market_value_tooltip: Giá trị thị trường ước tính của bất động sản. Con số này thường có thể tìm thấy trên
+        các trang như Zillow hoặc Redfin và không bao giờ là con số chính xác.
+      save: Lưu
+      next: Tiếp theo
     overview_fields:
-      name_label: "Tên"
-      name_placeholder: "Nhà nghỉ dưỡng"
-      subtype_prompt: "Chọn loại"
-      property_type_label: "Loại bất động sản"
-      year_built_label: "Năm xây dựng (tùy chọn)"
-      year_built_placeholder: "1990"
-      area_label: "Diện tích (tùy chọn)"
-      area_placeholder: "1200"
-      square_feet: "Feet vuông"
-      square_meters: "Mét vuông"
-      area_unit_label: "Đơn vị diện tích"
+      name_label: Tên
+      name_placeholder: Nhà nghỉ dưỡng
+      subtype_prompt: Chọn loại
+      property_type_label: Loại bất động sản
+      year_built_label: Năm xây dựng (tùy chọn)
+      year_built_placeholder: '1990'
+      area_label: Diện tích (tùy chọn)
+      area_placeholder: '1200'
+      square_feet: Feet vuông
+      square_meters: Mét vuông
+      area_unit_label: Đơn vị diện tích
     overview:
       living_area: Diện tích sử dụng
       market_value: Giá trị thị trường
@@ -70,7 +104,13 @@ vi:
         trend: Xu hướng
         unknown: Không xác định
         year_built: Năm xây dựng
-        edit_account_details: "Chỉnh sửa thông tin tài khoản"
+        edit_account_details: Chỉnh sửa thông tin tài khoản
+        trend_in_currency: Xu hướng theo %{currency}
+        rate_unavailable: Chưa có tỷ giá
+        refresh_valuation: Làm mới định giá
+        valuation_source: Định giá bởi %{provider}, cập nhật lần cuối %{date}
+        link_valuation: Tự động cập nhật giá trị với %{provider}
+        link_valuation_description: Giá trị bất động sản này chỉ được cập nhật thủ công.
     subtypes:
       apartment:
         short: Căn hộ
@@ -87,3 +127,22 @@ vi:
       agri_land:
         short: Đất nông nghiệp
         long: Đất nông nghiệp
+    avm_providers:
+      rentcast: RentCast
+      realie: Realie
+      chimnie: Chimnie
+    refresh_valuation:
+      queued: Đã bắt đầu làm mới định giá. Giá trị mới sẽ xuất hiện sau giây lát.
+      not_linked: Bất động sản này chưa liên kết với nhà cung cấp định giá.
+      not_configured: '%{provider} chưa được cấu hình. Thêm khóa API trong Cài đặt → Tự lưu trữ để làm mới định
+        giá này.'
+    link_valuation:
+      linked: Đã liên kết %{provider} và cập nhật giá trị bất động sản.
+      link_failed: '%{provider} không thể định giá bất động sản này nên chưa liên kết. Kiểm tra địa chỉ chính xác
+        rồi thử lại.'
+      not_linkable: Không thể liên kết bất động sản với nhà cung cấp đó. Kiểm tra địa chỉ đầy đủ, thuộc quốc gia
+        được hỗ trợ và tiền tệ tài khoản khớp nhà cung cấp.
+    form_tabs:
+      address: Địa chỉ
+      overview: Tổng quan
+      value: Giá trị

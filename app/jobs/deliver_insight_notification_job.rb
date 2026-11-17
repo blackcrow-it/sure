@@ -31,7 +31,7 @@ class DeliverInsightNotificationJob < ApplicationJob
     return unless Insight.about_shared_accounts.exists?(insight.id)
 
     PushSubscription::Delivery.new(subscription).call do |client|
-      I18n.with_locale(insight.family.locale) do
+      I18n.with_locale(subscription.user.resolved_locale) do
         client.deliver(
           token: subscription.token,
           title: I18n.t("insights.notification.title"),

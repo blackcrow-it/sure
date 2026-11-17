@@ -1,0 +1,50 @@
+{
+  "connect": {
+    "title": "Connect to your Sure server",
+    "serverLabel": "Server address",
+    "urlPlaceholder": "https://sure.example.com",
+    "connect": "Continue",
+    "checking": "Checking server…",
+    "unreachable": "Couldn't reach a Sure server at that address.",
+    "invalidUrl": "That doesn't look like a valid address.",
+    "storageError": "Couldn't save server changes. Please try again.",
+    "loadError": "Couldn't load remembered servers. Please try again.",
+    "remembered": "Remembered servers",
+    "remove": "Remove"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "servers": "Servers",
+    "add": "Add",
+    "launchAtLogin": "Launch Sure at login",
+    "switchTo": "Switch to",
+    "autostartError": "Couldn't update launch at login. Please try again.",
+    "autostartLoadError": "Couldn't read the launch at login setting. Please try again."
+  },
+  "menu": {
+    "about": "About Sure",
+    "preferences": "Preferences…",
+    "switchServer": "Switch Server…",
+    "hide": "Hide Sure",
+    "hideOthers": "Hide Others",
+    "quit": "Quit Sure",
+    "file": "File",
+    "closeWindow": "Close Window",
+    "edit": "Edit",
+    "undo": "Undo",
+    "redo": "Redo",
+    "cut": "Cut",
+    "copy": "Copy",
+    "paste": "Paste",
+    "selectAll": "Select All",
+    "reload": "Reload",
+    "view": "View",
+    "window": "Window",
+    "minimize": "Minimize",
+    "maximize": "Zoom"
+  },
+  "notifications": {
+    "downloadComplete": "Download complete. The file is in your Downloads folder.",
+    "downloadFailed": "Download failed. Please try again."
+  }
+}

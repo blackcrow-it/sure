@@ -12,7 +12,7 @@
       <% if needs_attention %>
         <div class="flex items-center gap-1 text-warning text-xs mb-2">
           <%= icon "alert-circle", size: "xs" %>
-          <span>Please select a <%= account_type == "Depository" ? "subtype" : "type" %></span>
+          <span><%= t(account_type == "Depository" ? "vietnamese_ui.common.select_subtype" : "vietnamese_ui.common.select_type") %></span>
         </div>
       <% end %>
       <%= label_tag "account_subtypes[#{simplefin_account.id}]", subtype_config[:label],

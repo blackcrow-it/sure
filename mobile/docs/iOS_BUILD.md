@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../../docs/vi/mobile/docs/iOS_BUILD.md)
+
 # iOS Build Guide
 
 ## Issue Diagnosis: module 'flutter_secure_storage' not found

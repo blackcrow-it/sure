@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/architecture.md)
+
 # Architecture and development conventions
 
 Read the relevant models and [schema](../../db/schema.rb) before changing domain

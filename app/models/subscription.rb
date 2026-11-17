@@ -33,11 +33,11 @@ class Subscription < ApplicationRecord
   def name
     case interval
     when "month"
-      "Monthly Contribution"
+      I18n.t("vietnamese_ui.subscriptions.monthly_contribution")
     when "year"
-      "Annual Contribution"
+      I18n.t("vietnamese_ui.subscriptions.annual_contribution")
     else
-      "Open demo"
+      I18n.t("vietnamese_ui.subscriptions.open_demo")
     end
   end
 

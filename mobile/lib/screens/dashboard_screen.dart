@@ -20,6 +20,7 @@ import '../theme/sure_typography.dart';
 import 'transaction_form_screen.dart';
 import 'transactions_list_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -440,7 +441,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                     ),
                     const SizedBox(height: SureSpacing.md),
                     Text(
-                      accountsProvider.errorMessage!,
+                      AppLocalizations.of(context).displayError(accountsProvider.errorMessage!),
                       style: TextStyle(color: palette.textSecondary),
                       textAlign: TextAlign.center,
                     ),
@@ -637,7 +638,7 @@ class DashboardScreenState extends State<DashboardScreen> {
       final isCollapsed = _collapsedGroups.contains(accountType);
 
       // Use first account to get display name and icon
-      final displayName = groupAccounts.first.displayAccountType;
+      final displayName = AppLocalizations.of(context).accountType(groupAccounts.first.accountType);
 
       slivers.add(
         SliverToBoxAdapter(

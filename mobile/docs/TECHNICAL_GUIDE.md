@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../../docs/vi/mobile/docs/TECHNICAL_GUIDE.md)
+
 # Sure Flutter - Technical Documentation
 
 ## Project Overview

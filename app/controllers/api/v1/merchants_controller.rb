@@ -54,7 +54,7 @@ module Api
         family = current_resource_owner.family
 
         unless params[:file].present?
-          return render json: { error: "missing_file", message: "Please provide a CSV file." },
+          return render json: { error: "missing_file", message: t("vietnamese_ui.api.csv_required") },
                         status: :unprocessable_entity
         end
 
@@ -63,14 +63,14 @@ module Api
         if file.size > Import::MAX_CSV_SIZE
           return render json: {
             error: "file_too_large",
-            message: "File is too large. Maximum size is #{Import::MAX_CSV_SIZE / 1.megabyte}MB."
+            message: t("vietnamese_ui.api.file_size", size: Import::MAX_CSV_SIZE / 1.megabyte)
           }, status: :unprocessable_entity
         end
 
         unless Import::ALLOWED_CSV_MIME_TYPES.include?(file.content_type)
           return render json: {
             error: "invalid_file_type",
-            message: "Invalid file type. Please upload a CSV file."
+            message: t("vietnamese_ui.api.csv_file_type")
           }, status: :unprocessable_entity
         end
 
@@ -80,7 +80,7 @@ module Api
         unless name_header
           return render json: {
             error: "missing_column",
-            message: "CSV must include a 'name' column."
+            message: t("vietnamese_ui.api.csv_name_required")
           }, status: :unprocessable_entity
         end
 
@@ -117,11 +117,11 @@ module Api
           merchants: imported.map { |m| merchant_json(m) }
         }, status: :created
       rescue CSV::MalformedCSVError => e
-        render json: { error: "invalid_csv", message: "CSV could not be parsed: #{e.message}" },
+        render json: { error: "invalid_csv", message: t("vietnamese_ui.api.csv_error", message: e.message) },
                status: :unprocessable_entity
       rescue StandardError => e
         Rails.logger.error("API Merchants Import Error: #{e.message}")
-        render json: { error: "internal_server_error", message: "An unexpected error occurred" },
+        render json: { error: "internal_server_error", message: t("vietnamese_ui.api.unexpected_error") },
                status: :internal_server_error
       end
 

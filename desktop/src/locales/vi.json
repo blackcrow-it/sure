@@ -1,0 +1,50 @@
+{
+  "connect": {
+    "title": "Kết nối với máy chủ Sure của bạn",
+    "serverLabel": "Địa chỉ máy chủ",
+    "urlPlaceholder": "https://sure.example.com",
+    "connect": "Tiếp tục",
+    "checking": "Đang kiểm tra máy chủ…",
+    "unreachable": "Không thể kết nối với máy chủ Sure tại địa chỉ này.",
+    "invalidUrl": "Địa chỉ này không hợp lệ.",
+    "storageError": "Không thể lưu thay đổi máy chủ. Vui lòng thử lại.",
+    "loadError": "Không thể tải danh sách máy chủ đã lưu. Vui lòng thử lại.",
+    "remembered": "Máy chủ đã lưu",
+    "remove": "Xóa"
+  },
+  "preferences": {
+    "title": "Tùy chọn",
+    "servers": "Máy chủ",
+    "add": "Thêm",
+    "launchAtLogin": "Khởi động Sure khi đăng nhập",
+    "switchTo": "Chuyển đến",
+    "autostartError": "Không thể cập nhật tùy chọn khởi động khi đăng nhập. Vui lòng thử lại.",
+    "autostartLoadError": "Không thể đọc tùy chọn khởi động khi đăng nhập. Vui lòng thử lại."
+  },
+  "menu": {
+    "about": "Giới thiệu Sure",
+    "preferences": "Tùy chọn…",
+    "switchServer": "Chuyển máy chủ…",
+    "hide": "Ẩn Sure",
+    "hideOthers": "Ẩn các ứng dụng khác",
+    "quit": "Thoát Sure",
+    "file": "Tệp",
+    "closeWindow": "Đóng cửa sổ",
+    "edit": "Chỉnh sửa",
+    "undo": "Hoàn tác",
+    "redo": "Làm lại",
+    "cut": "Cắt",
+    "copy": "Sao chép",
+    "paste": "Dán",
+    "selectAll": "Chọn tất cả",
+    "reload": "Tải lại",
+    "view": "Xem",
+    "window": "Cửa sổ",
+    "minimize": "Thu nhỏ",
+    "maximize": "Phóng to"
+  },
+  "notifications": {
+    "downloadComplete": "Tải xuống hoàn tất. Tệp nằm trong thư mục Tải xuống của bạn.",
+    "downloadFailed": "Tải xuống thất bại. Vui lòng thử lại."
+  }
+}

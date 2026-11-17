@@ -17,7 +17,7 @@ vi:
     - Thứ 6
     - Thứ 7
     abbr_month_names:
-    -
+    - null
     - Thg 1
     - Thg 2
     - Thg 3
@@ -39,12 +39,14 @@ vi:
     - Thứ sáu
     - Thứ bảy
     formats:
-      default: "%d-%m-%Y"
-      long: "%d %B, %Y"
-      short: "%d %b"
+      default: '%d-%m-%Y'
+      long: '%d %B, %Y'
+      short: '%d %b'
       short_with_year: '%d %b, %Y'
+      month_year: '%B %Y'
+      short_month_year: '%b %Y'
     month_names:
-    -
+    - null
     - Tháng một
     - Tháng hai
     - Tháng ba
@@ -63,18 +65,31 @@ vi:
     - :year
   datetime:
     distance_in_words:
-      about_x_hours: khoảng %{count} giờ
-      about_x_months: khoảng %{count} tháng
-      about_x_years: khoảng %{count} năm
-      almost_x_years: gần %{count} năm
+      about_x_hours:
+        other: khoảng %{count} giờ
+      about_x_months:
+        other: khoảng %{count} tháng
+      about_x_years:
+        other: khoảng %{count} năm
+      almost_x_years:
+        other: gần %{count} năm
       half_a_minute: 30 giây
-      less_than_x_minutes: chưa tới %{count} phút
-      less_than_x_seconds: chưa tới %{count} giây
-      over_x_years: hơn %{count} năm
-      x_days: "%{count} ngày"
-      x_minutes: "%{count} phút"
-      x_months: "%{count} tháng"
-      x_seconds: "%{count} giây"
+      less_than_x_minutes:
+        other: chưa tới %{count} phút
+      less_than_x_seconds:
+        other: chưa tới %{count} giây
+      over_x_years:
+        other: hơn %{count} năm
+      x_days:
+        other: '%{count} ngày'
+      x_minutes:
+        other: '%{count} phút'
+      x_months:
+        other: '%{count} tháng'
+      x_seconds:
+        other: '%{count} giây'
+      x_years:
+        other: '%{count} năm'
     prompts:
       day: Ngày
       hour: Giờ
@@ -83,11 +98,11 @@ vi:
       second: Giây
       year: Năm
   errors:
-    format: "%{attribute} %{message}"
+    format: '%{attribute} %{message}'
     messages:
       accepted: phải được đồng ý
       blank: không thể để trắng
-      confirmation: không khớp với xác nhận
+      confirmation: không khớp với %{attribute}
       empty: không thể rỗng
       equal_to: phải bằng %{count}
       even: phải là số chẵn
@@ -105,15 +120,23 @@ vi:
       present: cần phải để trắng
       required: phải có
       taken: đã tồn tại
-      too_long: quá dài (tối đa %{count} ký tự)
-      too_short: quá ngắn (tối thiểu %{count} ký tự)
-      wrong_length: độ dài không đúng (phải là %{count} ký tự)
+      too_long:
+        other: quá dài (tối đa %{count} ký tự)
+      too_short:
+        other: quá ngắn (tối thiểu %{count} ký tự)
+      wrong_length:
+        other: độ dài không đúng (phải là %{count} ký tự)
+      in: phải nằm trong %{count}
+      model_invalid: 'Có các lỗi sau: %{errors}'
     template:
       body: 'Có lỗi với các mục sau:'
-      header: "%{count} lỗi ngăn không cho lưu %{model} này"
+      header:
+        other: '%{count} lỗi ngăn không cho lưu %{model} này'
   helpers:
     select:
       prompt: Vui lòng chọn
+      search_placeholder: Tìm kiếm
+      default_label: Chọn...
     submit:
       create: Tạo %{model}
       submit: Lưu %{model}
@@ -121,28 +144,31 @@ vi:
   number:
     currency:
       format:
-        delimiter: "."
-        format: "%n %u"
+        delimiter: .
+        format: '%n %u'
         precision: 0
-        separator: ","
+        separator: ','
         significant: false
         strip_insignificant_zeros: false
         unit: VNĐ
     format:
-      delimiter: "."
+      delimiter: .
       precision: 3
-      separator: ","
+      separator: ','
       significant: false
       strip_insignificant_zeros: false
+      round_mode: default
     human:
       decimal_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           billion: Tỷ
-          million: Triệu
+          million:
+            other: Triệu
           quadrillion: Triệu tỷ
           thousand: Nghìn
-          trillion: Nghìn tỷ
+          trillion:
+            other: Nghìn tỷ
           unit: ''
       format:
         delimiter: ''
@@ -150,31 +176,48 @@ vi:
         significant: true
         strip_insignificant_zeros: true
       storage_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           byte:
-            one: Byte
             other: Byte
           gb: GB
           kb: KB
           mb: MB
           tb: TB
+          eb: EB
+          pb: PB
     percentage:
       format:
         delimiter: ''
-        format: "%n%"
+        format: '%n%'
     precision:
       format:
         delimiter: ''
   support:
     array:
-      last_word_connector: ", và "
-      two_words_connector: " và "
-      words_connector: ", "
+      last_word_connector: ', và '
+      two_words_connector: ' và '
+      words_connector: ', '
   time:
     am: sáng
     formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%d %B, %Y %H:%M"
-      short: "%d %b %H:%M"
+      default: '%a, %d %b %Y %H:%M:%S %z'
+      long: '%d %B, %Y %H:%M'
+      short: '%d %b %H:%M'
     pm: chiều
+  defaults:
+    brand_name: '%{brand_name}'
+    product_name: '%{product_name}'
+    common:
+      close: Đóng
+  global:
+    expand: Mở rộng
+  mcp:
+    errors:
+      invalid_session_id: ID phiên MCP không hợp lệ
+      unsupported_protocol_version: 'Phiên bản giao thức MCP không được hỗ trợ: %{version}'
+  oauth:
+    registration:
+      invalid_redirect_uris: redirect_uris phải sử dụng https, http vòng lặp hoặc URI scheme của ứng dụng gốc
+      invalid_client_name: client_name không được chứa ký tự điều khiển hai chiều
+      reserved_client_name: client_name được dành riêng cho ứng dụng chính chủ

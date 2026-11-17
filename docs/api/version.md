@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/api/version.md)
+
 # Query the running version
 
 `GET /api/v1/version` returns only the running Sure version and build commit:

@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/webauthn.md)
+
 # WebAuthn Configuration
 
 Sure supports passkeys, Touch ID, Windows Hello, and hardware security keys, both as a second factor and for passwordless sign-in. WebAuthn credentials are bound to the relying party ID used when they are registered, so production deployments should pin these values explicitly instead of deriving them from incoming request headers.

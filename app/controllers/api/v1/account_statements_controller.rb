@@ -34,7 +34,7 @@ class Api::V1::AccountStatementsController < Api::V1::BaseController
   def create
     file = params[:file]
     unless file.respond_to?(:read) && file.respond_to?(:original_filename)
-      render_validation_error("file is required (multipart/form-data)")
+      render_validation_error(t("vietnamese_ui.api.statement_file_required"))
       return
     end
 
@@ -59,7 +59,7 @@ class Api::V1::AccountStatementsController < Api::V1::BaseController
   rescue ActiveRecord::RecordInvalid => e
     render json: {
       error: "validation_failed",
-      message: "Statement could not be stored",
+      message: t("vietnamese_ui.api.statement_store_failed"),
       errors: e.record.errors.full_messages
     }, status: :unprocessable_entity
   end
@@ -97,7 +97,7 @@ class Api::V1::AccountStatementsController < Api::V1::BaseController
 
       render json: {
         error: "not_found",
-        message: "No account you can write to matched account_id. Omit account_id to upload the statement unlinked."
+        message: t("vietnamese_ui.api.statement_account")
       }, status: :not_found
       nil
     end
@@ -112,21 +112,21 @@ class Api::V1::AccountStatementsController < Api::V1::BaseController
       else
         render json: {
           error: "duplicate",
-          message: "This file is already in the Statement Vault"
+          message: t("vietnamese_ui.api.statement_exists")
         }, status: :conflict
       end
     end
 
     def apply_filters(scope)
       if params[:account_id].present?
-        raise InvalidFilterError, "account_id must be a valid UUID" unless valid_uuid?(params[:account_id])
+        raise InvalidFilterError, t("vietnamese_ui.api.uuid", field: "account_id") unless valid_uuid?(params[:account_id])
 
         scope = scope.where(account_id: params[:account_id])
       end
 
       if params[:review_status].present?
         unless AccountStatement.review_statuses.key?(params[:review_status].to_s)
-          raise InvalidFilterError, "review_status must be one of: #{AccountStatement.review_statuses.keys.join(", ")}"
+          raise InvalidFilterError, t("vietnamese_ui.api.allowed_values", field: "review_status", values: AccountStatement.review_statuses.keys.join(", "))
         end
 
         scope = scope.where(review_status: params[:review_status].to_s)
@@ -144,7 +144,7 @@ class Api::V1::AccountStatementsController < Api::V1::BaseController
 
       render json: {
         error: "forbidden",
-        message: "The Statement Vault requires an admin or member role"
+        message: t("vietnamese_ui.api.statement_role")
       }, status: :forbidden
     end
 

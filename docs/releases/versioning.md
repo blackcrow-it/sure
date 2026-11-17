@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/releases/versioning.md)
+
 # CalVer transition: October–December 2026
 
 The transition starts with the **`v0.7.7-alpha.3`** release, not the 0.7.6 train.

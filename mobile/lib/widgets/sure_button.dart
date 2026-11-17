@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart' show CupertinoActivityIndicator;
 import 'package:flutter/material.dart';
 
 import '../theme/sure_colors.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/sure_spacing.dart';
 import '../theme/sure_tokens.dart';
 import '../theme/sure_typography.dart';
@@ -162,7 +163,7 @@ class _SureButtonState extends State<SureButton> {
     return Semantics(
       button: true,
       enabled: _enabled,
-      label: widget.loading ? '${widget.label}, loading' : widget.label,
+      label: widget.loading ? AppLocalizations.of(context).buttonLoading(widget.label) : widget.label,
       child: FocusableActionDetector(
         enabled: _enabled,
         mouseCursor:

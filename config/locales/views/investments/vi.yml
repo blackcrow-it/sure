@@ -11,10 +11,9 @@ vi:
     show:
       chart_title: Tổng giá trị
     subtypes:
-      # United States
       brokerage:
-        short: Brokerage
-        long: Brokerage
+        short: Tài khoản môi giới
+        long: Tài khoản môi giới
       401k:
         short: 401(k)
         long: 401(k)
@@ -32,7 +31,7 @@ vi:
         long: Thrift Savings Plan
       ira:
         short: IRA
-        long: Traditional IRA
+        long: IRA truyền thống
       roth_ira:
         short: Roth IRA
         long: Roth IRA
@@ -43,8 +42,8 @@ vi:
         short: SIMPLE IRA
         long: SIMPLE IRA
       529_plan:
-        short: 529 Plan
-        long: 529 Education Savings Plan
+        short: Kế hoạch 529
+        long: Kế hoạch tiết kiệm giáo dục 529
       hsa:
         short: HSA
         long: Tài khoản tiết kiệm y tế
@@ -54,7 +53,6 @@ vi:
       utma:
         short: UTMA
         long: Tài khoản ủy thác UTMA
-      # United Kingdom
       isa:
         short: ISA
         long: Tài khoản tiết kiệm cá nhân
@@ -67,7 +65,6 @@ vi:
       workplace_pension_uk:
         short: Lương hưu
         long: Lương hưu doanh nghiệp
-      # Canada
       rrsp:
         short: RRSP
         long: Kế hoạch tiết kiệm hưu trí đăng ký
@@ -83,14 +80,12 @@ vi:
       rrif:
         short: RRIF
         long: Quỹ thu nhập hưu trí đăng ký
-      # Australia
       super:
         short: Super
         long: Siêu quỹ hưu trí
       smsf:
         short: SMSF
         long: Quỹ siêu hưu trí tự quản
-      # Europe
       pea:
         short: PEA
         long: Plan d'Épargne en Actions
@@ -100,7 +95,6 @@ vi:
       riester:
         short: Riester
         long: Riester-Rente
-      # India
       nps:
         short: NPS
         long: Hệ thống lương hưu quốc gia
@@ -167,7 +161,6 @@ vi:
       tax_free_bond:
         short: Trái phiếu miễn thuế
         long: Trái phiếu miễn thuế
-      # Generic
       pension:
         short: Lương hưu
         long: Lương hưu
@@ -181,7 +174,7 @@ vi:
         short: Vàng
         long: Vàng (vật chất hoặc kỹ thuật số)
       angel:
-        short: Angel
+        short: Đầu tư thiên thần
         long: Đầu tư thiên thần
       trust:
         short: Quỹ tín thác
@@ -189,8 +182,17 @@ vi:
       other:
         short: Khác
         long: Đầu tư khác
+      cash_management:
+        short: CMA
+        long: Tài khoản quản lý tiền mặt
+      epf:
+        short: EPF
+        long: Quỹ dự phòng nhân viên
     value_tooltip:
       cash: Tiền mặt
-      holdings: Danh mục nắm giữ
+      holdings: Khoản nắm giữ
       total: Số dư danh mục
-      total_value_tooltip: Tổng số dư danh mục là tổng tiền mặt tại sàn giao dịch (có sẵn để giao dịch) và giá trị thị trường hiện tại của các tài sản nắm giữ.
+      total_value_tooltip: Tổng số dư danh mục là tổng tiền mặt tại sàn giao dịch (có sẵn để giao dịch) và giá trị
+        thị trường hiện tại của các tài sản nắm giữ.
+      projected: Số dư dự kiến
+      scheduled: Đã lên lịch

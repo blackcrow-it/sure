@@ -50,20 +50,20 @@ class Api::V1::RuleRunsController < Api::V1::BaseController
 
     def apply_filters(query)
       if params[:rule_id].present?
-        raise InvalidFilterError, "rule_id must be a valid UUID" unless valid_uuid?(params[:rule_id])
+        raise InvalidFilterError, t("vietnamese_ui.api.uuid", field: "rule_id") unless valid_uuid?(params[:rule_id])
 
         query = query.where(rule_id: params[:rule_id])
       end
 
       if params[:status].present?
-        raise InvalidFilterError, "status must be one of: #{STATUSES.join(', ')}" unless STATUSES.include?(params[:status])
+        raise InvalidFilterError, t("vietnamese_ui.api.allowed_values", field: "status", values: STATUSES.join(', ')) unless STATUSES.include?(params[:status])
 
         query = query.where(status: params[:status])
       end
 
       if params[:execution_type].present?
         unless EXECUTION_TYPES.include?(params[:execution_type])
-          raise InvalidFilterError, "execution_type must be one of: #{EXECUTION_TYPES.join(', ')}"
+          raise InvalidFilterError, t("vietnamese_ui.api.allowed_values", field: "execution_type", values: EXECUTION_TYPES.join(', '))
         end
 
         query = query.where(execution_type: params[:execution_type])
@@ -77,6 +77,6 @@ class Api::V1::RuleRunsController < Api::V1::BaseController
     def parse_time_param(key)
       Time.iso8601(params[key].to_s)
     rescue ArgumentError
-      raise InvalidFilterError, "#{key} must be an ISO 8601 timestamp"
+      raise InvalidFilterError, t("vietnamese_ui.api.iso_timestamp", field: key)
     end
 end

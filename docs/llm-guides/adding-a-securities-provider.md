@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/adding-a-securities-provider.md)
+
 # Adding a New Securities Price Provider
 
 This guide covers every step needed to add a new securities price provider (like Tiingo, EODHD, etc.) to the application.

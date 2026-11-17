@@ -143,7 +143,7 @@ class SessionsController < ApplicationController
 
     device_params = params.permit(:device_id, :device_name, :device_type, :os_version, :app_version)
     unless device_params[:device_id].present? && device_params[:device_name].present? && device_params[:device_type].present?
-      mobile_sso_redirect(error: "missing_device_info", message: "Device information is required")
+      mobile_sso_redirect(error: "missing_device_info", message: t("vietnamese_ui.sso.device_required"))
       return
     end
 
@@ -421,7 +421,7 @@ class SessionsController < ApplicationController
       device_info = session.delete(:mobile_sso)
 
       unless device_info.present?
-        mobile_sso_redirect(error: "missing_session", message: "Mobile SSO session expired")
+        mobile_sso_redirect(error: "missing_session", message: t("vietnamese_ui.sso.session_expired"))
         return
       end
 
@@ -429,7 +429,7 @@ class SessionsController < ApplicationController
         device = MobileDevice.upsert_device!(user, device_info.symbolize_keys)
       rescue ActiveRecord::RecordInvalid => e
         Rails.logger.warn("[Mobile SSO] Device save failed: #{e.record.errors.full_messages.join(', ')}")
-        mobile_sso_redirect(error: "device_error", message: "Unable to register device")
+        mobile_sso_redirect(error: "device_error", message: t("vietnamese_ui.sso.device_failed"))
         return
       end
 

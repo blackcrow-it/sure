@@ -144,4 +144,18 @@ class ProviderConnectionStatusTest < ActiveSupport::TestCase
     assert_equal "good", status[:status]
     assert_equal false, status[:requires_update]
   end
+  test "connection summary is localized without changing status codes" do
+    provider = ProviderConnectionStatus::PROVIDERS.find { |entry| entry[:association] == :mercury_items }
+    item = mercury_items(:one)
+    sync = item.syncs.create!(status: "completed", completed_at: Time.current,
+      sync_stats: { total_accounts: 2, linked_accounts: 1, unlinked_accounts: 1 })
+
+    I18n.with_locale(:vi) do
+      status = ProviderConnectionStatus.new(provider, item,
+        latest_sync: sync, latest_completed_sync: sync, syncing: false).to_h
+      assert_equal "Đã đồng bộ 1, cần thiết lập 1", status.dig(:sync, :status_summary)
+      assert_equal "completed", status.dig(:sync, :latest, :status)
+    end
+  end
+
 end

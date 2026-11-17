@@ -3,6 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["input", "form", "overlay"]
 
+  static values = { invalidFile: String }
+
   dragDepth = 0
 
   connect() {
@@ -58,7 +60,7 @@ export default class extends Controller {
         this.inputTarget.files = event.dataTransfer.files
         this.formTarget.requestSubmit()
       } else {
-        alert("Please upload a valid CSV file.")
+        alert(this.invalidFileValue)
       }
     }
   }

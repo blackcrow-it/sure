@@ -26,12 +26,12 @@ class Api::V1::UsageController < Api::V1::BaseController
       # For OAuth, we don't track detailed usage yet, but we can return basic info
       render_json({
         authentication_method: "oauth",
-        message: "Detailed usage tracking is available for API key authentication"
+        message: t("vietnamese_ui.api.usage_api_key")
       })
     else
       render_json({
         error: "invalid_authentication_method",
-        message: "Unable to determine usage information"
+        message: t("vietnamese_ui.api.usage_unavailable")
       }, status: :bad_request)
     end
   end

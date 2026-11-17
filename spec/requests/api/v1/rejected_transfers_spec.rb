@@ -72,6 +72,8 @@ RSpec.describe 'API V1 Rejected Transfers', type: :request do
 
   path '/api/v1/rejected_transfers' do
     get 'List rejected transfers' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language; a saved user locale takes precedence. Error codes remain unchanged.'
       tags 'Rejected Transfers'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -125,6 +127,10 @@ RSpec.describe 'API V1 Rejected Transfers', type: :request do
     parameter name: :id, in: :path, type: :string, required: true, description: 'Rejected transfer ID'
 
     get 'Retrieve a rejected transfer' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language; a saved user locale takes precedence. Error codes remain unchanged.'
       tags 'Rejected Transfers'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

@@ -14,13 +14,13 @@ class Api::V1::UsersController < Api::V1::BaseController
 
       render json: {
         error: "reset_enqueue_failed",
-        message: "Account reset could not be queued"
+        message: t("vietnamese_ui.api.reset_queue_failed")
       }, status: :internal_server_error
       return
     end
 
     render json: {
-      message: "Account reset has been initiated",
+      message: t("vietnamese_ui.api.reset_started"),
       status: "queued",
       job_id: job.job_id,
       family_id: family.id,
@@ -45,7 +45,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     user = current_resource_owner
 
     if user.deactivate
-      render json: { message: "Account has been deleted" }
+      render json: { message: t("vietnamese_ui.api.account_deleted") }
     else
       render json: { error: "Failed to delete account", details: user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -64,7 +64,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     def ensure_admin
       return true if current_resource_owner&.admin?
 
-      render_json({ error: "forbidden", message: "You are not authorized to perform this action" }, status: :forbidden)
+      render_json({ error: "forbidden", message: t("vietnamese_ui.api.action_forbidden") }, status: :forbidden)
       false
     end
 

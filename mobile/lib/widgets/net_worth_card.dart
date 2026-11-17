@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/privacy_provider.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/sure_colors.dart';
 import '../theme/sure_tokens.dart';
 import '../utils/money_masker.dart';
@@ -65,7 +66,7 @@ class NetWorthCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Net Worth',
+                      AppLocalizations.of(context).dashboardNetWorth,
                       style: Theme.of(context).textTheme.labelMedium?.copyWith(
                             color: palette.textSecondary,
                           ),
@@ -79,7 +80,7 @@ class NetWorthCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
-                          'Outdated',
+                          AppLocalizations.of(context).cashFlowOutdated,
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                 color: palette.textSubdued,
                                 fontWeight: SureTokens.weightMedium,
@@ -130,7 +131,7 @@ class NetWorthCard extends StatelessWidget {
                     },
                     onLongPress: () => _showCurrencyBreakdown(
                       context,
-                      'Assets',
+                      AppLocalizations.of(context).calendarSegmentAssets,
                       assetTotalsByCurrency,
                       palette.success,
                       maskedFormat,
@@ -160,7 +161,7 @@ class NetWorthCard extends StatelessWidget {
                     },
                     onLongPress: () => _showCurrencyBreakdown(
                       context,
-                      'Liabilities',
+                      AppLocalizations.of(context).calendarSegmentLiabilities,
                       liabilityTotalsByCurrency,
                       palette.destructive,
                       maskedFormat,
@@ -218,7 +219,7 @@ class NetWorthCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SureIcon(
-                    title == 'Assets'
+                    title == AppLocalizations.of(context).calendarSegmentAssets
                         ? SureIcons.trendingUp
                         : SureIcons.trendingDown,
                     color: color,

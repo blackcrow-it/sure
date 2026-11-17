@@ -19,12 +19,12 @@ class BudgetShare < ApplicationRecord
 
   private
     def cannot_share_with_self
-      errors.add(:viewer, "can't be the owner") if owner_id.present? && owner_id == viewer_id
+      errors.add(:viewer, I18n.t("vietnamese_ui.validation.viewer_owner")) if owner_id.present? && owner_id == viewer_id
     end
 
     def owner_and_viewer_in_same_family
       if owner && viewer && owner.family_id != viewer.family_id
-        errors.add(:viewer, "must be in the same family")
+        errors.add(:viewer, I18n.t("vietnamese_ui.validation.same_family"))
       end
     end
 end

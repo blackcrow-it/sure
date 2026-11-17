@@ -15,16 +15,17 @@ vi:
         page_title: Tùy chọn
         timezone: Múi giờ
         month_start_day: Ngân sách tháng bắt đầu vào
-        month_start_day_hint: "Đặt ngày bắt đầu tháng ngân sách (ví dụ: ngày nhận lương)"
-        month_start_day_warning: Ngân sách và tính toán MTD của bạn sẽ dùng ngày bắt đầu tùy chỉnh này thay vì ngày 1 mỗi tháng.
+        month_start_day_hint: 'Đặt ngày bắt đầu tháng ngân sách (ví dụ: ngày nhận lương)'
+        month_start_day_warning: Ngân sách và tính toán MTD của bạn sẽ dùng ngày bắt đầu tùy chỉnh này thay vì ngày
+          1 mỗi tháng.
         translations_notice: Lưu ý, chúng tôi vẫn đang tiếp tục dịch cho các ngôn ngữ khác nhau.
-        currencies_title: "Tiền tệ %{moniker}"
+        currencies_title: Tiền tệ %{moniker}
         currencies_subtitle: Chọn tiền tệ xuất hiện trong các trường tiền tệ cho %{moniker} của bạn
         base_currency_label: Tiền tệ cơ sở
         base_currency_badge: Tiền tệ cơ sở
         additional_currencies_label: Tiền tệ bổ sung
         no_additional_currencies: Chưa chọn
-        currencies_more: "+%{count} khác"
+        currencies_more: +%{count} khác
         manage_currencies: Quản lý tiền tệ
         manage_currencies_subtitle: Bỏ chọn các tiền tệ bạn không dùng, hoặc thu gọn danh sách xuống một vài loại.
         select_all_currencies: Chọn tất cả
@@ -32,14 +33,39 @@ vi:
         currency_search_placeholder: Tìm kiếm tiền tệ
         no_matching_currencies: Không tìm thấy tiền tệ
         selected_currencies_count:
-          one: "%{count} đã chọn"
-          other: "%{count} đã chọn"
+          other: '%{count} đã chọn'
         save_currencies: Lưu tiền tệ
-        sharing_title: "Chia sẻ %{moniker}"
-        sharing_subtitle: "Kiểm soát cách chia sẻ tài khoản trong %{moniker} của bạn"
+        sharing_title: Chia sẻ %{moniker}
+        sharing_subtitle: Kiểm soát cách chia sẻ tài khoản trong %{moniker} của bạn
         sharing_default_label: Chia sẻ mặc định cho tài khoản mới
         sharing_shared: Chia sẻ với tất cả thành viên
         sharing_private: Giữ riêng tư mặc định
         preview:
           title: Bật tính năng xem trước
           description: Chọn tham gia các tính năng đang phát triển được gắn thẻ xem trước hoặc canary.
+        transactions_title: Giao dịch
+        transactions_subtitle: Cấu hình cách giao dịch hoạt động
+        manual_reconciliation: Đối soát thủ công
+        manual_reconciliation_hint: Hiển thị điều khiển đối soát trên tài khoản nhập thủ công. Tài khoản đồng bộ
+          ngân hàng dùng đối soát sao kê.
+        default_account_order_hint: Với Thủ công, kéo tài khoản trong thanh bên để đặt thứ tự.
+        rule_suggestions: Đề xuất quy tắc
+        rule_suggestions_hint: Đề nghị tạo quy tắc sau khi bạn đổi danh mục giao dịch
+        budget_title: Ngân sách
+        budget_subtitle: Cấu hình cách ngân sách hoạt động
+        investment_contributions_as_spending: Tính đầu tư là chi tiêu
+        investment_contributions_as_spending_hint: Tiền chuyển vào tài khoản đầu tư được tính là chi tiêu trong
+          ngân sách, báo cáo và biểu đồ dòng tiền. Tắt để hiển thị là đã đầu tư.
+        personal_budgets: Ngân sách cá nhân
+        personal_budgets_hint: Bật ngân sách riêng cho từng thành viên hộ gia đình.
+        household_budget_enabled: Ngân sách hộ gia đình
+        household_budget_enabled_hint: Giữ ngân sách hộ gia đình dùng chung bên cạnh ngân sách cá nhân. Tắt để chỉ
+          dùng ngân sách cá nhân.
+        budget_sharing_title: Chia sẻ ngân sách
+        budget_sharing_subtitle: Cho thành viên khác xem hoặc sửa ngân sách cá nhân
+        budget_sharing_no_members: Không có thành viên nào khác trong %{moniker} để chia sẻ
+        budget_sharing_permission_label: Quyền truy cập của %{name}
+        budget_sharing_permissions:
+          none: Không có quyền
+          read_only: Chỉ xem
+          read_write: Có thể sửa

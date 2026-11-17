@@ -59,7 +59,7 @@ class Api::V1::RulesController < Api::V1::BaseController
       normalized = value.to_s.downcase
       return BOOLEAN_FILTERS[normalized] if BOOLEAN_FILTERS.key?(normalized)
 
-      render_validation_error("active must be one of: true, false, 1, 0")
+      render_validation_error(t("vietnamese_ui.api.active_values"))
       nil
     end
 
@@ -68,6 +68,6 @@ class Api::V1::RulesController < Api::V1::BaseController
     end
 
     def render_invalid_resource_type_filter
-      render_validation_error("resource_type must be one of: #{RESOURCE_TYPES.join(", ")}")
+      render_validation_error(t("vietnamese_ui.api.allowed_values", field: "resource_type", values: RESOURCE_TYPES.join(", ")))
     end
 end

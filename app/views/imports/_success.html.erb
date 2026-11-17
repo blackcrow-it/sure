@@ -35,7 +35,7 @@
           <div class="space-y-2">
             <% verification.mismatches_preview.each do |key, counts| %>
               <div class="flex items-center justify-between gap-3 text-xs">
-                <span class="text-secondary"><%= key.humanize %></span>
+                <span class="text-secondary"><%= t("imports.dry_run_resources.#{key}", default: key.to_s.humanize) %></span>
                 <span class="font-medium text-primary"><%= number_with_delimiter(counts["actual"]) %> / <%= number_with_delimiter(counts["expected"]) %></span>
               </div>
             <% end %>

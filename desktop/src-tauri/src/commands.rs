@@ -7,6 +7,20 @@ use tauri::{Emitter, Manager, State};
 use tauri_plugin_autostart::ManagerExt;
 
 #[tauri::command]
+pub fn desktop_locale(app: tauri::AppHandle, browser_locale: String) -> Result<String, String> {
+    use crate::localization::{resolve_locale, strings, system_locale};
+    let native = system_locale();
+    let locale = resolve_locale(native.as_deref().or(Some(&browser_locale)));
+    let menu = crate::menu::build(&app, locale).map_err(|error| error.to_string())?;
+    app.set_menu(menu).map_err(|error| error.to_string())?;
+    if let Some(prefs) = app.get_webview_window("prefs") {
+        prefs.set_title(&strings(locale).preferences.title).map_err(|error| error.to_string())?;
+    }
+    *app.state::<AppState>().locale.lock().unwrap() = locale;
+    Ok(locale.as_str().to_string())
+}
+
+#[tauri::command]
 pub fn list_servers() -> Vec<ServerEntry> {
     ServerStore::load()
 }

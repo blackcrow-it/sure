@@ -53,9 +53,9 @@ class AccountProvider < ApplicationRecord
       Account.where(id: account_id).lock.pick(:id)
       others = self.class.where(account_id: account_id).where.not(id: id)
       conflict = provider_type == "FinancekitAccountLineage" ? others.exists? : others.where(provider_type: "FinancekitAccountLineage").exists?
-      errors.add(:account, "already has an exclusive FinanceKit publisher") if conflict
+      errors.add(:account, I18n.t("vietnamese_ui.validation.exclusive_publisher")) if conflict
       if provider_type == "FinancekitAccountLineage" && provider&.family_id != account.family_id
-        errors.add(:account, "must belong to the FinanceKit enrollment family")
+        errors.add(:account, I18n.t("vietnamese_ui.validation.financekit_family"))
       end
     end
 

@@ -233,4 +233,12 @@ class ImportTest < ActiveSupport::TestCase
 
     assert_equal Date.new(2024, 5, 15), Date.strptime("15/05/24", import.date_format)
   end
+  test "interrupted import message can use the family locale in a worker" do
+    I18n.with_locale(:en) do
+      assert_equal I18n.t("imports.errors.interrupted", locale: :vi),
+                   Import.interrupted_error_message(locale: :vi)
+      assert_equal :en, I18n.locale
+    end
+  end
+
 end

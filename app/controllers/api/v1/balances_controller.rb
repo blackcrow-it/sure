@@ -55,7 +55,7 @@ class Api::V1::BalancesController < Api::V1::BaseController
 
     def apply_filters(query)
       if params[:account_id].present?
-        raise InvalidFilterError, "account_id must be a valid UUID" unless valid_uuid?(params[:account_id])
+        raise InvalidFilterError, t("vietnamese_ui.api.uuid", field: "account_id") unless valid_uuid?(params[:account_id])
 
         query = query.where(account_id: params[:account_id])
       end

@@ -17,6 +17,10 @@
 - Giữ biến nội suy, JSON keys, tool names và các hợp đồng API.
 - Chỉ dùng Orca; không commit thay đổi của worker khác; không push/PR.
 
+## Trạng thái bàn giao
+
+Đã triển khai source cho cả năm phần, hoàn tất hiệu đính 71 tài liệu và sửa ba findings qua review/re-review độc lập. Mobile đạt 347 tests cùng build web; desktop đạt 18 JS tests, 40 Rust tests và build/check. Kiểm tra cuối 181 cặp locale, Ruby syntax, JS, tài liệu và diff đều đạt. Các bước Rails Minitest/full suite/system/lint/security và regenerate OpenAPI còn chưa xác minh vì thiếu gems/môi trường Rails; không đánh dấu các bước này hoàn tất. Chi tiết bằng chứng tại `docs/superpowers/verification/2026-11-17-vietnamese-localization.md`.
+
 ### Task 1: Rails translations
 
 **Files:** `config/locales/**/*vi.yml`, `test/i18n_test.rb`; ngoại trừ `config/locales/vietnamese_ui.*.yml` do Task 2 sở hữu.

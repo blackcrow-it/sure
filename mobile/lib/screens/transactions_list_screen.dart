@@ -18,6 +18,7 @@ import '../utils/amount_parser.dart';
 import '../utils/money_masker.dart';
 import '../widgets/money_text.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 
 class TransactionsListScreen extends StatefulWidget {
   final Account account;
@@ -408,7 +409,7 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
                           const Icon(Icons.error_outline, size: 48, color: Colors.red),
                           const SizedBox(height: 16),
                           Text(
-                            transactionsProvider.error!,
+                            l.displayError(transactionsProvider.error!),
                             style: const TextStyle(color: Colors.red),
                           ),
                           const SizedBox(height: 16),
@@ -711,9 +712,9 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
                                           width: 1,
                                         ),
                                       ),
-                                      child: const Text(
-                                        'Undo',
-                                        style: TextStyle(
+                                      child: Text(
+                                        l.commonUndo,
+                                        style: const TextStyle(
                                           color: Colors.blue,
                                           fontSize: 11,
                                           fontWeight: SureTokens.weightSemibold,

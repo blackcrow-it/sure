@@ -172,7 +172,7 @@ class Sync < ApplicationRecord
     return if stale? && error.blank?
 
     {
-      message: stale? ? "Sync became stale before completion" : "Sync failed"
+      message: stale? ? I18n.t("vietnamese_ui.sync.stale") : I18n.t("vietnamese_ui.sync.failed")
     }
   end
 
@@ -182,46 +182,49 @@ class Sync < ApplicationRecord
     # Localize#switch_timezone) runs them in the app's default zone (UTC),
     # not the family's, so a scheduled entry can materialize hours early or
     # late around midnight depending on the family's offset from UTC.
-    Time.use_zone(family&.resolved_time_zone || Time.zone) do
-      Rails.logger.tagged("Sync", id, syncable_type, syncable_id) do
-        # This can happen on server restarts or if Sidekiq enqueues a duplicate job
-        unless may_start?
-          Rails.logger.warn("Sync #{id} is not in a valid state (#{aasm.from_state}) to start.  Skipping sync.")
-          next
-        end
+    # Syncs also run directly; shared errors and broadcasts use the family locale.
+    I18n.with_locale(family&.locale.presence || I18n.default_locale) do
+      Time.use_zone(family&.resolved_time_zone || Time.zone) do
+        Rails.logger.tagged("Sync", id, syncable_type, syncable_id) do
+          # This can happen on server restarts or if Sidekiq enqueues a duplicate job
+          unless may_start?
+            Rails.logger.warn("Sync #{id} is not in a valid state (#{aasm.from_state}) to start.  Skipping sync.")
+            next
+          end
 
-        # Guard: syncable may have been deleted while job was queued
-        unless syncable.present?
-          Rails.logger.warn("Sync #{id} - syncable #{syncable_type}##{syncable_id} no longer exists. Marking as failed.")
-          start! if may_start?
-          fail! if may_fail?
-          update(error: "Syncable record was deleted")
-          next
-        end
+          # Guard: syncable may have been deleted while job was queued
+          unless syncable.present?
+            Rails.logger.warn("Sync #{id} - syncable #{syncable_type}##{syncable_id} no longer exists. Marking as failed.")
+            start! if may_start?
+            fail! if may_fail?
+            update(error: "Syncable record was deleted")
+            next
+          end
 
-        # Guard: syncable may be scheduled for deletion
-        if syncable.respond_to?(:scheduled_for_deletion?) && syncable.scheduled_for_deletion?
-          Rails.logger.warn("Sync #{id} - syncable #{syncable_type}##{syncable_id} is scheduled for deletion. Skipping sync.")
-          start! if may_start?
-          fail! if may_fail?
-          update(error: "Syncable record is scheduled for deletion")
-          next
-        end
+          # Guard: syncable may be scheduled for deletion
+          if syncable.respond_to?(:scheduled_for_deletion?) && syncable.scheduled_for_deletion?
+            Rails.logger.warn("Sync #{id} - syncable #{syncable_type}##{syncable_id} is scheduled for deletion. Skipping sync.")
+            start! if may_start?
+            fail! if may_fail?
+            update(error: "Syncable record is scheduled for deletion")
+            next
+          end
 
-        start!
+          start!
 
-        begin
-          syncable.perform_sync(self)
-        rescue => e
-          # Re-check state under a row lock (with_lock reloads): the sync may
-          # have been terminalized externally (marked stale by SyncCleanerJob)
-          # while this job was still running. An unguarded fail! on the in-memory
-          # record would silently overwrite that terminal status.
-          with_lock { fail! if may_fail? }
-          update(error: e.message)
-          report_error(e)
-        ensure
-          finalize_if_all_children_finalized
+          begin
+            syncable.perform_sync(self)
+          rescue => e
+            # Re-check state under a row lock (with_lock reloads): the sync may
+            # have been terminalized externally (marked stale by SyncCleanerJob)
+            # while this job was still running. An unguarded fail! on the in-memory
+            # record would silently overwrite that terminal status.
+            with_lock { fail! if may_fail? }
+            update(error: e.message)
+            report_error(e)
+          ensure
+            finalize_if_all_children_finalized
+          end
         end
       end
     end
@@ -415,7 +418,7 @@ class Sync < ApplicationRecord
 
     def window_valid
       if window_start_date && window_end_date && window_start_date > window_end_date
-        errors.add(:window_end_date, "must be greater than window_start_date")
+        errors.add(:window_end_date, I18n.t("vietnamese_ui.validation.window_end"))
       end
     end
 

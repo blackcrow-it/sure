@@ -1,3 +1,4 @@
+import 'package:sure_mobile/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,8 @@ void main() {
     return ChangeNotifierProvider<PrivacyProvider>.value(
       value: privacy,
       child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         home: Scaffold(
           body: NetWorthCard(
             assetTotalsByCurrency: const {'USD': 29669.71},

@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["customWrapper", "customField", "tickerSelect", "qtyField", "priceField", "priceWarning", "priceWarningMessage"]
   static values = {
     amountCents: Number,
+    priceWarning: String,
     currency: String
   }
 
@@ -77,7 +78,10 @@ export default class extends Controller {
     const marketPrice = this.formatMoney(marketPriceCents)
 
     // Build warning message
-    const message = `Your price (${enteredPrice}/share) differs significantly from ${ticker}'s current market price (${marketPrice}). If this seems wrong, you may have selected the wrong security — try using "Enter custom ticker" to specify the correct one.`
+    const message = this.priceWarningValue
+      .replace("%{entered}", () => enteredPrice)
+      .replace("%{ticker}", () => ticker)
+      .replace("%{market}", () => marketPrice)
 
     this.priceWarningMessageTarget.textContent = message
     this.priceWarningTarget.classList.remove("hidden")
@@ -90,7 +94,7 @@ export default class extends Controller {
 
   formatMoney(cents) {
     const dollars = cents / 100
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat(document.documentElement.lang || "en", {
       style: 'currency',
       currency: this.currencyValue || 'USD'
     }).format(dollars)

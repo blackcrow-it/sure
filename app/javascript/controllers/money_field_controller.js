@@ -88,7 +88,7 @@ export default class extends Controller {
     const result = evaluateAmountExpression(raw);
     if (result === null) {
       this.amountTarget.setCustomValidity(
-        this.invalidMessageValue || "Enter a valid amount or expression.",
+        this.invalidMessageValue,
       );
       return;
     }

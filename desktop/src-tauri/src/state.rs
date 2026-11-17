@@ -10,6 +10,7 @@ pub struct PendingSso {
 
 #[derive(Default)]
 pub struct AppState {
+    pub locale: Mutex<crate::localization::Locale>,
     pub active_server: Mutex<Option<String>>,
     pub pending_sso: Mutex<Option<PendingSso>>,
     /// Server origins we've already granted a runtime IPC capability to, so we

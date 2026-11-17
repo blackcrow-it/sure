@@ -61,7 +61,7 @@ class Rule::ConditionFilter
   end
 
   def label
-    key.humanize
+    I18n.t("vietnamese_ui.rules.filters.#{key}", default: key.humanize)
   end
 
   def options

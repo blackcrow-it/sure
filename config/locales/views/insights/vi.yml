@@ -1,0 +1,139 @@
+---
+vi:
+  insights:
+    notification:
+      title: Nhận định tài chính mới
+      body: Mở Sure để xem nhận định mới nhất.
+    index:
+      title: Nhận định
+      subtitle: Tình hình tài chính của bạn, được cập nhật mỗi đêm.
+      refresh: Kiểm tra nhận định mới
+      empty:
+        title: Chưa có nhận định
+        description: Nhận định xuất hiện khi tài khoản có đủ hoạt động. Chúng tự động cập nhật mỗi đêm.
+    refresh:
+      queued: Đang tạo nhận định mới. Hãy quay lại sau một phút.
+      checking: Đang kiểm tra…
+    card:
+      acknowledged: Đã bỏ qua nhận định
+      acknowledge: Đã hiểu
+      acknowledge_title: Ẩn đến khi số liệu thay đổi
+      new: Mới
+      dig_in: Tìm hiểu thêm với AI
+    dig_in:
+      prompt: 'Giúp tôi tìm hiểu nhận định này.
+
+
+        Nhận định: %{title}
+
+        Sure phát hiện: %{body}
+
+        Kỳ: %{period}
+
+        Số liệu:
+
+        %{facts}
+
+
+        Nguyên nhân là gì và tôi có nên làm gì không?'
+    feed:
+      view_all: Xem tất cả nhận định
+      header: Mới nhất
+      header_new: Mới
+      acknowledge_aria: 'Đã hiểu: %{title}'
+    types:
+      spending_anomaly: Chi tiêu
+      cash_flow_warning: Dòng tiền
+      net_worth_milestone: Giá trị tài sản ròng
+      subscription_audit: Đăng ký dịch vụ
+      savings_rate_change: Tỷ lệ tiết kiệm
+      idle_cash: Tiền nhàn rỗi
+      budget_at_risk: Ngân sách
+      budget_on_track: Ngân sách
+      maintained_goal_depleted: Quỹ dự phòng
+      bill_not_covered: Hóa đơn
+      loan_payment_change: Trả nợ vay
+    meta:
+      next_n_days:
+        other: '%{count} ngày tới'
+      last_n_days:
+        other: '%{count} ngày qua'
+      date_range: '%{from} đến %{to}'
+    figures:
+      vs_previous_three_months: so với ba tháng trước
+      today: hôm nay
+      on_pace: đúng tiến độ
+      of_budget: ngân sách
+      need_attention: cần chú ý
+      days_overdue:
+        other: Quá hạn %{count} ngày
+      idle_days:
+        other: nhàn rỗi %{count} ngày
+      short_on: thiếu vào %{date}
+    actions:
+      spending_anomaly: Xem giao dịch %{category}
+      cash_flow_warning: Xem lại giao dịch định kỳ
+      net_worth_milestone: Xem báo cáo giá trị tài sản ròng
+      subscription_audit: Xem lại giao dịch định kỳ
+      savings_rate_change: Xem giao dịch các tháng đó
+      idle_cash: Đến tài khoản
+      budget: Xem ngân sách
+      maintained_goal_depleted: Xem quỹ dự phòng
+      bill_not_covered: Đến tài khoản
+      loan_payment_change: Xem khoản vay
+    titles:
+      spending_anomaly:
+        above: Chi tiêu %{category} đang tăng
+        below: Chi tiêu %{category} đang giảm
+      cash_flow_warning:
+        low: Số dư tiền mặt có thể xuống thấp
+        negative: Số dư tiền mặt có thể âm
+      net_worth_milestone: 'Cột mốc giá trị tài sản ròng: %{milestone}'
+      maintained_goal_depleted: '%{goal} đã giảm dưới mức cần giữ'
+      subscription_audit: '%{name} còn hoạt động không?'
+      savings_rate_change:
+        up: Tỷ lệ tiết kiệm đã tăng trong ba tháng qua
+        down: Tỷ lệ tiết kiệm đã giảm trong ba tháng qua
+      idle_cash: Tiền nhàn rỗi trong %{account}
+      budget_at_risk:
+        other: '%{count} danh mục trong ngân sách cần chú ý'
+      budget_on_track: Ngân sách đang đúng kế hoạch
+      bill_not_covered: '%{account} có thể không đủ trả %{name}'
+      loan_payment_change:
+        up: Khoản trả %{account} sắp tăng
+        down: Khoản trả %{account} sắp giảm
+    templates:
+      spending_anomaly:
+        above: Theo tốc độ hiện tại, bạn sẽ chi %{projected_spend} cho %{category} tháng này, cao hơn khoảng %{deviation_pct}%
+          so với trung bình tháng gần đây là %{baseline_spend}.
+        below: Theo tốc độ hiện tại, bạn sẽ chi %{projected_spend} cho %{category} tháng này, thấp hơn khoảng %{deviation_pct}%
+          so với trung bình tháng gần đây là %{baseline_spend}.
+      cash_flow_warning:
+        low: Dựa trên giao dịch định kỳ sắp tới và mức chi tiêu thông thường, số dư tiền mặt có thể giảm còn %{projected_low}
+          khoảng %{projected_low_date}.
+        negative: Dựa trên giao dịch định kỳ sắp tới và mức chi tiêu thông thường, số dư tiền mặt có thể xuống %{projected_low}
+          khoảng %{projected_low_date}.
+      net_worth_milestone: Giá trị tài sản ròng đã vượt %{milestone} và hiện ở mức %{net_worth}.
+      maintained_goal_depleted: '%{goal} có %{saved} trên mức cần giữ %{target}. Còn thiếu %{missing}.'
+      subscription_audit: '%{name} (%{amount}) chưa xuất hiện kể từ ngày dự kiến %{expected_on}. Có thể đã hủy hoặc
+        khoản phí đã chuyển ngày.'
+      savings_rate_change:
+        up: Từ %{from_month} đến %{to_month}, tỷ lệ tiết kiệm so với thu nhập tháng thông thường là %{current_rate}%,
+          tăng %{change_pp} điểm phần trăm từ %{previous_rate}% trong ba tháng trước đó.
+        down: Từ %{from_month} đến %{to_month}, tỷ lệ tiết kiệm so với thu nhập tháng thông thường là %{current_rate}%,
+          giảm %{change_pp} điểm phần trăm từ %{previous_rate}% trong ba tháng trước đó.
+        down_negative: 'Từ %{from_month} đến %{to_month}, bạn chi nhiều hơn thu: tỷ lệ tiết kiệm giảm xuống %{current_rate}%
+          từ %{previous_rate}% trong ba tháng trước đó.'
+      idle_cash: '%{account} có %{balance} và không có hoạt động trong %{idle_days} ngày qua.'
+      budget_at_risk:
+        over: '%{categories} đã vượt ngân sách tháng này. Bạn đã dùng %{budget_spent_pct}% tổng ngân sách.'
+        near: '%{categories} gần chạm giới hạn tháng này. Bạn đã dùng %{budget_spent_pct}% tổng ngân sách.'
+      budget_on_track: Bạn đã chi %{spent} trên ngân sách %{budgeted} (%{budget_spent_pct}%) và mọi khoản đều trong
+        giới hạn.
+      bill_not_covered: '%{name} với số tiền %{amount} đến hạn %{due_on} từ %{account}. Tính cả hóa đơn và thu nhập
+        khác đã lên lịch trên tài khoản đến thời điểm đó, sẽ thiếu khoảng %{shortfall}.'
+      loan_payment_change:
+        up: Khoản trả %{account} thay đổi từ %{previous_payment} sang %{new_payment} vào %{effective_on}, tăng %{change_pct}%,
+          theo lịch khoản vay và lãi suất đã ghi nhận.
+        down: Khoản trả %{account} thay đổi từ %{previous_payment} sang %{new_payment} vào %{effective_on}, giảm
+          %{change_pct}%, theo lịch khoản vay và lãi suất đã ghi nhận.

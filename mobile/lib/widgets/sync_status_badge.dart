@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/offline_transaction.dart';
+import '../l10n/app_localizations.dart';
 
 class SyncStatusBadge extends StatelessWidget {
   final SyncStatus syncStatus;
@@ -17,6 +18,7 @@ class SyncStatusBadge extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
+    final l = AppLocalizations.of(context);
     final Color color;
     final IconData icon;
     final String text;
@@ -26,20 +28,20 @@ class SyncStatusBadge extends StatelessWidget {
       case SyncStatus.pending:
         color = Colors.orange;
         icon = Icons.sync;
-        text = 'Pending';
-        semanticsLabel = 'Transaction pending sync';
+        text = l.syncPending;
+        semanticsLabel = l.syncPendingSemantics;
         break;
       case SyncStatus.pendingDelete:
         color = Colors.red.shade300;
         icon = Icons.delete_outline;
-        text = 'Deleting';
-        semanticsLabel = 'Transaction pending deletion';
+        text = l.syncDeleting;
+        semanticsLabel = l.syncDeletingSemantics;
         break;
       case SyncStatus.failed:
         color = Colors.red;
         icon = Icons.error_outline;
-        text = 'Failed';
-        semanticsLabel = 'Sync failed';
+        text = l.syncFailed;
+        semanticsLabel = l.dashboardSyncError;
         break;
       case SyncStatus.synced:
         return const SizedBox.shrink();

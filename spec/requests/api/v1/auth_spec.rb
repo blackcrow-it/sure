@@ -5,6 +5,8 @@ require 'swagger_helper'
 RSpec.describe 'API V1 Auth', type: :request do
   path '/api/v1/auth/signup' do
     post 'Sign up a new user' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Auth'
       consumes 'application/json'
       produces 'application/json'
@@ -81,6 +83,8 @@ RSpec.describe 'API V1 Auth', type: :request do
 
   path '/api/v1/auth/login' do
     post 'Log in with email and password' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Auth'
       consumes 'application/json'
       produces 'application/json'
@@ -142,6 +146,8 @@ RSpec.describe 'API V1 Auth', type: :request do
 
   path '/api/v1/auth/sso_providers' do
     get 'List configured SSO providers' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Auth'
       produces 'application/json'
       description 'Lists the SSO providers configured on this instance. Each name can be used with GET /auth/mobile/{name} to start mobile SSO.'
@@ -170,6 +176,8 @@ RSpec.describe 'API V1 Auth', type: :request do
 
   path '/api/v1/auth/sso_exchange' do
     post 'Exchange mobile SSO authorization code for tokens' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Auth'
       consumes 'application/json'
       produces 'application/json'
@@ -214,6 +222,8 @@ RSpec.describe 'API V1 Auth', type: :request do
 
   path '/api/v1/auth/refresh' do
     post 'Refresh an access token' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Auth'
       consumes 'application/json'
       produces 'application/json'
@@ -258,6 +268,8 @@ RSpec.describe 'API V1 Auth', type: :request do
 
   path '/api/v1/auth/sso_link' do
     post 'Link an existing account via SSO' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Auth'
       consumes 'application/json'
       produces 'application/json'
@@ -348,6 +360,8 @@ RSpec.describe 'API V1 Auth', type: :request do
 
   path '/api/v1/auth/sso_create_account' do
     post 'Create a new account via SSO' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Auth'
       consumes 'application/json'
       produces 'application/json'
@@ -418,6 +432,8 @@ RSpec.describe 'API V1 Auth', type: :request do
 
   path '/api/v1/auth/enable_ai' do
     patch 'Enable AI features for the authenticated user' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Auth'
       consumes 'application/json'
       produces 'application/json'

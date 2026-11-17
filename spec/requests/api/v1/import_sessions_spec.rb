@@ -41,6 +41,8 @@ RSpec.describe 'API V1 Import Sessions', type: :request do
 
   path '/api/v1/import_sessions' do
     post 'Create import session' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description 'Create or idempotently retrieve a multi-file SureImport session keyed by client_session_id.'
       tags 'Import Sessions'
       security [ { apiKeyAuth: [] } ]
@@ -138,6 +140,10 @@ RSpec.describe 'API V1 Import Sessions', type: :request do
     let(:import_session) { family.import_sessions.create!(expected_chunks: 1) }
 
     get 'Retrieve import session' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description 'Retrieve import session status, chunk status, per-entity summary counts, and safe error details.'
       tags 'Import Sessions'
       security [ { apiKeyAuth: [] } ]
@@ -184,6 +190,10 @@ RSpec.describe 'API V1 Import Sessions', type: :request do
     let(:id) { import_session.id }
 
     post 'Upload import session chunk' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description 'Attach an ordered Sure NDJSON chunk to an import session. Chunks are idempotent by sequence and client_chunk_id with content verification.'
       tags 'Import Sessions'
       security [ { apiKeyAuth: [] } ]
@@ -324,6 +334,10 @@ RSpec.describe 'API V1 Import Sessions', type: :request do
     let(:id) { import_session.id }
 
     post 'Publish import session' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description 'Queue ordered chunk processing for a SureImport session. Later chunks can reference source IDs mapped by earlier chunks.'
       tags 'Import Sessions'
       security [ { apiKeyAuth: [] } ]

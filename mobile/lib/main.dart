@@ -23,6 +23,8 @@ import 'services/preferences_service.dart';
 import 'services/telemetry_service.dart';
 import 'theme/sure_theme.dart';
 import 'l10n/app_localizations.dart';
+import 'l10n/app_locale.dart';
+import 'l10n/sure_upgrader_messages.dart';
 import 'package:upgrader/upgrader.dart';
 
 void main() async {
@@ -104,6 +106,7 @@ class SureApp extends StatelessWidget {
           onGenerateTitle: (ctx) => AppLocalizations.of(ctx).appTitle,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
+          localeListResolutionCallback: AppLocale.resolve,
           debugShowCheckedModeBanner: false,
           navigatorObservers: TelemetryService.instance.navigatorObservers,
           theme: SureTheme.light,
@@ -138,8 +141,17 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
   final _upgrader = Upgrader(
     durationUntilAlertAgain: const Duration(days: 7),
     countryCode: 'us',
-    messages: _SureUpgraderMessages(),
   );
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _upgrader.updateState(
+      _upgrader.state.copyWith(
+        messages: SureUpgraderMessages(AppLocalizations.of(context)),
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -327,24 +339,4 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
       },
     );
   }
-}
-
-class _SureUpgraderMessages extends UpgraderMessages {
-  @override
-  String get title => 'Update available';
-
-  @override
-  String get body =>
-      '{{appName}} {{currentAppStoreVersion}} is now available — '
-      'you have {{currentInstalledVersion}}.\n\n'
-      "What's new? Check the store for release notes.";
-
-  @override
-  String get buttonTitleUpdate => 'Update now';
-
-  @override
-  String get buttonTitleLater => 'Later';
-
-  @override
-  String get releaseNotes => '';
 }

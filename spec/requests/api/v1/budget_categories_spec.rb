@@ -65,6 +65,8 @@ RSpec.describe 'API V1 Budget Categories', type: :request do
 
   path '/api/v1/budget_categories' do
     get 'List budget categories' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Budget Categories'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -122,6 +124,10 @@ RSpec.describe 'API V1 Budget Categories', type: :request do
               schema: { type: :string, format: :uuid }
 
     get 'Retrieve a budget category' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Budget Categories'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

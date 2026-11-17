@@ -1,0 +1,9 @@
+---
+vi:
+  simplefin_items:
+    update:
+      success: Đã cập nhật kết nối SimpleFIN.
+      errors:
+        blank_token: Thiếu token truy cập SimpleFIN. Cung cấp token hoặc dùng Liên kết tài khoản hiện có để tiếp
+          tục.
+        update_failed: 'Không thể cập nhật kết nối SimpleFIN: %{message}'

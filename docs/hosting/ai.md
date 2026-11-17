@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/ai.md)
+
 # LLM Configuration Guide
 
 This document explains how Sure uses Large Language Models (LLMs) for AI features and how to configure them for your deployment.
@@ -111,15 +113,15 @@ The amount of VRAM (GPU memory) you need depends on the model size:
 - **Minimum (8GB VRAM):** Can run 7B parameter models like `llama3.2:7b` or `gemma2:7b`
   - Works for basic chat functionality
   - May struggle with complex financial analysis
-  
+
 - **Recommended (16GB+ VRAM):** Can run 13B-14B parameter models like `llama3.1:13b` or `qwen2.5:14b`
   - Good balance of performance and hardware requirements
   - Handles most financial queries well
-  
+
 - **Ideal (24GB+ VRAM):** Can run 30B+ parameter models or run smaller models with higher precision
   - Best quality responses
   - Complex reasoning about financial data
-  
+
 **CPU-only inference:** Possible but extremely slow (10-100x slower). Not recommended for production use.
 
 **When to use:**
@@ -304,10 +306,10 @@ Behavior:
    ```bash
    # macOS
    brew install ollama
-   
+
    # Linux
    curl -fsSL https://ollama.com/install.sh | sh
-   
+
    # Windows
    # Download from https://ollama.com/download
    ```
@@ -321,10 +323,10 @@ Behavior:
    ```bash
    # Smaller, faster (requires 8GB VRAM)
    ollama pull gemma2:7b
-   
+
    # Balanced (requires 16GB VRAM)
    ollama pull llama3.1:13b
-   
+
    # Larger, more capable (requires 24GB+ VRAM)
    ollama pull qwen2.5:32b
    ```
@@ -364,7 +366,7 @@ ASSISTANT_MAX_TOOL_CALL_ITERATIONS=2
 AI_RESPONSE_TIMEOUT=720
 
 # Optional: enable debug logging in the AI chat
-AI_DEBUG_MODE=true 
+AI_DEBUG_MODE=true
 ```
 
 **Important:** When using Ollama or any custom provider:
@@ -390,7 +392,7 @@ services:
       - AI_DEBUG_MODE=true # Optional: enable debug logging in the AI chat
     depends_on:
       - ollama
-  
+
   ollama:
     image: ollama/ollama:latest
     ports:

@@ -14,11 +14,14 @@ vi:
       name_placeholder: Tên phần chia
       amount_label: Số tiền
       category_label: Danh mục
-      uncategorized: "(chưa phân loại)"
-      original_name: "Tên:"
-      original_date: "Ngày:"
-      original_amount: "Số tiền"
-      split_number: "Phần #%{number}"
+      uncategorized: (chưa phân loại)
+      original_name: 'Tên:'
+      original_date: 'Ngày:'
+      original_amount: Số tiền
+      split_number: 'Phần #%{number}'
+      merchant_label: Đơn vị giao dịch
+      no_merchant: (đơn vị giao dịch của giao dịch)
+      tags_label: Nhãn
     create:
       success: Giao dịch đã được chia nhỏ thành công
       not_splittable: Giao dịch này không thể chia nhỏ.

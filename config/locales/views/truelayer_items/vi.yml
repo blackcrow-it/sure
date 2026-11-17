@@ -1,0 +1,112 @@
+---
+vi:
+  truelayer_items:
+    default_name: Kết nối TrueLayer
+    redirect_blocked: Không thể mở TrueLayer. Vui lòng thử lại.
+    create:
+      success: Đã lưu thông tin xác thực TrueLayer. Bạn có thể kết nối ngân hàng.
+    update:
+      success: Đã cập nhật thông tin xác thực TrueLayer.
+    destroy:
+      success: Đã lên lịch xóa kết nối TrueLayer.
+    connect:
+      credentials_required: Thêm client ID và secret TrueLayer trước.
+    sync:
+      not_connected: Kết nối ngân hàng trước khi đồng bộ.
+    callback:
+      authorization_error: 'Cấp quyền TrueLayer thất bại: %{error}'
+      authorization_failed: 'Không thể hoàn tất kết nối TrueLayer: %{message}'
+      invalid_callback: Đăng nhập TrueLayer hết hạn hoặc không khớp phiên này. Vui lòng bắt đầu lại.
+      success: Đã kết nối ngân hàng. Đang nhập tài khoản; hãy thiết lập sau khi đồng bộ xong.
+    truelayer_item:
+      consent_expiring: Quyền truy cập ngân hàng hết hạn vào %{date}
+      delete: Xóa kết nối
+      deletion_in_progress: đang xóa...
+      error: Lỗi
+      history_missed: Chưa nhập lịch sử cũ. Kết nối lại để lấy.
+      no_accounts_description: Kết nối này chưa có tài khoản nào được liên kết.
+      no_accounts_title: Không có tài khoản
+      reconnect: Kết nối lại
+      requires_update: Kết nối lại ngân hàng để tiếp tục đồng bộ
+      setup_action: Thiết lập tài khoản mới
+      setup_description: Đã liên kết %{linked} trên %{total} tài khoản. Chọn loại cho tài khoản TrueLayer vừa nhập.
+      setup_needed: Tài khoản mới sẵn sàng để thiết lập
+      status: Đồng bộ %{timestamp} trước
+      status_never: Chưa bao giờ đồng bộ
+      status_with_summary: Đồng bộ lần cuối %{timestamp} trước • %{summary}
+      syncing: Đang đồng bộ...
+      sync_status:
+        no_accounts: Không tìm thấy tài khoản
+        synced:
+          other: '%{count} tài khoản đã đồng bộ'
+        partial_setup:
+          other: '%{linked} đã đồng bộ, %{unlinked} cần thiết lập'
+    subtype_select:
+      placeholder:
+        subtype: Chọn loại phụ
+        type: Chọn loại
+    setup_accounts:
+      account_type_label: 'Loại tài khoản:'
+      all_accounts_linked: Tất cả tài khoản TrueLayer của bạn đã được thiết lập.
+      cancel: Hủy
+      choose_account_type: 'Chọn đúng loại cho từng tài khoản TrueLayer:'
+      create_accounts: Tạo tài khoản
+      creating_accounts: Đang tạo tài khoản...
+      kind_account: Tài khoản ngân hàng
+      kind_card: Thẻ
+      no_accounts_to_setup: Không có tài khoản nào để thiết lập
+      page_title: Thiết lập tài khoản TrueLayer
+      subtitle: Chọn đúng loại tài khoản cho các tài khoản đã nhập
+      sync_start_date_help: Bỏ qua giao dịch trước ngày này. Để trống để giữ mọi dữ liệu ngân hàng cung cấp.
+      sync_start_date_label: Nhập giao dịch từ
+      title: Thiết lập tài khoản TrueLayer của bạn
+      account_types:
+        skip: Bỏ qua tài khoản này
+        depository: Tài khoản thanh toán hoặc tiết kiệm
+        credit_card: Thẻ tín dụng
+        loan: Vay hoặc thế chấp
+      subtype_labels:
+        depository: 'Loại phụ tài khoản:'
+        credit_card: ''
+        loan: 'Loại vay:'
+      subtype_messages:
+        credit_card: Thẻ tín dụng sẽ được tự động thiết lập dưới dạng tài khoản thẻ tín dụng.
+    complete_account_setup:
+      all_skipped: Tất cả tài khoản đã bị bỏ qua. Không có tài khoản nào được tạo.
+      creation_failed: 'Tạo tài khoản thất bại: %{error}'
+      success:
+        other: Đã tạo %{count} tài khoản.
+    select_existing_account:
+      cancel: Hủy
+      description: Chọn tài khoản TrueLayer để liên kết. Giao dịch sẽ đồng bộ vào tài khoản này.
+      link_account: Liên kết tài khoản
+      no_accounts: Không có tài khoản TrueLayer chưa liên kết. Trước tiên, kết nối ngân hàng trong Cài đặt → Nhà
+        cung cấp.
+      title: Liên kết %{account_name} với TrueLayer
+    link_existing_account:
+      already_linked: Tài khoản TrueLayer đó đã liên kết với tài khoản khác.
+      only_manual: Chỉ tài khoản thủ công mới liên kết được với TrueLayer.
+      success: Đã liên kết %{account_name} với TrueLayer.
+  settings:
+    providers:
+      truelayer_panel:
+        client_id_label: Client ID
+        client_id_placeholder: 'ví dụ: sure-abc123 (sandbox-... cho Mock Bank)'
+        client_secret_label: Client secret
+        client_secret_placeholder_new: Dán client secret
+        client_secret_placeholder_update: Để trống để giữ secret hiện tại
+        connect_bank: Kết nối ngân hàng
+        consent_expires: Quyền truy cập ngân hàng hết hạn %{date}
+        reconnect: Kết nối lại
+        reconnect_required: Cần kết nối lại
+        remove: Xóa
+        remove_confirm: Xóa kết nối ngân hàng này? Tài khoản liên kết giữ lịch sử nhưng ngừng đồng bộ.
+        save_credentials: Lưu thông tin xác thực
+        step_1_html: Tạo ứng dụng tại %{link} và sao chép client ID cùng secret.
+        step_2_html: Thêm %{callback_url} vào Allowed redirect URIs của ứng dụng.
+        step_3: Lưu thông tin xác thực bên dưới rồi kết nối ngân hàng. Sure nhập toàn bộ lịch sử trong vài phút
+          sau khi bạn phê duyệt quyền truy cập.
+        step_4: Ngân hàng Anh yêu cầu kết nối lại mỗi 90 ngày; Sure hiển thị nút Kết nối lại trước khi hết hạn.
+        sync: Đồng bộ
+        syncing: Đang đồng bộ...
+        update_credentials: Cập nhật thông tin xác thực

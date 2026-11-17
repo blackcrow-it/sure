@@ -78,6 +78,8 @@ RSpec.describe 'API V1 Accounts', type: :request do
 
   path '/api/v1/accounts' do
     get 'List accounts' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Accounts'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -110,6 +112,10 @@ RSpec.describe 'API V1 Accounts', type: :request do
               schema: { type: :string, format: :uuid }
 
     get 'Retrieve an account' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Accounts'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

@@ -20,8 +20,8 @@ vi:
       group_name_placeholder: Tên nhóm
       household_name: Tên hộ gia đình
       household_name_placeholder: Tên hộ gia đình
-      moniker_prompt: "Sẽ sử dụng %{product_name} cùng với..."
-      moniker_family: Thành viên gia đình (chỉ bạn hoặc cùng vợ/chồng, con cái, v.v.)
+      moniker_prompt: Sẽ sử dụng %{product_name} cùng với...
+      moniker_family: Thành viên hộ gia đình (chỉ bạn hoặc cùng vợ/chồng, con cái, v.v.)
       moniker_group: Nhóm người (công ty, câu lạc bộ, hiệp hội, loại khác)
       country: Quốc gia
       submit: Tiếp tục
@@ -40,7 +40,8 @@ vi:
       submit: Hoàn tất
     goals:
       title: Điều gì đưa bạn đến đây?
-      subtitle: Chọn một hoặc nhiều mục tiêu bạn muốn đạt được khi sử dụng %{product_name} làm công cụ tài chính cá nhân.
+      subtitle: Chọn một hoặc nhiều mục tiêu bạn muốn đạt được khi sử dụng %{product_name} làm công cụ tài chính
+        cá nhân.
       unified_accounts: Xem tất cả tài khoản ở một nơi
       cashflow: Hiểu dòng tiền và chi tiêu
       budgeting: Quản lý kế hoạch tài chính và ngân sách
@@ -53,7 +54,8 @@ vi:
     trial:
       title: Dùng thử Sure trong 45 ngày
       data_deletion: Dữ liệu sẽ bị xóa sau đó
-      description_html: Bắt đầu từ hôm nay bạn có thể trải nghiệm sản phẩm.<br/>Nếu thích, hãy tự lưu trữ hoặc đóng góp để tiếp tục sử dụng tại đây.
+      description_html: Bắt đầu từ hôm nay bạn có thể trải nghiệm sản phẩm.<br/>Nếu thích, hãy tự lưu trữ hoặc đóng
+        góp để tiếp tục sử dụng tại đây.
       try_button: Dùng thử Sure trong 45 ngày
       continue_trial: Tiếp tục dùng thử
       upgrade: Nâng cấp

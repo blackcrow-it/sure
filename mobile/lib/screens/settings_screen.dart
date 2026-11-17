@@ -20,6 +20,7 @@ import '../services/api_config.dart';
 import '../services/custom_proxy_headers_service.dart';
 import '../widgets/custom_proxy_headers_editor.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -161,6 +162,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     try {
       if (value) {
         final success = await BiometricService.instance.authenticate(
+          localizations: AppLocalizations.of(context),
           reason: AppLocalizations.of(context).settingsBiometricVerifyReason,
         );
         if (!mounted) return;
@@ -357,7 +359,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result['error'] ?? l.settingsResetAccountFailed),
+            content: Text(l.displayError(result['error'] ?? l.settingsResetAccountFailed)),
             backgroundColor: Colors.red,
           ),
         );
@@ -414,7 +416,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result['error'] ?? l.settingsDeleteAccountFailed),
+            content: Text(l.displayError(result['error'] ?? l.settingsDeleteAccountFailed)),
             backgroundColor: Colors.red,
           ),
         );

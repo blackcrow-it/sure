@@ -141,6 +141,17 @@ class RecurringTransaction::AiSetupSuggesterTest < ActiveSupport::TestCase
     assert_equal "custom", captured[:current_config][:frequency]
   end
 
+  test "forwards the user's language to the bill suggestion provider" do
+    @user.update!(locale: "vi")
+    provider = mock
+    Provider::Registry.stubs(:preferred_llm_provider).returns(provider)
+    provider.expects(:suggest_bill_setup).with do |options|
+      options[:response_locale] == :vi && options[:family] == @family
+    end.returns(Provider::Response.new(success?: true, data: raw(name: "Gym"), error: nil))
+
+    assert_equal "Gym", Suggester.new(@family, user: @user).suggest_from_entries(@entries).name
+  end
+
   private
 
     def raw(**overrides)

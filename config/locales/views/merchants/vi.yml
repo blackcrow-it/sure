@@ -2,72 +2,99 @@
 vi:
   family_merchants:
     create:
-      error: 'Lỗi khi tạo nhà cung cấp: %{error}'
-      success: Nhà cung cấp mới đã được tạo thành công
+      error: 'Lỗi khi tạo đơn vị giao dịch: %{error}'
+      success: Đơn vị giao dịch mới đã được tạo thành công
     destroy:
-      success: Nhà cung cấp đã được xóa thành công
-      unlinked_success: Nhà cung cấp đã được xóa khỏi giao dịch của bạn
+      success: Đơn vị giao dịch đã được xóa thành công
+      unlinked_success: Đơn vị giao dịch đã được xóa khỏi giao dịch của bạn
     edit:
-      title: Chỉnh sửa nhà cung cấp
+      title: Chỉnh sửa đơn vị giao dịch
     form:
-      name_placeholder: Tên nhà cung cấp
-      website_placeholder: "Trang web (ví dụ: starbucks.com)"
-      website_hint: Nhập trang web của nhà cung cấp để tự động hiển thị logo của họ
+      name_placeholder: Tên đơn vị giao dịch
+      website_placeholder: 'Trang web (ví dụ: starbucks.com)'
+      website_hint: Nhập trang web của đơn vị giao dịch để tự động hiển thị logo của họ
+      logo_label: Logo
+      logo_hint: Thay logo từ trang web. JPEG, PNG hoặc WebP, tối đa %{max_megabytes}MB.
+      remove_logo_label: Xóa logo đã tải lên
     index:
-      empty: Chưa có nhà cung cấp nào
-      new: Nhà cung cấp mới
-      merge: Hợp nhất nhà cung cấp
-      title: Nhà cung cấp
-      family_title: "Nhà cung cấp của %{moniker}"
-      family_empty: "Chưa có nhà cung cấp nào của %{moniker}"
-      provider_title: Nhà cung cấp từ dịch vụ
-      provider_empty: "Chưa có nhà cung cấp dịch vụ nào được liên kết với %{moniker} này"
-      provider_read_only: Nhà cung cấp từ dịch vụ được đồng bộ từ các tổ chức tài chính đã kết nối. Không thể chỉnh sửa ở đây.
-      provider_info: Các nhà cung cấp này được phát hiện tự động bởi kết nối ngân hàng hoặc AI của bạn. Bạn có thể chỉnh sửa chúng để tạo bản sao riêng hoặc xóa chúng để hủy liên kết khỏi giao dịch của bạn.
+      empty: Chưa có đơn vị giao dịch nào
+      new: Đơn vị giao dịch mới
+      merge: Hợp nhất đơn vị giao dịch
+      title: Đơn vị giao dịch
+      family_title: Đơn vị giao dịch của %{moniker}
+      family_empty: Chưa có đơn vị giao dịch nào của %{moniker}
+      provider_title: Đơn vị giao dịch từ dịch vụ
+      provider_empty: Chưa có đơn vị giao dịch dịch vụ nào được liên kết với %{moniker} này
+      provider_read_only: Đơn vị giao dịch từ dịch vụ được đồng bộ từ các tổ chức tài chính đã kết nối. Không thể
+        chỉnh sửa ở đây.
+      provider_info: Các đơn vị giao dịch này được phát hiện tự động bởi kết nối ngân hàng hoặc AI của bạn. Bạn
+        có thể chỉnh sửa chúng để tạo bản sao riêng hoặc xóa chúng để hủy liên kết khỏi giao dịch của bạn.
       enhance_info:
-        one: "%{count} nhà cung cấp dịch vụ đang thiếu thông tin trang web. Cải thiện với AI để phát hiện trang web, hiển thị logo và hợp nhất các nhà cung cấp trùng lặp."
-        other: "%{count} nhà cung cấp dịch vụ đang thiếu thông tin trang web. Cải thiện với AI để phát hiện trang web, hiển thị logo và hợp nhất các nhà cung cấp trùng lặp."
+        other: '%{count} đơn vị giao dịch dịch vụ đang thiếu thông tin trang web. Cải thiện với AI để phát hiện
+          trang web, hiển thị logo và hợp nhất các đơn vị giao dịch trùng lặp.'
       enhance_button: Cải thiện với AI
       unlinked_title: Vừa hủy liên kết
-      unlinked_info: Các nhà cung cấp này vừa được xóa khỏi giao dịch của bạn. Họ sẽ biến mất khỏi danh sách này sau 30 ngày trừ khi được gán lại cho một giao dịch.
+      unlinked_info: Các đơn vị giao dịch này vừa được xóa khỏi giao dịch của bạn. Họ sẽ biến mất khỏi danh sách
+        này sau 30 ngày trừ khi được gán lại cho một giao dịch.
       table:
-        merchant: Nhà cung cấp
+        merchant: Đơn vị giao dịch
         actions: Hành động
         source: Nguồn
+      import: Nhập đơn vị giao dịch
+      search_family_merchants: Tìm đơn vị giao dịch của hộ gia đình...
+      search_provider_merchants: Tìm đơn vị giao dịch từ nhà cung cấp...
+      no_family_merchants_found: Không tìm thấy đơn vị giao dịch hộ gia đình phù hợp
+      no_provider_merchants_found: Không tìm thấy đơn vị giao dịch nhà cung cấp phù hợp
+      per_page: mỗi trang
     family_merchant:
       edit: Chỉnh sửa
       delete: Xóa
     merchant:
-      confirm_accept: Xóa nhà cung cấp
-      confirm_body: Bạn có chắc chắn muốn xóa nhà cung cấp này không? Xóa nhà cung cấp này sẽ hủy liên kết tất cả giao dịch liên quan và có thể ảnh hưởng đến báo cáo của bạn.
-      confirm_title: Xóa nhà cung cấp?
-      delete: Xóa nhà cung cấp
-      edit: Chỉnh sửa nhà cung cấp
+      confirm_accept: Xóa đơn vị giao dịch
+      confirm_body: Bạn có chắc chắn muốn xóa đơn vị giao dịch này không? Xóa đơn vị giao dịch này sẽ hủy liên kết
+        tất cả giao dịch liên quan và có thể ảnh hưởng đến báo cáo của bạn.
+      confirm_title: Xóa đơn vị giao dịch?
+      delete: Xóa đơn vị giao dịch
+      edit: Chỉnh sửa đơn vị giao dịch
     merge:
-      title: Hợp nhất nhà cung cấp
-      description: Chọn nhà cung cấp đích và các nhà cung cấp cần hợp nhất vào đó. Tất cả giao dịch từ các nhà cung cấp được hợp nhất sẽ được chuyển sang nhà cung cấp đích.
+      title: Hợp nhất đơn vị giao dịch
+      description: Chọn đơn vị giao dịch đích và các đơn vị giao dịch cần hợp nhất vào đó. Tất cả giao dịch từ các
+        đơn vị giao dịch được hợp nhất sẽ được chuyển sang đơn vị giao dịch đích.
       target_label: Hợp nhất vào (đích)
-      select_target: Chọn nhà cung cấp đích...
-      sources_label: Nhà cung cấp cần hợp nhất
-      sources_hint: Các nhà cung cấp được chọn sẽ được hợp nhất vào đích. Nhà cung cấp gia đình sẽ bị xóa, nhà cung cấp dịch vụ sẽ bị hủy liên kết.
+      select_target: Chọn đơn vị giao dịch đích...
+      sources_label: Đơn vị giao dịch cần hợp nhất
+      sources_hint: Các đơn vị giao dịch được chọn sẽ được hợp nhất vào đích. Đơn vị giao dịch hộ gia đình sẽ bị
+        xóa, đơn vị giao dịch dịch vụ sẽ bị hủy liên kết.
       submit: Hợp nhất đã chọn
+      sources_search_placeholder: Tìm đơn vị giao dịch...
+      no_merchants_found: Không tìm thấy đơn vị giao dịch phù hợp
     new:
-      title: Nhà cung cấp mới
+      title: Đơn vị giao dịch mới
     perform_merge:
       success:
-        one: Đã hợp nhất thành công %{count} nhà cung cấp
-        other: Đã hợp nhất thành công %{count} nhà cung cấp
-      no_merchants_selected: Không có nhà cung cấp nào được chọn để hợp nhất
-      target_not_found: Không tìm thấy nhà cung cấp đích
-      invalid_merchants: Nhà cung cấp được chọn không hợp lệ
+        other: Đã hợp nhất thành công %{count} đơn vị giao dịch
+      no_merchants_selected: Không có đơn vị giao dịch nào được chọn để hợp nhất
+      target_not_found: Không tìm thấy đơn vị giao dịch đích
+      invalid_merchants: Đơn vị giao dịch được chọn không hợp lệ
     provider_merchant:
       edit: Chỉnh sửa
       remove: Xóa
-      remove_confirm_title: Xóa nhà cung cấp?
-      remove_confirm_body: Bạn có chắc chắn muốn xóa %{name} không? Thao tác này sẽ hủy liên kết tất cả giao dịch liên quan khỏi nhà cung cấp này nhưng sẽ không xóa nhà cung cấp.
+      remove_confirm_title: Xóa đơn vị giao dịch?
+      remove_confirm_body: Bạn có chắc chắn muốn xóa %{name} không? Thao tác này sẽ hủy liên kết tất cả giao dịch
+        liên quan khỏi đơn vị giao dịch này nhưng sẽ không xóa đơn vị giao dịch.
     enhance:
-      success: Quá trình cải thiện nhà cung cấp dịch vụ đã bắt đầu. Các nhà cung cấp sẽ được cải thiện và các bản trùng lặp sẽ được hợp nhất trong thời gian ngắn.
+      success: Quá trình cải thiện đơn vị giao dịch dịch vụ đã bắt đầu. Các đơn vị giao dịch sẽ được cải thiện và
+        các bản trùng lặp sẽ được hợp nhất trong thời gian ngắn.
       already_running: Quá trình cải thiện đang diễn ra. Vui lòng chờ cho đến khi hoàn tất.
     update:
-      success: Nhà cung cấp đã được cập nhật thành công
-      converted_success: Nhà cung cấp đã được chuyển đổi và cập nhật thành công
+      success: Đơn vị giao dịch đã được cập nhật thành công
+      converted_success: Đơn vị giao dịch đã được chuyển đổi và cập nhật thành công
+  merchants:
+    show:
+      average_transaction: Giao dịch trung bình
+      edit: Chỉnh sửa đơn vị giao dịch
+      first_transaction: Giao dịch đầu tiên
+      last_transaction: Giao dịch gần nhất
+      summary: Tóm tắt
+      total_spending: Tổng chi tiêu
+      total_transactions: Tổng giao dịch

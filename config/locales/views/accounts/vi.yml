@@ -3,9 +3,9 @@ vi:
   account:
     entries:
       destroy:
-        success: "Mục nhập đã được xóa thành công."
+        success: Mục nhập đã được xóa thành công.
   accounts:
-    not_authorized: "Bạn không có quyền quản lý tài khoản này"
+    not_authorized: Bạn không có quyền quản lý tài khoản này
     account:
       complete_setup: Hoàn thành thiết lập
       edit: Chỉnh sửa
@@ -21,61 +21,83 @@ vi:
       default_label: Mặc định
       delete: Xóa tài khoản
       sharing: Chia sẻ
+      exclude_from_reports: Loại khỏi tất cả báo cáo
+      include_in_reports: Đưa vào báo cáo
+      excluded_from_reports_indicator: Đã loại khỏi báo cáo
     chart:
       data_not_available: Dữ liệu không khả dụng cho khoảng thời gian đã chọn
     create:
-      success: "Đã tạo tài khoản %{type}"
+      success: Đã tạo tài khoản %{type}
     set_default:
-      depository_only: "Chỉ tài khoản tiền mặt và thẻ tín dụng mới có thể đặt làm mặc định."
+      depository_only: Chỉ tài khoản tiền mặt và thẻ tín dụng mới có thể đặt làm mặc định.
     destroy:
-      success: "Tài khoản %{type} đã được lên lịch xóa"
-      cannot_delete_linked: "Không thể xóa tài khoản đã liên kết. Vui lòng hủy liên kết trước."
-      failed: "Xóa tài nguyên thất bại. Vui lòng thử lại sau."
+      success: Tài khoản %{type} đã được lên lịch xóa
+      cannot_delete_linked: Không thể xóa tài khoản đã liên kết. Vui lòng hủy liên kết trước.
+      failed: Xóa tài nguyên thất bại. Vui lòng thử lại sau.
     empty:
       empty_message: Thêm tài khoản qua kết nối, nhập dữ liệu hoặc nhập thủ công.
       new_account: Tài khoản mới
       no_accounts: Chưa có tài khoản nào
     form:
-      balance: "Số dư ngày:"
+      balance: 'Số dư ngày:'
       opening_balance_date_label: Ngày số dư mở đầu
       name_label: Tên tài khoản
       name_placeholder: Ví dụ tên tài khoản
       additional_details: Thông tin bổ sung
       institution_name_label: Tên tổ chức
-      institution_name_placeholder: "ví dụ: Ngân hàng Vietcombank"
+      institution_name_placeholder: 'ví dụ: Ngân hàng Vietcombank'
       institution_domain_label: Tên miền tổ chức
-      institution_domain_placeholder: "ví dụ: vietcombank.com.vn"
+      institution_domain_placeholder: 'ví dụ: vietcombank.com.vn'
       notes_label: Ghi chú
       notes_placeholder: Lưu thêm thông tin như số tài khoản, mã định tuyến, IBAN, v.v.
+      institution_domain_hint: Dùng để tìm biểu tượng của tổ chức.
+      institution_domain_missing_logo_key_hint: Dùng để tìm biểu tượng của tổ chức. Logo Brandfetch không khả dụng
+        vì chưa cấu hình client ID của Brandfetch.
+      institution_domain_settings_link: Thêm trong cài đặt Tự lưu trữ
+      logo_label: Biểu tượng
+      logo_hint: Hoặc tải ảnh PNG, JPEG, GIF, WebP hay ICO của bạn lên, tối đa 1 MB. Ảnh này thay thế logo Brandfetch.
+      exclude_from_reports: Loại khỏi tất cả báo cáo
+      enable_category_matcher_label: Bật đối chiếu danh mục
+      enable_category_matcher_hint: Khi bật, danh mục do nhà cung cấp đề xuất sẽ được áp dụng cho giao dịch được
+        nhập. Tắt để giữ các giao dịch mới ở trạng thái chưa phân loại.
     index:
       accounts: Tài khoản
       manual_accounts:
         other_accounts: Tài khoản khác
       new_account: Tài khoản mới
       sync: Đồng bộ tất cả
+      financekit_accounts:
+        title: Apple Wallet
+        description: Quản lý kết nối và đồng bộ Apple Wallet trong ứng dụng Sure trên iOS.
+      cancel_sync: Hủy đồng bộ
     sync_all:
-      syncing: "Đang đồng bộ tài khoản..."
+      syncing: Đang đồng bộ tài khoản...
     new:
       import_accounts: Nhập tài khoản
       container:
         select: Chọn
         navigate: Điều hướng
         close: Đóng
+        next: Tiếp theo
+        previous: Trước
       method_selector:
         connected_entry: Liên kết tài khoản
         connected_entry_eu: Liên kết tài khoản EU
-        link_with_provider: "Liên kết với %{provider}"
+        link_with_provider: Liên kết với %{provider}
         lunchflow_entry: Liên kết tài khoản Lunch Flow
         manual_entry: Nhập số dư tài khoản
         title: Bạn muốn thêm bằng cách nào?
       title: Bạn muốn thêm gì?
     show:
-      limited_fx_history_warning: "Lịch sử tỷ giá hối đoái chỉ khả dụng từ %{date} trở đi. Các giao dịch trước ngày này sử dụng chuyển đổi tiền tệ xấp xỉ."
+      limited_fx_history_warning: Lịch sử tỷ giá hối đoái chỉ khả dụng từ %{date} trở đi. Các giao dịch trước ngày
+        này sử dụng chuyển đổi tiền tệ xấp xỉ.
       tabs:
         activity: Hoạt động
-        holdings: Danh mục nắm giữ
+        holdings: Khoản nắm giữ
         overview: Tổng quan
         statements: Sao kê
+        extra_repayments: Trả nợ bổ sung
+        schedule: Lịch
       activity:
         amount: Số tiền
         balance: Số dư
@@ -104,7 +126,10 @@ vi:
         complete_setup: Hoàn thành thiết lập
       menu:
         confirm_accept: Xóa "%{name}"
-        confirm_body_html: "<p>Bằng cách xóa tài khoản này, bạn sẽ xóa lịch sử giá trị của nó, ảnh hưởng đến nhiều khía cạnh tài khoản tổng thể. Hành động này sẽ ảnh hưởng trực tiếp đến tính toán tài sản ròng và biểu đồ tài khoản.</p><br /> <p>Sau khi xóa, bạn không thể khôi phục thông tin tài khoản và cần thêm lại như tài khoản mới.</p>"
+        confirm_body_html: <p>Bằng cách xóa tài khoản này, bạn sẽ xóa lịch sử giá trị của nó, ảnh hưởng đến nhiều
+          khía cạnh tài khoản tổng thể. Hành động này sẽ ảnh hưởng trực tiếp đến tính toán giá trị tài sản ròng
+          và biểu đồ tài khoản.</p><br /> <p>Sau khi xóa, bạn không thể khôi phục thông tin tài khoản và cần thêm
+          lại như tài khoản mới.</p>
         confirm_title: Xóa tài khoản?
         delete_account: Xóa tài khoản
         edit: Chỉnh sửa
@@ -114,11 +139,16 @@ vi:
         manage: Quản lý tài khoản
         sharing: Chia sẻ
         statements: Sao kê
+        exclude_from_reports: Loại khỏi tất cả báo cáo
+        include_in_reports: Đưa vào báo cáo
     update:
-      success: "Đã cập nhật tài khoản %{type}"
+      success: Đã cập nhật tài khoản %{type}
+      logo_not_applied: Tài khoản đã được lưu nhưng không thể tải biểu tượng đã chọn. Hãy thử lại hoặc tải biểu
+        tượng của bạn lên.
     sidebar:
       missing_data: Thiếu dữ liệu lịch sử
-      missing_data_description: "%{product} sử dụng nhà cung cấp bên thứ ba để lấy tỷ giá hối đoái lịch sử, giá chứng khoán và nhiều hơn nữa. Dữ liệu này cần thiết để tính số dư tài khoản lịch sử chính xác."
+      missing_data_description: '%{product} sử dụng nhà cung cấp bên thứ ba để lấy tỷ giá hối đoái lịch sử, giá
+        chứng khoán và nhiều hơn nữa. Dữ liệu này cần thiết để tính số dư tài khoản lịch sử chính xác.'
       configure_providers: Cấu hình nhà cung cấp của bạn tại đây.
       tabs:
         all: Tất cả
@@ -127,7 +157,15 @@ vi:
       new_asset: Tài sản mới
       new_debt: Nợ mới
       new_account: Tài khoản mới
-      new_account_group: "Nhóm %{account_group} mới"
+      new_account_group: Nhóm %{account_group} mới
+      expand_all: Mở rộng tất cả
+      collapse_all: Thu gọn tất cả
+      reorder_account: Di chuyển %{account}
+      reorder_hint: Kéo để sắp xếp. Với bàn phím, nhấn Enter rồi dùng các phím mũi tên.
+      sort_mode:
+        start: Sắp xếp tài khoản
+        hint: Kéo tay nắm của tài khoản để sắp xếp lại.
+        done: Xong
     types:
       depository: Tiền mặt
       investment: Đầu tư
@@ -168,24 +206,64 @@ vi:
       generic: Chung
     confirm_unlink:
       title: Hủy liên kết tài khoản với nhà cung cấp?
-      description_html: "Bạn đang hủy liên kết <strong>%{account_name}</strong> khỏi <strong>%{provider_name}</strong>. Tài khoản này sẽ được chuyển thành tài khoản thủ công."
+      description_html: Bạn đang hủy liên kết <strong>%{account_name}</strong> khỏi <strong>%{provider_name}</strong>.
+        Tài khoản này sẽ được chuyển thành tài khoản thủ công.
       warning_title: Điều này có nghĩa là gì
       warning_no_sync: Tài khoản sẽ không còn tự động đồng bộ với nhà cung cấp
       warning_manual_updates: Bạn cần thêm giao dịch và cập nhật số dư thủ công
       warning_transactions_kept: Tất cả giao dịch và số dư hiện có sẽ được giữ nguyên
       warning_can_delete: Sau khi hủy liên kết, bạn có thể xóa tài khoản nếu cần
       confirm_button: Xác nhận và hủy liên kết
+      warning_wallet_connection: Tất cả tài khoản trong kết nối Apple Wallet này sẽ bị hủy liên kết. Giao dịch và
+        số dư sẽ được giữ lại. Bạn có thể kết nối lại qua ứng dụng Sure trên iOS bằng cách thiết lập Wallet mới.
     unlink:
-      success: "Tài khoản đã được hủy liên kết thành công. Bây giờ là tài khoản thủ công."
-      not_linked: "Tài khoản chưa được liên kết với nhà cung cấp"
-      error: "Hủy liên kết tài khoản thất bại: %{error}"
-      generic_error: "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
+      success: Tài khoản đã được hủy liên kết thành công. Bây giờ là tài khoản thủ công.
+      not_linked: Tài khoản chưa được liên kết với nhà cung cấp
+      error: 'Hủy liên kết tài khoản thất bại: %{error}'
+      generic_error: Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.
     select_provider:
       title: Chọn nhà cung cấp để liên kết
-      description: "Chọn nhà cung cấp bạn muốn dùng để liên kết %{account_name}"
-      already_linked: "Tài khoản đã được liên kết với nhà cung cấp"
-      no_providers: "Hiện không có nhà cung cấp nào được cấu hình"
-
+      description: Chọn nhà cung cấp bạn muốn dùng để liên kết %{account_name}
+      already_linked: Tài khoản đã được liên kết với nhà cung cấp
+      no_providers: Hiện không có nhà cung cấp nào được cấu hình
+    reconciliation_indicator:
+      matched: Đã đối soát tất cả giao dịch
+      needs_attention: Giao dịch cần đối soát
+    scheduled_balance_tooltip:
+      description: Số dư của bạn sau khi tất cả giao dịch đã lên lịch được ghi sổ
+      current: Số dư hiện tại
+      scheduled: Đã lên lịch
+      projected: Số dư dự kiến
+    logo_caption:
+      appstore: Từ App Store
+      brandfetch: Từ Brandfetch
+      duckduckgo: Từ DuckDuckGo
+      google: Từ Google
+      googleplay: Từ Google Play
+      none: Chưa có biểu tượng
+      rustore: Từ RuStore
+      uploaded: Do bạn tải lên
+      yandex: Từ Yandex
+    logo_field:
+      current: hiện tại
+      domain_needed: Nhập tên miền của tổ chức, chẳng hạn tbank.ru, để chọn biểu tượng.
+      empty: Không tìm thấy biểu tượng cho tên miền này. Hãy tải biểu tượng của bạn lên bên dưới.
+      pick: Chọn biểu tượng
+      pending: Áp dụng khi bạn lưu
+      remove: Xóa
+      removal: Xóa khi bạn lưu; biểu tượng tự động sẽ xuất hiện lại
+      searching: Đang tìm kiếm…
+    logo_options:
+      size: '%{size} px'
+      sources:
+        appstore: App Store
+        brandfetch: Brandfetch
+        duckduckgo: DuckDuckGo
+        google: Google
+        googleplay: Google Play
+        rustore: RuStore
+        yandex: Yandex
+      stored: Biểu tượng đã lưu
   email_confirmations:
     new:
       invalid_token: Liên kết xác nhận không hợp lệ hoặc đã hết hạn.

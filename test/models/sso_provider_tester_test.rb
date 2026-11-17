@@ -31,4 +31,15 @@ class SsoProviderTesterTest < ActiveSupport::TestCase
     assert_equal "https://pocketid.example.com/", result.details[:expected]
     assert_equal "https://pocketid.example.com", result.details[:actual]
   end
+  test "configuration errors use the active locale without translating protocol details" do
+    provider = SsoProvider.new(strategy: "openid_connect", issuer: nil)
+
+    I18n.with_locale(:vi) do
+      result = SsoProviderTester.new(provider).test!
+      assert_not result.success?
+      assert_equal "Cần có URL issuer", result.message
+      assert_equal({}, result.details)
+    end
+  end
+
 end

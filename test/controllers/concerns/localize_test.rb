@@ -113,4 +113,31 @@ class LocalizeTest < ActionDispatch::IntegrationTest
   ensure
     Rails.cache = original_cache
   end
+  test "detects Vietnamese regional locale once without changing currency or timezone" do
+    user = users(:family_admin)
+    user.update!(locale: nil)
+    original_preferences = user.family.attributes.slice("currency", "timezone")
+    sign_in user
+
+    get preferences_onboarding_url, headers: { "Accept-Language" => "vi-VN,vi;q=0.9,en;q=0.8" }
+
+    assert_response :success
+    assert_equal "vi", user.reload.locale
+    assert_select "html[lang=vi]"
+    assert_select "h1", text: I18n.t("onboardings.preferences.title", locale: :vi)
+    assert_equal original_preferences, user.family.reload.attributes.slice("currency", "timezone")
+  end
+
+  test "saved English locale wins over Vietnamese browser preference" do
+    user = users(:family_admin)
+    user.update!(locale: "en")
+    sign_in user
+
+    get preferences_onboarding_url, headers: { "Accept-Language" => "vi-VN" }
+
+    assert_response :success
+    assert_equal "en", user.reload.locale
+    assert_select "h1", text: I18n.t("onboardings.preferences.title", locale: :en)
+  end
+
 end

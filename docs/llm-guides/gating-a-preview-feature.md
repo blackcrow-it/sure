@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/gating-a-preview-feature.md)
+
 # Gating a preview feature
 
 Sure ships preview features behind a single per-user toggle. Users opt in via Settings → Preferences. Opted-in users see your feature; everyone else doesn't. This guide is for hooking a new feature into the gate.

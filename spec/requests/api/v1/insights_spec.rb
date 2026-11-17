@@ -20,6 +20,8 @@ RSpec.describe "API V1 Insights", type: :request do
 
   path "/api/v1/insights" do
     get "List proactive insights" do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags "Insights"
       security [ { apiKeyAuth: [] } ]
       produces "application/json"
@@ -47,6 +49,8 @@ RSpec.describe "API V1 Insights", type: :request do
   end
   path "/api/v1/insights/{id}/acknowledge" do
     patch "Acknowledge a proactive insight" do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags "Insights"
       description "Marks a visible family insight read and acknowledged, removing it from the feed. Requires read_write scope and preview access. Repeated requests are idempotent."
       security [ { apiKeyAuth: [] }, { oauth2: %w[read_write] } ]

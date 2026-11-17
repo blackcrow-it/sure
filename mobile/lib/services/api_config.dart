@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/custom_proxy_header.dart';
+import '../l10n/app_locale.dart';
 import 'custom_proxy_headers_service.dart';
 
 class ApiConfig {
@@ -54,6 +55,7 @@ class ApiConfig {
   static Map<String, String> jsonHeaders() {
     return {
       ...customProxyHeaderMap,
+      'Accept-Language': AppLocale.current.toLanguageTag(),
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
@@ -62,6 +64,7 @@ class ApiConfig {
   static Map<String, String> htmlHeaders() {
     return {
       ...customProxyHeaderMap,
+      'Accept-Language': AppLocale.current.toLanguageTag(),
       'Accept': 'text/html',
     };
   }
@@ -73,12 +76,14 @@ class ApiConfig {
     if (_isApiKeyAuth && _apiKeyValue != null) {
       return {
         ...customProxyHeaderMap,
+        'Accept-Language': AppLocale.current.toLanguageTag(),
         'X-Api-Key': _apiKeyValue!,
         'Accept': 'application/json',
       };
     }
     return {
       ...customProxyHeaderMap,
+      'Accept-Language': AppLocale.current.toLanguageTag(),
       'Authorization': 'Bearer $token',
       'Accept': 'application/json',
     };

@@ -90,6 +90,8 @@ RSpec.describe 'API V1 Security Prices', type: :request do
 
   path '/api/v1/security_prices' do
     get 'List security price history referenced by family investment data' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Security Prices'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -145,6 +147,10 @@ RSpec.describe 'API V1 Security Prices', type: :request do
     end
 
     post 'Import closing prices for a security no provider tracks' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description <<~DESC.squish
         Self-hosted instances only. Stores daily closes for an offline security no provider has
         ever matched (no offline_reason, no price_provider) that is traded in an account the caller can write to, or held in a linked one. All rows
@@ -212,6 +218,10 @@ RSpec.describe 'API V1 Security Prices', type: :request do
               schema: { type: :string, format: :uuid }
 
     get 'Retrieve a security price referenced by family investment data' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Security Prices'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

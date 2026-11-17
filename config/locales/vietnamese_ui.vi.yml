@@ -1,0 +1,431 @@
+vi:
+  vietnamese_ui:
+    validation:
+      same_family_account: phải thuộc cùng hộ gia đình với tài khoản
+      exclusive_publisher: đã có nguồn xuất bản FinanceKit độc quyền
+      financekit_family: phải thuộc hộ gia đình đã đăng ký FinanceKit
+      account_owner: đã là chủ sở hữu tài khoản này
+      same_family: phải thuộc cùng hộ gia đình
+      permission_required: phải bao gồm ít nhất một quyền
+      one_permission: chỉ được có một cấp quyền
+      permission_value: phải là 'read' hoặc 'read_write'
+      viewer_owner: không được là chủ sở hữu
+      category_depth: không được có quá 2 cấp danh mục con
+      psu_type: phải là một trong các loại được ASPSP hỗ trợ
+      split_exclusion: không thể tắt đối với giao dịch đã tách
+      split_date: phải trùng ngày giao dịch gốc đối với các phần đã tách
+      password_length: phải có ít nhất 8 ký tự
+      password_case: phải bao gồm cả chữ hoa và chữ thường
+      password_number: phải bao gồm ít nhất một chữ số
+      password_special: phải bao gồm ít nhất một ký tự đặc biệt
+      impersonator_role: phải là quản trị viên cấp cao để truy cập thay người dùng
+      impersonated_role: không được là quản trị viên cấp cao
+      impersonation_self: không được trùng với người dùng được truy cập thay
+      own_family: phải thuộc hộ gia đình của bạn
+      import_chunk: phải có đối với các phần của phiên nhập dữ liệu
+      object_required: phải là một đối tượng
+      sure_import: phải là SureImport
+      matching_session: phải khớp với phiên nhập dữ liệu
+      must_exist: phải tồn tại
+      required: là bắt buộc
+      currency_code: không phải mã tiền tệ hợp lệ
+      pending_invitation: đã có lời mời đang chờ từ một hộ gia đình khác
+      duplicate_invitation: đã được mời vào hộ gia đình này
+      cancel_subscription: Không thể hủy gói Stripe đang hoạt động. Vui lòng hủy thủ công trước khi xóa hộ gia đình.
+      start_before_end: phải trước ngày kết thúc
+      invalid_device_key: Khóa thiết bị không hợp lệ
+      device_registered: Token thiết bị đã được đăng ký
+      oidc_required: là bắt buộc đối với nhà cung cấp OpenID Connect
+      valid_url: phải là một URL hợp lệ
+      oauth_required: là bắt buộc đối với nhà cung cấp OAuth
+      default_role: default_role phải là guest, member, admin hoặc super_admin
+      discovery_issuer: điểm cuối discovery không trả về issuer hợp lệ
+      discovery_json: điểm cuối discovery trả về JSON không hợp lệ
+      window_end: phải sau window_start_date
+      number: phải là một số
+      positive: phải lớn hơn 0
+      profile_image: phải là ảnh JPEG hoặc PNG
+      rows_to_skip: phải nhỏ hơn số dòng trong tệp (%{count})
+      date_format: 'phải khớp chính xác định dạng: %{format}'
+      date_range: phải nằm trong khoảng %{min} đến %{max}
+      valid_date: 'phải là ngày hợp lệ, giá trị nhận được: %{value}'
+      discovery_status: điểm cuối discovery trả về %{status}
+      discovery_connection: 'không thể kết nối với điểm cuối discovery: %{message}'
+      discovery_failed: 'xác thực discovery thất bại: %{message}'
+      strategy: '%{value} không phải chiến lược được hỗ trợ'
+      provider_name: chỉ được chứa chữ thường, chữ số và dấu gạch dưới
+      icon_blank: không được để trống hoặc chỉ chứa khoảng trắng
+    common:
+      coming_soon: Sắp ra mắt...
+      deleting: (đang xóa...)
+      missing_account: 'Lỗi dữ liệu: Thiếu tài khoản'
+      component_preview: Xem trước thành phần
+      authorization: Ủy quyền Sure
+      and: và
+      redirecting: Đang chuyển bạn về ứng dụng...
+      configuration: Có thể cấu hình bằng biến môi trường hoặc ghi đè bên dưới.
+      community_fork: (bản phát triển cộng đồng từ Maybe Finance)
+      version: 'Phiên bản: %{version}'
+      as_of: tính đến %{date}
+      ago: '%{time} trước'
+      balance: 'Số dư: %{balance}'
+      select_subtype: Vui lòng chọn loại phụ
+      select_type: Vui lòng chọn loại
+      http_status: 'Trạng thái HTTP: %{status}'
+      confirm: Bạn có chắc chắn không?
+      delete: Xóa
+      preview: Xem trước
+      transfer_id: 'ID chuyển khoản: %{id}'
+      unknown_error: Lỗi không xác định
+      unexpected_error: Đã xảy ra lỗi ngoài dự kiến
+      new_chat: Cuộc trò chuyện mới
+      date_unavailable: Chưa có ngày
+      no_release_notes: Chưa có ghi chú phát hành
+    rules:
+      if: NẾU
+      for: CHO
+      back: Quay lại quy tắc
+      new: Quy tắc %{resource} mới
+      activated: Đã kích hoạt quy tắc %{resource}
+      actions:
+        set_transaction_category: Đặt danh mục giao dịch
+        set_transaction_merchant: Đặt bên giao dịch
+        set_transaction_tags: Đặt thẻ giao dịch
+        set_transaction_name: Đặt tên giao dịch
+        set_as_transfer_or_payment: Đặt thành chuyển khoản hoặc thanh toán
+        split_transaction: Tách giao dịch
+        auto_categorize: Tự động phân loại giao dịch bằng AI
+        auto_detect_merchants: Tự động nhận diện bên giao dịch
+        auto_detect_merchants_ai: Tự động nhận diện bên giao dịch bằng AI ($$)
+        bayes_categorize: Phân loại bằng bộ phân loại (không dùng AI)
+        exclude_transaction: Loại khỏi ngân sách và báo cáo
+        fill_similar_merchants: Điền bên giao dịch còn thiếu từ giao dịch tương tự (không dùng AI)
+        send_email_notification: Gửi thông báo qua email
+        set_investment_activity_label: Đặt nhãn hoạt động đầu tư
+      cost_unavailable: ' (chi phí: không có)'
+      cost_estimate: ' (khoảng $%{cost} cho 20 giao dịch)'
+      no_provider: '%{label} (chưa cấu hình nhà cung cấp phân loại)'
+      filters:
+        transaction_account: Tài khoản giao dịch
+        transaction_amount: Số tiền giao dịch
+        transaction_category: Danh mục giao dịch
+        transaction_details: Chi tiết giao dịch
+        transaction_merchant: Bên giao dịch
+        transaction_name: Tên giao dịch
+        transaction_notes: Ghi chú giao dịch
+        transaction_tag: Thẻ giao dịch
+        transaction_type: Loại giao dịch
+    subscriptions:
+      annually: Thanh toán hằng năm
+      monthly: Thanh toán hằng tháng
+      monthly_contribution: Đóng góp hằng tháng
+      annual_contribution: Đóng góp hằng năm
+      open_demo: Mở bản dùng thử
+      statuses:
+        incomplete: Chưa hoàn tất
+        incomplete_expired: Chưa hoàn tất và đã hết hạn
+        trialing: Đang dùng thử
+        active: Đang hoạt động
+        past_due: Quá hạn
+        canceled: Đã hủy
+        unpaid: Chưa thanh toán
+        paused: Đã tạm dừng
+    support:
+      session: Phiên truy cập
+      request: Yêu cầu truy cập
+      pending: Nhân viên hỗ trợ Sure đã yêu cầu truy cập tài khoản của bạn để hỗ trợ. Nếu bạn chấp thuận, mọi thao
+        tác của họ sẽ được ghi lại để bảo mật và kiểm tra.
+      active: Một thành viên nhóm Sure Finances đang xem dữ liệu của bạn. Bạn có thể kết thúc phiên bất kỳ lúc nào.
+      error: Đã xảy ra lỗi. Vui lòng liên hệ với chúng tôi.
+      approve: Chấp thuận
+      reject: Từ chối
+      end: Kết thúc phiên
+    authorization:
+      consent: Khi ủy quyền, bạn cho phép ứng dụng truy cập dữ liệu %{product} của mình theo các quyền nêu trên.
+    javascript:
+      csv_required: Vui lòng tải lên tệp CSV hợp lệ.
+      uploading: Đang tải lên %{name}...
+      contrast: Độ tương phản thấp, hãy chọn màu đậm hơn hoặc tự động điều chỉnh.
+      select_value: Chọn giá trị
+      enter_value: Nhập giá trị
+      tag_failed: Không thể tạo thẻ
+      network_error: Lỗi mạng
+      load_failed: Không tải được (%{status})
+      price_warning: Giá bạn nhập (%{entered}/cổ phiếu) chênh lệch đáng kể so với giá thị trường của %{ticker} (%{market}).
+        Có thể bạn đã chọn nhầm chứng khoán; hãy dùng "Nhập mã tùy chỉnh" để chọn đúng mã.
+    sso:
+      copy_failed: Không thể sao chép vào bộ nhớ tạm
+      copied: Đã sao chép!
+      valid_issuer: Issuer OIDC hợp lệ
+      issuer_mismatch: 'Issuer không khớp: discovery trả về %{issuer}. Hãy sao chép chính xác issuer do nhà cung
+        cấp trả về.'
+      issuer_slash: 'Issuer không khớp: discovery trả về %{issuer}. Thường là do dấu gạch chéo ở cuối, hãy sao chép
+        chính xác issuer được trả về.'
+      cors: Không thể xác thực từ trình duyệt (CORS). Bạn vẫn có thể lưu nhà cung cấp.
+      testing: Đang kiểm tra...
+      test_connection: Kiểm tra kết nối
+      request_failed: 'Yêu cầu thất bại: %{error}'
+      device_required: Cần có thông tin thiết bị
+      session_expired: Phiên SSO trên thiết bị di động đã hết hạn
+      device_failed: Không thể đăng ký thiết bị
+    transactions:
+      one_time_income: Thu nhập một lần (không tính vào trung bình)
+      one_time_expense: Chi phí một lần (không tính vào trung bình)
+      updated:
+        other: Đã cập nhật %{count} giao dịch
+      deleted:
+        other: Đã xóa %{count} giao dịch
+    providers:
+      credit_card_setup: Thẻ tín dụng sẽ được tự động thiết lập thành tài khoản thẻ tín dụng.
+      other_assets_setup: Tài sản khác sẽ được thiết lập thành tài sản chung.
+      crypto_setup: Tài khoản tiền mã hóa theo dõi các khoản nắm giữ tiền mã hóa.
+      other_assets_options: Tài sản khác không cần tùy chọn bổ sung.
+      add_connection: Thêm kết nối
+      mercury_setup: Thiết lập tài khoản Mercury
+      sophtron_setup: Thiết lập tài khoản Sophtron
+      indexa_connection: Kết nối Indexa Capital
+      lunchflow_connection: Kết nối Lunch Flow
+      questrade_connection: Kết nối Questrade
+    assistant:
+      external_configuration: Trợ lý bên ngoài chưa được cấu hình. Đặt URL và token trong Cài đặt > Tự lưu trữ hoặc
+        qua biến môi trường.
+      external_forbidden: Tài khoản của bạn không được phép dùng trợ lý bên ngoài.
+      external_empty: Trợ lý bên ngoài trả về phản hồi trống.
+      external_error: Đã xảy ra lỗi với trợ lý bên ngoài. Xem nhật ký máy chủ để biết chi tiết.
+      no_provider: Chưa cấu hình nhà cung cấp LLM
+      no_history: Không có lịch sử thanh toán để phân tích
+      provider_failed: 'Nhà cung cấp gặp lỗi: %{message}'
+    api:
+      unexpected_error: Đã xảy ra lỗi ngoài dự kiến
+      unexpected_error_period: Đã xảy ra lỗi ngoài dự kiến.
+      account_not_found: Không tìm thấy tài khoản
+      statement_file_required: cần có file (multipart/form-data)
+      statement_store_failed: Không thể lưu sao kê
+      statement_account: Không có tài khoản bạn được phép ghi khớp với account_id. Bỏ account_id để tải sao kê chưa
+        liên kết.
+      statement_exists: Tệp này đã có trong kho sao kê
+      statement_role: Kho sao kê yêu cầu vai trò quản trị viên hoặc thành viên
+      authorization_code_required: Cần có mã ủy quyền
+      authorization_code_invalid: Mã ủy quyền không hợp lệ hoặc đã hết hạn
+      token_missing: Token truy cập không hợp lệ, đã hết hạn hoặc bị thiếu
+      token_scope: Token truy cập không hợp lệ, đã hết hạn hoặc thiếu phạm vi quyền cần thiết
+      token_user: Token truy cập không hợp lệ - không tìm thấy người dùng
+      account_deactivated: Tài khoản đã bị vô hiệu hóa
+      token_owner: Token truy cập không hợp lệ - thiếu chủ sở hữu tài nguyên
+      credentials_invalid: Token truy cập hoặc khóa API không hợp lệ, đã hết hạn hoặc bị thiếu
+      guest_configuration: Khách không thể sửa cấu hình hộ gia đình
+      resource_not_found: Không tìm thấy tài nguyên được yêu cầu
+      token_expired: Token truy cập không hợp lệ hoặc đã hết hạn
+      parameters_invalid: Tham số bắt buộc bị thiếu hoặc không hợp lệ
+      resource_forbidden: Bạn không được phép truy cập tài nguyên này
+      ai_disabled: Tính năng AI chưa được bật cho người dùng này
+      categories_locked: Danh mục đang khóa. Hãy mở khóa để thêm danh mục mới.
+      category_parent: Danh mục cha phải thuộc hộ gia đình của bạn
+      category_not_found: Không tìm thấy danh mục
+      export_parameters: Tạo bản xuất hộ gia đình không chấp nhận tham số yêu cầu
+      export_not_ready: Bản xuất chưa sẵn sàng để tải xuống
+      export_admin: Xuất dữ liệu hộ gia đình yêu cầu quản trị viên hộ gia đình
+      holding_not_found: Không tìm thấy khoản nắm giữ
+      monarch_web: Nhập từ Monarch cần chọn tùy chọn cho từng tài khoản trên ứng dụng web. Vui lòng dùng luồng nhập
+        trên web.
+      csv_file_type: Loại tệp không hợp lệ. Vui lòng tải lên tệp CSV.
+      guest_categories: Khách không thể tạo danh mục hoặc thẻ
+      import_create_failed: Không thể tạo bản nhập dữ liệu
+      csv_parse_failed: Không thể phân tích nội dung CSV
+      preflight_failed: Không thể hoàn tất kiểm tra trước khi nhập.
+      import_not_found: Không tìm thấy bản nhập dữ liệu
+      import_too_many_rows: Đã tải lên bản nhập nhưng có quá nhiều dòng để áp dụng tự động.
+      import_preflight: Đã tải lên bản nhập nhưng không vượt qua kiểm tra Sure NDJSON.
+      import_no_records: Đã tải lên bản nhập nhưng không có bản ghi có thể áp dụng.
+      import_queue_failed: Đã tải lên bản nhập nhưng không thể đưa vào hàng đợi xử lý.
+      ndjson_required: Cung cấp tệp Sure NDJSON hoặc raw_file_content.
+      ndjson_file_type: Loại tệp không hợp lệ. Vui lòng tải lên tệp Sure NDJSON.
+      ndjson_invalid: Nội dung Sure NDJSON không hợp lệ.
+      preview_disabled: Tính năng thử nghiệm chưa được bật cho người dùng này
+      csv_required: Vui lòng cung cấp tệp CSV.
+      csv_name_required: CSV phải có cột 'name'.
+      retry_started: Đã bắt đầu thử lại
+      device_registered: Token thiết bị đã được đăng ký
+      push_hosted_only: Thông báo đẩy chỉ khả dụng ở chế độ được lưu trữ
+      internal_error: Lỗi nội bộ máy chủ
+      recurring_create_failed: Không thể tạo giao dịch định kỳ
+      recurring_exists: Giao dịch định kỳ đã tồn tại
+      recurring_update_failed: Không thể cập nhật giao dịch định kỳ
+      recurring_deleted: Đã xóa giao dịch định kỳ
+      active_values: 'active phải là một trong các giá trị: true, false, 1, 0'
+      prices_failed: Chưa nhập được giá
+      prices_self_hosted: Giá chứng khoán được dùng chung giữa các hộ gia đình, nên chỉ có thể nhập giá trên hệ
+        thống tự lưu trữ
+      prices_list: prices phải là một danh sách
+      period_invalid: Truyền cả start_date và end_date theo định dạng ISO và đúng thứ tự, hoặc bỏ cả hai để dùng
+        tháng hiện tại
+      account_write_forbidden: Bạn không có quyền ghi vào tài khoản này
+      not_split: Giao dịch chưa được tách
+      account_id_required: Cần có ID tài khoản
+      trade_create_failed: Không thể tạo giao dịch chứng khoán
+      trade_update_failed: Không thể cập nhật giao dịch chứng khoán
+      trade_deleted: Đã xóa giao dịch chứng khoán
+      trade_not_found: Không tìm thấy giao dịch chứng khoán
+      amount_required: Cần có số tiền
+      date_required: Cần có ngày
+      security_required: Cần có định danh chứng khoán
+      quantity_price_required: Cần có số lượng và giá
+      quantity_price_invalid: Số lượng và giá phải là số hợp lệ
+      amount_invalid: Số tiền phải là số hợp lệ
+      source_external_id: Nguồn yêu cầu external_id
+      tag_ids_array: tag_ids phải là một mảng ID thẻ
+      tag_not_found: ID thẻ không xác định
+      category_id_unknown: ID danh mục không xác định
+      merchant_id_unknown: ID bên giao dịch không xác định
+      transaction_create_failed: Không thể tạo giao dịch
+      split_child_edit: Không thể sửa trực tiếp giao dịch con đã tách. Hãy dùng trình chỉnh sửa tách giao dịch.
+      split_parent_edit: Không thể sửa trực tiếp số tiền, ngày và loại của giao dịch gốc đã tách. Hãy dùng trình
+        chỉnh sửa tách giao dịch.
+      transaction_update_failed: Không thể cập nhật giao dịch
+      split_child_delete: Không thể xóa riêng giao dịch con đã tách.
+      transaction_deleted: Đã xóa giao dịch
+      external_id_exists: ID bên ngoài đã tồn tại ở một bản ghi không phải giao dịch
+      usage_api_key: Theo dõi mức sử dụng chi tiết khả dụng khi xác thực bằng khóa API
+      usage_unavailable: Không thể xác định thông tin sử dụng
+      reset_queue_failed: Không thể đưa yêu cầu đặt lại tài khoản vào hàng đợi
+      reset_started: Đã bắt đầu đặt lại tài khoản
+      account_deleted: Đã xóa tài khoản
+      action_forbidden: Bạn không được phép thực hiện thao tác này
+      valuation_create_failed: Không thể tạo định giá
+      valuation_account_not_found: Không tìm thấy tài khoản hoặc bản ghi định giá
+      reconciliation_required: Cần cả số tiền và ngày khi cập nhật đối chiếu
+      valuation_update_failed: Không thể cập nhật định giá
+      valuation_not_found: Không tìm thấy định giá
+      uuid: '%{field} phải là UUID hợp lệ'
+      allowed_values: '%{field} phải là một trong các giá trị: %{values}'
+      iso_date: '%{field} phải là ngày theo định dạng ISO 8601'
+      iso_timestamp: '%{field} phải là thời điểm theo định dạng ISO 8601'
+      rate_limit: Đã vượt giới hạn yêu cầu. Hãy thử lại sau %{seconds} giây.
+      required_scope: Thao tác này yêu cầu phạm vi quyền '%{permission}'
+      file_size: Tệp quá lớn. Kích thước tối đa là %{size}MB.
+      content_size: Nội dung quá lớn. Kích thước tối đa là %{size}MB.
+      csv_error: 'Không thể phân tích CSV: %{message}'
+      amount_present: cần có amount
+      amount_context: cần có amount cho %{context}
+      date_present: cần có date
+      security_identifier: Cung cấp security_id, ticker hoặc manual_ticker
+      qty_price_positive: cần có qty và price với giá trị dương
+      qty_price_numbers: qty và price phải là số dương hợp lệ
+      amount_positive: amount phải là số dương hợp lệ
+      trade_account: Tài khoản không hỗ trợ giao dịch chứng khoán (chỉ dành cho đầu tư hoặc sàn tiền mã hóa)
+      trade_account_type: Tài khoản phải là tài khoản đầu tư hoặc sàn tiền mã hóa
+      security_not_found: Không tìm thấy chứng khoán
+      invalid_format: Định dạng %{parameter} không hợp lệ
+      boolean: '%{field} phải là true hoặc false'
+      cannot_split: Không thể tách giao dịch
+      splits_array: splits phải là mảng không rỗng
+      split_object: mỗi phần tách phải là một đối tượng
+      split_amount_range: số tiền phần tách nằm ngoài phạm vi
+      split_numeric: mỗi phần tách cần có số tiền dạng số
+      transfer_split: Giao dịch là một phần của chuyển khoản
+      already_split: Giao dịch đã được tách
+      pending_split: Giao dịch đang chờ xử lý
+      excluded_split: Giao dịch đã bị loại trừ
+      not_splittable: Giao dịch không thể tách
+      id_required: '%{field} phải là ID'
+      unknown_id: '%{kind} không xác định: %{id}'
+      amount_date_required: Phải cung cấp cả số tiền và ngày
+    sso_test:
+      unknown_strategy: 'Chiến lược không xác định: %{strategy}'
+      issuer_required: Cần có URL issuer
+      discovery_status: Điểm cuối discovery trả về HTTP %{status}
+      missing_fields: 'Tài liệu discovery thiếu các trường bắt buộc: %{fields}'
+      issuer_mismatch: 'Issuer không khớp: cần %{expected}, nhận được %{actual}'
+      oidc_valid: Đã xác thực OIDC discovery
+      timeout: Kết nối đã hết thời gian chờ
+      connection_failed: 'Kết nối thất bại: %{message}'
+      json_invalid: Điểm cuối discovery trả về JSON không hợp lệ
+      error: 'Lỗi: %{message}'
+      client_id: Cần có Client ID
+      client_secret: Cần có Client Secret
+      google_valid: Cấu hình Google OAuth2 có vẻ hợp lệ
+      github_valid: Cấu hình GitHub OAuth có vẻ hợp lệ
+      saml_url: Cần có URL metadata IdP hoặc URL SSO IdP
+      metadata_status: Điểm cuối metadata trả về HTTP %{status}
+      saml_invalid: Phản hồi có vẻ không phải metadata SAML hợp lệ
+      saml_fetched: Đã tải metadata SAML
+      saml_valid: Cấu hình SAML có vẻ hợp lệ
+      trailing_slash: dấu gạch chéo cuối không khớp. URL issuer thường chỉ khác ở dấu gạch chéo cuối. Cập nhật issuer
+        đã cấu hình để khớp chính xác với tài liệu discovery
+    date_formats:
+      full: '%d tháng %m, %Y'
+      month_year: tháng %m năm %Y
+      short_with_year: '%d/%m/%Y'
+      timestamp: '%d/%m/%Y %H:%M'
+    prices:
+      rows_required: prices phải có ít nhất một dòng
+      too_many_rows: một yêu cầu chỉ được có tối đa %{count} mức giá
+      cash: không thể nhập giá cho khoản tiền mặt
+      tracked: chỉ có thể nhập giá cho chứng khoán không được nhà cung cấp nào theo dõi
+      row: dòng phải là đối tượng có date, price và currency
+      currency: currency phải là mã ISO 4217
+      duplicate_date: date xuất hiện nhiều lần trong lô này
+      future_date: date không được ở tương lai
+      date: date phải theo định dạng ISO 8601
+      positive: price phải lớn hơn 0
+      precision: price chỉ được có tối đa 4 chữ số thập phân
+      too_large: price quá lớn
+      number: price phải là một số
+      same_currency: mọi dòng trong cùng yêu cầu phải dùng cùng tiền tệ
+      no_currency: không có giao dịch hay khoản nắm giữ chứng khoán này ghi nhận tiền tệ nên không thể chọn tiền
+        tệ cho giá
+      existing_currency: currency phải là %{currencies}, %{noun} dùng cho giá chứng khoán này
+      currency_singular: loại tiền tệ
+      currency_plural: các loại tiền tệ
+      multiple_currencies: '%{source} của chứng khoán này dùng nhiều loại tiền tệ (%{currencies}); không thể chọn
+        tiền tệ cho giá'
+      position_currency: currency phải là %{currency}, tiền tệ của %{source} của bạn đối với chứng khoán này
+      trades: giao dịch chứng khoán
+      holdings: khoản nắm giữ
+      or: ' hoặc '
+    sync:
+      wallet_imported: Đã nhập từ Wallet publisher
+      wallet_waiting: Đang chờ Wallet publisher
+      no_accounts: Không tìm thấy tài khoản
+      partial: Đã đồng bộ %{linked}, cần thiết lập %{unlinked}
+      stale: Đồng bộ bị treo trước khi hoàn tất
+      failed: Đồng bộ thất bại
+      complete:
+        other: Đã đồng bộ %{count} tài khoản
+    import_types:
+      TransactionImport: Nhập giao dịch
+      TradeImport: Nhập giao dịch chứng khoán
+      AccountImport: Nhập tài khoản
+      CategoryImport: Nhập danh mục
+      RuleImport: Nhập quy tắc
+      MerchantImport: Nhập bên giao dịch
+      PdfImport: Nhập PDF
+      QifImport: Nhập QIF
+      MintImport: Nhập từ Mint
+      ActualImport: Nhập từ Actual
+      YnabImport: Nhập từ Ynab
+      MonarchImport: Nhập từ Monarch
+      SureImport: Nhập từ Sure
+    imports:
+      csv_content: Cung cấp tệp CSV hoặc raw_file_content.
+      preflight_types: Kiểm tra trước khi nhập hỗ trợ các loại nhập CSV và SureImport.
+      no_rows: Không tìm thấy dòng dữ liệu.
+      missing_columns: 'Thiếu các cột bắt buộc: %{columns}'
+      session_create_failed: Không thể tạo phiên nhập dữ liệu
+      chunk_create_failed: Không thể tạo phần nhập dữ liệu
+      session_too_large: Phiên nhập dữ liệu có quá nhiều dòng để áp dụng.
+      session_queue_failed: Không thể đưa phiên nhập dữ liệu vào hàng đợi.
+      session_failed: Phiên nhập dữ liệu thất bại.
+      family_sync_queue_failed: Không thể đưa đồng bộ hộ gia đình vào hàng đợi sau khi nhập xong.
+      expected_chunks_conflict: client_session_id đã tồn tại với giá trị expected_chunks khác
+      sequence_positive: sequence phải là số nguyên dương
+      sequence_exceeds: sequence vượt quá expected_chunks
+      publishing_started: không thể thêm phần nhập sau khi bắt đầu áp dụng
+      chunk_conflict: phần nhập đã tồn tại với nội dung khác
+      chunk_identifiers_conflict: sequence và client_chunk_id trỏ đến các phần nhập khác nhau
+      chunk_sequence_conflict: client_chunk_id đã tồn tại với sequence khác
+      sequence_chunk_conflict: sequence đã tồn tại với client_chunk_id khác
+      chunk_incomplete: phần nhập đã tồn tại nhưng chưa hoàn tất
+      no_chunks: phiên nhập không có phần dữ liệu nào
+      chunks_incomplete: các phần dữ liệu của phiên nhập chưa đầy đủ
+      sequences_mismatch: các phần dữ liệu không khớp với thứ tự dự kiến (%{details})

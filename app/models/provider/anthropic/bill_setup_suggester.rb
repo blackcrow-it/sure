@@ -4,9 +4,9 @@ class Provider::Anthropic::BillSetupSuggester
 
   TOOL_NAME = "report_bill_setup".freeze
 
-  attr_reader :client, :model, :charges, :categories, :current_config, :langfuse_trace, :family
+  attr_reader :client, :model, :charges, :categories, :current_config, :langfuse_trace, :family, :response_locale
 
-  def initialize(client, model:, charges: [], categories: [], current_config: nil, langfuse_trace: nil, family: nil)
+  def initialize(client, model:, charges: [], categories: [], current_config: nil, langfuse_trace: nil, family: nil, response_locale: nil)
     @client = client
     @model = model
     @charges = charges
@@ -14,6 +14,7 @@ class Provider::Anthropic::BillSetupSuggester
     @current_config = current_config
     @langfuse_trace = langfuse_trace
     @family = family
+    @response_locale = response_locale.presence || family&.locale.presence || I18n.default_locale
   end
 
   def suggest
@@ -122,7 +123,7 @@ class Provider::Anthropic::BillSetupSuggester
     end
 
     def user_message
-      message = +"CHARGE HISTORY (date amount description):\n"
+      message = +"## Session context\n\nResponse language: #{response_locale}. Translate only the rationale; preserve names, category names, JSON keys and enum values.\n\nCHARGE HISTORY (date amount description):\n"
       message << charges.map { |charge| "- #{charge[:date]} #{charge[:amount]} #{charge[:name]}" }.join("\n")
       message << "\n\nAVAILABLE CATEGORIES: #{categories.join(", ")}"
       message << "\n\nCURRENT CONFIGURATION:\n#{current_config.to_json}" if current_config.present?

@@ -28,6 +28,8 @@ RSpec.describe "Api::V1::ProviderConnections", type: :request do
 
   path "/api/v1/provider_connections" do
     get "Lists provider connection status summaries" do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description "List safe provider connection status metadata for the authenticated user's family without exposing credentials, raw provider payloads, or raw sync errors."
       tags "Provider Connections"
       security [ { apiKeyAuth: [] } ]

@@ -80,7 +80,7 @@ class Invitation < ApplicationRecord
       end
 
       if existing
-        errors.add(:email, "already has a pending invitation from another family")
+        errors.add(:email, I18n.t("vietnamese_ui.validation.pending_invitation"))
       end
     end
 
@@ -96,7 +96,7 @@ class Invitation < ApplicationRecord
         scope.where("LOWER(email) = ?", email.to_s.strip.downcase).exists?
       end
 
-      errors.add(:email, "has already been invited to this family") if exists
+      errors.add(:email, I18n.t("vietnamese_ui.validation.duplicate_invitation")) if exists
     end
 
     # The inviter already has an account, and an invitation never moves one.

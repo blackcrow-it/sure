@@ -1,6 +1,6 @@
 class Rule::ActionExecutor::ExcludeTransaction < Rule::ActionExecutor
   def label
-    "Exclude from budgeting and reports"
+    I18n.t("vietnamese_ui.rules.actions.exclude_transaction")
   end
 
   def claimed_attributes

@@ -20,6 +20,8 @@ RSpec.describe "Api::V1::FamilyExports", type: :request do
 
   path "/api/v1/family_exports" do
     get "Lists family exports" do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags "Family Exports"
       security [ apiKeyAuth: [] ]
       produces "application/json"
@@ -45,6 +47,10 @@ RSpec.describe "Api::V1::FamilyExports", type: :request do
     end
 
     post "Queues a family export" do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags "Family Exports"
       security [ apiKeyAuth: [] ]
       consumes "application/json"
@@ -87,6 +93,10 @@ RSpec.describe "Api::V1::FamilyExports", type: :request do
     parameter name: :id, in: :path, type: :string, format: :uuid, required: true
 
     get "Shows a family export" do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags "Family Exports"
       security [ apiKeyAuth: [] ]
       produces "application/json"
@@ -120,6 +130,10 @@ RSpec.describe "Api::V1::FamilyExports", type: :request do
     parameter name: :id, in: :path, type: :string, format: :uuid, required: true
 
     get "Downloads a completed family export" do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags "Family Exports"
       security [ apiKeyAuth: [] ]
       produces "application/json"

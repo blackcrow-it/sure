@@ -1,4 +1,7 @@
 import 'package:local_auth/local_auth.dart';
+import 'package:local_auth_android/local_auth_android.dart';
+import 'package:local_auth_darwin/local_auth_darwin.dart';
+import '../l10n/app_localizations.dart';
 import 'log_service.dart';
 
 class BiometricService {
@@ -30,10 +33,33 @@ class BiometricService {
   }
 
   /// Triggers the OS biometric prompt. Returns true if authentication succeeds.
-  Future<bool> authenticate({String reason = 'Unlock Sure to continue'}) async {
+  Future<bool> authenticate(
+      {required String reason, required AppLocalizations localizations}) async {
     try {
       return await _auth.authenticate(
         localizedReason: reason,
+        authMessages: [
+          AndroidAuthMessages(
+            biometricHint: localizations.biometricHint,
+            biometricNotRecognized: localizations.biometricNotRecognized,
+            biometricSuccess: localizations.biometricSuccess,
+            biometricRequiredTitle: localizations.biometricRequired,
+            cancelButton: localizations.commonCancel,
+            deviceCredentialsRequiredTitle:
+                localizations.biometricCredentialsRequired,
+            deviceCredentialsSetupDescription:
+                localizations.biometricCredentialsRequired,
+            goToSettingsButton: localizations.biometricGoToSettings,
+            goToSettingsDescription: localizations.biometricAndroidSetup,
+            signInTitle: localizations.biometricAuthenticationRequired,
+          ),
+          IOSAuthMessages(
+            lockOut: localizations.biometricLockout,
+            goToSettingsButton: localizations.biometricGoToSettings,
+            goToSettingsDescription: localizations.biometricIosSetup,
+            cancelButton: localizations.biometricOk,
+          ),
+        ],
         options: const AuthenticationOptions(
           stickyAuth: true,
           biometricOnly: false,

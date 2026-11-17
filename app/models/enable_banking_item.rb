@@ -73,7 +73,7 @@ class EnableBankingItem < ApplicationRecord
   def psu_type_in_aspsp_types
     return if psu_type.blank? || aspsp_psu_types.blank?
     unless aspsp_psu_types.include?(psu_type)
-      errors.add(:psu_type, "must be one of the ASPSP supported types")
+      errors.add(:psu_type, I18n.t("vietnamese_ui.validation.psu_type"))
     end
   end
 

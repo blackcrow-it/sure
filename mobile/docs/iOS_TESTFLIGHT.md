@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../../docs/vi/mobile/docs/iOS_TESTFLIGHT.md)
+
 # iOS TestFlight GitHub Action
 
 This repository now includes `.github/workflows/ios-testflight.yml`, which builds a **signed** iOS IPA and uploads it to TestFlight.

@@ -1,3 +1,4 @@
+import 'package:sure_mobile/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,8 @@ void main() {
       ChangeNotifierProvider<PrivacyProvider>(
         create: (_) => PrivacyProvider(),
         child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
           theme: SureTheme.light,
           home: Scaffold(body: AccountCard(account: a)),
         ),

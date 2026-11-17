@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../docs/vi/desktop/README.md)
+
 # Sure Desktop (macOS)
 
 Native macOS shell (Tauri 2 + WKWebView) that renders the full Sure web app and
@@ -72,7 +74,7 @@ came from a window that closed itself. A native notification is also sent when
 that window is not in front, and replaces the message when the window is hidden
 or the server is too old to provide it (allow Sure notifications in System
 Settings to see them). The notification uses the message's text in Sure's
-language, and is in English only with a server too old to provide the message.
+language when available; otherwise it uses the desktop locale (English or Vietnamese).
 Repeated downloads get a numbered filename.
 
 Print Report opens a separate Sure window using the current signed-in session,

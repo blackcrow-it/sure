@@ -69,7 +69,7 @@
                     <%= t(".table.trial_ends_at") %>: <%= sub.trial_ends_at&.to_fs(:long) || t(".not_available") %>
                   </span>
                 <% elsif sub %>
-                  <%= render DS::Pill.new(label: sub.status.humanize, tone: sub.active? ? :success : :neutral) %>
+                  <%= render DS::Pill.new(label: t("vietnamese_ui.subscriptions.statuses.#{sub.status}"), tone: sub.active? ? :success : :neutral) %>
                 <% else %>
                   <span class="text-xs text-secondary"><%= t(".no_subscription") %></span>
                 <% end %>

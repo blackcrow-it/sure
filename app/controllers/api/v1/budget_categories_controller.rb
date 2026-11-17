@@ -72,13 +72,13 @@ class Api::V1::BudgetCategoriesController < Api::V1::BaseController
 
     def apply_filters(query)
       if params[:budget_id].present?
-        raise InvalidFilterError, "budget_id must be a valid UUID" unless valid_uuid?(params[:budget_id])
+        raise InvalidFilterError, t("vietnamese_ui.api.uuid", field: "budget_id") unless valid_uuid?(params[:budget_id])
 
         query = query.where(budget_id: params[:budget_id])
       end
 
       if params[:category_id].present?
-        raise InvalidFilterError, "category_id must be a valid UUID" unless valid_uuid?(params[:category_id])
+        raise InvalidFilterError, t("vietnamese_ui.api.uuid", field: "category_id") unless valid_uuid?(params[:category_id])
 
         query = query.where(category_id: params[:category_id])
       end

@@ -512,7 +512,7 @@ class SophtronItemsController < ApplicationController
       "CreditCard" => {
         label: "",
         options: [],
-        message: "Credit cards will be automatically set up as credit card accounts."
+        message: t("vietnamese_ui.providers.credit_card_setup")
       },
       "Investment" => {
         label: "Investment Type:",
@@ -525,12 +525,12 @@ class SophtronItemsController < ApplicationController
       "Crypto" => {
         label: nil,
         options: [],
-        message: "Crypto accounts track cryptocurrency holdings."
+        message: t("vietnamese_ui.providers.crypto_setup")
       },
       "OtherAsset" => {
         label: nil,
         options: [],
-        message: "No additional options needed for Other Assets."
+        message: t("vietnamese_ui.providers.other_assets_options")
       }
     }
   end

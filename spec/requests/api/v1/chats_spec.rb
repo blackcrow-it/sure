@@ -76,6 +76,8 @@ RSpec.describe 'API V1 Chats', type: :request do
 
   path '/api/v1/chats' do
     get 'List chats' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Chats'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -103,6 +105,10 @@ RSpec.describe 'API V1 Chats', type: :request do
     end
 
     post 'Create chat' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Chats'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'
@@ -145,6 +151,10 @@ RSpec.describe 'API V1 Chats', type: :request do
     parameter name: :id, in: :path, type: :string, required: true, description: 'Chat ID'
 
     get 'Retrieve a chat' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Chats'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -167,6 +177,10 @@ RSpec.describe 'API V1 Chats', type: :request do
     end
 
     patch 'Update a chat' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Chats'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'
@@ -207,6 +221,10 @@ RSpec.describe 'API V1 Chats', type: :request do
     end
 
     delete 'Delete a chat' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Chats'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -229,6 +247,10 @@ RSpec.describe 'API V1 Chats', type: :request do
     parameter name: :chat_id, in: :path, type: :string, required: true, description: 'Chat ID'
 
     post 'Create a message' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Chat Messages'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'
@@ -280,6 +302,10 @@ RSpec.describe 'API V1 Chats', type: :request do
     parameter name: :chat_id, in: :path, type: :string, required: true, description: 'Chat ID'
 
     post 'Retry the last assistant response' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Chat Messages'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

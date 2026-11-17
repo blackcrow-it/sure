@@ -230,7 +230,7 @@ class IndexaCapitalItemsController < ApplicationController
     elsif skipped_count > 0 && created_count == 0
       redirect_to accounts_path, notice: t(".all_skipped")
     else
-      redirect_to setup_accounts_indexa_capital_item_path(@indexa_capital_item), alert: t(".creation_failed", error: "Unknown error")
+      redirect_to setup_accounts_indexa_capital_item_path(@indexa_capital_item), alert: t(".creation_failed", error: t("vietnamese_ui.common.unknown_error"))
     end
   end
 

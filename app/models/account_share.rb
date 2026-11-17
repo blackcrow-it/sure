@@ -43,13 +43,13 @@ class AccountShare < ApplicationRecord
 
     def cannot_share_with_owner
       if account && user && account.owner_id == user_id
-        errors.add(:user, "is already the owner of this account")
+        errors.add(:user, I18n.t("vietnamese_ui.validation.account_owner"))
       end
     end
 
     def user_in_same_family
       if account && user && user.family_id != account.family_id
-        errors.add(:user, "must be in the same family")
+        errors.add(:user, I18n.t("vietnamese_ui.validation.same_family"))
       end
     end
 end

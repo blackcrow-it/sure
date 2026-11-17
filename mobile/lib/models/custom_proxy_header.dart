@@ -4,6 +4,7 @@ class CustomProxyHeader {
   static final RegExp _headerValueControlChars = RegExp(r'[\x00-\x1F\x7F]');
   static const Set<String> _reservedNames = {
     'accept',
+    'accept-language',
     'authorization',
     'content-type',
     'x-api-key',

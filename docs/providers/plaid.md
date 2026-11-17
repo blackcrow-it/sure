@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/providers/plaid.md)
+
 > [!WARNING]
 > Plaid integration currently only works for Western users. Plaid Production support is not available to European users.
 
@@ -93,8 +95,8 @@ PLAID_ENV: ${PLAID_ENV}
 ```
 7. In your `.env` file (next to your `docker-compose` file), add these lines:
 ```
-   PLAID_CLIENT_ID: ENTER_CLIENT_ID_FROM_PLAID_HERE  
-   PLAID_SECRET: ENTER_SECRET_KEY_FROM_PLAID_HERE  
+   PLAID_CLIENT_ID: ENTER_CLIENT_ID_FROM_PLAID_HERE
+   PLAID_SECRET: ENTER_SECRET_KEY_FROM_PLAID_HERE
    PLAID_ENV: production  # (use 'production' for Full/Limited Production Access, or 'sandbox' for Sandbox Access)
 ```
 8. Restart Sure.

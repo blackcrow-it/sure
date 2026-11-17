@@ -60,6 +60,8 @@ RSpec.describe 'API V1 Valuations', type: :request do
 
   path '/api/v1/valuations' do
     get 'List valuations' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Valuations'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -108,6 +110,10 @@ RSpec.describe 'API V1 Valuations', type: :request do
     end
 
     post 'Create valuation' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Valuations'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'
@@ -237,6 +243,10 @@ RSpec.describe 'API V1 Valuations', type: :request do
     parameter name: :id, in: :path, type: :string, required: true, description: 'Valuation ID (entry ID)'
 
     get 'Retrieve a valuation' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Valuations'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -259,6 +269,10 @@ RSpec.describe 'API V1 Valuations', type: :request do
     end
 
     patch 'Update a valuation' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Valuations'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'

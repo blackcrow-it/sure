@@ -4,6 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["callbackUrl", "testResult", "samlCallbackUrl"]
 
+  static values = { labels: Object }
+
   connect() {
     // Initialize field visibility on page load
     this.toggleFields()
@@ -75,16 +77,16 @@ export default class extends Controller {
     navigator.clipboard.writeText(callbackUrl).then(() => {
       const button = event.currentTarget
       const originalText = button.innerHTML
-      button.innerHTML = '<svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!'
-      button.classList.add('text-green-600')
+      button.textContent = this.labelsValue.copied
+      button.classList.add('text-success')
 
       setTimeout(() => {
         button.innerHTML = originalText
-        button.classList.remove('text-green-600')
+        button.classList.remove('text-success')
       }, 2000)
     }).catch(err => {
       console.error('Failed to copy:', err)
-      alert('Failed to copy to clipboard')
+      alert(this.labelsValue.copy_failed)
     })
   }
 
@@ -101,7 +103,7 @@ export default class extends Controller {
         : `${issuer}/.well-known/openid-configuration`
 
       // Show loading state
-      issuerInput.classList.add('border-yellow-300')
+      issuerInput.classList.add('border-warning')
       
       const response = await fetch(discoveryUrl, {
         method: 'GET',
@@ -112,17 +114,17 @@ export default class extends Controller {
         const data = await response.json()
         if (data.issuer) {
           if (data.issuer === issuer) {
-            issuerInput.classList.remove('border-yellow-300', 'border-red-300', 'border-amber-300')
-            issuerInput.classList.add('border-green-300')
-            this.showValidationMessage(issuerInput, 'Valid OIDC issuer', 'success')
+            issuerInput.classList.remove('border-warning', 'border-destructive', 'border-warning')
+            issuerInput.classList.add('border-success')
+            this.showValidationMessage(issuerInput, this.labelsValue.valid_issuer, 'success')
           } else {
-            issuerInput.classList.remove('border-yellow-300', 'border-green-300')
-            issuerInput.classList.add('border-amber-300')
+            issuerInput.classList.remove('border-warning', 'border-success')
+            issuerInput.classList.add('border-warning')
 
             const trailingSlashOnly = data.issuer.replace(/\/$/, '') === issuer.replace(/\/$/, '')
             const message = trailingSlashOnly
-              ? `Issuer mismatch: discovery returned ${data.issuer}. This is usually a trailing slash mismatch, so copy the issuer exactly as returned.`
-              : `Issuer mismatch: discovery returned ${data.issuer}. Copy the issuer exactly as returned by the provider.`
+              ? this.labelsValue.issuer_slash.replace("%{issuer}", () => data.issuer)
+              : this.labelsValue.issuer_mismatch.replace("%{issuer}", () => data.issuer)
 
             this.showValidationMessage(issuerInput, message, 'warning')
           }
@@ -134,9 +136,9 @@ export default class extends Controller {
       }
     } catch (error) {
       // CORS errors are expected when validating from browser - show as warning not error
-      issuerInput.classList.remove('border-yellow-300', 'border-green-300')
-      issuerInput.classList.add('border-amber-300')
-      this.showValidationMessage(issuerInput, "Could not validate from browser (CORS). Provider can still be saved.", 'warning')
+      issuerInput.classList.remove('border-warning', 'border-success')
+      issuerInput.classList.add('border-warning')
+      this.showValidationMessage(issuerInput, this.labelsValue.cors, 'warning')
     }
   }
 
@@ -153,16 +155,16 @@ export default class extends Controller {
       // Show success feedback
       const button = event.currentTarget
       const originalText = button.innerHTML
-      button.innerHTML = '<svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!'
-      button.classList.add('text-green-600')
+      button.textContent = this.labelsValue.copied
+      button.classList.add('text-success')
       
       setTimeout(() => {
         button.innerHTML = originalText
-        button.classList.remove('text-green-600')
+        button.classList.remove('text-success')
       }, 2000)
     }).catch(err => {
       console.error('Failed to copy:', err)
-      alert('Failed to copy to clipboard')
+      alert(this.labelsValue.copy_failed)
     })
   }
 
@@ -175,7 +177,7 @@ export default class extends Controller {
 
     // Create new validation message
     const messageEl = document.createElement('p')
-    const colorClass = type === 'success' ? 'text-green-600' : type === 'warning' ? 'text-amber-600' : 'text-red-600'
+    const colorClass = type === 'success' ? 'text-success' : type === 'warning' ? 'text-warning' : 'text-destructive'
     messageEl.className = `validation-message mt-1 text-sm ${colorClass}`
     messageEl.textContent = message
 
@@ -185,7 +187,7 @@ export default class extends Controller {
     if (type !== 'warning') {
       setTimeout(() => {
         messageEl.remove()
-        input.classList.remove('border-green-300', 'border-red-300', 'border-amber-300')
+        input.classList.remove('border-success', 'border-destructive', 'border-warning')
       }, 5000)
     }
   }
@@ -199,7 +201,7 @@ export default class extends Controller {
 
     // Show loading state
     button.disabled = true
-    button.textContent = 'Testing...'
+    button.textContent = this.labelsValue.testing
     resultEl.textContent = ''
     resultEl.className = 'ml-2 text-sm'
 
@@ -216,10 +218,10 @@ export default class extends Controller {
 
       if (data.success) {
         resultEl.textContent = `✓ ${data.message}`
-        resultEl.classList.add('text-green-600')
+        resultEl.classList.add('text-success')
       } else {
         resultEl.textContent = `✗ ${data.message}`
-        resultEl.classList.add('text-red-600')
+        resultEl.classList.add('text-destructive')
       }
 
       // Show details in console for debugging
@@ -227,11 +229,11 @@ export default class extends Controller {
         console.log('SSO Test Connection Details:', data.details)
       }
     } catch (error) {
-      resultEl.textContent = `✗ Request failed: ${error.message}`
-      resultEl.classList.add('text-red-600')
+      resultEl.textContent = `✗ ${this.labelsValue.request_failed.replace("%{error}", () => error.message)}`
+      resultEl.classList.add('text-destructive')
     } finally {
       button.disabled = false
-      button.textContent = 'Test Connection'
+      button.textContent = this.labelsValue.test_connection
     }
   }
 }

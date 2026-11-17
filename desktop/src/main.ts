@@ -1,11 +1,13 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { S } from "./strings";
+import { localizePage, stringsFor } from "./strings";
+import { shellLocale } from "./locale";
 import { serverErrorMessage } from "./status";
 
 interface ServerEntry { url: string; label: string; }
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+let S = stringsFor(navigator.language).connect;
 
 // Navigate to a server's login page exactly once. connect() and the
 // active-server-changed listener(s) can all request navigation for the same
@@ -24,11 +26,6 @@ function goToServer(url: string) {
 
 function fill() {
   ($("logo") as HTMLImageElement).src = new URL("./assets/logomark.svg", import.meta.url).href;
-  $("title").textContent = S.title;
-  $("url-label").textContent = S.serverLabel;
-  ($("server-url") as HTMLInputElement).placeholder = S.urlPlaceholder;
-  $("connect").textContent = S.connect;
-  $("remembered-title").textContent = S.remembered;
 }
 
 function setStatus(msg: string, kind: "info" | "error" = "info") {
@@ -44,7 +41,7 @@ async function connect(rawUrl: string) {
   try {
     base = await invoke<string | null>("check_server", { url: rawUrl });
   } catch (e) {
-    setStatus(serverErrorMessage(e), "error");
+    setStatus(serverErrorMessage(e, S), "error");
     return;
   }
   if (!base) { setStatus(S.unreachable, "error"); return; }
@@ -54,12 +51,18 @@ async function connect(rawUrl: string) {
     await invoke("set_active_server", { url: canonical });
     goToServer(canonical);
   } catch (e) {
-    setStatus(serverErrorMessage(e), "error");
+    setStatus(serverErrorMessage(e, S), "error");
   }
 }
 
 async function renderRemembered() {
-  const servers = await invoke<ServerEntry[]>("list_servers");
+  let servers: ServerEntry[];
+  try {
+    servers = await invoke<ServerEntry[]>("list_servers");
+  } catch {
+    setStatus(S.loadError, "error");
+    return;
+  }
   const section = $("remembered");
   const listEl = $("server-list");
   listEl.innerHTML = "";
@@ -74,10 +77,15 @@ async function renderRemembered() {
     const rm = document.createElement("button");
     rm.className = "server-remove";
     rm.textContent = S.remove;
+    rm.setAttribute("aria-label", `${S.remove}: ${s.label}`);
     rm.addEventListener("click", async (e) => {
       e.stopPropagation();
-      await invoke("remove_server", { url: s.url });
-      renderRemembered();
+      try {
+        await invoke("remove_server", { url: s.url });
+        await renderRemembered();
+      } catch (error) {
+        setStatus(serverErrorMessage(error, S), "error");
+      }
     });
     li.append(open, rm);
     listEl.append(li);
@@ -93,6 +101,10 @@ $("server-form").addEventListener("submit", (e) => {
 // On launch, resume straight to the last server if there is one; otherwise
 // show the picker.
 async function boot() {
+  const locale = await shellLocale();
+  S = stringsFor(locale).connect;
+  localizePage(document, locale, "connect");
+  fill();
   let active: string | null = null;
   try {
     active = await invoke<string | null>("active_server");
@@ -105,7 +117,6 @@ async function boot() {
     goToServer(active);
     return;
   }
-  fill();
   renderRemembered();
 }
 boot();

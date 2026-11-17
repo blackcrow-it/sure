@@ -36,7 +36,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "Internal server error"
+      message: t("vietnamese_ui.api.internal_error")
     }, status: :internal_server_error
   end
 
@@ -48,7 +48,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "Internal server error"
+      message: t("vietnamese_ui.api.internal_error")
     }, status: :internal_server_error
   end
 
@@ -63,7 +63,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
     else
       render json: {
         error: "validation_failed",
-        message: "Recurring transaction could not be created",
+        message: t("vietnamese_ui.api.recurring_create_failed"),
         errors: @recurring_transaction.errors.full_messages
       }, status: :unprocessable_entity
     end
@@ -77,7 +77,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
   rescue ActiveRecord::RecordNotUnique
     render json: {
       error: "conflict",
-      message: "Recurring transaction already exists"
+      message: t("vietnamese_ui.api.recurring_exists")
     }, status: :conflict
   rescue => e
     Rails.logger.error "RecurringTransactionsController#create error: #{e.message}"
@@ -85,7 +85,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "Internal server error"
+      message: t("vietnamese_ui.api.internal_error")
     }, status: :internal_server_error
   end
 
@@ -98,7 +98,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
     else
       render json: {
         error: "validation_failed",
-        message: "Recurring transaction could not be updated",
+        message: t("vietnamese_ui.api.recurring_update_failed"),
         errors: @recurring_transaction.errors.full_messages
       }, status: :unprocessable_entity
     end
@@ -112,7 +112,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
   rescue ActiveRecord::RecordNotUnique
     render json: {
       error: "conflict",
-      message: "Recurring transaction already exists"
+      message: t("vietnamese_ui.api.recurring_exists")
     }, status: :conflict
   rescue => e
     Rails.logger.error "RecurringTransactionsController#update error: #{e.message}"
@@ -120,14 +120,14 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "Internal server error"
+      message: t("vietnamese_ui.api.internal_error")
     }, status: :internal_server_error
   end
 
   def destroy
     @recurring_transaction.destroy!
 
-    render json: { message: "Recurring transaction deleted successfully" }, status: :ok
+    render json: { message: t("vietnamese_ui.api.recurring_deleted") }, status: :ok
   rescue ActiveRecord::RecordNotFound
     raise
   rescue => e
@@ -136,7 +136,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "Internal server error"
+      message: t("vietnamese_ui.api.internal_error")
     }, status: :internal_server_error
   end
 
@@ -244,7 +244,7 @@ class Api::V1::RecurringTransactionsController < Api::V1::BaseController
     def render_invalid_account_filter
       render json: {
         error: "validation_failed",
-        message: "account_id must be a valid UUID"
+        message: t("vietnamese_ui.api.uuid", field: "account_id")
       }, status: :unprocessable_entity
     end
 

@@ -1,0 +1,305 @@
+---
+vi:
+  bills:
+    row_overdue: Quá hạn
+    row_today: Hôm nay
+    detect:
+      found:
+        other: Tìm thấy %{count} hóa đơn tiềm năng. Xem lại bên dưới.
+      none_found: Không tìm thấy mẫu định kỳ mới. Bạn có thể thêm hóa đơn thủ công.
+      already_running: Đang dò tìm. Hãy kiểm tra lại sau giây lát.
+    feed:
+      calendar_name: Hóa đơn Sure
+    ai_prompts:
+      due_before_paycheck: Khoản nào đến hạn trước kỳ lương tiếp theo của tôi?
+      subscriptions_up: Gói đăng ký nào đã tăng giá trong năm nay?
+      monthly_subscriptions: Mỗi tháng tôi đang trả bao nhiêu cho các gói đăng ký?
+      safe_to_spend: Tôi có thể chi tiêu an toàn bao nhiêu trong kỳ này?
+    smart_configurations:
+      show:
+        trigger: Để AI cấu hình
+        title: Đề xuất AI cho %{name}
+        intro: Chọn các thay đổi muốn áp dụng. Những mục không chọn sẽ được giữ nguyên.
+        no_changes: Hóa đơn này đã khớp lịch sử thanh toán. Không cần thay đổi.
+        failed: Hiện không thể phân tích hóa đơn này. Cấu hình được giữ nguyên.
+        field_name: Tên
+        field_amount: Số tiền
+        field_schedule: Lịch
+        field_category: Danh mục
+        field_kind: Loại
+        field_autopay: Thanh toán tự động
+        uncategorized: Chưa phân loại
+        autopay_off: Tắt
+        autopay_on: Bật
+        apply: Áp dụng mục đã chọn
+    detail:
+      current: Hiện tại
+      next_payment: Khoản thanh toán tiếp theo
+      around: khoảng %{date}
+      overview: Tổng quan
+      rules: Cách đối chiếu hóa đơn này
+      rule_named: '%{name}'
+      rule_amount_range: từ %{min} đến %{max}
+      rule_aliases: Cũng khớp với %{names}
+      rule_detected: Khớp với giao dịch có tên %{name}
+      rule_learned_tolerance: Số tiền chênh lệch trong phạm vi %{percent} so với mức thông thường sẽ khớp hóa đơn
+        này
+      history_title: 12 tháng qua
+      history_aria: Các khoản thanh toán trong mười hai tháng qua
+      key_metrics: Mỗi năm
+      year: Năm sản xuất
+      spent_per_year: Đã chi
+      avg_payment: Thanh toán TB
+      average: Số tiền đã trả trung bình
+      range: '%{min} đến %{max}'
+      annualized: Một năm
+      ytd: Đã trả năm nay
+      last_account: Tài khoản sử dụng gần nhất
+      upcoming: Sắp tới
+      manual_payment: Thanh toán thủ công
+      history: Lịch sử
+      payment_count:
+        other: '%{count} khoản thanh toán'
+      notes: Ghi chú
+      trial_chip: Dùng thử kết thúc %{date}
+      renews_chip: Gia hạn %{date}
+      cancelled_chip: Đã hủy %{date}
+      price_changes: Thay đổi giá
+      price_change_line: '%{from} → %{to}'
+    month_pulse:
+      bill_count:
+        other: '%{count} hóa đơn'
+      left_to_pay: còn phải trả
+      pulse_paid: đã trả
+      pulse_overdue: quá hạn
+      pulse_next_seven: 7 ngày tới
+      pulse_until: đến %{date}
+      pulse_bar_aria: Đã thanh toán %{percent}% hóa đơn tháng này
+      next_up: Tiếp theo
+      view_calendar: Xem lịch
+      date_today: Hôm nay
+      date_tomorrow: Ngày mai
+      unconvertible:
+        other: '%{count} hóa đơn chưa được tính vì chưa có tỷ giá'
+    summary:
+      remaining: Còn lại %{amount}
+      paid_headline: Đã trả %{amount}
+    add_bill: Thêm hóa đơn
+    manage: Xem
+    find_payment: Tìm khoản thanh toán
+    add_payment: Thêm khoản thanh toán
+    review_match: Xem lại đối chiếu
+    resolve: Xử lý
+    manage_payments: Quản lý thanh toán
+    match:
+      same_merchant: Cùng đơn vị giao dịch
+      name_matches: Tên khớp
+      same_transfer: Chuyển tới cùng tài khoản
+      exact_amount: Số tiền khớp chính xác
+      amount_off: Chênh %{amount}
+      due_date: Khớp ngày đến hạn
+      days_before:
+        other: '%{count} ngày trước hạn'
+      days_after:
+        other: '%{count} ngày sau hạn'
+    attention:
+      paused: Không hoạt động
+      needs_review: Đối chiếu cần xem lại
+      partial: Một phần
+      amount_changed: Số tiền đã thay đổi
+      overdue:
+        other: Quá hạn %{count} ngày
+    paid_label: Đã thanh toán
+    paid_over_short: Đã trả dư
+    installment_progress: Khoản thanh toán %{done_plus_one} trên %{total}
+    partial_progress: Đã trả %{paid} trên %{expected}
+    cancelled_still_scheduled: Bạn đã đánh dấu hủy vào %{date}, nhưng hóa đơn vẫn được lên lịch nên các kỳ sau vẫn
+      tiếp tục xuất hiện.
+    paid_over: Đã trả %{paid}, nhiều hơn dự kiến
+    remaining_label: còn lại
+    debt_payment: Trả nợ
+    paid_from: từ %{account}
+    amount_range: từ %{min} đến %{max}
+    possible_duplicate: Có thể bị trùng
+    due_label:
+      overdue:
+        other: Quá hạn %{count} ngày, đến hạn %{date}
+      today: Đến hạn hôm nay
+      settled: Đã đến hạn %{date}
+      due_since: Đến hạn %{date}
+      snoozed: Hoãn đến %{date}
+      upcoming:
+        other: Đến hạn sau %{count} ngày, %{date}
+    views:
+      aria_label: Chế độ xem hóa đơn
+      overview: Tổng quan
+      calendar: Lịch
+      paycheck: Kế hoạch thu nhập
+      all: Tất cả hóa đơn
+    pay_period:
+      paycheck_on: Kỳ lương %{date}
+      before_next_paycheck: Trước kỳ lương tiếp theo
+      due_before_date: '%{amount} đến hạn trước %{date}'
+    paycheck:
+      unconvertible:
+        other: '%{count} khoản phải trả chưa được tính vì chưa có tỷ giá'
+      income_section_title: Lịch thu nhập
+      manage: Quản lý
+      add_income: Thêm thu nhập
+      income_paused: Đã tạm dừng, không đưa vào kế hoạch
+      income_detected: Được tự động phát hiện, không xác định ngày nhận lương
+      income_next_payday: tiếp theo %{date}
+      income_source_count:
+        other: '%{count} nguồn thu nhập'
+      next_on: Tiếp theo %{date}
+      no_upcoming_income: Chưa có thu nhập được lên lịch từ thời điểm này.
+      empty:
+        title: Khai báo lịch thu nhập
+        description: Thêm thu nhập để xem mỗi kỳ lương cần trang trải khoản nào. Dòng tiền vào được phát hiện không
+          tự xác định ngày nhận lương; bạn là người đặt lịch.
+        action: Thêm thu nhập
+      all_clear:
+        title: Không có khoản cần trang trải
+        description: Không có hóa đơn đến hạn từ nay đến %{date}, nên không có khoản nào được dành trước trong khoảng
+          đó.
+      safe_after_bills: Có thể chi sau hóa đơn
+      short_after_bills: Thiếu sau hóa đơn
+      period_source: ' · %{source}'
+      period_source_multiple: ' · %{count} nguồn thu nhập'
+      before_next_paycheck: Trước %{date}
+      no_income_arriving: Không có thu nhập về
+      income_amount: Thu nhập %{amount}
+      due_this_period: Đến hạn kỳ này
+      reserved_ahead: Dành trước
+      safe_short: Có thể chi
+      short_short: Thiếu
+      reserved_footer:
+        other: Dành trước cho %{count} hóa đơn sau
+      bills_this_period:
+        other: Hóa đơn kỳ này · %{count}
+      bills_before_payday:
+        other: Hóa đơn trước kỳ lương tiếp theo · %{count}
+      of_total: trong %{amount}
+      bridge_label: Trước kỳ lương tiếp theo
+      bridge_amount: · %{amount} đến hạn
+      bridge_split: Đến hạn trước %{date}, được trang trải bằng %{cash} trong tài khoản.
+      bridge_left: Còn %{amount} sau hóa đơn
+      bridge_show_more:
+        other: Xem thêm %{count}
+      bridge_allocation_aria: Trong %{cash} ở các tài khoản, %{due} đến hạn trước kỳ lương tiếp theo và còn lại
+        %{left}.
+      item_overdue: Quá hạn
+      shortfall_label: Thiếu trước kỳ lương tiếp theo
+      shortfall_amount: · %{amount}
+      shortfall_split: '%{obligations} đến hạn trước %{date} và tài khoản của bạn có %{cash}.'
+      shortfall_largest: 'Khoản phải trả sắp tới lớn nhất:'
+      review_plan: Xem lại kế hoạch
+      allocation_aria: Trong %{income} thu nhập, %{due} đến hạn hiện tại, %{reserved} được dành cho sau này và %{safe}
+        có thể chi tiêu an toàn.
+      allocation_aria_short: '%{income} thu nhập dành cho các khoản đã cam kết tại đây, và cần thêm %{short}.'
+    reset_feed_token:
+      done: Đã đặt lại liên kết lịch. Ứng dụng lịch dùng liên kết cũ sẽ ngừng cập nhật; hãy đăng ký lại bằng liên
+        kết mới.
+      confirm: Đặt lại liên kết nguồn lịch? Mọi liên kết đã chia sẻ trước đây sẽ ngừng hoạt động.
+    calendar:
+      subscribe_ical: Đăng ký (iCal)
+      reset_feed: Đặt lại liên kết
+      previous_month: Tháng trước
+      next_month: Tháng sau
+      today: Hôm nay
+      month_totals: Dự kiến %{expected} · Đã trả %{paid}
+      empty_month: Không có hóa đơn đến hạn tháng này.
+    all:
+      search_placeholder: Tìm hóa đơn
+      current_bills: Hóa đơn hiện tại
+      dismissed_hidden_description: Hóa đơn đã bỏ qua đang được ẩn.
+      status_filters:
+        overdue: Quá hạn
+        due: Sắp đến hạn
+        partial: Đã trả một phần
+        paid: Đã thanh toán
+        paused: Không hoạt động
+        ended: Đã bỏ qua
+      subscription_monthly: Một tháng
+      subscription_annual: Một năm
+      subscription_active: Hoạt động
+      subscription_price_changes: Thay đổi giá năm nay
+      subscription_price_change_line: '%{from} → %{to} (%{percent}%)'
+      any_type: Mọi loại
+      sort_due: Theo hạn tiếp theo
+      sort_name: Theo tên
+      sort_amount: Theo số tiền
+      no_matches_title: Không có kết quả phù hợp
+      no_matches_description: Thử xóa bộ lọc hoặc nội dung tìm kiếm.
+      col_name: Tên
+      col_amount: Số tiền
+      col_next: Hạn tiếp theo
+      col_actions: Hành động
+      monthly_equivalent: '%{amount}/tháng'
+      types:
+        bill: Hóa đơn
+        subscription: Gói đăng ký
+        installment: Kế hoạch trả góp
+        income: Thu nhập
+        transfer: Chuyển khoản
+        other: Khác
+    show:
+      edit: Sửa hóa đơn
+    index:
+      left_to_pay: còn phải trả
+      paid_so_far: Đã trả đến nay
+      hero_past_due: '%{amount} quá hạn'
+      hero_next_seven: '%{amount} đến hạn trong 7 ngày tới'
+      add_bill: Hóa đơn mới
+      add_income: Thu nhập mới
+      review_with_ai: Xem lại với AI
+      detected_review:
+        other: Chúng tôi tìm thấy %{count} khoản thanh toán định kỳ trong giao dịch của bạn. Hãy kiểm tra để tổng
+          ở đây khớp với số tiền thực trả.
+      detected_review_action: Xem lại
+      notices_heading: Thay đổi
+      needs_review: Cần xem lại
+      notice_trial: Dùng thử %{name} kết thúc %{date}
+      notice_renewal: '%{name} gia hạn %{date}'
+      notice_price: '%{name} đổi giá: %{from} → %{to} (%{percent})'
+      notices_routine:
+        other: '%{count} thay đổi nhỏ hơn'
+      suggestion_line: '%{entry} có vẻ là khoản thanh toán cho %{bill}'
+      suggestion_unknown_entry: Một giao dịch
+      confidence: Khớp %{percent}%
+      accept: Áp dụng
+      reject: Không phải hóa đơn này
+      title: Hóa đơn
+      summary_label: Đến hạn tháng này
+      summary_count:
+        other: '%{count} hóa đơn đến hạn'
+      summary_needs_action:
+        other: '%{count} mục cần bạn xử lý'
+      all_automatic: tất cả đều thanh toán tự động
+      recurring_label: Cam kết định kỳ
+      recurring_monthly: '%{amount} mỗi tháng'
+      recurring_annual: '%{amount} mỗi năm'
+      unconvertible:
+        other: '%{count} hóa đơn chưa được tính vì chưa có tỷ giá'
+      overdue: Quá hạn
+      needs_attention: Cần chú ý
+      attention_overdue_total: '%{amount} quá hạn'
+      this_month: Tháng này
+      later: Sau tháng này
+      paid_this_month: Đã trả tháng này
+      dormant: Không hoạt động
+      kpi_remaining: Còn lại tháng này
+      kpi_paid: Đã trả tháng này
+      kpi_next_seven: Đến hạn trong 7 ngày tới
+      kpi_past_due: Quá hạn
+      paid_count:
+        other: '%{count} hóa đơn đã thanh toán'
+      needs_action_count:
+        other: '%{count} mục cần bạn xử lý'
+      empty:
+        title: Chưa có hóa đơn
+        description: Hóa đơn là các khoản chi định kỳ của bạn. Sure tự động tìm từ lịch sử giao dịch, và bạn có
+          thể thêm liên kết thanh toán cho từng hóa đơn để thanh toán ngay tại đây.
+        action: Tìm giao dịch định kỳ
+        no_history_description: Chưa có giao dịch. Kết nối tài khoản hoặc nhập lịch sử để Sure tự tìm hóa đơn, hoặc
+          thêm thủ công.

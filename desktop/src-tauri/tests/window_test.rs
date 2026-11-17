@@ -4,6 +4,7 @@ use sure_desktop_lib::window::{
     RefusedDownloads,
 };
 use url::Url;
+use sure_desktop_lib::localization::Locale;
 
 #[test]
 fn identifies_print_reports_with_filters_and_server_mounts() {
@@ -182,7 +183,7 @@ fn notifies_in_the_page_language_when_the_page_provides_the_text() {
         description: Some("Le fichier se trouve dans votre dossier Téléchargements.".to_string()),
     };
     assert_eq!(
-        download_notification(true, &complete),
+        download_notification(true, &complete, Locale::Vi),
         (
             "Téléchargement terminé".to_string(),
             "Le fichier se trouve dans votre dossier Téléchargements.".to_string()
@@ -195,7 +196,7 @@ fn notifies_in_the_page_language_when_the_page_provides_the_text() {
         description: None,
     };
     assert_eq!(
-        download_notification(false, &failed),
+        download_notification(false, &failed, Locale::Vi),
         (
             "Sure".to_string(),
             "Le téléchargement a échoué. Veuillez réessayer.".to_string()
@@ -207,14 +208,14 @@ fn notifies_in_the_page_language_when_the_page_provides_the_text() {
 fn notifies_in_english_when_the_page_has_no_toast_text() {
     let none = DownloadToast::default();
     assert_eq!(
-        download_notification(true, &none),
+        download_notification(true, &none, Locale::En),
         (
             "Sure".to_string(),
             "Download complete. The file is in your Downloads folder.".to_string()
         )
     );
     assert_eq!(
-        download_notification(false, &none),
+        download_notification(false, &none, Locale::En),
         (
             "Sure".to_string(),
             "Download failed. Please try again.".to_string()
@@ -226,7 +227,19 @@ fn notifies_in_english_when_the_page_has_no_toast_text() {
         description: Some(String::new()),
     };
     assert_eq!(
-        download_notification(true, &empty),
-        download_notification(true, &none)
+        download_notification(true, &empty, Locale::En),
+        download_notification(true, &none, Locale::En)
+    );
+}
+
+#[test]
+fn falls_back_to_desktop_language_when_server_has_no_download_text() {
+    assert_eq!(
+        download_notification(true, &DownloadToast::default(), Locale::Vi),
+        ("Sure".to_string(), "Tải xuống hoàn tất. Tệp nằm trong thư mục Tải xuống của bạn.".to_string())
+    );
+    assert_eq!(
+        download_notification(false, &DownloadToast::default(), Locale::Vi),
+        ("Sure".to_string(), "Tải xuống thất bại. Vui lòng thử lại.".to_string())
     );
 }

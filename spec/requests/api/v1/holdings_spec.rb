@@ -65,6 +65,8 @@ RSpec.describe 'API V1 Holdings', type: :request do
 
   path '/api/v1/holdings' do
     get 'List holdings' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Holdings'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -151,6 +153,10 @@ RSpec.describe 'API V1 Holdings', type: :request do
     parameter name: :id, in: :path, type: :string, required: true, description: 'Holding ID'
 
     get 'Retrieve holding' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Holdings'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

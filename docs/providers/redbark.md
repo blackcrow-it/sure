@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/providers/redbark.md)
+
 # Setting Up Redbark (Australian Banks)
 
 [Redbark](https://redbark.com) connects Australian bank accounts to Sure through the [Consumer Data Right](https://www.cdr.gov.au/) (CDR) open banking framework. Data flows one way, from your banks into Sure, using read-only consented access.

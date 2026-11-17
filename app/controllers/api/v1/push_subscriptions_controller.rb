@@ -14,7 +14,7 @@ class Api::V1::PushSubscriptionsController < Api::V1::BaseController
     render json: { error: "validation_error", message: e.record.errors.full_messages.to_sentence },
            status: :unprocessable_entity
   rescue ActiveRecord::RecordNotUnique
-    render json: { error: "validation_error", message: "Device token is already registered" },
+    render json: { error: "validation_error", message: t("vietnamese_ui.api.device_registered") },
            status: :unprocessable_entity
   end
 
@@ -27,7 +27,7 @@ class Api::V1::PushSubscriptionsController < Api::V1::BaseController
     def require_hosted_push
       return if Apns::Client.hosted?
 
-      render json: { error: "feature_disabled", message: "Push notifications are available only in hosted mode" },
+      render json: { error: "feature_disabled", message: t("vietnamese_ui.api.push_hosted_only") },
              status: :forbidden
     end
 

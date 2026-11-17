@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/instruction-preservation-map.md)
+
 # Instruction consolidation: preservation map
 
 This map was written before the instruction rewrite, against `main` at

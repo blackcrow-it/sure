@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/api/merchants.md)
+
 # Merchants API
 
 The Merchants API allows external applications to retrieve and bulk-import merchants within Sure. Merchants represent payees or vendors associated with transactions.

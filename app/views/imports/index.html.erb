@@ -42,7 +42,7 @@
                   <% if import.account.present? %>
                     <%= import.account.name + " " %>
                   <% end %>
-                  <%= import.type.titleize.gsub(/ Import\z/, "") %>
+                  <%= t("vietnamese_ui.import_types.#{import.type}") %>
                 <% end %>
               </td>
               <td class="px-2 py-3">

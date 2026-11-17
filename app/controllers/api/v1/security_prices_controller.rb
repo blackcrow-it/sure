@@ -42,7 +42,7 @@ class Api::V1::SecurityPricesController < Api::V1::BaseController
 
     render :create
   rescue Security::ManualPriceImport::Invalid => e
-    render_json({ error: "validation_failed", message: "Prices were not imported", errors: e.errors }, status: :unprocessable_entity)
+    render_json({ error: "validation_failed", message: t("vietnamese_ui.api.prices_failed"), errors: e.errors }, status: :unprocessable_entity)
   end
 
   private
@@ -55,7 +55,7 @@ class Api::V1::SecurityPricesController < Api::V1::BaseController
 
       render_json({
         error: "self_hosted_only",
-        message: "Security prices are shared across families, so importing them is only available on self-hosted instances"
+        message: t("vietnamese_ui.api.prices_self_hosted")
       }, status: :forbidden)
     end
 
@@ -88,7 +88,7 @@ class Api::V1::SecurityPricesController < Api::V1::BaseController
     def price_rows
       rows = params[:prices]
       unless rows.is_a?(Array)
-        raise Security::ManualPriceImport::Invalid.new([ { index: nil, message: "prices must be a list" } ])
+        raise Security::ManualPriceImport::Invalid.new([ { index: nil, message: t("vietnamese_ui.api.prices_list") } ])
       end
 
       rows.map { |row| row.is_a?(ActionController::Parameters) ? row.permit(:date, :price, :currency).to_h : row }
@@ -112,7 +112,7 @@ class Api::V1::SecurityPricesController < Api::V1::BaseController
 
     def apply_filters(query)
       if params[:security_id].present?
-        invalid_filter!("security_id must be a valid UUID") unless valid_uuid?(params[:security_id])
+        invalid_filter!(t("vietnamese_ui.api.uuid", field: "security_id")) unless valid_uuid?(params[:security_id])
 
         query = query.where(security_id: params[:security_id])
       end

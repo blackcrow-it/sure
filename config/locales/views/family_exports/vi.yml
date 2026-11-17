@@ -13,13 +13,15 @@ vi:
     new:
       dialog_title: Xuất dữ liệu của bạn
       dialog_subtitle: Tải xuống tất cả dữ liệu tài chính của bạn
-      whats_included: "Bao gồm:"
+      whats_included: 'Bao gồm:'
       accounts_and_balances: Tất cả tài khoản và số dư
       transaction_history: Lịch sử giao dịch
       investment_trades: Giao dịch đầu tư
       categories_tags_rules: Danh mục, nhãn và quy tắc
       note_label: Lưu ý
-      note_description: Bản xuất này bao gồm tất cả dữ liệu của bạn, nhưng chỉ một phần dữ liệu có thể được nhập lại thông qua tính năng nhập CSV. Chúng tôi hỗ trợ nhập tài khoản, giao dịch (với danh mục và nhãn) và giao dịch mua bán. Dữ liệu tài khoản khác không thể nhập và chỉ dùng để lưu trữ hồ sơ của bạn.
+      note_description: Bản xuất này bao gồm tất cả dữ liệu của bạn, nhưng chỉ một phần dữ liệu có thể được nhập
+        lại thông qua tính năng nhập CSV. Chúng tôi hỗ trợ nhập tài khoản, giao dịch (với danh mục và nhãn) và giao
+        dịch mua bán. Dữ liệu tài khoản khác không thể nhập và chỉ dùng để lưu trữ hồ sơ của bạn.
       cancel: Hủy
       export_data: Xuất dữ liệu
     index:
@@ -40,4 +42,11 @@ vi:
         actions:
           delete: Xóa
           download: Tải xuống
+          mark_failed: Đánh dấu thất bại
+          confirm_mark_failed: Bản xuất này không hoạt động một thời gian và tác vụ nền có thể đã bị gián đoạn.
+            Đánh dấu thất bại? Bạn có thể tạo bản xuất mới ngay.
       empty: Chưa có bản xuất nào.
+    cancel:
+      cancelled: Đã đánh dấu bản xuất thất bại. Bạn có thể tạo bản xuất mới ngay.
+      not_cancellable: Hiện chưa thể đánh dấu bản xuất này thất bại vì tác vụ có thể vẫn chạy. Hãy thử lại sau khi
+        tác vụ không hoạt động trong một giờ.

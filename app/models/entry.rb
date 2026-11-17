@@ -826,7 +826,7 @@ class Entry < ApplicationRecord
     def cannot_unexclude_split_parent
       return unless excluded_changed?(from: true, to: false) && split_parent?
 
-      errors.add(:excluded, "cannot be toggled off for a split transaction")
+      errors.add(:excluded, I18n.t("vietnamese_ui.validation.split_exclusion"))
     end
 
     def split_child_date_matches_parent
@@ -834,7 +834,7 @@ class Entry < ApplicationRecord
       return unless parent_entry.present?
       return if date == parent_entry.date
 
-      errors.add(:date, "must match the parent transaction date for split children")
+      errors.add(:date, I18n.t("vietnamese_ui.validation.split_date"))
     end
 
     def prevent_individual_child_deletion

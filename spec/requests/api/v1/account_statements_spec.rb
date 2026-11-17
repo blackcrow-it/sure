@@ -61,6 +61,8 @@ RSpec.describe 'API V1 Account Statements', type: :request do
 
   path '/api/v1/account_statements' do
     get 'List statements in the Statement Vault' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description 'Lists statements the caller can see: unlinked statements and statements linked to accounts shared with them. Requires an admin or member.'
       tags 'Account Statements'
       security [ { apiKeyAuth: [] } ]
@@ -104,6 +106,10 @@ RSpec.describe 'API V1 Account Statements', type: :request do
     end
 
     post 'Upload a statement to the Statement Vault' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description 'Stores a PDF, CSV or XLSX statement (max 25 MB). With account_id the statement is linked to that account ' \
                   '(needs write access to it); without it the vault suggests a match to confirm in the app. ' \
                   'The vault stores each file once: uploading the same file again returns the existing statement with meta.duplicate = true. ' \
@@ -195,6 +201,10 @@ RSpec.describe 'API V1 Account Statements', type: :request do
     parameter name: :id, in: :path, type: :string, format: :uuid, required: true
 
     get 'Show a statement' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Account Statements'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

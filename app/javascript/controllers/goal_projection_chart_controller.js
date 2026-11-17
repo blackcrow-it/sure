@@ -32,10 +32,10 @@ export default class extends Controller {
     data: Object,
     ariaLabel: String,
     ariaDescription: String,
-    todayLabel: { type: String, default: "Today" },
-    projectedTemplate: { type: String, default: "Projected: {amount}" },
-    savedTemplate: { type: String, default: "Saved: {amount}" },
-    targetRelationTemplate: { type: String, default: "{percent}% of {target} target" },
+    todayLabel: String,
+    projectedTemplate: String,
+    savedTemplate: String,
+    targetRelationTemplate: String,
   };
 
   connect() {
@@ -209,7 +209,7 @@ export default class extends Controller {
     // that fights with our own crosshair tooltip. aria-label gives the same
     // SR accessible name without the tooltip side-effect.
     const descId = `chart-desc-${this._id()}`;
-    svg.attr("role", "img").attr("aria-label", this.ariaLabelValue || "Goal projection");
+    svg.attr("role", "img").attr("aria-label", this.ariaLabelValue);
     svg.append("desc").attr("id", descId).text(this.ariaDescriptionValue || "");
     svg.attr("aria-describedby", descId);
 
@@ -439,7 +439,7 @@ export default class extends Controller {
     // Full 4-digit year so the terminal "Jan 2027" reads as the year, not
     // as "Jan 27" (which scans as January 27th). Slightly wider per tick;
     // the de-dupe logic below keeps the count sane.
-    const tickFmt = d3.timeFormat("%b %Y");
+    const tickFmt = new Intl.DateTimeFormat(document.documentElement.lang || "en", { month: "short", year: "numeric" }).format;
     const tickCount = Math.min(5, Math.max(2, Math.round(innerWidth / 80)));
     const ticks = x.ticks(tickCount);
     const tickGroup = svg.append("g");
@@ -547,7 +547,7 @@ export default class extends Controller {
       .style("cursor", "crosshair");
 
     const bisectDate = d3.bisector((d) => d.date).left;
-    const dateFmt = d3.timeFormat("%b %d, %Y");
+    const dateFmt = new Intl.DateTimeFormat(document.documentElement.lang || "en", { month: "short", day: "numeric", year: "numeric" }).format;
     const todayTs = today.getTime();
     const targetTs = target ? target.getTime() : null;
     const MS_PER_WEEK = 7 * 24 * 60 * 60 * 1000;

@@ -5,7 +5,7 @@ import { Controller } from "@hotwired/stimulus";
 // Use data-action="toggle->lazy-load#toggled" on the <details> element
 export default class extends Controller {
   static targets = ["content", "loading", "frame"];
-  static values = { url: String, loaded: Boolean };
+  static values = { url: String, loaded: Boolean, networkError: String, loadFailed: String };
 
   connect() {
     // If already open on connect (rendered open, or browser restored state), load immediately
@@ -46,11 +46,11 @@ export default class extends Controller {
         this.loadedValue = true;
       } else {
         console.error("Lazy load failed:", response.status, response.statusText);
-        this.showError(`Failed to load (${response.status})`);
+        this.showError(this.loadFailedValue.replace("%{status}", response.status));
       }
     } catch (error) {
       console.error("Lazy load error:", error);
-      this.showError("Network error");
+      this.showError(this.networkErrorValue);
     } finally {
       this.loading = false;
     }
@@ -58,7 +58,7 @@ export default class extends Controller {
 
   showError(message) {
     if (this.hasLoadingTarget) {
-      this.loadingTarget.innerHTML = `<p class="text-destructive text-sm">${message}</p>`;
+      this.loadingTarget.textContent = message;
     }
   }
 }

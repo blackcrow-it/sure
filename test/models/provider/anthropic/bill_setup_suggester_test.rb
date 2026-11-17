@@ -45,6 +45,21 @@ class Provider::Anthropic::BillSetupSuggesterTest < ActiveSupport::TestCase
     assert_match(/did not invoke report_bill_setup \(stop_reason: end_turn\)/, err.message)
   end
 
+  test "rationale language follows the user without translating structured fields" do
+    user = users(:family_admin)
+    user.update!(locale: "vi")
+    client = stub_client(build_response(content: [ suggestion_block ]), expect_request: ->(params) {
+      assert_includes params[:messages].first[:content], "Response language: vi"
+      assert_includes params[:messages].first[:content], "Translate only the rationale"
+      assert_equal "report_bill_setup", params[:tools].first[:name]
+    })
+
+    result = Provider::Anthropic::BillSetupSuggester.new(client, model: "claude-haiku-4-5",
+      charges: @charges, categories: @categories, family: user.family, response_locale: user.resolved_locale).suggest
+
+    assert_suggestion result
+  end
+
   private
     def suggester(client, model:)
       Provider::Anthropic::BillSetupSuggester.new(client, model: model, charges: @charges, categories: @categories)

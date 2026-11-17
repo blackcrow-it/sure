@@ -17,7 +17,7 @@
                   </span>
                 </div>
                 <span class="text-sm text-primary group-hover:text-secondary">
-                  <%= t(".resume", type: @pending_import.type.titleize) %>
+                  <%= t(".resume", type: t("vietnamese_ui.import_types.#{@pending_import.type}")) %>
                 </span>
               </div>
               <%= icon("chevron-right") %>
@@ -53,7 +53,7 @@
                       </span>
                     </div>
                     <span class="text-sm text-primary group-hover:text-secondary">
-                      <%= t(".resume", type: @pending_import.type.titleize) %>
+                      <%= t(".resume", type: t("vietnamese_ui.import_types.#{@pending_import.type}")) %>
                     </span>
                   </div>
                   <%= icon("chevron-right") %>
@@ -181,7 +181,7 @@
                       </span>
                     </div>
                     <span class="text-sm text-primary group-hover:text-secondary">
-                      <%= t(".resume", type: @pending_import.type.titleize) %>
+                      <%= t(".resume", type: t("vietnamese_ui.import_types.#{@pending_import.type}")) %>
                     </span>
                   </div>
                   <%= icon("chevron-right") %>

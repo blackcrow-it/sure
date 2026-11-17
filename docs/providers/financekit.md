@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/providers/financekit.md)
+
 # Operating the FinanceKit device publisher
 
 This guide covers Sure's server-side ingestion of FinanceKit uploads. It applies to foreground "Sync now" in alpha builds and to optional background delivery by the iOS client. Both use the same enrollment, upload, receipt, and repair protocol; background delivery is not required to begin alpha testing.

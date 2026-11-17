@@ -36,7 +36,7 @@ class Api::V1::SplitsController < Api::V1::BaseController
   # POST /api/v1/transactions/:transaction_id/split
   def create
     unless @transaction.splittable?
-      return render_unprocessable("Transaction cannot be split", [ not_splittable_reason ])
+      return render_unprocessable(t("vietnamese_ui.api.cannot_split"), [ not_splittable_reason ])
     end
 
     splits = build_splits
@@ -54,7 +54,7 @@ class Api::V1::SplitsController < Api::V1::BaseController
     # (split, excluded, pending, transfer), not the state checked before the lock.
     @entry.reload
     @transaction.reload
-    render_unprocessable("Transaction cannot be split", [ not_splittable_reason ])
+    render_unprocessable(t("vietnamese_ui.api.cannot_split"), [ not_splittable_reason ])
   rescue ActiveRecord::RecordInvalid => e
     render_unprocessable(e.message)
   end
@@ -118,7 +118,7 @@ class Api::V1::SplitsController < Api::V1::BaseController
 
       render json: {
         error: "forbidden",
-        message: "You do not have write access to this account"
+        message: t("vietnamese_ui.api.account_write_forbidden")
       }, status: :forbidden
     end
 
@@ -167,25 +167,25 @@ class Api::V1::SplitsController < Api::V1::BaseController
       raw = raw.values if raw.respond_to?(:values)
 
       unless raw.is_a?(Array) && raw.any?
-        render_unprocessable("splits must be a non-empty array")
+        render_unprocessable(t("vietnamese_ui.api.splits_array"))
         return nil
       end
 
       raw.map do |s|
         unless s.respond_to?(:permit)
-          render_unprocessable("each split must be an object")
+          render_unprocessable(t("vietnamese_ui.api.split_object"))
           return nil
         end
 
         unless s[:tag_ids].nil? || (s[:tag_ids].is_a?(Array) && s[:tag_ids].all?(String))
-          render_unprocessable("tag_ids must be an array of tag ids")
+          render_unprocessable(t("vietnamese_ui.api.tag_ids_array"))
           return nil
         end
         # permit would silently drop a non-scalar id, storing the child without it.
         %i[category_id merchant_id].each do |key|
           next if s[key].nil? || s[key].is_a?(String)
 
-          render_unprocessable("#{key} must be an id")
+          render_unprocessable(t("vietnamese_ui.api.id_required", field: key))
           return nil
         end
 
@@ -195,7 +195,7 @@ class Api::V1::SplitsController < Api::V1::BaseController
         unknown = split_references.unknown(**references)
         if unknown.any?
           kind, id = unknown.first
-          render_unprocessable("Unknown #{kind}: #{id}")
+          render_unprocessable(t("vietnamese_ui.api.unknown_id", kind: kind, id: id))
           return nil
         end
 
@@ -204,7 +204,7 @@ class Api::V1::SplitsController < Api::V1::BaseController
         amount = BigDecimal(s[:amount].to_s)
         amount = amount.round(AMOUNT_SCALE) if amount.finite?
         unless amount.finite? && amount.abs < AMOUNT_LIMIT
-          render_unprocessable("split amount is out of range")
+          render_unprocessable(t("vietnamese_ui.api.split_amount_range"))
           return nil
         end
 
@@ -220,7 +220,7 @@ class Api::V1::SplitsController < Api::V1::BaseController
         }
       end
     rescue ArgumentError, TypeError
-      render_unprocessable("each split requires a numeric amount")
+      render_unprocessable(t("vietnamese_ui.api.split_numeric"))
       nil
     end
 
@@ -232,18 +232,18 @@ class Api::V1::SplitsController < Api::V1::BaseController
     end
 
     def not_splittable_reason
-      return "Transaction is part of a transfer" if @transaction.transfer?
-      return "Transaction is already split" if @entry.split_parent?
-      return "Transaction is pending" if @transaction.pending?
-      return "Transaction is excluded" if @entry.excluded?
+      return t("vietnamese_ui.api.transfer_split") if @transaction.transfer?
+      return t("vietnamese_ui.api.already_split") if @entry.split_parent?
+      return t("vietnamese_ui.api.pending_split") if @transaction.pending?
+      return t("vietnamese_ui.api.excluded_split") if @entry.excluded?
 
-      "Transaction is not splittable"
+      t("vietnamese_ui.api.not_splittable")
     end
 
     def render_not_split
       render json: {
         error: "not_found",
-        message: "Transaction is not split"
+        message: t("vietnamese_ui.api.not_split")
       }, status: :not_found
     end
 

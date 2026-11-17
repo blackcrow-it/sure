@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/preview-feedback.md)
+
 # Preview surveys and event capture
 
 Preview features let users try changes before general release. Surveys collect

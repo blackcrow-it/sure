@@ -55,6 +55,17 @@ class I18nTest < ActiveSupport::TestCase
     end
   end
 
+  def test_vietnamese_locale_files_cover_english_without_fallbacks
+    Dir[Pathname.pwd.join("config/locales/**/*en.yml")].sort.each do |english_path|
+      vietnamese_path = english_path.sub(/en\.yml\z/, "vi.yml")
+      assert File.exist?(vietnamese_path), "Missing #{vietnamese_path}"
+
+      english = YAML.load_file(english_path, aliases: true).fetch("en")
+      vietnamese = YAML.load_file(vietnamese_path, aliases: true).fetch("vi")
+      assert_vietnamese_translation_tree(english, vietnamese, [], vietnamese_path)
+    end
+  end
+
   def test_no_missing_keys
     skip "Skipping missing keys test"
     missing_keys = @i18n.missing_keys(locales: [ :en ])
@@ -214,6 +225,49 @@ class I18nTest < ActiveSupport::TestCase
   end
 
   private
+    def assert_vietnamese_translation_tree(english, vietnamese, path, file)
+      key = path.join(".")
+      context = "#{file}: #{key}"
+
+      case english
+      when Hash
+        assert_kind_of Hash, vietnamese, context
+        # Vietnamese has only the CLDR `other` category. Exercise Rails' count
+        # lookup as well as the raw YAML so English fallbacks cannot hide gaps.
+        if english.key?("other") && (english.keys - %w[zero one two few many other]).empty?
+          assert vietnamese.key?("other"), "#{context} must define other"
+          vietnamese.each do |form, translation|
+            assert_vietnamese_translation_tree(english.fetch("other"), translation, path + [ form ], file)
+          end
+          options = english.fetch("other").scan(/%\{(\w+)\}/).flatten.to_h { |name| [ name.to_sym, "test" ] }
+          [ 0, 1, 2, 5, 1.5 ].each do |count|
+            actual = I18n.t(key, **options, count: count, locale: :vi, fallback: false, raise: true)
+            assert_equal I18n.interpolate(vietnamese.fetch("other"), options.merge(count: count)), actual, context
+          end
+        else
+          english.each do |child, value|
+            assert vietnamese.key?(child), "#{context} is missing #{child}"
+            assert_vietnamese_translation_tree(value, vietnamese.fetch(child), path + [ child.to_s ], file)
+          end
+        end
+      when Array
+        assert_kind_of Array, vietnamese, context
+        assert_equal english.length, vietnamese.length, context
+        english.zip(vietnamese).each_with_index do |(source, translation), index|
+          assert_vietnamese_translation_tree(source, translation, path + [ index.to_s ], file)
+        end
+      when String
+        assert_kind_of String, vietnamese, context
+        assert_equal english.scan(/%?\{\w+\}/).sort, vietnamese.scan(/%?\{\w+\}/).sort,
+                     "#{context} has mismatched placeholders"
+        unless path.any? { |part| part.match?(/\A\d+\z/) }
+          assert I18n.exists?(key, :vi, fallback: false), "#{context} is missing without fallback"
+        end
+      else
+        assert_equal english.class, vietnamese.class, context
+      end
+    end
+
     # { "months_saved.one" => "...", ... } for UI.account.chart.loan in one locale.
     def loan_chart_leaves(locale)
       view_leaves("components", locale, "UI", "account", "chart", "loan")

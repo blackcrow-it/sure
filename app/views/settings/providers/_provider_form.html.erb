@@ -38,7 +38,7 @@
   <% env_configured = configuration.fields.any? { |f| f.env_key && ENV[f.env_key].present? } %>
   <% if env_configured %>
     <p class="text-sm text-secondary">
-      Configuration can be set via environment variables or overridden below.
+      <%= t("vietnamese_ui.common.configuration") %>
     </p>
   <% end %>
 

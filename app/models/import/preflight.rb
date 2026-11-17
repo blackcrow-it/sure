@@ -75,7 +75,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "invalid_import_type",
-          message: "type must be one of: #{IMPORT_TYPES.join(', ')}"
+          message: I18n.t("vietnamese_ui.api.allowed_values", field: "type", values: IMPORT_TYPES.join(", "))
         }
       )
     end
@@ -134,14 +134,14 @@ class Import::Preflight
       if missing_required_headers.any?
         errors << {
           code: "missing_required_headers",
-          message: "Missing required columns: #{missing_required_headers.join(', ')}"
+          message: I18n.t("vietnamese_ui.imports.missing_columns", columns: missing_required_headers.join(", "))
         }
       end
 
       if parsed_rows_count.zero?
         errors << {
           code: "no_data_rows",
-          message: "No data rows were found."
+          message: I18n.t("vietnamese_ui.imports.no_rows")
         }
       end
 
@@ -320,7 +320,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "missing_content",
-          message: "Provide a CSV file or raw_file_content."
+          message: I18n.t("vietnamese_ui.imports.csv_content")
         }
       )
     end
@@ -330,7 +330,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "missing_content",
-          message: "Provide a Sure NDJSON file or raw_file_content."
+          message: I18n.t("vietnamese_ui.api.ndjson_required")
         }
       )
     end
@@ -340,7 +340,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "file_too_large",
-          message: "File is too large. Maximum size is #{Import.max_csv_size / 1.megabyte}MB."
+          message: I18n.t("vietnamese_ui.api.file_size", size: Import.max_csv_size / 1.megabyte)
         }
       )
     end
@@ -350,7 +350,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "content_too_large",
-          message: "Content is too large. Maximum size is #{Import.max_csv_size / 1.megabyte}MB."
+          message: I18n.t("vietnamese_ui.api.content_size", size: Import.max_csv_size / 1.megabyte)
         }
       )
     end
@@ -360,7 +360,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "invalid_file_type",
-          message: "Invalid file type. Please upload a CSV file."
+          message: I18n.t("vietnamese_ui.api.csv_file_type")
         }
       )
     end
@@ -370,7 +370,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "file_too_large",
-          message: "File is too large. Maximum size is #{SureImport.max_ndjson_size / 1.megabyte}MB."
+          message: I18n.t("vietnamese_ui.api.file_size", size: SureImport.max_ndjson_size / 1.megabyte)
         }
       )
     end
@@ -380,7 +380,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "content_too_large",
-          message: "Content is too large. Maximum size is #{SureImport.max_ndjson_size / 1.megabyte}MB."
+          message: I18n.t("vietnamese_ui.api.content_size", size: SureImport.max_ndjson_size / 1.megabyte)
         }
       )
     end
@@ -390,7 +390,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "invalid_file_type",
-          message: "Invalid file type. Please upload a Sure NDJSON file."
+          message: I18n.t("vietnamese_ui.api.ndjson_file_type")
         }
       )
     end
@@ -404,7 +404,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "unsupported_import_type",
-          message: "Preflight supports CSV import types and SureImport."
+          message: I18n.t("vietnamese_ui.imports.preflight_types")
         }
       )
     end

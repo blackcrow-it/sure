@@ -39,7 +39,7 @@ class Transactions::BulkUpdatesController < ApplicationController
         bulk_update_entries(annotate_ids, scoped_params.slice(*AccountShare::ANNOTATE_ENTRY_ATTRIBUTES, *AccountShare::ANNOTATE_TRANSACTION_ATTRIBUTES))
     end
 
-    redirect_back_or_to transactions_path, notice: "#{updated} transactions updated"
+    redirect_back_or_to transactions_path, notice: t("vietnamese_ui.transactions.updated", count: updated)
   rescue ActiveRecord::RecordInvalid => e
     DebugLogEntry.capture(
       category: "reconciliation",

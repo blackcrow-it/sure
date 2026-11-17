@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/ai-pipeline.md)
+
 # AI pipeline
 
 Sure's AI calls go through thin transports over RubyLLM. The design is in the v0.8 AI plumbing

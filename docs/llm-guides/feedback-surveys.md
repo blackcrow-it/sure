@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/feedback-surveys.md)
+
 # Adding feature feedback surveys
 
 See [Preview surveys and event capture](../hosting/preview-feedback.md) for

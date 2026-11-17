@@ -35,16 +35,16 @@ module Api::V1::SecurityResourceFiltering
     def parse_boolean_filter_param(key)
       normalized_value = params[key].to_s.strip.downcase
 
-      invalid_filter!("#{key} must be true or false") if normalized_value.blank?
+      invalid_filter!(t("vietnamese_ui.api.boolean", field: key)) if normalized_value.blank?
       return BOOLEAN_FILTERS.fetch(normalized_value) if BOOLEAN_FILTERS.key?(normalized_value)
 
-      invalid_filter!("#{key} must be true or false")
+      invalid_filter!(t("vietnamese_ui.api.boolean", field: key))
     end
 
     def parse_date_param(key)
       Date.iso8601(params[key].to_s)
     rescue ArgumentError
-      invalid_filter!("#{key} must be an ISO 8601 date")
+      invalid_filter!(t("vietnamese_ui.api.iso_date", field: key))
     end
 
     def invalid_filter!(message)

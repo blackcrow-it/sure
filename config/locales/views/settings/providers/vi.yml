@@ -8,19 +8,21 @@ vi:
       not_authorized: Không được phép
       bank_sync:
         page_title: Đồng bộ ngân hàng
-        lede: Kết nối tài khoản bên ngoài để giao dịch, số dư và danh mục nắm giữ tự động đồng bộ vào Sure.
+        lede: Kết nối tài khoản bên ngoài để giao dịch, số dư và khoản nắm giữ tự động đồng bộ vào Sure.
       status:
         ok: Đã kết nối
         warn: Cần hành động
         err: Lỗi
-        off: Chưa cấu hình
+        false: Chưa cấu hình
+        'off': Chưa cấu hình
       maturity:
         beta: Beta
         alpha: Alpha
-      drawer_trust_statement: "Chỉ đọc. Sure không bao giờ có thể chuyển tiền, và thông tin đăng nhập của bạn được lưu trữ mã hóa."
+      drawer_trust_statement: Chỉ đọc. Sure không bao giờ có thể chuyển tiền, và thông tin đăng nhập của bạn được
+        lưu trữ mã hóa.
       setup_steps:
         eyebrow: Thiết lập
-        need_help: "Cần trợ giúp?"
+        need_help: Cần trợ giúp?
       connect: Kết nối
       groups:
         your_connections: Kết nối của bạn
@@ -35,10 +37,9 @@ vi:
         sync_error: Lỗi đồng bộ
         no_recent_sync: Đồng bộ quá hạn
         reconsent_required: Cần đồng ý lại
-        login_required: "Cần đăng nhập"
-        login_expires_soon: "Phiên đăng nhập hết hạn sau %{time} (%{at})"
+        login_required: Cần đăng nhập
+        login_expires_soon: Phiên đăng nhập hết hạn sau %{time} (%{at})
         reconsent_needed:
-          one: Cần đồng ý lại sau 1 ngày
           other: Cần đồng ý lại sau %{count} ngày
         last_synced: Đồng bộ %{time} trước
       sync_all: Đồng bộ tất cả
@@ -63,6 +64,21 @@ vi:
         sophtron: Kết nối ngân hàng và tiện ích tại Mỹ & Canada.
         plaid: Kết nối hàng ngàn tổ chức tài chính Mỹ qua Plaid.
         plaid_eu: Kết nối tổ chức tài chính châu Âu qua Plaid (PSD2 / Open Banking).
+        financekit: Đồng bộ một số tài khoản FinanceKit qua ứng dụng Sure trên iOS.
+        akahu: Đồng bộ tổ chức tài chính New Zealand qua Akahu.
+        redbark: Đồng bộ tài khoản ngân hàng Úc qua ngân hàng mở Redbark.
+        up: Đồng bộ tài khoản ngân hàng Up tại Úc bằng token truy cập cá nhân.
+        monobank: Đồng bộ thẻ và hũ tiết kiệm Monobank Ukraine bằng token API cá nhân.
+        fio: Đồng bộ tài khoản Fio banka bằng token API chỉ đọc.
+        truelayer: Đồng bộ tài khoản ngân hàng và thẻ tín dụng tại Anh qua ngân hàng mở TrueLayer.
+        wise: Tự động đồng bộ số dư đa tiền tệ và chuyển khoản quốc tế Wise.
+        coinspot: Đồng bộ số dư CoinSpot, giá trị AUD, chuyển khoản, nạp, rút và lịch sử lệnh bằng khóa API chỉ
+          đọc.
+        onchain_wallet: Theo dõi ví tự quản lý Bitcoin, EVM, Solana, Cosmos và Polkadot từ địa chỉ công khai.
+        trading212: Đồng bộ danh mục đầu tư Trading 212 bằng khóa API chỉ đọc.
+        sharesight: Đồng bộ danh mục bạn theo dõi trong Sharesight qua API.
+        trade_republic: Đồng bộ tài khoản đầu tư Trade Republic qua đăng nhập web chỉ đọc an toàn.
+        questrade: Đồng bộ trực tiếp tài khoản đầu tư Questrade qua API Questrade.
       search_filters:
         aria_label: Tìm kiếm nhà cung cấp
         placeholder: Tìm kiếm nhà cung cấp
@@ -75,12 +91,14 @@ vi:
       clear_filter: Xóa bộ lọc
       encryption_error:
         title: Thiếu khóa mã hóa
-        message: "Đồng bộ ngân hàng cần cấu hình mã hóa Active Record. Đặt primary_key, deterministic_key và key_derivation_salt trong thông tin đăng nhập Rails hoặc biến môi trường."
+        message: Đồng bộ ngân hàng cần cấu hình mã hóa Active Record. Đặt primary_key, deterministic_key và key_derivation_salt
+          trong thông tin đăng nhập Rails hoặc biến môi trường.
       provider_form:
-        save_and_connect: "Lưu và kết nối"
+        save_and_connect: Lưu và kết nối
       coinbase_panel:
-        setup_instructions: "Để kết nối Coinbase:"
-        step1_html: Vào <a href="https://portal.cdp.coinbase.com/projects/api-keys" target="_blank" rel="noopener noreferrer" class="text-primary underline">Cài đặt API Coinbase</a>
+        setup_instructions: 'Để kết nối Coinbase:'
+        step1_html: Vào <a href="https://portal.cdp.coinbase.com/projects/api-keys" target="_blank" rel="noopener
+          noreferrer" class="text-primary underline">Cài đặt API Coinbase</a>
         step2: Tạo khóa API mới với quyền chỉ đọc (xem tài khoản, xem giao dịch)
         step3: Sao chép khóa API và bí mật API, dán vào bên dưới
         api_key_label: Khóa API
@@ -91,17 +109,19 @@ vi:
         syncing: Đang đồng bộ...
         sync: Đồng bộ
         disconnect: Ngắt kết nối
-        disconnect_confirm: Bạn có chắc muốn ngắt kết nối Coinbase? Các tài khoản đã đồng bộ sẽ trở thành tài khoản thủ công.
+        disconnect_confirm: Bạn có chắc muốn ngắt kết nối Coinbase? Các tài khoản đã đồng bộ sẽ trở thành tài khoản
+          thủ công.
       binance_panel:
-        setup_instructions: "Để kết nối Binance, tạo khóa API chỉ đọc:"
-        step1_html: 'Vào <a href="https://www.binance.com/en/my/settings/api-management" target="_blank" rel="noopener noreferrer" class="underline">Quản lý API Binance</a>'
-        step2: "Tạo khóa API mới chỉ với quyền Bật Đọc"
-        step3: "Dán Khóa API và Bí mật vào bên dưới"
-        no_withdraw_title: "Chỉ khóa chỉ đọc"
-        no_withdraw_body: "Không bật quyền rút tiền khi tạo khóa API Binance. Sure chỉ cần quyền đọc."
-        ip_hint_title: "Yêu cầu danh sách trắng IP"
-        ip_hint_body: "Thêm IP đầu ra của máy chủ ứng dụng vào danh sách trắng Khóa API Binance:"
-        ip_hint_contact_admin: "Liên hệ quản trị viên để lấy địa chỉ IP đầu ra của máy chủ ứng dụng."
+        setup_instructions: 'Để kết nối Binance, tạo khóa API chỉ đọc:'
+        step1_html: Vào <a href="https://www.binance.com/en/my/settings/api-management" target="_blank" rel="noopener
+          noreferrer" class="underline">Quản lý API Binance</a>
+        step2: Tạo khóa API mới chỉ với quyền Bật Đọc
+        step3: Dán Khóa API và Bí mật vào bên dưới
+        no_withdraw_title: Chỉ khóa chỉ đọc
+        no_withdraw_body: Không bật quyền rút tiền khi tạo khóa API Binance. Sure chỉ cần quyền đọc.
+        ip_hint_title: Yêu cầu danh sách trắng IP
+        ip_hint_body: 'Thêm IP đầu ra của máy chủ ứng dụng vào danh sách trắng Khóa API Binance:'
+        ip_hint_contact_admin: Liên hệ quản trị viên để lấy địa chỉ IP đầu ra của máy chủ ứng dụng.
         api_key_label: Khóa API
         api_key_placeholder: Dán Khóa API Binance
         api_secret_label: Bí mật API
@@ -109,17 +129,19 @@ vi:
         connect_button: Kết nối Binance
         syncing: Đang đồng bộ...
         sync: Đồng bộ
-        historical_import: "Cài đặt nhập dữ liệu lịch sử"
-        sync_start_date_label: "Nhập dữ liệu từ"
-        sync_start_date_help: "Chọn khoảng thời gian lịch sử cần tải."
+        historical_import: Cài đặt nhập dữ liệu lịch sử
+        sync_start_date_label: Nhập dữ liệu từ
+        sync_start_date_help: Chọn khoảng thời gian lịch sử cần tải.
         disconnect: Ngắt kết nối
-        disconnect_confirm: "Bạn có chắc muốn ngắt kết nối Binance?"
+        disconnect_confirm: Bạn có chắc muốn ngắt kết nối Binance?
       kraken_panel:
-        step1_html: 'Vào <a href="https://pro.kraken.com/app/settings/api" target="_blank" rel="noopener noreferrer" class="underline">Cài đặt API Kraken</a>'
-        step2: "Tạo khóa API chỉ với Truy vấn Quỹ và Truy vấn Lệnh & Giao dịch Đã Đóng."
-        step3: "Dán khóa API và khóa riêng vào bên dưới."
-        read_only_title: "Chỉ đồng bộ sàn giao dịch chỉ đọc"
-        read_only_body: "Không cấp quyền giao dịch, hủy, rút tiền, xuất, sổ cái, Earn, đặt cược hoặc chuyển. Sure chỉ nhập số dư, danh mục nắm giữ và giao dịch giao ngay."
+        step1_html: Vào <a href="https://pro.kraken.com/app/settings/api" target="_blank" rel="noopener noreferrer"
+          class="underline">Cài đặt API Kraken</a>
+        step2: Tạo khóa API chỉ với Truy vấn Quỹ và Truy vấn Lệnh & Giao dịch Đã Đóng.
+        step3: Dán khóa API và khóa riêng vào bên dưới.
+        read_only_title: Chỉ đồng bộ sàn giao dịch chỉ đọc
+        read_only_body: Không cấp quyền giao dịch, hủy, rút tiền, xuất, sổ cái, Earn, đặt cược hoặc chuyển. Sure
+          chỉ nhập số dư, khoản nắm giữ và giao dịch giao ngay.
         default_connection_name: Kraken
         add_connection: Thêm kết nối Kraken
         update_connection: Cập nhật kết nối
@@ -135,117 +157,315 @@ vi:
         syncing: Đang đồng bộ...
         sync: Đồng bộ
         disconnect: Ngắt kết nối
-        disconnect_confirm: "Bạn có chắc muốn ngắt kết nối %{name}?"
+        disconnect_confirm: Bạn có chắc muốn ngắt kết nối %{name}?
       enable_banking_panel:
-        callback_url_instruction: "Đối với URL callback, sử dụng %{callback_url}."
+        callback_url_instruction: Đối với URL callback, sử dụng %{callback_url}.
         connection_error: Lỗi kết nối
-        step_1_html: "Vào %{link} và lấy thông tin xác thực nhà phát triển."
-        step_2: "Chọn quốc gia và dán ID ứng dụng + Chứng chỉ khách hàng vào bên dưới."
-        step_3: "Lưu, rồi dùng Thêm kết nối để liên kết ngân hàng."
-        config_locked_title: "Cấu hình đã bị khóa"
-        config_locked_message: "Ngắt kết nối tất cả ngân hàng đã liên kết trước khi thay đổi thông tin xác thực này."
-        application_id_label: "ID ứng dụng"
-        application_id_placeholder_new: "Nhập ID ứng dụng"
-        application_id_placeholder_update: "Nhập ID mới để cập nhật"
-        client_certificate_label: "Chứng chỉ khách hàng (kèm khóa riêng)"
-        keep_client_certificate_hint: "Để trống để giữ chứng chỉ hiện tại"
-        save_and_connect: "Lưu và kết nối"
-        update_connection: "Cập nhật kết nối"
-        connected_bank: "Ngân hàng đã kết nối"
-        session_expires: "Phiên hết hạn: %{date}"
-        unknown: "Không xác định"
-        connection: "Kết nối"
-        session_expired_reconnect: "Phiên hết hạn - kết nối lại"
-        configured: "Đã cấu hình"
-        ready_to_link: "Sẵn sàng liên kết tài khoản"
-        sync: "Đồng bộ"
-        reconnect: "Kết nối lại"
-        connect_bank: "Kết nối ngân hàng"
-        remove: "Xóa"
-        remove_confirm: "Bạn có chắc muốn xóa kết nối này?"
-        add_connection: "Thêm kết nối"
-        syncing: "Đang đồng bộ"
-        select_country: "Chọn quốc gia..."
-        country_label: "Quốc gia"
+        step_1_html: Vào %{link} và lấy thông tin xác thực nhà phát triển.
+        step_2: Chọn quốc gia và dán ID ứng dụng + Chứng chỉ khách hàng vào bên dưới.
+        step_3: Lưu, rồi dùng Thêm kết nối để liên kết ngân hàng.
+        config_locked_title: Cấu hình đã bị khóa
+        config_locked_message: Ngắt kết nối tất cả ngân hàng đã liên kết trước khi thay đổi thông tin xác thực này.
+        application_id_label: ID ứng dụng
+        application_id_placeholder_new: Nhập ID ứng dụng
+        application_id_placeholder_update: Nhập ID mới để cập nhật
+        client_certificate_label: Chứng chỉ khách hàng (kèm khóa riêng)
+        keep_client_certificate_hint: Để trống để giữ chứng chỉ hiện tại
+        save_and_connect: Lưu và kết nối
+        update_connection: Cập nhật kết nối
+        connected_bank: Ngân hàng đã kết nối
+        session_expires: 'Phiên hết hạn: %{date}'
+        unknown: Không xác định
+        connection: Kết nối
+        session_expired_reconnect: Phiên hết hạn - kết nối lại
+        configured: Đã cấu hình
+        ready_to_link: Sẵn sàng liên kết tài khoản
+        sync: Đồng bộ
+        reconnect: Kết nối lại
+        connect_bank: Kết nối ngân hàng
+        remove: Xóa
+        remove_confirm: Bạn có chắc muốn xóa kết nối này?
+        add_connection: Thêm kết nối
+        syncing: Đang đồng bộ
+        select_country: Chọn quốc gia...
+        country_label: Quốc gia
       lunchflow_panel:
-        step_1_html: "Vào %{link} và tạo khóa API."
-        step_2: "Dán khóa vào bên dưới và kết nối."
-        step_3: "Sau đó vào Tài khoản để liên kết các tài khoản đã đồng bộ."
-        api_key_label: "Khóa API"
-        api_key_placeholder_new: "Dán khóa API tại đây"
-        api_key_placeholder_update: "Nhập khóa API mới để cập nhật"
-        base_url_label: "URL cơ sở (Tùy chọn)"
-        base_url_placeholder: "https://lunchflow.app/api/v1 (mặc định)"
-        save_and_connect: "Lưu và kết nối"
-        update_connection: "Cập nhật kết nối"
+        step_1_html: Vào %{link} và tạo khóa API.
+        step_2: Dán khóa vào bên dưới và kết nối.
+        step_3: Sau đó vào Tài khoản để liên kết các tài khoản đã đồng bộ.
+        api_key_label: Khóa API
+        api_key_placeholder_new: Dán khóa API tại đây
+        api_key_placeholder_update: Nhập khóa API mới để cập nhật
+        base_url_label: URL cơ sở (Tùy chọn)
+        base_url_placeholder: https://lunchflow.app/api/v1 (mặc định)
+        save_and_connect: Lưu và kết nối
+        update_connection: Cập nhật kết nối
+        sync_start_date_label: Nhập giao dịch từ
+        sync_start_date_help: Để trống để nhập mọi dữ liệu Lunch Flow có. Lùi ngày sẽ nhập phần thiếu trong lần
+          đồng bộ tiếp theo. Đẩy ngày về sau không ảnh hưởng giao dịch đã nhập.
       simplefin_panel:
-        step_1_html: "Vào %{link} để lấy token thiết lập một lần."
-        step_2: "Dán token vào bên dưới và kết nối."
-        step_3: "Sau đó vào Tài khoản để liên kết các tài khoản đã đồng bộ."
-        setup_token_label: "Token thiết lập"
-        setup_token_placeholder: "Dán token thiết lập SimpleFIN"
-        save_and_connect: "Lưu và kết nối"
+        step_1_html: Vào %{link} để lấy token thiết lập một lần.
+        step_2: Dán token vào bên dưới và kết nối.
+        step_3: Sau đó vào Tài khoản để liên kết các tài khoản đã đồng bộ.
+        setup_token_label: Token thiết lập
+        setup_token_placeholder: Dán token thiết lập SimpleFIN
+        save_and_connect: Lưu và kết nối
       plaid_panel:
-        step_1_html: "Mở %{link} và sao chép ID khách hàng và Khóa bí mật."
-        step_2: "Chọn môi trường. Dùng sandbox để kiểm tra và production cho tài khoản thực."
-        step_3: "Dán thông tin xác thực vào bên dưới và kết nối."
+        step_1_html: Mở %{link} và sao chép ID khách hàng và Khóa bí mật.
+        step_2: Chọn môi trường. Dùng sandbox để kiểm tra và production cho tài khoản thực.
+        step_3: Dán thông tin xác thực vào bên dưới và kết nối.
       plaid_eu_panel:
-        step_1_html: "Mở %{link} và sao chép ID khách hàng EU và Khóa bí mật."
+        step_1_html: Mở %{link} và sao chép ID khách hàng EU và Khóa bí mật.
       not_found: Không tìm thấy nhà cung cấp.
       sync_provider_no_items: Không có kết nối nào để đồng bộ.
       ibkr_panel:
-        add_connection: "Thêm kết nối Interactive Brokers"
-        connection_name_label: "Tên kết nối"
-        connection_name_placeholder: "vd: IBKR Ireland, IBKR Mỹ"
-        disconnect: "Ngắt kết nối"
-        disconnect_confirm_named: "Ngắt kết nối %{name}?"
-        setup_accounts: "Thiết lập tài khoản"
+        add_connection: Thêm kết nối Interactive Brokers
+        connection_name_label: Tên kết nối
+        connection_name_placeholder: 'vd: IBKR Ireland, IBKR Mỹ'
+        disconnect: Ngắt kết nối
+        disconnect_confirm_named: Ngắt kết nối %{name}?
+        setup_accounts: Thiết lập tài khoản
         steps:
-          step_1: 'Trong Client Portal IBKR, điều hướng đến "Hiệu suất & Báo cáo" > "Flex Queries".'
-          step_2: 'Nhấn biểu tượng "+" trong phần "Activity Flex Query" để tạo truy vấn mới.'
-          step_3: 'Đặt tên truy vấn (ví dụ: "Sure Sync"), sau đó xem chi tiết Flex Query bên dưới và bật các phần, trường và tùy chọn cấu hình được liệt kê.'
-          step_4: 'Lưu truy vấn, ghi chú "Query ID", rồi dùng biểu tượng bánh răng trong phần "Flex Web Service Configuration" để tạo Token truy cập.'
-          step_5: "Dán Query ID và Token vào bên dưới, lưu cấu hình, rồi vào Tài khoản để liên kết các tài khoản IBKR đã phát hiện."
+          step_1: Trong Client Portal IBKR, điều hướng đến "Hiệu suất & Báo cáo" > "Flex Queries".
+          step_2: Nhấn biểu tượng "+" trong phần "Activity Flex Query" để tạo truy vấn mới.
+          step_3: 'Đặt tên truy vấn (ví dụ: "Sure Sync"), sau đó xem chi tiết Flex Query bên dưới và bật các phần,
+            trường và tùy chọn cấu hình được liệt kê.'
+          step_4: Lưu truy vấn, ghi chú "Query ID", rồi dùng biểu tượng bánh răng trong phần "Flex Web Service Configuration"
+            để tạo Token truy cập.
+          step_5: Dán Query ID và Token vào bên dưới, lưu cấu hình, rồi vào Tài khoản để liên kết các tài khoản
+            IBKR đã phát hiện.
         flex_query_details:
           eyebrow: Flex Query
           title: Phần, trường và cấu hình
-          summary: Mở rộng để xem các phần, trường và cài đặt chính xác mà IBKR Activity Flex Query của bạn phải bao gồm.
+          summary: Mở rộng để xem các phần, trường và cài đặt chính xác mà IBKR Activity Flex Query của bạn phải
+            bao gồm.
           sections_heading: Bật các phần và trường này
           configuration_heading: Đặt các tùy chọn truy vấn này
         sections:
-          account_information: "Thông tin tài khoản: ID tài khoản, Tiền tệ"
-          cash_report: "Báo cáo tiền mặt:"
-          cash_report_options: "Tùy chọn: Không"
-          cash_report_fields: "Trường: Tiền tệ, Tiền mặt cuối kỳ"
-          cash_transactions: "Giao dịch tiền mặt:"
-          cash_transactions_options: "Tùy chọn: Cổ tức, Nạp/Rút, Payment In Lieu Of Dividends, Withholding Tax, Broker Interest Paid, Broker Interest Received, Bond Interest Paid, Bond Interest Received, Other Fees, Commission Adjustments, Chi tiết"
-          cash_transactions_fields: "Trường: Số tiền, Conid, Tiền tệ, Tỷ giá FX sang Cơ sở, Ngày báo cáo, ID giao dịch, Loại"
-          change_in_position_value_summary: "Tóm tắt thay đổi giá trị vị thế: Tiền tệ, Giá trị cuối kỳ"
-          net_asset_value: "Giá trị tài sản ròng (NAV) theo Cơ sở:"
-          net_asset_value_options: "Tùy chọn: Không"
-          net_asset_value_fields: "Trường: Tiền tệ, Ngày báo cáo, Tổng"
-          open_positions: "Vị thế mở:"
-          open_positions_options: "Tùy chọn: Tóm tắt"
-          open_positions_fields: "Trường: Loại tài sản, Conid, Giá vốn, Tiền tệ, Tỷ giá FX, Giá đánh dấu, Số lượng, Ngày báo cáo, ID chứng khoán, Loại ID, Phía, Ký hiệu"
-          trades: "Giao dịch:"
-          trades_options: "Tùy chọn: Thực hiện"
-          trades_fields: "Trường: Loại tài sản, Mua/Bán, Conid, Tiền tệ, Tỷ giá FX, Hoa hồng IB, Tiền tệ hoa hồng, Số lượng, Ký hiệu, Ngày giao dịch, ID giao dịch, Giá giao dịch, ID giao dịch"
+          account_information: 'Thông tin tài khoản: ID tài khoản, Tiền tệ'
+          cash_report: 'Báo cáo tiền mặt:'
+          cash_report_options: 'Tùy chọn: Không'
+          cash_report_fields: 'Trường: Tiền tệ, Tiền mặt cuối kỳ'
+          cash_transactions: 'Giao dịch tiền mặt:'
+          cash_transactions_options: 'Tùy chọn: Cổ tức, Nạp/Rút, Payment In Lieu Of Dividends, Withholding Tax,
+            Broker Interest Paid, Broker Interest Received, Bond Interest Paid, Bond Interest Received, Other Fees,
+            Commission Adjustments, Chi tiết'
+          cash_transactions_fields: 'Trường: Số tiền, Conid, Tiền tệ, Tỷ giá FX sang Cơ sở, Ngày báo cáo, ID giao
+            dịch, Loại'
+          change_in_position_value_summary: 'Tóm tắt thay đổi giá trị vị thế: Tiền tệ, Giá trị cuối kỳ'
+          net_asset_value: 'Giá trị tài sản ròng (NAV) theo Cơ sở:'
+          net_asset_value_options: 'Tùy chọn: Không'
+          net_asset_value_fields: 'Trường: Tiền tệ, Ngày báo cáo, Tổng'
+          open_positions: 'Vị thế mở:'
+          open_positions_options: 'Tùy chọn: Tóm tắt'
+          open_positions_fields: 'Trường: Loại tài sản, Conid, Giá vốn, Tiền tệ, Tỷ giá FX, Giá đánh dấu, Số lượng,
+            Ngày báo cáo, ID chứng khoán, Loại ID, Phía, Ký hiệu'
+          trades: 'Giao dịch:'
+          trades_options: 'Tùy chọn: Thực hiện'
+          trades_fields: 'Trường: Loại tài sản, Mua/Bán, Conid, Tiền tệ, Tỷ giá FX, Hoa hồng IB, Tiền tệ hoa hồng,
+            Số lượng, Ký hiệu, Ngày giao dịch, ID giao dịch, Giá giao dịch, ID giao dịch'
         configuration:
-          models: "Mô hình: Tùy chọn"
-          format: "Định dạng: XML"
-          period: "Kỳ: 365 ngày lịch gần nhất"
-          date_format: "Định dạng ngày: yyyy-MM-dd"
-          time_format: "Định dạng giờ: HH:mm:ss"
-          date_time_separator: "Dấu phân cách ngày/giờ: ; (chấm phẩy)"
-          profit_and_loss: "Lãi và lỗ: Mặc định"
+          models: 'Mô hình: Tùy chọn'
+          format: 'Định dạng: XML'
+          period: 'Kỳ: 365 ngày lịch gần nhất'
+          date_format: 'Định dạng ngày: yyyy-MM-dd'
+          time_format: 'Định dạng giờ: HH:mm:ss'
+          date_time_separator: 'Dấu phân cách ngày/giờ: ; (chấm phẩy)'
+          profit_and_loss: 'Lãi và lỗ: Mặc định'
           all_other_options: 'Tất cả tùy chọn cấu hình khác: "Không"'
-        report_window_note: "Báo cáo IBKR Flex bị giới hạn trong cửa sổ truy vấn bạn cấu hình trong IBKR. Sure sẽ nhập toàn bộ danh mục nắm giữ hiện tại cộng với tối đa 365 ngày hoạt động gần nhất từ báo cáo này."
+        report_window_note: Báo cáo IBKR Flex bị giới hạn trong cửa sổ truy vấn bạn cấu hình trong IBKR. Sure sẽ
+          nhập toàn bộ khoản nắm giữ hiện tại cộng với tối đa 365 ngày hoạt động gần nhất từ báo cáo này.
         sync: Đồng bộ
         query_id_label: Query ID
         query_id_placeholder_new: Nhập Query ID IBKR Flex của bạn
         query_id_placeholder_existing: Để trống để giữ Query ID hiện tại
-        token_label: Token
+        token_label: Mã thông báo
         token_placeholder_new: Nhập Token dịch vụ web IBKR Flex của bạn
         token_placeholder_existing: Để trống để giữ Token hiện tại
         update_configuration: Cập nhật cấu hình
+        not_configured: Chưa cấu hình.
+      drawer_trust_statement_encryption_unconfigured: Quyền chỉ đọc. Sure không bao giờ có thể chuyển tiền. Cấu
+        hình khóa mã hóa rõ ràng trước khi lưu thông tin xác thực nhà cung cấp trong production.
+      provider_setup_encryption_warning:
+        title: Thiếu khóa mã hóa
+        message: Bản tự lưu trữ này chưa cấu hình khóa mã hóa Active Record rõ ràng. Cấu hình primary_key, deterministic_key
+          và key_derivation_salt trước khi lưu thông tin xác thực nhà cung cấp trong production.
+      financekit:
+        app_store: App Store
+        coming_soon: Sắp ra mắt!
+        description: Quản lý kết nối Apple Wallet trong ứng dụng Sure trên iOS. Dữ liệu Wallet đồng bộ khi ứng dụng
+          mở; chưa hỗ trợ tự đồng bộ nền.
+        summary: Đồng bộ Wallet
+        accounts: Tài khoản đã liên kết
+        linked_accounts:
+          other: '%{count} tài khoản đã liên kết'
+        status:
+          active: Đồng bộ đang hoạt động
+          repair_required: Cần sửa kết nối — mở ứng dụng Sure trên iOS
+        last_accepted_at: Lần cuối Sure chấp nhận
+        last_imported_at: Lần cuối nhập vào hộ gia đình
+        not_yet: Chưa có
+      coinspot_panel:
+        step1_html: Vào <a href="https://www.coinspot.com.au/my/api" target="_blank" rel="noopener noreferrer" class="underline">cài
+          đặt API CoinSpot</a>
+        step2: Tạo khóa API có quyền chỉ đọc số dư và lịch sử.
+        step3: Dán khóa API và khóa bí mật bên dưới.
+        read_only_title: Chỉ đồng bộ sàn giao dịch chỉ đọc
+        read_only_body: Không cấp quyền gửi, rút, giao dịch hoặc chuyển tiền. Sure chỉ nhập số dư, giá trị AUD,
+          chuyển khoản, nạp, rút và lịch sử lệnh đã hoàn tất.
+        default_connection_name: CoinSpot
+        add_connection: Thêm kết nối CoinSpot
+        update_connection: Cập nhật kết nối
+        connection_name_label: Tên kết nối
+        connection_name_placeholder: CoinSpot chính
+        api_key_label: Khóa API
+        api_key_placeholder: Dán khóa API CoinSpot
+        keep_api_key_placeholder: Để trống để giữ khóa API hiện tại
+        api_secret_label: Bí mật API
+        api_secret_placeholder: Dán khóa bí mật API CoinSpot
+        keep_api_secret_placeholder: Để trống để giữ khóa bí mật API hiện có
+        setup_accounts: Thiết lập tài khoản
+        syncing: Đang đồng bộ...
+        sync: Đồng bộ
+        disconnect: Ngắt kết nối
+        disconnect_confirm: Bạn có chắc muốn ngắt kết nối %{name}?
+      onchain_wallet_panel:
+        add_wallet: Thêm ví
+        advanced: Nâng cao
+        disconnect_all: Ngắt kết nối mọi ví
+        disconnect_all_confirm: Thao tác này xóa mọi địa chỉ được theo dõi cùng tài khoản. Tiếp tục?
+        etherscan_api_key_label: Khóa API Etherscan (tùy chọn)
+        etherscan_api_key_placeholder: Dán khóa API Etherscan
+        etherscan_hint: Có thể đọc Ethereum mà không cần khóa. Thêm khóa Etherscan chỉ tăng giới hạn yêu cầu cho
+          Ethereum.
+        keep_etherscan_api_key: Để trống để giữ khóa hiện có
+        manage_wallets: Quản lý ví
+        keyless_body: Sure chỉ đọc dữ liệu công khai trên chuỗi. Không dùng khóa, cụm từ khôi phục hay chữ ký và
+          không thể chi tiền.
+        keyless_title: Chỉ đọc, không cần khóa
+        save: Lưu
+        sync_start_date_hint: Bỏ qua chuyển khoản trước ngày này. Để trống để nhập mọi dữ liệu trình khám phá cung
+          cấp.
+        sync_start_date_label: Bỏ qua chuyển khoản trước
+      akahu_panel:
+        step_1_html: Vào %{link} và tạo ứng dụng cá nhân.
+        step_2: Sao chép token ứng dụng và token người dùng.
+        step_3: Dán token bên dưới, lưu rồi liên kết tài khoản đã đồng bộ.
+      up_panel:
+        step_1_html: Vào %{link} và tạo token truy cập cá nhân.
+        step_2: Sao chép token truy cập cá nhân.
+        step_3: Dán token bên dưới, lưu rồi liên kết tài khoản đã đồng bộ.
+      monobank_panel:
+        step_1_html: Vào %{link}, đăng nhập bằng ứng dụng Monobank và tạo token cá nhân.
+        step_2: Sao chép token; token chỉ hiển thị một lần.
+        step_3: Dán token bên dưới, lưu rồi liên kết thẻ và hũ tiết kiệm muốn theo dõi.
+      fio_panel:
+        step_1_html: Đăng nhập ngân hàng trực tuyến %{link} và mở Settings → API.
+        step_2: Tạo token có quyền chỉ đọc ("Sledování účtu"). Cần xác thực mạnh và có hiệu lực tối đa 180 ngày.
+        step_3: Dán token bên dưới rồi lưu. Mỗi token truy cập một tài khoản, nên thêm kết nối riêng cho từng tài
+          khoản Fio.
+      trade_republic_panel:
+        encryption_warning:
+          title: Chưa cấu hình mã hóa
+          message: Không thể lưu an toàn thông tin xác thực và dữ liệu phiên Trade Republic cho đến khi cấu hình
+            Active Record Encryption.
+        steps:
+          step_1: Nhập số điện thoại và PIN hoặc mật khẩu dùng cho ứng dụng Trade Republic rồi lưu.
+          step_2: Nhập mã từ ứng dụng xác thực khi được yêu cầu.
+          step_3: Phê duyệt đăng nhập trong ứng dụng Trade Republic khi được nhắc.
+        phone_number_label: Số điện thoại
+        phone_number_placeholder_new: +49 170 1234567
+        phone_number_placeholder_existing: Để trống để giữ số điện thoại hiện tại
+        pin_label: PIN hoặc mật khẩu
+        pin_placeholder_new: PIN hoặc mật khẩu Trade Republic của bạn
+        pin_placeholder_existing: Để trống để giữ PIN hoặc mật khẩu hiện tại
+        currency_label: Tiền tệ tài khoản
+        connect: Đăng nhập
+        confirm_login: Kiểm tra đăng nhập
+        complete_login: Tiếp tục
+        authenticator_code_label: Mã xác thực (nếu được yêu cầu)
+        authenticator_code_placeholder: Mã 6 chữ số
+        push_login_notice: Phê duyệt đăng nhập trong ứng dụng Trade Republic ngay. Sure tự kiểm tra trong nền. Bạn
+          cũng có thể tự kiểm tra trạng thái.
+        check_login_status: Kiểm tra trạng thái ngay
+        authenticator_code_notice: Nhập mã từ ứng dụng xác thực.
+        approval_pending: Đã bắt đầu đăng nhập. Phê duyệt trong ứng dụng Trade Republic; Sure đang tự kiểm tra.
+        awaiting_confirmation: Đang chờ phê duyệt trong ứng dụng Trade Republic.
+        awaiting_authenticator_code: Cần mã xác thực.
+        login_expired: Yêu cầu phê duyệt đã hết hạn.
+        restart_login: Bắt đầu đăng nhập lại
+        connection_success:
+          title: Đã kết nối Trade Republic
+          message: Kết nối Trade Republic đã sẵn sàng.
+          description: Sure đang đồng bộ dữ liệu Trade Republic trong nền.
+          close: Xong
+        qr_login: Đăng nhập bằng mã QR
+        qr_cancel: Hủy đăng nhập QR
+        qr_back_to_credentials: Quay lại số điện thoại và PIN hoặc mật khẩu
+        qr_loading: Đang chuẩn bị mã QR…
+        qr_instruction: Quét mã QR bằng camera điện thoại rồi phê duyệt đăng nhập trong ứng dụng Trade Republic.
+        qr_success: Đã phê duyệt đăng nhập. Sure đang làm mới trang nhà cung cấp.
+        qr_error: Không thể bắt đầu đăng nhập QR. Vui lòng thử lại.
+        requires_update: Đăng nhập lại để tiếp tục đồng bộ.
+        session_expires_in: Phiên đăng nhập hết hạn sau %{time} (%{at}).
+        add_account: Thêm kết nối khác
+        save_configuration: Lưu và bắt đầu đăng nhập
+        update_configuration: Cập nhật cấu hình
+        sync: Đồng bộ
+        syncing: Đang đồng bộ...
+        disconnect: Ngắt kết nối Trade Republic
+        disconnect_confirm: Ngắt kết nối Trade Republic? Tài khoản đã đồng bộ sẽ trở thành tài khoản thủ công.
+        disconnect_confirm_with_identifier: Ngắt kết nối Trade Republic có số cuối %{last4}? Tài khoản đã đồng bộ
+          sẽ trở thành tài khoản thủ công.
+        identifier_phone: Điện thoại
+        identifier_account: Tài khoản
+        status_configured_prefix: Đã kết nối. Mở thẻ
+        accounts_tab: Tài khoản
+        setup_accounts: Thiết lập tài khoản
+        accounts_discovered:
+          other: Đã tìm thấy %{count} tài khoản Trade Republic.
+        status_configured_suffix: để quản lý tài khoản đã tìm thấy.
+        not_configured: Chưa cấu hình.
+      sharesight_panel:
+        steps:
+          step_1: Yêu cầu hỗ trợ Sharesight bật quyền API. Tính năng có trong gói trả phí.
+          step_2: Trong cài đặt tài khoản Sharesight, mở trang API và sao chép client ID cùng client secret.
+          step_3: Dán cả hai bên dưới rồi lưu. Sure sẽ tìm danh mục đầu tư để bạn liên kết.
+        client_id_label: Client ID
+        client_id_placeholder_new: Dán client ID Sharesight
+        client_id_placeholder_existing: Để trống để giữ client ID hiện tại
+        client_secret_label: Client secret
+        client_secret_placeholder_new: Dán client secret Sharesight
+        client_secret_placeholder_existing: Để trống để giữ client secret hiện tại
+        save_configuration: Lưu cấu hình
+        update_configuration: Cập nhật cấu hình
+        status_configured_prefix: Đã cấu hình. Mở thẻ
+        accounts_tab: Tài khoản
+        status_configured_suffix: để liên kết danh mục đầu tư.
+      trading212_panel:
+        steps:
+          step_1: Vào Trading 212 → Settings → API (trên web hoặc ứng dụng di động).
+          step_2: Tạo khóa API mới; Trading 212 sẽ hiển thị API ID và Secret Key.
+          step_3: Dán cả hai bên dưới, chọn môi trường và tiền tệ tài khoản rồi lưu.
+        api_key_label: API ID
+        api_key_placeholder_new: Dán API ID Trading 212
+        api_key_placeholder_existing: Để trống để giữ API ID hiện tại
+        api_secret_label: Khóa bí mật
+        api_secret_placeholder_new: Dán Secret Key Trading 212
+        api_secret_placeholder_existing: Để trống để giữ Secret Key hiện tại
+        environment_label: Môi trường
+        environment_live: Tài khoản thật
+        environment_demo: Tài khoản demo
+        currency_label: Tiền tệ tài khoản
+        save_configuration: Lưu cấu hình
+        update_configuration: Cập nhật cấu hình
+        sync: Đồng bộ
+        syncing: Đang đồng bộ...
+        disconnect: Ngắt kết nối tài khoản Trading 212
+        disconnect_confirm: Ngắt kết nối Trading 212?
+        default_account_name: Tài khoản Trading 212
+        add_account: Thêm tài khoản khác
+        status_configured_prefix: Đã cấu hình. Mở thẻ
+        accounts_tab: Tài khoản
+        status_configured_suffix: để quản lý tài khoản đã tìm thấy.
         not_configured: Chưa cấu hình.

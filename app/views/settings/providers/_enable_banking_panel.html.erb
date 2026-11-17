@@ -100,7 +100,7 @@
   <% items = local_assigns[:enable_banking_items] || @enable_banking_items || family.enable_banking_items.where.not(client_certificate: nil) %>
   <% if items&.any? %>
     <%
-      # Find the first item with valid session to use for "Add Connection" button
+      # Find the first item with valid session to use for t("vietnamese_ui.providers.add_connection") button
       item_for_new_connection = items.find(&:session_valid?)
       # Check if any item needs initial connection (configured but no session yet)
       item_needing_connection = items.find { |i| !i.session_valid? && !i.session_expired? }
@@ -126,7 +126,7 @@
               <div>
                 <p class="text-sm font-medium text-primary"><%= item.aspsp_name || t("settings.providers.enable_banking_panel.connected_bank") %></p>
                 <p class="text-xs text-secondary">
-                  <%= t("settings.providers.enable_banking_panel.session_expires", date: item.session_expires_at&.strftime("%b %d, %Y") || t("settings.providers.enable_banking_panel.unknown")) %>
+                  <%= t("settings.providers.enable_banking_panel.session_expires", date: (l(item.session_expires_at, format: t("vietnamese_ui.date_formats.short_with_year")) if item.session_expires_at) || t("settings.providers.enable_banking_panel.unknown")) %>
                 </p>
               </div>
             <% elsif item.session_expired? %>

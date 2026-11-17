@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](vi/docs/clients.md)
+
 # Sure Clients
 
 Sure is centered on a Rails server. Every client connects to that server and

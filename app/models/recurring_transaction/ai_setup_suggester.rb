@@ -46,17 +46,18 @@ class RecurringTransaction
 
     private
       def run(charges:, current_config:)
-        raise Error, "No LLM provider configured" unless llm_provider
-        raise Error, "No charge history to analyze" if charges.empty?
+        raise Error, I18n.t("vietnamese_ui.assistant.no_provider", locale: user.resolved_locale) unless llm_provider
+        raise Error, I18n.t("vietnamese_ui.assistant.no_history", locale: user.resolved_locale) if charges.empty?
 
         result = llm_provider.suggest_bill_setup(
           charges: charges,
           categories: family.categories.pluck(:name),
           current_config: current_config,
-          family: family
+          family: family,
+          response_locale: user.resolved_locale
         )
 
-        raise Error, "Provider failed: #{result.error&.message}" unless result.success?
+        raise Error, I18n.t("vietnamese_ui.assistant.provider_failed", message: result.error&.message, locale: user.resolved_locale) unless result.success?
 
         normalize(result.data)
       end

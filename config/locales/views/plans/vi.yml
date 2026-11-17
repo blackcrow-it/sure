@@ -1,0 +1,34 @@
+---
+vi:
+  plans:
+    show:
+      title: Kế hoạch
+      subtitle: Quyết định tiền của bạn đi đâu — khoản chi tiêu và khoản tiết kiệm.
+    budget_card:
+      title: Tháng này
+      edit_budget: Sửa ngân sách
+      of_total: trên %{total}
+      days_left:
+        other: Còn %{count} ngày
+      percent_used: Đã dùng %{percent}%
+      top_categories: Danh mục hàng đầu
+      view_budget: Xem toàn bộ ngân sách
+      empty_body: Đặt mục tiêu chi tiêu tháng và giới hạn từng danh mục để theo dõi tháng này.
+      set_up: Thiết lập ngân sách tháng này
+    goals_card:
+      title: Mục tiêu của bạn
+      currency_warning:
+        other: '%{count} mục tiêu chưa tính số dư %{currencies} (chưa có tỷ giá).'
+      new_goal: Mục tiêu mới
+      active_count:
+        other: '%{count} đang hoạt động'
+      of_targets: trên %{total} của các mục tiêu
+      behind_count:
+        other: '%{count} chậm tiến độ'
+      pending_count:
+        other: '%{count} cam kết đang chờ'
+      all_on_pace: Mọi mục tiêu đúng tiến độ
+      active_goals: Mục tiêu đang hoạt động
+      pending_marker: đang chờ
+      runway: Còn %{months} tháng · %{pace}/tháng
+      all_goals: Tất cả mục tiêu

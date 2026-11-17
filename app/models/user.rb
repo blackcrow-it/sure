@@ -62,6 +62,12 @@ class User < ApplicationRecord
   normalizes :unconfirmed_email, with: ->(email) { email&.strip&.downcase }
   normalizes :locale, with: ->(locale) { locale.presence }
 
+  # Background deliveries have no request locale to fall back to.
+  def resolved_locale
+    [ locale, family&.locale, I18n.default_locale ].filter_map(&:presence)
+      .map(&:to_sym).find { |candidate| I18n.available_locales.include?(candidate) } || I18n.default_locale
+  end
+
   normalizes :first_name, :last_name, with: ->(value) { value.strip.presence }
 
   enum :role, { guest: "guest", member: "member", admin: "admin", super_admin: "super_admin" }, validate: true
@@ -990,7 +996,7 @@ class User < ApplicationRecord
       return unless profile_image.attached?
 
       unless profile_image.content_type.in?(%w[image/jpeg image/png])
-        errors.add(:profile_image, "must be a JPEG or PNG")
+        errors.add(:profile_image, I18n.t("vietnamese_ui.validation.profile_image"))
         profile_image.purge
       end
     end

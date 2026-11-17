@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/push-notifications.md)
+
 # Hosted iOS push notifications
 
 Native push notifications are supported only in hosted mode, which Rails calls

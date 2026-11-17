@@ -48,6 +48,8 @@ RSpec.describe "Api::V1::Syncs", type: :request do
 
   path "/api/v1/syncs" do
     get "Lists sync history" do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description "List sanitized sync status history for the authenticated user's family, accounts, and provider connections."
       tags "Syncs"
       security [ { apiKeyAuth: [] } ]
@@ -78,6 +80,8 @@ RSpec.describe "Api::V1::Syncs", type: :request do
 
   path "/api/v1/syncs/latest" do
     get "Shows the latest sync" do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description "Return the most recently created sanitized sync status for the authenticated user's family, or data: null when no sync exists."
       tags "Syncs"
       security [ { apiKeyAuth: [] } ]
@@ -108,6 +112,10 @@ RSpec.describe "Api::V1::Syncs", type: :request do
     parameter name: :id, in: :path, type: :string, format: :uuid, required: true
 
     get "Shows a sync" do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description "Return sanitized status metadata for a single family-scoped sync."
       tags "Syncs"
       security [ { apiKeyAuth: [] } ]

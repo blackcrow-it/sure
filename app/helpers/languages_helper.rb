@@ -57,7 +57,7 @@ module LanguagesHelper
     th: "Thai",
     tr: "Turkish",
     uk: "Ukrainian",
-    vi: "Vietnamese",
+    vi: "Tiếng Việt",
     'zh-CN': "简体中文",
     'zh-TW': "繁體中文",
     af: "Afrikaans",

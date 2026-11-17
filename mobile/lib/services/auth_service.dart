@@ -355,9 +355,8 @@ class AuthService {
       final response = await http.get(
         url,
         headers: {
-          ...ApiConfig.customProxyHeaderMap,
+          ...ApiConfig.jsonHeaders(),
           'X-Api-Key': apiKey,
-          'Accept': 'application/json',
         },
       ).timeout(const Duration(seconds: 30));
 

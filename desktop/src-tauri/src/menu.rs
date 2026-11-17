@@ -1,64 +1,80 @@
 use tauri::menu::{AboutMetadata, Menu, MenuItem, PredefinedMenuItem, Submenu};
 use tauri::Manager;
 
-pub fn build(app: &tauri::AppHandle) -> tauri::Result<Menu<tauri::Wry>> {
+pub fn build(
+    app: &tauri::AppHandle,
+    locale: crate::localization::Locale,
+) -> tauri::Result<Menu<tauri::Wry>> {
     let pkg = app.package_info().clone();
+    let text = &crate::localization::strings(locale).menu;
 
-    let prefs = MenuItem::with_id(app, "preferences", "Preferences…", true, Some("Cmd+,"))?;
-    let switch = MenuItem::with_id(app, "switch_server", "Switch Server…", true, Some("Cmd+Shift+O"))?;
+    let prefs = MenuItem::with_id(app, "preferences", &text.preferences, true, Some("Cmd+,"))?;
+    let switch = MenuItem::with_id(
+        app,
+        "switch_server",
+        &text.switch_server,
+        true,
+        Some("Cmd+Shift+O"),
+    )?;
     let app_menu = Submenu::with_items(
         app,
         &pkg.name,
         true,
         &[
-            &PredefinedMenuItem::about(app, Some(&pkg.name), Some(AboutMetadata::default()))?,
+            &PredefinedMenuItem::about(app, Some(&text.about), Some(AboutMetadata::default()))?,
             &PredefinedMenuItem::separator(app)?,
             &prefs,
             &switch,
             &PredefinedMenuItem::separator(app)?,
-            &PredefinedMenuItem::hide(app, None)?,
-            &PredefinedMenuItem::hide_others(app, None)?,
+            &PredefinedMenuItem::hide(app, Some(&text.hide))?,
+            &PredefinedMenuItem::hide_others(app, Some(&text.hide_others))?,
             &PredefinedMenuItem::separator(app)?,
-            &PredefinedMenuItem::quit(app, None)?,
+            &PredefinedMenuItem::quit(app, Some(&text.quit))?,
         ],
     )?;
 
     let file_menu = Submenu::with_items(
         app,
-        "File",
+        &text.file,
         true,
-        &[&PredefinedMenuItem::close_window(app, None)?],
+        &[&PredefinedMenuItem::close_window(
+            app,
+            Some(&text.close_window),
+        )?],
     )?;
 
     let edit_menu = Submenu::with_items(
         app,
-        "Edit",
+        &text.edit,
         true,
         &[
-            &PredefinedMenuItem::undo(app, None)?,
-            &PredefinedMenuItem::redo(app, None)?,
+            &PredefinedMenuItem::undo(app, Some(&text.undo))?,
+            &PredefinedMenuItem::redo(app, Some(&text.redo))?,
             &PredefinedMenuItem::separator(app)?,
-            &PredefinedMenuItem::cut(app, None)?,
-            &PredefinedMenuItem::copy(app, None)?,
-            &PredefinedMenuItem::paste(app, None)?,
-            &PredefinedMenuItem::select_all(app, None)?,
+            &PredefinedMenuItem::cut(app, Some(&text.cut))?,
+            &PredefinedMenuItem::copy(app, Some(&text.copy))?,
+            &PredefinedMenuItem::paste(app, Some(&text.paste))?,
+            &PredefinedMenuItem::select_all(app, Some(&text.select_all))?,
         ],
     )?;
 
-    let reload = MenuItem::with_id(app, "reload", "Reload", true, Some("Cmd+R"))?;
-    let view_menu = Submenu::with_items(app, "View", true, &[&reload])?;
+    let reload = MenuItem::with_id(app, "reload", &text.reload, true, Some("Cmd+R"))?;
+    let view_menu = Submenu::with_items(app, &text.view, true, &[&reload])?;
 
     let window_menu = Submenu::with_items(
         app,
-        "Window",
+        &text.window,
         true,
         &[
-            &PredefinedMenuItem::minimize(app, None)?,
-            &PredefinedMenuItem::maximize(app, None)?,
+            &PredefinedMenuItem::minimize(app, Some(&text.minimize))?,
+            &PredefinedMenuItem::maximize(app, Some(&text.maximize))?,
         ],
     )?;
 
-    Menu::with_items(app, &[&app_menu, &file_menu, &edit_menu, &view_menu, &window_menu])
+    Menu::with_items(
+        app,
+        &[&app_menu, &file_menu, &edit_menu, &view_menu, &window_menu],
+    )
 }
 
 pub fn on_event(app: &tauri::AppHandle, id: &str) {

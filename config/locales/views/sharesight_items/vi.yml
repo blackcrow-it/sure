@@ -1,0 +1,150 @@
+---
+vi:
+  providers:
+    sharesight:
+      name: Sharesight
+      connection_description: Kết nối danh mục đầu tư Sharesight qua API Sharesight
+      institution_name: Sharesight
+  sharesight_accounts:
+    settings_fields:
+      title: Tiền mặt và cổ tức Sharesight
+      description: Chọn nơi giữ tiền mặt và cổ tức của danh mục để Sure không tính hai lần.
+      cash_mode: Tiền mặt
+      cash_modes:
+        broker: Do nhà môi giới giữ
+        settlement: Thanh toán qua tài khoản khác
+        untracked: Không theo dõi (chỉ cổ phiếu)
+      cash_mode_help: Khi tiền ở tài khoản khác hoặc không theo dõi tiền mặt, tài khoản này chỉ hiển thị cổ phiếu.
+        Tiền của mỗi giao dịch được bù bằng chuyển khoản liên kết với tài khoản thanh toán.
+      settlement_account: Tài khoản thanh toán giao dịch
+      settlement_starts_on: Thanh toán tại đó từ
+      settlement_window_days: Số ngày ngân hàng có thể cần để hiển thị
+      settlement_help: Mỗi giao dịch mua, bán và cổ tức trả tại đó được khớp số tiền với giao dịch trong tài khoản
+        rồi liên kết thành chuyển khoản. Tài khoản thủ công được ghi giao dịch tương ứng. Trước ngày bắt đầu, tiền
+        mặt do nhà môi giới giữ.
+      choose_account: Chọn tài khoản
+      no_account: Không có
+      funding_account: Tài khoản cấp vốn
+      funding_match_terms: Nội dung giao dịch cấp vốn
+      funding_match_terms_placeholder: CMC Share Transfer, CMC Markets
+      funding_help: Khoản nạp và rút ở tài khoản cấp vốn có tên hoặc ghi chú chứa bất kỳ nội dung nào trong danh
+        sách phân cách bằng dấu phẩy được phản chiếu tại đây và liên kết thành chuyển khoản.
+      cash_anchor_amount: Tiền mặt tại nhà môi giới
+      cash_anchor_on: true
+      cash_anchor_help: 'Với tiền mặt Sharesight không thấy: số dư ngày đó được cộng dồn qua mọi bút toán tại đây
+        từ đó đến nay. Cập nhật mỗi khi kiểm tra nhà môi giới.'
+      dividend_mode: Cổ tức và phân phối
+      dividend_modes:
+        with_cash: Cùng nơi giữ tiền mặt
+        other_account: Trả vào tài khoản khác
+        skip: Không nhập (kết nối khác đã hiển thị)
+      dividend_mode_help: Khoản đã trả vẫn được tính là thu nhập tại đây, rồi liên kết với khoản nạp vào tài khoản
+        nhận.
+      dividend_account: Trả vào
+      sync_start_date: Nhập hoạt động từ
+      sync_start_date_help: Giao dịch chứng khoán và cổ tức cũ hơn bị bỏ qua; mục đã nhập sẽ bị xóa.
+    errors:
+      settlement_account_missing: Chọn tài khoản thanh toán của danh mục đầu tư.
+      dividend_account_missing: Chọn tài khoản nhận cổ tức.
+      cash_anchor_incomplete: Cung cấp cả tiền mặt tại nhà môi giới và ngày bạn thấy số dư đó.
+      invalid_date:
+        settlement_starts_on: Ngày bắt đầu thanh toán tại đó không hợp lệ.
+        cash_anchor_on: Ngày bạn thấy tiền mặt tại nhà môi giới không hợp lệ.
+        sync_start_date: Ngày bắt đầu nhập hoạt động không hợp lệ.
+      account_not_in_family: '%{name} không phải tài khoản của bạn.'
+      account_is_portfolio: '%{name} là chính tài khoản của danh mục này.'
+    notices:
+      unsettled_debit: Chưa có khoản ghi nợ %{amount} trong %{account} cho %{description} vào %{date}.
+      unsettled_credit: Chưa có khoản ghi có %{amount} trong %{account} cho %{description} vào %{date}.
+      units_drift: '%{account}: Sharesight giữ %{held} %{ticker}, nhưng tổng giao dịch là %{traded}.'
+  sharesight_items:
+    defaults:
+      name: Sharesight
+      portfolio_name: Danh mục Sharesight %{id}
+    sharesight_item:
+      deletion_in_progress: Đang xóa
+      syncing: Đang đồng bộ
+      requires_update: Client API cần chú ý
+      error: Lỗi
+      synced: Đã đồng bộ %{time} trước. %{summary}.
+      never_synced: Chưa bao giờ đồng bộ.
+      setup_accounts: Thiết lập danh mục đầu tư
+      delete: Xóa
+      accounts_need_setup: Danh mục đầu tư cần thiết lập
+      accounts_need_setup_description: Danh mục Sharesight cần liên kết với tài khoản Sure.
+      no_accounts_discovered: Chưa tìm thấy danh mục Sharesight.
+      no_accounts_discovered_description: Chạy đồng bộ sau khi lưu client API để tìm danh mục đầu tư.
+    setup_accounts:
+      page_title: Thiết lập danh mục Sharesight
+      dialog_title: Thiết lập các danh mục Sharesight của bạn
+      subtitle: Liên kết danh mục Sharesight với tài khoản đầu tư.
+      info_box:
+        title: Nhập API Sharesight
+        items:
+          item_1: Khoản nắm giữ hiện tại cùng giá, số lượng và giá trị danh mục
+          item_2: Mua, bán, số dư đầu kỳ, hoàn vốn và cổ tức, gồm cả khoản tái đầu tư
+          item_3: Nạp, rút, lãi và phí từ mọi tài khoản tiền mặt Sharesight
+      status:
+        fetching_accounts: Đang lấy danh mục từ Sharesight...
+        no_accounts_found_title: Không tìm thấy danh mục đầu tư.
+        no_accounts_found_description: Sure không tìm thấy danh mục Sharesight. Kiểm tra client API hợp lệ.
+      available_accounts:
+        title: Danh mục khả dụng
+        account_type_investment: Đầu tư
+        account_summary: '%{account_type} • Số dư: %{balance}'
+        account_id: 'ID danh mục: %{account_id}'
+      link_existing:
+        description: Hoặc liên kết danh mục đã tìm thấy với tài khoản đầu tư thủ công hiện có.
+        manual_account_option: '%{name} (%{balance})'
+        select_prompt: Chọn một tài khoản...
+      linked_accounts:
+        title: Đã liên kết
+        linked_to_html: 'Liên kết với: %{account}'
+      buttons:
+        refresh: Làm mới
+        cancel: Hủy
+        back_to_settings: Quay lại Cài đặt
+        create_selected_accounts: Tạo tài khoản đã chọn
+        link: Liên kết
+        done: Xong
+    sync:
+      status:
+        checking_credentials: Đang kiểm tra thông tin xác thực Sharesight...
+        importing_portfolios: Đang nhập danh mục Sharesight...
+        checking_configuration: Đang kiểm tra cấu hình danh mục...
+        accounts_need_setup:
+          other: '%{count} danh mục Sharesight cần thiết lập...'
+        processing_activity: Đang xử lý khoản nắm giữ và hoạt động...
+        calculating_balances: Đang tính toán số dư...
+    sync_status:
+      no_accounts: Chưa tìm thấy danh mục Sharesight
+      all_linked:
+        other: Đã liên kết %{count} danh mục
+      partial: '%{linked} đã liên kết, %{unlinked} cần thiết lập'
+    select_existing_account:
+      title: Liên kết danh mục Sharesight
+      no_accounts_available: Chưa có danh mục Sharesight chưa liên kết.
+      run_sync_hint: Chạy đồng bộ từ Cài đặt > Nhà cung cấp sau khi lưu client API.
+      wait_for_sync: Đợi đồng bộ tìm danh mục hoàn tất.
+      balance: Số dư
+      link: Liên kết
+      cancel: Hủy
+    create:
+      success: Đã cấu hình Sharesight.
+    update:
+      success: Đã cập nhật cấu hình Sharesight.
+    destroy:
+      success: Đã lên lịch xóa kết nối Sharesight.
+    select_accounts:
+      not_configured: Sharesight chưa được cấu hình.
+    link_existing_account:
+      not_found: Không tìm thấy tài khoản hoặc danh mục Sharesight.
+      only_manual_investment: Chỉ tài khoản đầu tư thủ công mới liên kết được với Sharesight.
+      already_linked: Danh mục Sharesight này đã được liên kết.
+      success: Đã liên kết với danh mục Sharesight.
+      failed: Không thể liên kết danh mục Sharesight.
+    complete_account_setup:
+      success:
+        other: Đã tạo %{count} tài khoản Sharesight.
+      none_selected: Chưa chọn danh mục đầu tư nào.
+      none_created: Không có tài khoản nào được tạo.

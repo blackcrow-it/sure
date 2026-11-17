@@ -27,8 +27,8 @@ class Security::ManualPriceImport
   end
 
   def import!
-    raise Invalid.new([ error(nil, "prices must contain at least one row") ]) if rows.empty?
-    raise Invalid.new([ error(nil, "a request can carry at most #{MAX_ROWS} prices") ]) if rows.size > MAX_ROWS
+    raise Invalid.new([ error(nil, I18n.t("vietnamese_ui.prices.rows_required")) ]) if rows.empty?
+    raise Invalid.new([ error(nil, I18n.t("vietnamese_ui.prices.too_many_rows", count: MAX_ROWS)) ]) if rows.size > MAX_ROWS
 
     parsed, errors = parse_rows
 
@@ -37,8 +37,8 @@ class Security::ManualPriceImport
     # eligibility and currency checks through the upsert, so a resolver that
     # assigns a provider, or another import, cannot slip in between.
     security.with_lock do
-      raise Invalid.new([ error(nil, "prices cannot be imported for a cash position") ]) if security.cash?
-      raise Invalid.new([ error(nil, "prices can only be imported for a security no provider tracks") ]) unless untracked?
+      raise Invalid.new([ error(nil, I18n.t("vietnamese_ui.prices.cash")) ]) if security.cash?
+      raise Invalid.new([ error(nil, I18n.t("vietnamese_ui.prices.tracked")) ]) unless untracked?
       # Every bad row is reported at once: a row that parsed can still carry
       # the wrong currency beside one that did not parse.
       errors = (errors + currency_errors(parsed)).sort_by { |e| e[:index] || -1 }
@@ -68,18 +68,18 @@ class Security::ManualPriceImport
 
       parsed = rows.each_with_index.filter_map do |row, index|
         unless row.is_a?(Hash)
-          errors << error(index, "row must be an object with date, price and currency")
+          errors << error(index, I18n.t("vietnamese_ui.prices.row"))
           next
         end
 
         date, date_error = parse_date(row["date"])
         price, price_error = parse_price(row["price"])
         currency = row["currency"].to_s.strip.upcase
-        currency_error = "currency must be an ISO 4217 code" unless Money::Currency.all.key?(currency.downcase)
+        currency_error = I18n.t("vietnamese_ui.prices.currency") unless Money::Currency.all.key?(currency.downcase)
 
         message = date_error || price_error || currency_error
         if message.nil? && seen_dates.key?(date)
-          message = "date appears more than once in this batch"
+          message = I18n.t("vietnamese_ui.prices.duplicate_date")
         end
 
         if message
@@ -100,22 +100,22 @@ class Security::ManualPriceImport
       raise ArgumentError unless value.to_s.match?(/\A\d{4}-\d{2}-\d{2}\z/)
 
       date = Date.iso8601(value.to_s)
-      return [ nil, "date must not be in the future" ] if date > Date.current
+      return [ nil, I18n.t("vietnamese_ui.prices.future_date") ] if date > Date.current
 
       [ date, nil ]
     rescue ArgumentError
-      [ nil, "date must be an ISO 8601 date" ]
+      [ nil, I18n.t("vietnamese_ui.prices.date") ]
     end
 
     def parse_price(value)
       price = BigDecimal(value.to_s)
-      return [ nil, "price must be greater than 0" ] unless price.positive?
-      return [ nil, "price must have at most 4 decimal places" ] unless price.round(4) == price
-      return [ nil, "price is too large" ] if price >= 10**15
+      return [ nil, I18n.t("vietnamese_ui.prices.positive") ] unless price.positive?
+      return [ nil, I18n.t("vietnamese_ui.prices.precision") ] unless price.round(4) == price
+      return [ nil, I18n.t("vietnamese_ui.prices.too_large") ] if price >= 10**15
 
       [ price, nil ]
     rescue ArgumentError, TypeError
-      [ nil, "price must be a number" ]
+      [ nil, I18n.t("vietnamese_ui.prices.number") ]
     end
 
     def currency_errors(parsed)
@@ -129,7 +129,7 @@ class Security::ManualPriceImport
         if allowed[:currencies].exclude?(row.currency)
           error(row.index, allowed[:message])
         elsif row.currency != batch_currency
-          error(row.index, "every row in one request must use the same currency")
+          error(row.index, I18n.t("vietnamese_ui.prices.same_currency"))
         end
       end
     end
@@ -140,19 +140,19 @@ class Security::ManualPriceImport
     def allowed_currencies
       existing = security.prices.distinct.order(:currency).pluck(:currency)
       if existing.any?
-        noun = existing.one? ? "the currency" : "the currencies"
-        return { currencies: existing, message: "currency must be #{existing.to_sentence(two_words_connector: ' or ', last_word_connector: ' or ')}, #{noun} of this security's prices" }
+        noun = existing.one? ? I18n.t("vietnamese_ui.prices.currency_singular") : I18n.t("vietnamese_ui.prices.currency_plural")
+        return { currencies: existing, message: I18n.t("vietnamese_ui.prices.existing_currency", currencies: existing.to_sentence(two_words_connector: I18n.t("vietnamese_ui.prices.or"), last_word_connector: I18n.t("vietnamese_ui.prices.or")), noun: noun) }
       end
 
       currencies, source = position_currencies
       if currencies.empty?
-        return { error: "no trade or holding of this security records a currency, so none can be chosen for its prices" }
+        return { error: I18n.t("vietnamese_ui.prices.no_currency") }
       end
       if currencies.many?
-        return { error: "this security's #{source} are in more than one currency (#{currencies.join(', ')}); none can be chosen for its prices" }
+        return { error: I18n.t("vietnamese_ui.prices.multiple_currencies", source: I18n.t("vietnamese_ui.prices.#{source}"), currencies: currencies.join(", ")) }
       end
 
-      { currencies: currencies, message: "currency must be #{currencies.first}, the currency of your #{source} in this security" }
+      { currencies: currencies, message: I18n.t("vietnamese_ui.prices.position_currency", currency: currencies.first, source: I18n.t("vietnamese_ui.prices.#{source}")) }
     end
 
     def position_currencies

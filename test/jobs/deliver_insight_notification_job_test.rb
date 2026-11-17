@@ -53,6 +53,7 @@ class DeliverInsightNotificationJobTest < ActiveJob::TestCase
 
   test "localizes notifications using the family locale" do
     @insight.family.update!(locale: "de")
+    @subscription.user.update!(locale: nil)
     response = stub(ok?: true)
     client = mock
     Apns::Client.stubs(:new).returns(client)
@@ -130,4 +131,22 @@ class DeliverInsightNotificationJobTest < ActiveJob::TestCase
       end
     end
   end
+  test "recipient locale takes precedence over family and worker locale" do
+    @subscription.user.update!(locale: "vi")
+    @insight.family.update!(locale: "en")
+    client = mock
+    Apns::Client.stubs(:new).returns(client)
+    client.expects(:deliver).with(
+      token: @subscription.token,
+      title: I18n.t("insights.notification.title", locale: :vi),
+      body: I18n.t("insights.notification.body", locale: :vi),
+      insight_id: @insight.id
+    ).returns(stub(ok?: true))
+
+    I18n.with_locale(:en) do
+      DeliverInsightNotificationJob.perform_now(insight_id: @insight.id, push_subscription_id: @subscription.id)
+      assert_equal :en, I18n.locale
+    end
+  end
+
 end

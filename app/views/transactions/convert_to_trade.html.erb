@@ -12,12 +12,12 @@
   <% end %>
 
   <% dialog.with_body do %>
-    <%= form_with url: create_trade_from_transaction_transaction_path(@transaction), method: :post, class: "space-y-4", data: { controller: "convert-to-trade", turbo_frame: "_top", convert_to_trade_amount_cents_value: (@entry.amount_money.abs.amount * 100).to_i, convert_to_trade_currency_value: @entry.currency } do |f| %>
+    <%= form_with url: create_trade_from_transaction_transaction_path(@transaction), method: :post, class: "space-y-4", data: { controller: "convert-to-trade", convert_to_trade_price_warning_value: t("vietnamese_ui.javascript.price_warning", entered: "%{entered}", ticker: "%{ticker}", market: "%{market}"), turbo_frame: "_top", convert_to_trade_amount_cents_value: (@entry.amount_money.abs.amount * 100).to_i, convert_to_trade_currency_value: @entry.currency } do |f| %>
       <!-- Pre-filled Transaction Info (Read-only) -->
       <div class="space-y-2 p-3 bg-surface-inset rounded-lg border border-primary">
         <div class="text-sm">
           <span class="text-secondary"><%= t(".date_label") %></span>
-          <span class="font-medium text-primary"><%= @entry.date.strftime("%b %d, %Y") %></span>
+          <span class="font-medium text-primary"><%= l(@entry.date, format: t("vietnamese_ui.date_formats.short_with_year")) %></span>
         </div>
         <div class="text-sm">
           <span class="text-secondary"><%= t(".account_label") %></span>

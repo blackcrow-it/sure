@@ -1,0 +1,99 @@
+---
+vi:
+  providers:
+    trading212:
+      name: Trading 212
+      connection_description: Kết nối tài khoản đầu tư Trading 212 qua khóa API
+      institution_name: Trading 212
+  trading212_items:
+    defaults:
+      name: Trading 212
+    trading212_item:
+      deletion_in_progress: Đang xóa
+      environment_label_live: Tài khoản thật
+      environment_label_demo: Tài khoản demo
+      syncing: Đang đồng bộ
+      requires_update: Khóa API cần chú ý
+      error: Lỗi
+      synced: Đã đồng bộ %{time} trước. %{summary}.
+      never_synced: Chưa bao giờ đồng bộ.
+      setup_accounts: Thiết lập tài khoản
+      delete: Xóa
+      accounts_need_setup: Tài khoản cần được thiết lập
+      accounts_need_setup_description: Tài khoản Trading 212 cần liên kết với tài khoản Sure.
+      no_accounts_discovered: Chưa tìm thấy tài khoản Trading 212.
+      no_accounts_discovered_description: Chạy đồng bộ sau khi lưu khóa API để tìm tài khoản.
+    setup_accounts:
+      page_title: Thiết lập tài khoản Trading 212
+      dialog_title: Thiết lập tài khoản Trading 212 của bạn
+      subtitle: Liên kết tài khoản đầu tư Trading 212.
+      info_box:
+        title: Nhập API Trading 212
+        items:
+          item_1: Vị thế hiện tại cùng giá và số lượng
+          item_2: Toàn bộ lịch sử lệnh (mua và bán)
+          item_3: Cổ tức và giao dịch tiền mặt
+      status:
+        fetching_accounts: Đang lấy tài khoản từ Trading 212...
+        no_accounts_found_title: Không tìm thấy tài khoản.
+        no_accounts_found_description: Sure không tìm thấy tài khoản Trading 212. Kiểm tra khóa API hợp lệ.
+      available_accounts:
+        title: Tài khoản khả dụng
+        account_type_investment: Đầu tư
+        account_summary: '%{account_type} • Số dư: %{balance}'
+        account_id: 'Mã tài khoản: %{account_id}'
+      link_existing:
+        description: Hoặc liên kết tài khoản Trading 212 đã tìm thấy với tài khoản đầu tư thủ công hiện có.
+        manual_account_option: '%{name} (%{balance})'
+        select_prompt: Chọn một tài khoản...
+      linked_accounts:
+        title: Đã liên kết
+        linked_to_html: 'Liên kết với: %{account}'
+      buttons:
+        refresh: Làm mới
+        cancel: Hủy
+        back_to_settings: Quay lại Cài đặt
+        create_selected_accounts: Tạo tài khoản đã chọn
+        link: Liên kết
+        done: Xong
+    sync:
+      status:
+        checking_credentials: Đang kiểm tra thông tin xác thực Trading 212...
+        importing_account: Đang nhập tài khoản Trading 212...
+        checking_configuration: Đang kiểm tra cấu hình tài khoản...
+        accounts_need_setup:
+          other: '%{count} tài khoản Trading 212 cần thiết lập...'
+        processing_activity: Đang xử lý vị thế và hoạt động...
+        calculating_balances: Đang tính toán số dư...
+    sync_status:
+      no_accounts: Chưa tìm thấy tài khoản Trading 212
+      all_linked:
+        other: '%{count} tài khoản đã liên kết'
+      partial: '%{linked} đã liên kết, %{unlinked} cần thiết lập'
+    select_existing_account:
+      title: Liên kết tài khoản Trading 212
+      no_accounts_available: Chưa có tài khoản Trading 212 chưa liên kết.
+      run_sync_hint: Chạy đồng bộ từ Cài đặt > Nhà cung cấp sau khi lưu khóa API.
+      wait_for_sync: Chờ quá trình đồng bộ phát hiện tài khoản hoàn tất.
+      balance: Số dư
+      link: Liên kết
+      cancel: Hủy
+    create:
+      success: Đã cấu hình Trading 212.
+    update:
+      success: Đã cập nhật cấu hình Trading 212.
+    destroy:
+      success: Đã lên lịch xóa kết nối Trading 212.
+    select_accounts:
+      not_configured: Trading 212 chưa được cấu hình.
+    link_existing_account:
+      not_found: Không tìm thấy tài khoản hoặc cấu hình Trading 212.
+      only_manual_investment: Chỉ tài khoản đầu tư thủ công mới liên kết được với Trading 212.
+      already_linked: Tài khoản Trading 212 này đã được liên kết.
+      success: Đã liên kết với tài khoản Trading 212.
+      failed: Không thể liên kết tài khoản Trading 212.
+    complete_account_setup:
+      success:
+        other: Đã tạo %{count} tài khoản Trading 212.
+      none_selected: Không có tài khoản nào được chọn.
+      none_created: Không có tài khoản nào được tạo.

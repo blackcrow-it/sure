@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/mcp.md)
+
 # MCP Server for External AI Assistants
 
 Sure includes a Model Context Protocol (MCP) server endpoint that allows external AI assistants like Claude.ai, Claude Desktop, GPT agents, or custom AI clients to query and act on your financial data.

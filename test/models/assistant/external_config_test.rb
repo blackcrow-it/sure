@@ -123,4 +123,49 @@ class Assistant::ExternalConfigTest < ActiveSupport::TestCase
     Setting.external_assistant_agent_id = nil
     Setting.external_assistant_model = nil
   end
+
+  test "external payload includes user response language and preserves conversation messages" do
+    chat = chats(:one)
+    chat.user.update!(locale: "vi")
+    message = UserMessage.create!(chat: chat, content: "Answer this in English", ai_model: "test")
+    client = mock("external client")
+    Assistant::External.stubs(:configured?).returns(true)
+    Assistant::External.stubs(:allowed_user?).returns(true)
+    Assistant::External::Client.stubs(:new).returns(client)
+    client.expects(:chat).with do |arguments|
+      messages = arguments[:messages]
+      user = arguments[:user]
+      messages.first[:role] == "system" &&
+        messages.first[:content].include?("Response language: vi") &&
+        messages.first[:content].include?("unless the user explicitly requests another language") &&
+        messages.last == { role: "user", content: "Answer this in English" } &&
+        user == "sure-family-#{chat.user.family_id}"
+    end.yields("An English answer").returns("test")
+
+    Assistant::External.new(chat).respond_to(message)
+
+    assert_nil chat.reload.error
+    assert_equal "An English answer", chat.messages.ordered.last.content
+  end
+
+  test "external response context falls back to family language" do
+    chat = chats(:one)
+    chat.user.update!(locale: nil)
+    chat.user.family.update!(locale: "vi")
+    message = UserMessage.create!(chat: chat, content: "Hello", ai_model: "test")
+    client = mock
+    Assistant::External.stubs(:configured?).returns(true)
+    Assistant::External.stubs(:allowed_user?).returns(true)
+    Assistant::External::Client.stubs(:new).returns(client)
+    client.expects(:chat).with do |arguments|
+      messages = arguments[:messages]
+      user = arguments[:user]
+      messages.first[:content].include?("Response language: vi")
+    end.yields("Xin chào").returns("test")
+
+    Assistant::External.new(chat).respond_to(message)
+
+    assert_nil chat.reload.error
+    assert_equal "Xin chào", chat.messages.ordered.last.content
+  end
 end

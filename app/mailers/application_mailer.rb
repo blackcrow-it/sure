@@ -5,11 +5,17 @@ class ApplicationMailer < ActionMailer::Base
   )
   layout "mailer"
 
+  around_action :with_recipient_locale
   before_action :assign_branding
 
   helper_method :product_name, :brand_name
 
   private
+    def with_recipient_locale(&action)
+      recipient = params[:user] || params[:super_admin]
+      I18n.with_locale(recipient&.resolved_locale || I18n.default_locale, &action)
+    end
+
     def assign_branding
       @product_name = product_name
       @brand_name = brand_name

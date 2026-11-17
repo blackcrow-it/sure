@@ -99,11 +99,11 @@ class ApiKey < ApplicationRecord
 
     def scopes_not_empty
       if scopes.blank? || (scopes.is_a?(Array) && (scopes.empty? || scopes.all?(&:blank?)))
-        errors.add(:scopes, "must include at least one permission")
+        errors.add(:scopes, I18n.t("vietnamese_ui.validation.permission_required"))
       elsif scopes.is_a?(Array) && scopes.length > 1
-        errors.add(:scopes, "can only have one permission level")
+        errors.add(:scopes, I18n.t("vietnamese_ui.validation.one_permission"))
       elsif scopes.is_a?(Array) && !%w[read read_write].include?(scopes.first)
-        errors.add(:scopes, "must be either 'read' or 'read_write'")
+        errors.add(:scopes, I18n.t("vietnamese_ui.validation.permission_value"))
       end
     end
 

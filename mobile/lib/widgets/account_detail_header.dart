@@ -9,6 +9,7 @@ import '../providers/auth_provider.dart';
 import '../providers/privacy_provider.dart';
 import '../services/account_detail_service.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 import '../utils/money_masker.dart';
 
 class AccountDetailHeader extends StatefulWidget {
@@ -176,7 +177,7 @@ class _AccountDetailHeaderState extends State<AccountDetailHeader> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _account.displayAccountType,
+                        AppLocalizations.of(context).accountType(_account.accountType),
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               color: colorScheme.onSurfaceVariant,
                             ),

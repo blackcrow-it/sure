@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../../docs/vi/charts/sure/CHANGELOG.md)
+
 # Changelog
 
 All notable changes to the Sure Helm chart will be documented in this file.

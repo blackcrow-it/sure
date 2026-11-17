@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 /// Animated 3-dot "Thinking..." indicator shown while the AI generates a response.
 /// Each dot bounces up in sequence, giving the classic chat typing indicator feel.
@@ -38,7 +39,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          'Thinking',
+          AppLocalizations.of(context).chatThinking,
           style: TextStyle(
             color: colorScheme.onSurfaceVariant,
             fontStyle: FontStyle.italic,

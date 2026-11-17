@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "test": "node --test --import ./test/register.mjs test/localization.test.mjs test/ui.test.mjs",
     "tauri": "tauri"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ import '../models/message.dart';
 import '../constants/suggested_questions.dart';
 import '../widgets/typing_indicator.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 
 class _SendMessageIntent extends Intent {
   const _SendMessageIntent();
@@ -163,7 +164,7 @@ class _ChatConversationScreenState extends State<ChatConversationScreen> {
         _messageController.text = content;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(chatProvider.errorMessage ?? l.chatConversationStartFailed),
+            content: Text((chatProvider.errorMessage == null ? null : AppLocalizations.of(context).displayError(chatProvider.errorMessage!)) ?? l.chatConversationStartFailed),
             backgroundColor: Colors.red,
           ),
         );
@@ -321,7 +322,7 @@ class _ChatConversationScreenState extends State<ChatConversationScreen> {
                         style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 8),
                     Text(
-                      chatProvider.errorMessage!,
+                      AppLocalizations.of(context).displayError(chatProvider.errorMessage!),
                       style: TextStyle(color: colorScheme.onSurfaceVariant),
                       textAlign: TextAlign.center,
                     ),

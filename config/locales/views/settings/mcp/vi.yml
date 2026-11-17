@@ -1,0 +1,24 @@
+---
+vi:
+  settings:
+    mcp:
+      show:
+        page_title: Máy chủ MCP
+        connect_title: Kết nối trợ lý AI
+        connect_subtitle: Dán URL này vào Claude.ai (hoặc client tương thích MCP) để kết nối với tài khoản Sure.
+        copy_url: Sao chép
+        copied: Đã sao chép!
+        how_to_connect_title: Cách kết nối Claude
+        step_1: Mở Claude.ai và vào Settings → Customize → Connectors.
+        step_2: Nhấn "Add connector" rồi dán URL máy chủ MCP phía trên.
+        step_3: Nhấn Connect; bạn sẽ được chuyển tới Sure để đăng nhập và cấp quyền.
+        step_4: Sau khi được cấp quyền, Claude có thể đọc tài khoản, giao dịch và dữ liệu số dư.
+        connected_title: Client đã kết nối
+        connected_subtitle: Các ứng dụng này hiện có quyền truy cập dữ liệu Sure. Thu hồi ứng dụng bạn không còn
+          dùng.
+        unknown_client: Client không xác định
+        connected_ago: Kết nối %{time} trước
+        revoke: Thu hồi
+        revoke_confirm: Thu hồi quyền truy cập của client này?
+      revoke:
+        revoked: Đã thu hồi kết nối.

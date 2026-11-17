@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](docs/vi/CONTRIBUTING.md)
+
 # Contributing to Sure
 
 It means so much that you're interested in contributing to Sure! Seriously. Thank you. The entire community benefits from these contributions!

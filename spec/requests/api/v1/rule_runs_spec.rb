@@ -75,6 +75,8 @@ RSpec.describe 'API V1 Rule Runs', type: :request do
 
   path '/api/v1/rule_runs' do
     get 'List rule runs' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description 'List rule run history for the authenticated user family.'
       tags 'Rule Runs'
       security [ { apiKeyAuth: [] } ]
@@ -136,6 +138,10 @@ RSpec.describe 'API V1 Rule Runs', type: :request do
               schema: { type: :string, format: :uuid }
 
     get 'Retrieve a rule run' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description 'Retrieve one rule run from the authenticated user family.'
       tags 'Rule Runs'
       security [ { apiKeyAuth: [] } ]

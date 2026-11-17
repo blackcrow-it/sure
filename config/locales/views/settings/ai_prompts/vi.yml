@@ -10,9 +10,37 @@ vi:
         main_system_prompt:
           title: Câu lệnh hệ thống chính
           subtitle: Hướng dẫn cốt lõi xác định cách trợ lý AI hoạt động trong tất cả cuộc trò chuyện
+          label: Prompt hệ thống cho trò chuyện
         transaction_categorizer:
           title: Phân loại giao dịch
           subtitle: AI tự động phân loại giao dịch dựa trên các danh mục bạn định nghĩa
         merchant_detector:
-          title: Phát hiện nhà cung cấp
-          subtitle: AI xác định và làm phong phú dữ liệu giao dịch với thông tin nhà cung cấp
+          title: Phát hiện đơn vị giao dịch
+          subtitle: AI xác định và làm phong phú dữ liệu giao dịch với thông tin đơn vị giao dịch
+        save: Lưu prompt
+        save_confirm:
+          title: Lưu prompt AI tùy chỉnh?
+          body: Prompt tùy chỉnh thay thế hướng dẫn hệ thống và biện pháp bảo vệ tích hợp (như giới hạn tư vấn tài
+            chính) cho hộ gia đình của bạn.
+          dont_show_again: Không hiện cảnh báo này nữa
+          cancel: Hủy
+          confirm: Xác nhận
+        insight_dig_in:
+          title: Tìm hiểu nhận định
+          subtitle: Tin nhắn đầu tiên khi tìm hiểu nhận định với AI
+          label: Tin nhắn tìm hiểu
+      prompt_field:
+        provider_label: Nhà cung cấp
+        prompt_label: Prompt
+        provider_openai: OpenAI
+        provider_anthropic: Anthropic
+        reset: Đặt lại mặc định
+        reset_confirm_title: Đặt lại prompt mặc định?
+        reset_confirm_body: Thao tác này bỏ prompt tùy chỉnh và khôi phục hướng dẫn mặc định tích hợp.
+        status_custom: Đang dùng prompt tùy chỉnh
+        status_default: Đang dùng mặc định tích hợp
+        format_risk: 'Prompt %{provider} của bạn đã bỏ ví dụ {"%{key}": ...}. Mỗi yêu cầu vẫn đề nghị cấu trúc đó
+          nên thường vẫn phân tích được, nhưng ghi đè yêu cầu định dạng khác sẽ làm hỏng việc phân tích.'
+      update:
+        success: Đã cập nhật prompt AI
+        multiple_errors: Nhiều prompt quá dài (tối đa %{count} ký tự)

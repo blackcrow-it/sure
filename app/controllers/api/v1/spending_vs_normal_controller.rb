@@ -8,7 +8,7 @@ class Api::V1::SpendingVsNormalController < Api::V1::BaseController
     response.headers["Cache-Control"] = "private, no-store"
     period = requested_period
     unless period
-      return render json: { error: "invalid_period", message: "Pass both start_date and end_date as ISO dates in order, or neither for the current month" },
+      return render json: { error: "invalid_period", message: t("vietnamese_ui.api.period_invalid") },
         status: :unprocessable_entity
     end
 

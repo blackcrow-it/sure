@@ -1,4 +1,26 @@
 ---
 vi:
   provider_warnings:
-    limited_investment_data: "Dữ liệu đầu tư từ nhà cung cấp này còn hạn chế. Nhãn hoạt động (Mua, Bán, Cổ tức) không khả dụng, có thể ảnh hưởng đến độ chính xác của ngân sách. Hãy cân nhắc tạo quy tắc để loại trừ hoặc phân loại các giao dịch đầu tư."
+    limited_investment_data: Dữ liệu đầu tư từ nhà cung cấp này còn hạn chế. Nhãn hoạt động (Mua, Bán, Cổ tức) không
+      khả dụng, có thể ảnh hưởng đến độ chính xác của ngân sách. Hãy cân nhắc tạo quy tắc để loại trừ hoặc phân
+      loại các giao dịch đầu tư.
+    enable_banking_history_truncated:
+      other: 'Enable Banking: không thể lấy toàn bộ lịch sử giao dịch của %{count} tài khoản, nên có thể thiếu các
+        giao dịch cũ'
+    lunchflow_accounts_failed:
+      other: 'Nhập Lunchflow: %{count} tài khoản cập nhật thất bại'
+    lunchflow_transactions_failed:
+      other: 'Nhập Lunchflow: không thể lấy giao dịch cho %{count} tài khoản'
+    lunchflow_import_error: 'Nhập Lunchflow: %{error}'
+    truelayer_accounts_failed:
+      other: 'Nhập TrueLayer: %{count} tài khoản cập nhật thất bại'
+    truelayer_transactions_failed:
+      other: 'Nhập TrueLayer: không thể lấy giao dịch cho %{count} tài khoản'
+    truelayer_balances_failed:
+      other: 'Nhập TrueLayer: không thể lấy số dư cho %{count} tài khoản'
+    truelayer_processing_failed:
+      other: 'Nhập TrueLayer: không thể xử lý %{count} tài khoản'
+    truelayer_entries_failed:
+      other: 'Nhập TrueLayer: không thể nhập %{count} giao dịch'
+    truelayer_scheduling_failed:
+      other: 'Nhập TrueLayer: không thể lên lịch cập nhật số dư cho %{count} tài khoản'

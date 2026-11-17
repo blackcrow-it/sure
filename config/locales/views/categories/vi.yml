@@ -15,13 +15,13 @@ vi:
     form:
       placeholder: Tên danh mục
       name_label: Tên
-      unassigned: "(chưa gán)"
-      parent_category_label: "Danh mục cha (tùy chọn)"
+      unassigned: (chưa gán)
+      parent_category_label: Danh mục cha (tùy chọn)
       trigger_label: Chọn màu và biểu tượng
       color: Màu sắc
       icon: Biểu tượng
       auto_adjust: tự động điều chỉnh.
-      poor_contrast: "Độ tương phản kém, chọn màu tối hơn hoặc"
+      poor_contrast: Độ tương phản kém, chọn màu tối hơn hoặc
     destroy_all:
       success: Đã xóa tất cả danh mục
     index:
@@ -32,6 +32,10 @@ vi:
       delete_all: Xóa tất cả
       empty: Không tìm thấy danh mục
       new: Danh mục mới
+      lock_categories: Khóa tạo danh mục
+      locked_message: Tạo danh mục đang khóa. Nhập dữ liệu và đồng bộ ngân hàng vẫn có thể thêm danh mục.
+      merge: Gộp danh mục
+      unlock_categories: Mở khóa tạo danh mục
     new:
       new_category: Danh mục mới
     update:
@@ -40,12 +44,33 @@ vi:
       transfer: Chuyển khoản
       payment: Thanh toán
       trade: Giao dịch chứng khoán
+    locked: Danh mục đang khóa. Mở khóa để thêm danh mục mới.
+    toggle_lock:
+      locked: Đã khóa danh mục
+      unlocked: Đã mở khóa danh mục
+    merge:
+      title: Gộp danh mục
+      description: Chọn danh mục đích và các danh mục cần gộp vào. Giao dịch và dòng ngân sách tương ứng sẽ chuyển
+        sang đích.
+      target_label: Hợp nhất vào (đích)
+      select_target: Chọn danh mục đích...
+      sources_label: Danh mục cần gộp
+      sources_hint: Các danh mục đã chọn sẽ bị xóa sau khi giao dịch và dòng ngân sách chuyển sang đích. Không chọn
+        đích làm nguồn.
+      submit: Hợp nhất đã chọn
+    perform_merge:
+      success:
+        other: Đã gộp %{count} danh mục
+      no_categories_selected: Chưa chọn danh mục để gộp
+      target_not_found: Không tìm thấy danh mục đích
+      invalid_categories: Danh mục đã chọn không hợp lệ
+      target_selected_as_source: Chọn danh mục khác nhau cho đích và nguồn.
   category:
     dropdowns:
       show:
         bootstrap: Tạo danh mục mặc định
         empty: Không tìm thấy danh mục
-        match_transfer: "Khớp chuyển khoản/thanh toán"
-        one_time: "Một lần %{type}"
-        income: "thu nhập"
-        expense: "chi tiêu"
+        match_transfer: Khớp chuyển khoản/thanh toán
+        one_time: Một lần %{type}
+        income: thu nhập
+        expense: chi tiêu

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 import '../models/custom_proxy_header.dart';
 import 'sure_text_field.dart';
 
@@ -113,8 +114,10 @@ class _HeaderRow extends StatelessWidget {
                 controller: draft.name,
                 label: l.proxyHeadersNameLabel,
                 hint: l.proxyHeadersNameHint,
-                validator: (value) =>
-                    CustomProxyHeader.validateName(value ?? ''),
+                validator: (value) {
+                  final error = CustomProxyHeader.validateName(value ?? '');
+                  return error == null ? null : l.displayError(error);
+                },
                 onChanged: (_) => onChanged(),
               ),
               const SizedBox(height: 12),
@@ -122,8 +125,10 @@ class _HeaderRow extends StatelessWidget {
                 controller: draft.value,
                 label: l.proxyHeadersValueLabel,
                 obscureText: true,
-                validator: (value) =>
-                    CustomProxyHeader.validateValue(value ?? ''),
+                validator: (value) {
+                  final error = CustomProxyHeader.validateValue(value ?? '');
+                  return error == null ? null : l.displayError(error);
+                },
                 onChanged: (_) => onChanged(),
               ),
             ],

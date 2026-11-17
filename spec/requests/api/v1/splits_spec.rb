@@ -75,6 +75,10 @@ RSpec.describe 'API V1 Transaction Split', type: :request do
               description: 'Transaction ID. A split child resolves to its parent.'
 
     post 'Split a transaction' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       description 'Splits a transaction into child transactions. The child amounts must sum ' \
@@ -98,6 +102,10 @@ RSpec.describe 'API V1 Transaction Split', type: :request do
     end
 
     get 'Retrieve a transaction split' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       description 'Returns the child transactions of a split.'
@@ -115,6 +123,10 @@ RSpec.describe 'API V1 Transaction Split', type: :request do
     end
 
     patch 'Replace a transaction split' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       description 'Replaces the children of an existing split. The previous children are ' \
@@ -135,6 +147,10 @@ RSpec.describe 'API V1 Transaction Split', type: :request do
     end
 
     delete 'Remove a transaction split' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Transactions'
       security [ { apiKeyAuth: [] } ]
       description 'Removes the children and restores the parent transaction.'

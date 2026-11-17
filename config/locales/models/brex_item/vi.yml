@@ -5,7 +5,7 @@ vi:
       brex_item:
         base_url: URL cơ sở
         name: Tên kết nối
-        token: Token
+        token: Mã thông báo
     errors:
       models:
         brex_item:

@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/providers/logos.md)
+
 # Account, Merchant and Security Logos
 
 Sure supports custom account icons and integrates with the [Brandfetch Logo Link](https://brandfetch.com/developers/logo-api) service to provide logos for accounts, merchants and securities.

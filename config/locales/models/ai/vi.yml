@@ -1,0 +1,36 @@
+---
+vi:
+  ai:
+    availability:
+      capability_missing:
+        admin: '%{feature} không khả dụng: không có mô hình AI nào đã cấu hình thực hiện được tính năng này. Kiểm
+          tra các mô hình trong Cài đặt → Tự lưu trữ.'
+        member: '%{feature} không khả dụng: không có mô hình AI nào đã cấu hình thực hiện được tính năng này.'
+      not_configured:
+        admin: '%{feature} không khả dụng: chưa thiết lập mô hình AI cho tính năng này. Thêm mô hình trong Cài đặt
+          → Tự lưu trữ.'
+        member: '%{feature} không khả dụng: AI chưa được thiết lập cho tính năng này trên hệ thống.'
+      user_disabled:
+        member: '%{feature} cần bật AI. Bạn có thể bật AI từ trợ lý AI.'
+    consent_rows:
+      bill_setup: Hóa đơn
+      categorize: Danh mục
+      chat: Trò chuyện
+      detect_merchants: Đơn vị giao dịch
+      embed: Tài liệu
+      extract_pdf: Nhập PDF
+    sends:
+      bill_configuration: Cài đặt hiện tại của hóa đơn
+      category_names: Tên danh mục của bạn
+      chat_messages: Tin nhắn trò chuyện của bạn
+      depends_on_vector_store: Tài liệu bạn tải lên, dưới dạng tệp đầy đủ gửi tới kho vector hoặc các đoạn văn bản
+        gửi tới mô hình embedding
+      looked_up_financial_data: Dữ liệu tài chính mà trợ lý tra cứu để trả lời
+      merchant_names: Tên đơn vị giao dịch
+      provider_category_hints: Danh mục do ngân hàng của bạn đề xuất
+      search_query: Nội dung tìm kiếm của bạn
+      stored_document_text: Văn bản trong các sao kê được lưu trong kho của bạn
+      transaction_amounts: Số tiền giao dịch
+      transaction_dates: Ngày giao dịch
+      transaction_names: Tên giao dịch
+      uploaded_document: Tài liệu bạn tải lên

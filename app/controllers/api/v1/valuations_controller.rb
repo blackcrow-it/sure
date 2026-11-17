@@ -39,7 +39,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -51,7 +51,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -59,8 +59,8 @@ class Api::V1::ValuationsController < Api::V1::BaseController
     unless valuation_account_id.present?
       render json: {
         error: "validation_failed",
-        message: "Account ID is required",
-        errors: [ "Account ID is required" ]
+        message: t("vietnamese_ui.api.account_id_required"),
+        errors: [ t("vietnamese_ui.api.account_id_required") ]
       }, status: :unprocessable_entity
       return
     end
@@ -68,8 +68,8 @@ class Api::V1::ValuationsController < Api::V1::BaseController
     unless valuation_params[:amount].present?
       render json: {
         error: "validation_failed",
-        message: "Amount is required",
-        errors: [ "Amount is required" ]
+        message: t("vietnamese_ui.api.amount_required"),
+        errors: [ t("vietnamese_ui.api.amount_required") ]
       }, status: :unprocessable_entity
       return
     end
@@ -77,8 +77,8 @@ class Api::V1::ValuationsController < Api::V1::BaseController
     unless valuation_params[:date].present?
       render json: {
         error: "validation_failed",
-        message: "Date is required",
-        errors: [ "Date is required" ]
+        message: t("vietnamese_ui.api.date_required"),
+        errors: [ t("vietnamese_ui.api.date_required") ]
       }, status: :unprocessable_entity
       return
     end
@@ -103,7 +103,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
       unless result.success?
         error_payload = {
           error: "validation_failed",
-          message: "Valuation could not be created",
+          message: t("vietnamese_ui.api.valuation_create_failed"),
           errors: [ result.error_message ]
         }
         raise ActiveRecord::Rollback
@@ -116,7 +116,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
         unless @entry.update(notes: valuation_params[:notes])
           error_payload = {
             error: "validation_failed",
-            message: "Valuation could not be created",
+            message: t("vietnamese_ui.api.valuation_create_failed"),
             errors: @entry.errors.full_messages
           }
           raise ActiveRecord::Rollback
@@ -136,7 +136,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
   rescue ActiveRecord::RecordNotFound
     render json: {
       error: "not_found",
-      message: "Account or valuation entry not found"
+      message: t("vietnamese_ui.api.valuation_account_not_found")
     }, status: :not_found
   rescue => e
     Rails.logger.error "ValuationsController#create error: #{e.message}"
@@ -144,7 +144,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -153,8 +153,8 @@ class Api::V1::ValuationsController < Api::V1::BaseController
       unless valuation_params[:date].present? && valuation_params[:amount].present?
         render json: {
           error: "validation_failed",
-          message: "Both amount and date are required when updating reconciliation",
-          errors: [ "Amount and date must both be provided" ]
+          message: t("vietnamese_ui.api.reconciliation_required"),
+          errors: [ I18n.t("vietnamese_ui.api.amount_date_required") ]
         }, status: :unprocessable_entity
         return
       end
@@ -173,7 +173,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
         unless result.success?
           error_payload = {
             error: "validation_failed",
-            message: "Valuation could not be updated",
+            message: t("vietnamese_ui.api.valuation_update_failed"),
             errors: [ result.error_message ]
           }
           raise ActiveRecord::Rollback
@@ -185,7 +185,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
           unless updated_entry.update(notes: valuation_params[:notes])
             error_payload = {
               error: "validation_failed",
-              message: "Valuation could not be updated",
+              message: t("vietnamese_ui.api.valuation_update_failed"),
               errors: updated_entry.errors.full_messages
             }
             raise ActiveRecord::Rollback
@@ -208,7 +208,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
         unless @entry.update(notes: valuation_params[:notes])
           render json: {
             error: "validation_failed",
-            message: "Valuation could not be updated",
+            message: t("vietnamese_ui.api.valuation_update_failed"),
             errors: @entry.errors.full_messages
           }, status: :unprocessable_entity
           return
@@ -225,7 +225,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -240,7 +240,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
     rescue ActiveRecord::RecordNotFound
       render json: {
         error: "not_found",
-        message: "Valuation not found"
+        message: t("vietnamese_ui.api.valuation_not_found")
       }, status: :not_found
     end
 
@@ -254,7 +254,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
 
     def apply_filters(query)
       if params[:account_id].present?
-        raise InvalidFilterError, "account_id must be a valid UUID" unless valid_uuid?(params[:account_id])
+        raise InvalidFilterError, t("vietnamese_ui.api.uuid", field: "account_id") unless valid_uuid?(params[:account_id])
 
         query = query.where(account_id: params[:account_id])
       end
@@ -266,7 +266,7 @@ class Api::V1::ValuationsController < Api::V1::BaseController
     def parse_date_param(key)
       Date.iso8601(params[key].to_s)
     rescue ArgumentError
-      raise InvalidFilterError, "#{key} must be an ISO 8601 date"
+      raise InvalidFilterError, t("vietnamese_ui.api.iso_date", field: key)
     end
 
     def safe_page_param

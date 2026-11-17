@@ -8,6 +8,8 @@ assignees: ''
 
 ---
 
+**English** | [Tiếng Việt](../../docs/vi/.github/ISSUE_TEMPLATE/bug_report.md)
+
 ## Before you start (required)
 
 ### General checklist

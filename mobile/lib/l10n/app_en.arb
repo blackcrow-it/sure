@@ -1192,5 +1192,393 @@
   "@cashFlowTransactionsEmpty": { "description": "Empty state of the category transactions screen." },
 
 "cashFlowTransactionsLoadFailed": "Couldn't load transactions",
-  "@cashFlowTransactionsLoadFailed": { "description": "Error state of the category transactions screen." }
+  "@cashFlowTransactionsLoadFailed": { "description": "Error state of the category transactions screen." },
+
+  "introTitle": "Intro experience coming soon",
+  "@introTitle": {
+    "description": "Localized introTitle displayed by the mobile application."
+  },
+  "introBody": "We're building a richer onboarding journey to learn about your goals, milestones, and day-to-day needs. For now, head over to the chat sidebar to start a conversation with Sure and let us know where you are in your financial journey.",
+  "@introBody": {
+    "description": "Localized introBody displayed by the mobile application."
+  },
+  "navTogglePrivacy": "Toggle privacy",
+  "@navTogglePrivacy": {
+    "description": "Localized navTogglePrivacy displayed by the mobile application."
+  },
+  "dashboardNetWorth": "Net Worth",
+  "@dashboardNetWorth": {
+    "description": "Localized dashboardNetWorth displayed by the mobile application."
+  },
+  "syncPending": "Pending",
+  "@syncPending": {
+    "description": "Localized syncPending displayed by the mobile application."
+  },
+  "syncDeleting": "Deleting",
+  "@syncDeleting": {
+    "description": "Localized syncDeleting displayed by the mobile application."
+  },
+  "syncFailed": "Failed",
+  "@syncFailed": {
+    "description": "Localized syncFailed displayed by the mobile application."
+  },
+  "syncPendingSemantics": "Transaction pending sync",
+  "@syncPendingSemantics": {
+    "description": "Localized syncPendingSemantics displayed by the mobile application."
+  },
+  "syncDeletingSemantics": "Transaction pending deletion",
+  "@syncDeletingSemantics": {
+    "description": "Localized syncDeletingSemantics displayed by the mobile application."
+  },
+  "buttonLoading": "{label}, loading",
+  "@buttonLoading": {
+    "description": "Localized buttonLoading displayed by the mobile application.",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "biometricUnlockReason": "Unlock Sure to continue",
+  "@biometricUnlockReason": {
+    "description": "Localized biometricUnlockReason displayed by the mobile application."
+  },
+  "accountTypeDepository": "Bank Account",
+  "@accountTypeDepository": {
+    "description": "Localized accountTypeDepository displayed by the mobile application."
+  },
+  "accountTypeCreditCard": "Credit Card",
+  "@accountTypeCreditCard": {
+    "description": "Localized accountTypeCreditCard displayed by the mobile application."
+  },
+  "accountTypeInvestment": "Investment",
+  "@accountTypeInvestment": {
+    "description": "Localized accountTypeInvestment displayed by the mobile application."
+  },
+  "accountTypeLoan": "Loan",
+  "@accountTypeLoan": {
+    "description": "Localized accountTypeLoan displayed by the mobile application."
+  },
+  "accountTypeProperty": "Property",
+  "@accountTypeProperty": {
+    "description": "Localized accountTypeProperty displayed by the mobile application."
+  },
+  "accountTypeVehicle": "Vehicle",
+  "@accountTypeVehicle": {
+    "description": "Localized accountTypeVehicle displayed by the mobile application."
+  },
+  "accountTypeCrypto": "Crypto",
+  "@accountTypeCrypto": {
+    "description": "Localized accountTypeCrypto displayed by the mobile application."
+  },
+  "accountTypeOtherAsset": "Other Asset",
+  "@accountTypeOtherAsset": {
+    "description": "Localized accountTypeOtherAsset displayed by the mobile application."
+  },
+  "accountTypeOtherLiability": "Other Liability",
+  "@accountTypeOtherLiability": {
+    "description": "Localized accountTypeOtherLiability displayed by the mobile application."
+  },
+  "proxyHeaderNameRequired": "Header name is required",
+  "@proxyHeaderNameRequired": {
+    "description": "Localized proxyHeaderNameRequired displayed by the mobile application."
+  },
+  "proxyHeaderNameInvalid": "Use a valid HTTP header name",
+  "@proxyHeaderNameInvalid": {
+    "description": "Localized proxyHeaderNameInvalid displayed by the mobile application."
+  },
+  "proxyHeaderReserved": "This header is managed by the app",
+  "@proxyHeaderReserved": {
+    "description": "Localized proxyHeaderReserved displayed by the mobile application."
+  },
+  "proxyHeaderValueRequired": "Header value is required",
+  "@proxyHeaderValueRequired": {
+    "description": "Localized proxyHeaderValueRequired displayed by the mobile application."
+  },
+  "proxyHeaderValueInvalid": "Header value contains control characters",
+  "@proxyHeaderValueInvalid": {
+    "description": "Localized proxyHeaderValueInvalid displayed by the mobile application."
+  },
+  "updateTitle": "Update available",
+  "@updateTitle": {
+    "description": "Localized updateTitle displayed by the mobile application."
+  },
+  "updateBody": "{appName} {storeVersion} is now available — you have {installedVersion}.\n\nWhat's new? Check the store for release notes.",
+  "@updateBody": {
+    "description": "Localized updateBody displayed by the mobile application.",
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      },
+      "storeVersion": {
+        "type": "String"
+      },
+      "installedVersion": {
+        "type": "String"
+      }
+    }
+  },
+  "updateNow": "Update now",
+  "@updateNow": {
+    "description": "Localized updateNow displayed by the mobile application."
+  },
+  "updateLater": "Later",
+  "@updateLater": {
+    "description": "Localized updateLater displayed by the mobile application."
+  },
+  "errorNetworkUnavailable": "Network unavailable",
+  "@errorNetworkUnavailable": {
+    "description": "Localized errorNetworkUnavailable displayed by the mobile application."
+  },
+  "errorTimeout": "Request timed out",
+  "@errorTimeout": {
+    "description": "Localized errorTimeout displayed by the mobile application."
+  },
+  "errorInvalidResponse": "Invalid response from server",
+  "@errorInvalidResponse": {
+    "description": "Localized errorInvalidResponse displayed by the mobile application."
+  },
+  "errorUnexpected": "An unexpected error occurred",
+  "@errorUnexpected": {
+    "description": "Localized errorUnexpected displayed by the mobile application."
+  },
+  "errorLogin": "Login failed",
+  "@errorLogin": {
+    "description": "Localized errorLogin displayed by the mobile application."
+  },
+  "errorSignup": "Signup failed",
+  "@errorSignup": {
+    "description": "Localized errorSignup displayed by the mobile application."
+  },
+  "errorTokenRefresh": "Token refresh failed",
+  "@errorTokenRefresh": {
+    "description": "Localized errorTokenRefresh displayed by the mobile application."
+  },
+  "errorLoginStatus": "Login failed (status {code})",
+  "@errorLoginStatus": {
+    "description": "Localized errorLoginStatus displayed by the mobile application.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "errorSsoLogin": "SSO login failed",
+  "@errorSsoLogin": {
+    "description": "Localized errorSsoLogin displayed by the mobile application."
+  },
+  "errorSsoCallback": "Invalid SSO callback response",
+  "@errorSsoCallback": {
+    "description": "Localized errorSsoCallback displayed by the mobile application."
+  },
+  "errorTokenExchange": "Token exchange failed",
+  "@errorTokenExchange": {
+    "description": "Localized errorTokenExchange displayed by the mobile application."
+  },
+  "errorAuthorizationCode": "Failed to exchange authorization code",
+  "@errorAuthorizationCode": {
+    "description": "Localized errorAuthorizationCode displayed by the mobile application."
+  },
+  "errorAccountLink": "Failed to link account",
+  "@errorAccountLink": {
+    "description": "Localized errorAccountLink displayed by the mobile application."
+  },
+  "errorAccountCreate": "Failed to create account",
+  "@errorAccountCreate": {
+    "description": "Localized errorAccountCreate displayed by the mobile application."
+  },
+  "errorNetwork": "Network error",
+  "@errorNetwork": {
+    "description": "Localized errorNetwork displayed by the mobile application."
+  },
+  "errorNetworkDetails": "Network error: {error}",
+  "@errorNetworkDetails": {
+    "description": "Localized errorNetworkDetails displayed by the mobile application.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "errorInvalidMfa": "Invalid authentication code. Please try again.",
+  "@errorInvalidMfa": {
+    "description": "Localized errorInvalidMfa displayed by the mobile application."
+  },
+  "errorConnectRetry": "Unable to connect. Please check your network and try again.",
+  "@errorConnectRetry": {
+    "description": "Localized errorConnectRetry displayed by the mobile application."
+  },
+  "errorBrowser": "Unable to open browser for sign-in.",
+  "@errorBrowser": {
+    "description": "Localized errorBrowser displayed by the mobile application."
+  },
+  "errorStartSignIn": "Unable to start sign-in. Please try again.",
+  "@errorStartSignIn": {
+    "description": "Localized errorStartSignIn displayed by the mobile application."
+  },
+  "errorSignInRetry": "Sign-in failed. Please try again.",
+  "@errorSignInRetry": {
+    "description": "Localized errorSignInRetry displayed by the mobile application."
+  },
+  "errorNoSsoSession": "No pending SSO session. Please try signing in again.",
+  "@errorNoSsoSession": {
+    "description": "Localized errorNoSsoSession displayed by the mobile application."
+  },
+  "errorAccountLinkRetry": "Failed to link account. Please try again.",
+  "@errorAccountLinkRetry": {
+    "description": "Localized errorAccountLinkRetry displayed by the mobile application."
+  },
+  "errorAccountCreateRetry": "Failed to create account. Please try again.",
+  "@errorAccountCreateRetry": {
+    "description": "Localized errorAccountCreateRetry displayed by the mobile application."
+  },
+  "errorRetry": "Something went wrong. Please try again.",
+  "@errorRetry": {
+    "description": "Localized errorRetry displayed by the mobile application."
+  },
+  "errorChatCreate": "Failed to create chat",
+  "@errorChatCreate": {
+    "description": "Localized errorChatCreate displayed by the mobile application."
+  },
+  "errorChatSend": "Failed to send message",
+  "@errorChatSend": {
+    "description": "Localized errorChatSend displayed by the mobile application."
+  },
+  "errorChatUpdate": "Failed to update chat",
+  "@errorChatUpdate": {
+    "description": "Localized errorChatUpdate displayed by the mobile application."
+  },
+  "errorChatRetry": "Failed to retry message",
+  "@errorChatRetry": {
+    "description": "Localized errorChatRetry displayed by the mobile application."
+  },
+  "errorChatNotFound": "Chat not found",
+  "@errorChatNotFound": {
+    "description": "Localized errorChatNotFound displayed by the mobile application."
+  },
+  "errorAiDisabled": "AI features not enabled",
+  "@errorAiDisabled": {
+    "description": "Localized errorAiDisabled displayed by the mobile application."
+  },
+  "errorAssistantTimeout": "The assistant took too long to respond. Please try again.",
+  "@errorAssistantTimeout": {
+    "description": "Localized errorAssistantTimeout displayed by the mobile application."
+  },
+  "errorAccountsOffline": "You are offline. Please connect to the internet to load accounts.",
+  "@errorAccountsOffline": {
+    "description": "Localized errorAccountsOffline displayed by the mobile application."
+  },
+  "errorNetworkRetry": "Network error. Please check your internet connection and try again.",
+  "@errorNetworkRetry": {
+    "description": "Localized errorNetworkRetry displayed by the mobile application."
+  },
+  "errorTimeoutRetry": "Request timed out. Please check your connection and try again.",
+  "@errorTimeoutRetry": {
+    "description": "Localized errorTimeoutRetry displayed by the mobile application."
+  },
+  "errorServerRetry": "Server response error. Please try again later.",
+  "@errorServerRetry": {
+    "description": "Localized errorServerRetry displayed by the mobile application."
+  },
+  "errorSecureConnection": "Secure connection error. Please check your internet connection and try again.",
+  "@errorSecureConnection": {
+    "description": "Localized errorSecureConnection displayed by the mobile application."
+  },
+
+  "biometricHint": "Verify identity",
+  "@biometricHint": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricNotRecognized": "Not recognized. Try again.",
+  "@biometricNotRecognized": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricSuccess": "Success",
+  "@biometricSuccess": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricRequired": "Biometric required",
+  "@biometricRequired": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricCredentialsRequired": "Device credentials required",
+  "@biometricCredentialsRequired": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricGoToSettings": "Go to settings",
+  "@biometricGoToSettings": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricAndroidSetup": "Biometric authentication is not set up on your device. Go to 'Settings > Security' to add biometric authentication.",
+  "@biometricAndroidSetup": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricAuthenticationRequired": "Authentication required",
+  "@biometricAuthenticationRequired": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricLockout": "Biometric authentication is disabled. Please lock and unlock your screen to enable it.",
+  "@biometricLockout": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricIosSetup": "Biometric authentication is not set up on your device. Please either enable Touch ID or Face ID on your phone.",
+  "@biometricIosSetup": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricOk": "OK",
+  "@biometricOk": {
+    "description": "Native biometric authentication dialog text."
+  },
+
+  "accountTransactions": "Transactions",
+  "@accountTransactions": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "chatThinking": "Thinking",
+  "@chatThinking": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorUploadTransaction": "Failed to upload transaction. It will sync when online.",
+  "@errorUploadTransaction": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorEditOffline": "Connect to the internet before editing synced transactions.",
+  "@errorEditOffline": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorSyncOffline": "Cannot sync while offline",
+  "@errorSyncOffline": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorSyncInProgress": "Sync already in progress",
+  "@errorSyncInProgress": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorNoFields": "No fields to update",
+  "@errorNoFields": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorDeleteTransactionsCount": "Failed to delete {count} transactions",
+  "@errorDeleteTransactionsCount": {
+    "description": "Localized mobile interface or transaction error text.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "errorDeleteTransactionDetails": "Failed to delete transaction: {error}",
+  "@errorDeleteTransactionDetails": {
+    "description": "Localized mobile interface or transaction error text.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "transactionFormDefaultNotes": "This transaction via mobile app.",
+  "@transactionFormDefaultNotes": {
+    "description": "Default note for a newly created mobile transaction; existing notes are never translated."
+  }
 }

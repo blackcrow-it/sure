@@ -26,8 +26,8 @@ export default class extends Controller {
 
   static values = {
     currency: { type: String, default: "USD" },
-    suggestedWithDate: { type: String, default: "Save {monthly}/mo across {accounts} to hit it on time." },
-    suggestedNoDate: { type: String, default: "Set a target date to project a finish line." },
+    suggestedWithDate: String,
+    suggestedNoDate: String,
     // Only the create form must pick an account. On edit the checkboxes are
     // populated from visible accounts only, so a goal backed by a now-hidden
     // account renders none — and the controller preserves existing links when

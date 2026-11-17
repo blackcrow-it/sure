@@ -16,13 +16,12 @@ vi:
         read_only: Chỉ xem
         read_only_description: Chỉ có thể xem dữ liệu tài khoản
       save: Lưu cài đặt chia sẻ
-      owner_label: "Chủ sở hữu: %{name}"
+      owner_label: 'Chủ sở hữu: %{name}'
       shared_with_count:
-        one: Đã chia sẻ với 1 thành viên
-        other: "Đã chia sẻ với %{count} thành viên"
+        other: Đã chia sẻ với %{count} thành viên
       include_in_finances: Tính vào ngân sách & báo cáo của tôi
       exclude_from_finances: Loại khỏi ngân sách & báo cáo của tôi
-      finance_toggle_description: Tính tài khoản này vào tài sản ròng, ngân sách và báo cáo của bạn
+      finance_toggle_description: Tính tài khoản này vào giá trị tài sản ròng, ngân sách và báo cáo của bạn
     update:
       success: Cài đặt chia sẻ đã được cập nhật
       not_owner: Chỉ chủ sở hữu tài khoản mới có thể quản lý chia sẻ

@@ -44,14 +44,14 @@ module Api::V1::TransferDecisionFiltering
       return query unless params[:status].present?
 
       unless status_model.statuses.key?(params[:status])
-        invalid_filter!("status must be one of: #{status_model.statuses.keys.join(", ")}")
+        invalid_filter!(t("vietnamese_ui.api.allowed_values", field: "status", values: status_model.statuses.keys.join(", ")))
       end
 
       query.where(status: params[:status])
     end
 
     def apply_transfer_account_filter(query)
-      invalid_filter!("account_id must be a valid UUID") unless valid_uuid?(params[:account_id])
+      invalid_filter!(t("vietnamese_ui.api.uuid", field: "account_id")) unless valid_uuid?(params[:account_id])
 
       account_transaction_ids = accessible_transaction_ids_for_account(params[:account_id])
       query
@@ -83,7 +83,7 @@ module Api::V1::TransferDecisionFiltering
     def parse_date_param(key)
       Date.iso8601(params[key].to_s)
     rescue ArgumentError
-      invalid_filter!("#{key} must be an ISO 8601 date")
+      invalid_filter!(t("vietnamese_ui.api.iso_date", field: key))
     end
 
     def invalid_filter!(message)

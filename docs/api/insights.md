@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/api/insights.md)
+
 # Proactive insights API
 
 `GET /api/v1/insights` returns the visible family feed. Reading this endpoint does

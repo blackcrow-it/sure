@@ -5,10 +5,9 @@ vi:
     upcoming: Giao dịch định kỳ sắp tới
     projected: Dự kiến
     recurring: Định kỳ
-    expected_today: "Dự kiến hôm nay"
+    expected_today: Dự kiến hôm nay
     expected_in:
-      one: "Dự kiến sau %{count} ngày"
-      other: "Dự kiến sau %{count} ngày"
+      other: Dự kiến sau %{count} ngày
     day_of_month: Ngày %{day} hàng tháng
     identify_patterns: Xác định mẫu
     cleanup_stale: Dọn dẹp mẫu cũ
@@ -19,21 +18,22 @@ vi:
     info:
       title: Tự động phát hiện mẫu
       manual_description: Bạn có thể tự tay xác định mẫu hoặc dọn dẹp giao dịch định kỳ cũ bằng các nút ở trên.
-      automatic_description: "Nhận dạng tự động cũng chạy sau:"
+      automatic_description: 'Nhận dạng tự động cũng chạy sau:'
       triggers:
-        - Nhập CSV hoàn tất (giao dịch, giao dịch chứng khoán, tài khoản, v.v.)
-        - Bất kỳ lần đồng bộ nhà cung cấp nào hoàn tất (Plaid, SimpleFIN, v.v.)
+      - Nhập CSV hoàn tất (giao dịch, giao dịch chứng khoán, tài khoản, v.v.)
+      - Bất kỳ lần đồng bộ nhà cung cấp nào hoàn tất (Plaid, SimpleFIN, v.v.)
     identified: Đã xác định %{count} mẫu giao dịch định kỳ
     cleaned_up: Đã dọn dẹp %{count} giao dịch định kỳ cũ
     marked_inactive: Giao dịch định kỳ đã được đánh dấu không hoạt động
     marked_active: Giao dịch định kỳ đã được đánh dấu hoạt động
     deleted: Đã xóa giao dịch định kỳ
-    confirm_delete: Bạn có chắc muốn xóa giao dịch định kỳ này?
+    confirm_delete: Xóa %{name} khỏi hóa đơn? Giao dịch của bạn được giữ nguyên. Thao tác này chỉ xóa hóa đơn và
+      lịch thanh toán.
     marked_as_recurring: Giao dịch đã được đánh dấu là định kỳ
     already_exists: Đã tồn tại giao dịch định kỳ thủ công cho mẫu này
     creation_failed: Không thể tạo giao dịch định kỳ. Vui lòng kiểm tra thông tin giao dịch và thử lại.
     unexpected_error: Đã xảy ra lỗi không mong muốn khi tạo giao dịch định kỳ
-    amount_range: "Khoảng: %{min} đến %{max}"
+    amount_range: 'Khoảng: %{min} đến %{max}'
     empty:
       title: Không tìm thấy giao dịch định kỳ
       description: Nhấn "Xác định mẫu" để tự động phát hiện giao dịch định kỳ từ lịch sử giao dịch.
@@ -45,12 +45,186 @@ vi:
       last_occurrence: Lần xuất hiện gần nhất
       status: Trạng thái
       actions: Hành động
+      frequency: Tần suất
     status:
       active: Hoạt động
       inactive: Không hoạt động
+      suggested: Hóa đơn tiềm năng
+      paused: Không hoạt động
+      ended: Đã bỏ qua
     badges:
       manual: Thủ công
     transfer_marked_as_recurring: Chuyển khoản đã được đánh dấu là định kỳ
     transfer_already_exists: Đã tồn tại chuyển khoản định kỳ cho cặp tài khoản này
     transfer_creation_failed: Không thể tạo chuyển khoản định kỳ. Vui lòng kiểm tra thông tin và thử lại.
     transfer_feature_disabled: Chuyển khoản định kỳ đã bị tắt cho hộ gia đình này
+    frequency_presets:
+      monthly: Hàng tháng
+      weekly: Hằng tuần
+      biweekly: Mỗi 2 tuần
+      semimonthly: Hai lần mỗi tháng
+      quarterly: Hàng quý
+      semiannual: Mỗi 6 tháng
+      annual: Hằng năm
+      custom: Lịch tùy chỉnh
+      interval: Khoảng lặp tùy chỉnh
+    frequency_interval_units:
+      weekly: tuần
+      monthly: tháng
+      yearly: năm
+    frequency:
+      monthly: Hằng tháng vào ngày %{day}
+      weekly: Hằng tuần vào %{weekday}
+      biweekly: Mỗi 2 tuần vào %{weekday}
+      semimonthly: Hai lần mỗi tháng, ngày %{first} và %{second}
+      quarterly: Hằng quý vào ngày %{day}
+      semiannual: Mỗi 6 tháng vào ngày %{day}
+      annual: Hằng năm vào %{day} %{month}
+      every_n_weeks: Mỗi %{interval} tuần vào %{weekday}
+      every_n_months: Mỗi %{interval} tháng vào ngày %{day}
+      every_n_years: Mỗi %{interval} năm vào %{day} %{month}
+      custom: Lịch tùy chỉnh
+      last_day: cuối tháng
+    actions:
+      edit_payment_link: Sửa liên kết thanh toán
+      pause: Tạm dừng
+      resume: Tiếp tục
+      delete: Xóa
+    pay_action:
+      pay: Thanh toán
+      pay_aria: Thanh toán %{name} (mở thẻ mới)
+      add_link: Thêm liên kết
+      add_link_aria: Thêm liên kết thanh toán cho %{name}
+      autopay: Thanh toán tự động
+      autopay_aria: '%{name} thanh toán tự động, mở cổng thanh toán trong thẻ mới'
+    new:
+      title: Hóa đơn mới
+      income_title: Thu nhập mới
+      start_from_title: Bắt đầu từ khoản chi định kỳ đã phát hiện
+      start_from_income_title: Bắt đầu từ khoản nạp định kỳ đã phát hiện
+      start_from_hint: Tùy chọn. Chọn một mục chỉ điền sẵn biểu mẫu; bạn vẫn có thể thay đổi mọi thông tin.
+      candidate_meta: '%{count}× · gần nhất %{date}'
+      search_all_prompt: Chưa thấy khoản bạn cần?
+      search_all_cta: Tìm trong tất cả giao dịch của bạn
+      pick_different: Bắt đầu từ giao dịch khác
+      smart_fill: Điền thông minh bằng AI
+      smart_fill_applied: AI đề xuất các giá trị này từ lịch sử khoản chi. Hãy xem lại trước khi lưu.
+      covered_title: Giao dịch này đã thuộc một hóa đơn
+      covered_body: '%{name} đã theo dõi khoản thanh toán này, nên hóa đơn mới sẽ tính hai lần.'
+      covered_open: Mở hóa đơn
+      covered_suggested_title: Sure đã đề xuất hóa đơn cho khoản thanh toán này
+      covered_suggested_body: '%{name} đang chờ trong đề xuất. Xác nhận để bắt đầu theo dõi và tránh tính khoản
+        thanh toán hai lần bằng hóa đơn mới. Các khoản khớp được tự liên kết; bạn có thể liên kết khoản này từ hóa
+        đơn.'
+      covered_confirm: Xác nhận hóa đơn
+      covered_create_anyway: Vẫn tạo hóa đơn riêng
+      covered_income_title: Khoản nạp này đã thuộc một nguồn thu nhập
+      covered_income_body: '%{name} đã theo dõi khoản nạp này, nên thêm lại sẽ tính hai lần.'
+      covered_income_open: Mở thu nhập
+      covered_income_suggested_title: Sure đã đề xuất thu nhập này
+      covered_income_suggested_body: '%{name} đang chờ trong đề xuất. Thêm để bắt đầu theo dõi và tránh tính khoản
+        nạp hai lần. Các khoản khớp được tự liên kết; bạn có thể liên kết khoản này từ thu nhập.'
+      covered_income_confirm: Thêm thu nhập
+      covered_income_create_anyway: Vẫn thêm thu nhập riêng
+    smart_fills:
+      create:
+        failed: Hiện không thể phân tích lịch sử khoản chi. Biểu mẫu giữ nguyên giá trị của giao dịch.
+    pick_entry:
+      title: Tìm giao dịch để bắt đầu
+      income_title: Tìm khoản nạp để bắt đầu
+      hint: Chọn một mục chỉ điền sẵn biểu mẫu; bạn vẫn có thể thay đổi mọi thông tin.
+      search_placeholder: Tìm theo tên, ghi chú hoặc đơn vị giao dịch
+      back: Quay lại biểu mẫu
+      showing_recent: Hiển thị %{count} giao dịch gần nhất. Tìm kiếm để thu hẹp kết quả.
+      no_results: Không có kết quả khớp “%{query}”. Thử ít từ hơn hoặc quay lại tự điền biểu mẫu.
+    picker_row:
+      claimed: Thuộc %{name}
+    create:
+      success: Đã thêm hóa đơn
+      success_income: Đã thêm thu nhập
+      due_date_required: Nhập ngày đến hạn tiếp theo của hóa đơn
+      amount_invalid: Nhập số tiền bằng số thông thường
+      amount_too_precise: Dùng tối đa 4 chữ số thập phân
+      account_invalid: Chọn tài khoản bạn có thể thêm hóa đơn hoặc để trống
+      category_invalid: Chọn một danh mục của bạn hoặc để trống
+      already_exists: Hóa đơn này đã tồn tại
+    edit:
+      trigger_label: Sửa hóa đơn
+      title: Sửa %{name}
+      income_title: Sửa thu nhập · %{name}
+    form:
+      payment_url_label: Liên kết thanh toán
+      payment_url_placeholder: bank.example.com/pay
+      payment_url_hint: Nơi bạn thanh toán hóa đơn. Mở trong thẻ mới từ danh sách định kỳ và sắp tới.
+      autopay_label: Thanh toán tự động
+      autopay_hint: Giữ trong danh sách hóa đơn nhưng không coi là việc cần làm.
+      more_options: Tùy chọn khác
+      notes_label: Ghi chú
+      notes_placeholder: Tài khoản 4821, tính vào thẻ Amex
+      notes_hint: Thông tin bạn muốn thấy khi thanh toán. Hiển thị trên hóa đơn.
+      apply_to_siblings:
+        other: Cũng dùng liên kết này cho %{count} hóa đơn %{name} khác
+      submit: Lưu hóa đơn
+      submit_income: Lưu thu nhập
+      income_name_label: Nguồn
+      income_name_placeholder: Chủ lao động, khách hàng, việc làm thêm
+      income_amount_label: Số tiền mỗi kỳ lương
+      income_due_on_label: Ngày nhận lương tiếp theo
+      income_account_label: Nạp vào
+      income_frequency_hint: Tần suất nhận tiền. Chọn chi tiết ngày khớp ngày nhận lương.
+      income_frequency_label: Tần suất nhận lương
+      income_frequency_new_hint: Chi tiết ngày nhận lương lấy từ ngày phía trên. Bạn có thể chỉnh lịch sau khi lưu.
+      income_notes_placeholder: Chuyển lương trực tiếp, chia vào hai tài khoản
+      income_notes_hint: Thông tin cần ghi nhớ về thu nhập này.
+      name_label: Tên
+      name_placeholder: Tiền thuê nhà, PG&E, Netflix
+      amount_label: Số tiền
+      first_due_on_label: Hạn tiếp theo
+      account_label: Trả từ
+      account_blank: Bất kỳ tài khoản nào
+      bill_type_label: Loại
+      installment_count_label: Số lần thanh toán
+      installment_count_hint: Kế hoạch kết thúc sau số lần thanh toán này và hiển thị tiến độ cho đến lúc đó.
+      renews_on_label: Gia hạn
+      trial_ends_on_label: Kết thúc dùng thử
+      amount_edit_hint: Áp dụng cho hóa đơn đến hạn từ nay. Khoản đã đến hạn giữ số tiền cũ.
+      income_amount_edit_hint: Áp dụng cho ngày nhận lương từ nay. Khoản đã đến hạn giữ số tiền cũ.
+      cancelled_on_label: Đã hủy
+      cancelled_on_hint: Ngày ghi nhận chỉ để bạn tham khảo. Tạm dừng hóa đơn để ngừng tạo kỳ sau.
+      category_blank: Không có danh mục
+      frequency_new_hint: Chi tiết ngày lấy từ hạn phía trên. Bạn có thể chỉnh lịch sau khi lưu.
+      frequency_label: Tần suất
+      frequency_hint: Tần suất hóa đơn đến hạn. Chọn chi tiết ngày khớp sao kê.
+      frequency_day_label: Vào ngày
+      frequency_interval_label: Lặp lại mỗi
+      frequency_interval_unit_label: Đơn vị
+      frequency_second_day_label: Và ngày
+      frequency_weekday_label: Bật
+      frequency_month_label: Trong
+    update:
+      success: Đã cập nhật hóa đơn
+      success_with_siblings:
+        other: Đã cập nhật hóa đơn và sao chép liên kết thanh toán sang %{count} hóa đơn khác
+    manage:
+      title: Hóa đơn của bạn nằm trên trang Hóa đơn
+      description: Khai báo, sửa, tạm dừng và thanh toán từ đó. Trang này quản lý việc phát hiện.
+      cta: Mở tất cả hóa đơn
+    identify_already_running: Đang dò tìm. Hãy kiểm tra lại sau giây lát.
+    deleted_income: Đã xóa thu nhập. Giao dịch của bạn được giữ nguyên.
+    confirm_delete_income: Xóa %{name} khỏi thu nhập? Giao dịch được giữ nguyên. Thao tác này chỉ xóa thu nhập và
+      lịch của nó.
+    already_covered: Giao dịch này đã khớp với giao dịch định kỳ
+    suggested:
+      title: Hóa đơn mới tiềm năng
+      seen_count:
+        other: xuất hiện %{count} lần
+      collapsed_hint: Nhấn để xem lại
+      confirm: Thêm hóa đơn
+      dismiss: Không phải hóa đơn
+    suggested_income:
+      title: Thu nhập mới tiềm năng
+      confirm: Thêm thu nhập
+      dismiss: Không phải thu nhập
+    confirmed: Đã thêm hóa đơn vào giao dịch định kỳ
+    confirmed_income: Đã thêm thu nhập vào giao dịch định kỳ
+    dismissed: Đã bỏ qua. Mẫu này sẽ không được đề xuất lại.

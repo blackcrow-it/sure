@@ -127,7 +127,7 @@ module Family::Subscribeable
       rescue => e
         Sentry.capture_exception(e) if defined?(Sentry)
         Rails.logger.error "Failed to cancel Stripe subscription before family deletion: #{e.message}"
-        errors.add(:base, :cannot_delete_with_active_subscription, message: "Could not cancel active Stripe subscription. Please cancel it manually before deleting the family.")
+        errors.add(:base, :cannot_delete_with_active_subscription, message: I18n.t("vietnamese_ui.validation.cancel_subscription"))
         throw(:abort)
       end
     end

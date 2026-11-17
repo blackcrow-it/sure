@@ -59,7 +59,7 @@ module Assistant::Configurable
 
       if chat.user.ui_layout_intro?
         {
-          instructions: intro_instructions(preferred_currency, preferred_date_format),
+          instructions: intro_instructions(preferred_currency, preferred_date_format, user: chat.user),
           functions: []
         }
       else
@@ -71,7 +71,7 @@ module Assistant::Configurable
     end
 
     private
-      def intro_instructions(preferred_currency, preferred_date_format)
+      def intro_instructions(preferred_currency, preferred_date_format, user: nil)
         <<~PROMPT
           ## Your identity
 
@@ -99,6 +99,10 @@ module Assistant::Configurable
           - Use markdown for any lists or emphasis.
           - When money or timeframes are discussed, format currency with #{preferred_currency.symbol} (#{preferred_currency.iso_code}) and dates using #{preferred_date_format}.
           - Do not call external tools or functions.
+
+          ## Session context
+
+          - #{Assistant::ResponseLanguage.instructions(user)}
         PROMPT
       end
 
@@ -116,6 +120,7 @@ module Assistant::Configurable
         <<~PROMPT
           ## Session context
 
+          - #{Assistant::ResponseLanguage.instructions(user)}
           - Today's date: #{Date.current}. For functions that require dates, use it as your reference point.
           - Date format: #{preferred_date_format}
           - Preferred currency: #{preferred_currency.iso_code} (symbol #{preferred_currency.symbol}, precision #{preferred_currency.default_precision}, format #{preferred_currency.default_format}, separator "#{preferred_currency.separator}", delimiter "#{preferred_currency.delimiter}")

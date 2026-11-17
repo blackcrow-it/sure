@@ -53,7 +53,7 @@ class Api::V1::TransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -67,7 +67,7 @@ class Api::V1::TransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -78,8 +78,8 @@ class Api::V1::TransactionsController < Api::V1::BaseController
     unless account_id_param.present?
       render json: {
         error: "validation_failed",
-        message: "Account ID is required",
-        errors: [ "Account ID is required" ]
+        message: t("vietnamese_ui.api.account_id_required"),
+        errors: [ t("vietnamese_ui.api.account_id_required") ]
       }, status: :unprocessable_entity
       return
     end
@@ -87,8 +87,8 @@ class Api::V1::TransactionsController < Api::V1::BaseController
     if idempotency_source_param.present? && idempotency_external_id.blank?
       render json: {
         error: "validation_failed",
-        message: "Source requires external_id",
-        errors: [ "Source requires external_id" ]
+        message: t("vietnamese_ui.api.source_external_id"),
+        errors: [ t("vietnamese_ui.api.source_external_id") ]
       }, status: :unprocessable_entity
       return
     end
@@ -99,10 +99,10 @@ class Api::V1::TransactionsController < Api::V1::BaseController
       return render_existing_idempotent_entry(existing_entry)
     end
 
-    return render_validation_error("tag_ids must be an array of tag ids") if malformed_tag_ids?
-    return render_validation_error("Unknown tag id") if unknown_tag_ids?
-    return render_validation_error("Unknown category id") if unknown_category_id?
-    return render_validation_error("Unknown merchant id") if unknown_merchant_id?
+    return render_validation_error(t("vietnamese_ui.api.tag_ids_array")) if malformed_tag_ids?
+    return render_validation_error(t("vietnamese_ui.api.tag_not_found")) if unknown_tag_ids?
+    return render_validation_error(t("vietnamese_ui.api.category_id_unknown")) if unknown_category_id?
+    return render_validation_error(t("vietnamese_ui.api.merchant_id_unknown")) if unknown_merchant_id?
 
     @entry = account.entries.new(entry_params_for_create)
 
@@ -117,7 +117,7 @@ class Api::V1::TransactionsController < Api::V1::BaseController
     else
       render json: {
         error: "validation_failed",
-        message: "Transaction could not be created",
+        message: t("vietnamese_ui.api.transaction_create_failed"),
         errors: @entry.errors.full_messages
       }, status: :unprocessable_entity
     end
@@ -134,25 +134,25 @@ class Api::V1::TransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
   def update
     if @entry.split_child?
-      render json: { error: "validation_failed", message: "Split child transactions cannot be edited directly. Use the split editor." }, status: :unprocessable_entity
+      render json: { error: "validation_failed", message: t("vietnamese_ui.api.split_child_edit") }, status: :unprocessable_entity
       return
     end
 
     if @entry.split_parent? && split_financial_fields_changed?
-      render json: { error: "validation_failed", message: "Split parent amount, date, and type cannot be changed directly. Use the split editor." }, status: :unprocessable_entity
+      render json: { error: "validation_failed", message: t("vietnamese_ui.api.split_parent_edit") }, status: :unprocessable_entity
       return
     end
 
-    return render_validation_error("tag_ids must be an array of tag ids") if malformed_tag_ids?
-    return render_validation_error("Unknown tag id") if tags_provided? && unknown_tag_ids?
-    return render_validation_error("Unknown category id") if unknown_category_id?
-    return render_validation_error("Unknown merchant id") if unknown_merchant_id?
+    return render_validation_error(t("vietnamese_ui.api.tag_ids_array")) if malformed_tag_ids?
+    return render_validation_error(t("vietnamese_ui.api.tag_not_found")) if tags_provided? && unknown_tag_ids?
+    return render_validation_error(t("vietnamese_ui.api.category_id_unknown")) if unknown_category_id?
+    return render_validation_error(t("vietnamese_ui.api.merchant_id_unknown")) if unknown_merchant_id?
 
     Entry.transaction do
       if @entry.update(entry_params_for_update)
@@ -175,7 +175,7 @@ class Api::V1::TransactionsController < Api::V1::BaseController
       else
         render json: {
           error: "validation_failed",
-          message: "Transaction could not be updated",
+          message: t("vietnamese_ui.api.transaction_update_failed"),
           errors: @entry.errors.full_messages
         }, status: :unprocessable_entity
         raise ActiveRecord::Rollback
@@ -188,13 +188,13 @@ class Api::V1::TransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
   def destroy
     if @entry.split_child?
-      render json: { error: "validation_failed", message: "Split child transactions cannot be deleted individually." }, status: :unprocessable_entity
+      render json: { error: "validation_failed", message: t("vietnamese_ui.api.split_child_delete") }, status: :unprocessable_entity
       return
     end
 
@@ -202,7 +202,7 @@ class Api::V1::TransactionsController < Api::V1::BaseController
     @entry.sync_account_later
 
     render json: {
-      message: "Transaction deleted successfully"
+      message: t("vietnamese_ui.api.transaction_deleted")
     }, status: :ok
 
   rescue => e
@@ -211,7 +211,7 @@ class Api::V1::TransactionsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error
   end
 
@@ -484,8 +484,8 @@ class Api::V1::TransactionsController < Api::V1::BaseController
       unless entry.entryable.is_a?(Transaction)
         render json: {
           error: "validation_failed",
-          message: "External ID already exists for a non-transaction entry",
-          errors: [ "External ID already exists for a non-transaction entry" ]
+          message: t("vietnamese_ui.api.external_id_exists"),
+          errors: [ t("vietnamese_ui.api.external_id_exists") ]
         }, status: :unprocessable_entity
         return
       end

@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/api/tags.md)
+
 # Tags API
 
 The Tags API allows external applications to manage tags within Sure. Tags provide a flexible way to categorize and label transactions beyond the standard category system.

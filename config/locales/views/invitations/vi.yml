@@ -3,13 +3,15 @@ vi:
   invitations:
     accept_choice:
       create_account: Tạo tài khoản mới
-      existing_account_hint: "Bạn đã có tài khoản? Tài khoản hiện có không thể tham gia hộ gia đình khác qua lời mời."
+      existing_account_hint: Bạn đã có tài khoản? Tài khoản hiện có không thể tham gia hộ gia đình khác qua lời
+        mời.
       joined_household: Bạn đã tham gia hộ gia đình.
-      message: "%{inviter} đã mời bạn tham gia với tư cách %{role}."
+      message: '%{inviter} đã mời bạn tham gia với tư cách %{role}.'
       title: Tham gia %{family}
     create:
       failure: Không thể gửi lời mời
       success: Lời mời đã được gửi thành công
+      own_email: Bạn không thể mời chính mình.
     destroy:
       failure: Đã xảy ra sự cố khi xóa lời mời.
       not_authorized: Bạn không được phép quản lý lời mời.
@@ -24,3 +26,27 @@ vi:
       submit: Gửi lời mời
       subtitle: Gửi lời mời để tham gia tài khoản %{moniker} của bạn trên %{product_name}
       title: Mời ai đó
+    bulk_create:
+      download: Tải báo cáo
+      errors:
+        email_not_queued: Đã lưu lời mời nhưng không thể đưa email vào hàng đợi. Xóa rồi thử lại.
+        processing_failed: Không thể xử lý lời mời. Kiểm tra lời mời đang chờ hiện có trước khi thử lại.
+      invalid_role: Chỉ có thể gửi lời mời hàng loạt cho thành viên và khách.
+      invite_more: Mời thêm
+      no_emails: Nhập ít nhất một địa chỉ email.
+      status:
+        invalid: Không thể mời
+        link_only: Sẵn sàng chia sẻ
+        sent: Đã gửi lời mời
+      summary: '%{sent} đã gửi, %{link_only} sẵn sàng chia sẻ, %{invalid} thất bại.'
+      title: Kết quả lời mời
+      too_many: Bạn có thể mời tối đa %{max} người mỗi lần. Vui lòng gửi ít hơn.
+    bulk_new:
+      emails_label: Địa chỉ email
+      emails_placeholder: Nhập địa chỉ email, phân cách bằng dấu phẩy hoặc xuống dòng
+      role_guest: Khách
+      role_label: Vai trò
+      role_member: Thành viên
+      submit: Gửi lời mời
+      subtitle: Mời nhiều người tham gia tài khoản %{moniker} của bạn trên %{product_name}
+      title: Mời nhiều người

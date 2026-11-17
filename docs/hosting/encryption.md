@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/encryption.md)
+
 # Encryption key rotation (self-hosted)
 
 If your `SECRET_KEY_BASE` was ever shipped as a default in this project's

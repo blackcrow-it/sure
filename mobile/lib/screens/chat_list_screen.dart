@@ -5,6 +5,7 @@ import '../providers/auth_provider.dart';
 import '../providers/chat_provider.dart';
 import 'chat_conversation_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/display_strings.dart';
 
 class ChatListScreen extends StatefulWidget {
   const ChatListScreen({super.key});
@@ -230,7 +231,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      chatProvider.errorMessage!,
+                      AppLocalizations.of(context).displayError(chatProvider.errorMessage!),
                       style: TextStyle(color: colorScheme.onSurfaceVariant),
                       textAlign: TextAlign.center,
                     ),

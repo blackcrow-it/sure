@@ -1,0 +1,15 @@
+---
+vi:
+  demo_family_refresh_mailer:
+    completed:
+      subject: Đã hoàn tất làm mới hộ gia đình demo
+      activity_heading: Hoạt động trong kỳ này
+      sessions_label: Phiên đăng nhập riêng biệt của hộ gia đình demo trước
+      families_label: Tài khoản hộ gia đình mới được tạo
+      period_heading: Kỳ báo cáo (UTC)
+      from_label: 'Từ:'
+      to_label: 'Đến:'
+      time_format: '%-d %b, %Y lúc %H:%M:%S UTC'
+      family_heading: Hộ gia đình demo trước
+      family_not_found: Không tìm thấy
+      id_label: 'ID:'

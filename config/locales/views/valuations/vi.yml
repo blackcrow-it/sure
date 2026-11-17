@@ -2,10 +2,10 @@
 vi:
   valuations:
     confirmation_contents:
-      this_will: "Thao tác này sẽ %{action_verb} giá trị tài khoản vào"
-      to_colon: "thành:"
+      this_will: Thao tác này sẽ %{action_verb} giá trị tài khoản vào
+      to_colon: 'thành:'
       total_account_value: Tổng giá trị tài khoản
-      holdings_value: Giá trị danh mục nắm giữ
+      holdings_value: Giá trị khoản nắm giữ
       brokerage_cash: Tiền mặt môi giới
       account_balance: số dư tài khoản
       credit_card_balance: số dư thẻ tín dụng
@@ -16,11 +16,14 @@ vi:
       asset_value: giá trị tài sản
       liability_balance: số dư nợ phải trả
       balance: số dư
-      "on": "vào"
-      to: "thành"
-      recalculate_notice: "Tất cả giao dịch và số dư trong tương lai sẽ được tính lại dựa trên %{change_or_update} này."
+      'on': vào
+      to: thành
+      recalculate_notice: Tất cả giao dịch và số dư trong tương lai sẽ được tính lại dựa trên %{change_or_update}
+        này.
       change: thay đổi
       update: cập nhật
+      action_set: đặt
+      action_update: cập nhật
     create:
       account_updated: Tài khoản đã được cập nhật
     update:
@@ -42,6 +45,8 @@ vi:
       value: giá trị
     new:
       title: Số dư mới
+      amount: Số tiền
+      submit: Thêm cập nhật số dư
     show:
       amount: Số tiền
       amount_label: Giá trị tài khoản vào ngày
@@ -56,5 +61,23 @@ vi:
       note_placeholder: Thêm bất kỳ thông tin chi tiết nào về mục nhập này
       overview: Tổng quan
       settings: Cài đặt
-      opening_balance: "Số dư đầu kỳ"
+      opening_balance: Số dư đầu kỳ
       update_value: Cập nhật giá trị
+    names:
+      current_account_value: Giá trị tài khoản hiện tại
+      current_balance: Số dư hiện tại
+      current_loan_balance: Dư nợ vay hiện tại
+      current_market_value: Giá trị thị trường hiện tại
+      manual_balance_update: Cập nhật số dư thủ công
+      manual_principal_update: Cập nhật gốc thủ công
+      manual_value_update: Cập nhật giá trị thủ công
+      opening_account_value: Giá trị tài khoản đầu kỳ
+      opening_balance: Số dư đầu kỳ
+      original_principal: Gốc ban đầu
+      original_purchase_price: Giá mua ban đầu
+    confirm_create:
+      confirm: Xác nhận
+      title: Xác nhận số dư mới
+    confirm_update:
+      title: Cập nhật số dư
+      update: Cập nhật

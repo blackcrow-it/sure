@@ -1,3 +1,4 @@
+import 'package:sure_mobile/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,6 +10,8 @@ void main() {
   Future<void> pump(WidgetTester tester, Widget child) {
     return tester.pumpWidget(
       MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         theme: SureTheme.light,
         home: Scaffold(body: Center(child: child)),
       ),
@@ -106,6 +109,8 @@ void main() {
     // didUpdateWidget must reset _pressed (otherwise the hover bg sticks once
     // the button is re-enabled).
     Widget build(bool loading) => MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
           theme: SureTheme.light,
           home: Scaffold(
             body: Center(

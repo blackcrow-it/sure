@@ -40,7 +40,7 @@ class Api::V1::InsightsController < Api::V1::BaseController
       return if current_resource_owner.preview_features_enabled?
 
       render_json(
-        { error: "feature_disabled", message: "Preview features are not enabled for this user" },
+        { error: "feature_disabled", message: t("vietnamese_ui.api.preview_disabled") },
         status: :forbidden
       )
     end

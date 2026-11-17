@@ -14,7 +14,8 @@ vi:
         mfa_title: Xác thực hai yếu tố
         webauthn_add: Thêm khóa passkey hoặc khóa bảo mật
         webauthn_added: Đã thêm %{date}
-        webauthn_description: Sử dụng passkey, Touch ID, Windows Hello hoặc khóa bảo mật phần cứng làm yếu tố thứ hai khi đăng nhập.
+        webauthn_description: Sử dụng passkey, Touch ID, Windows Hello hoặc khóa bảo mật phần cứng làm yếu tố thứ
+          hai khi đăng nhập.
         webauthn_empty: Chưa có passkey hoặc khóa bảo mật nào được đăng ký.
         webauthn_last_used: Sử dụng lần cuối %{time_ago} trước
         webauthn_name_label: Tên khóa
@@ -23,7 +24,8 @@ vi:
         webauthn_name_placeholder: MacBook Touch ID, YubiKey, v.v.
         webauthn_remove: Xóa
         webauthn_remove_confirm: Bạn có chắc chắn muốn xóa passkey hoặc khóa bảo mật này không?
-        webauthn_remove_confirm_body: Bạn sẽ cần đăng ký lại passkey hoặc khóa bảo mật này trước khi có thể sử dụng để xác minh đăng nhập.
+        webauthn_remove_confirm_body: Bạn sẽ cần đăng ký lại passkey hoặc khóa bảo mật này trước khi có thể sử dụng
+          để xác minh đăng nhập.
         webauthn_title: Passkey và khóa bảo mật
         webauthn_unsupported: Trình duyệt này không hỗ trợ passkey hoặc khóa bảo mật.
         page_title: Bảo mật
@@ -36,9 +38,38 @@ vi:
         sso_no_identities: Chưa kết nối tài khoản SSO
         sso_connect_hint: Đăng xuất và đăng nhập bằng nhà cung cấp SSO để kết nối tài khoản.
         sso_confirm_title: Ngắt kết nối tài khoản?
-        sso_confirm_body: Bạn có chắc muốn ngắt kết nối tài khoản %{provider}? Bạn có thể kết nối lại sau bằng cách đăng nhập với nhà cung cấp đó.
+        sso_confirm_body: Bạn có chắc muốn ngắt kết nối tài khoản %{provider}? Bạn có thể kết nối lại sau bằng cách
+          đăng nhập với nhà cung cấp đó.
         sso_confirm_button: Ngắt kết nối
-        sso_warning_message: Đây là phương thức đăng nhập duy nhất của bạn. Hãy đặt mật khẩu trong cài đặt bảo mật trước khi ngắt kết nối, nếu không bạn có thể bị khóa khỏi tài khoản.
+        sso_warning_message: Đây là phương thức đăng nhập duy nhất của bạn. Hãy đặt mật khẩu trong cài đặt bảo mật
+          trước khi ngắt kết nối, nếu không bạn có thể bị khóa khỏi tài khoản.
+        encryption_warning:
+          title: Thiếu khóa mã hóa
+          intro: 'Dữ liệu nhạy cảm (khóa API, token nhà cung cấp, bí mật MFA và thông tin nhận dạng cá nhân) đang
+            được lưu không mã hóa. Để bật mã hóa, đặt các khóa sau trong biến môi trường hoặc Rails credentials:'
+          keys:
+          - ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY
+          - ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY
+          - ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT
+          generate: 'Tạo bộ khóa bằng: bin/rails db:encryption:init'
+        disable_mfa_password_label: Xác nhận bằng mật khẩu
+        disable_mfa_password_placeholder: Nhập mật khẩu của bạn
+        mfa_sso_only: Xác thực hai yếu tố được quản lý qua nhà cung cấp danh tính.
+        compromised_secret_warning:
+          title: Khóa mã hóa không thực sự bí mật
+          intro: Khóa mã hóa của bản cài đặt này được tự suy ra từ giá trị SECRET_KEY_BASE từng được cung cấp làm
+            mặc định hoạt động trong tệp Docker Compose mẫu của dự án. Bất kỳ ai biết giá trị đó đều tính được cùng
+            khóa, nên dữ liệu không thực sự được bảo vệ.
+          generate: 'KHÔNG chỉ đặt SECRET_KEY_BASE mới rồi chạy tác vụ backfill: nếu dữ liệu đã được mã hóa bằng
+            khóa bị lộ, backfill không phân biệt được bản mã với văn bản thuần và sẽ mã hóa chồng, khiến không thể
+            khôi phục. Hãy đổi khóa an toàn khi ứng dụng đã dừng: tạo khóa mới bằng bin/rails db:encryption:init
+            và đặt các biến ACTIVE_RECORD_ENCRYPTION_*, rồi chạy bin/rails "security:backfill_encryption[100,0]"
+            với SECRET_KEY_BASE này trong biến ACTIVE_RECORD_ENCRYPTION_PREVIOUS_SECRET_KEY_BASE chỉ cho lệnh đó,
+            để dữ liệu cũ vẫn giải mã và chuyển sang khóa mới. Xem hướng dẫn Docker tự lưu trữ.'
+          settings_secrets: Khóa API và token lưu trong cài đặt được mã hóa bằng khóa suy ra trực tiếp từ SECRET_KEY_BASE,
+            không thuộc cơ chế trước. Sau khi đổi SECRET_KEY_BASE, mã hóa lại bằng bin/rails "security:rotate_setting_secrets[0]",
+            truyền giá trị cũ trong OLD_SECRET_KEY_BASE (xem hướng dẫn Docker tự lưu trữ). Nhập lại khóa được báo
+            không thể giải mã.
   webauthn_credentials:
     code_already_used: Mã này đã được sử dụng. Hãy chờ mã tiếp theo từ ứng dụng xác thực của bạn.
     invalid_code: Mã này không hợp lệ. Hãy nhập mã hiện tại từ ứng dụng xác thực hoặc một mã dự phòng chưa dùng.

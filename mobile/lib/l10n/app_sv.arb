@@ -365,5 +365,393 @@
   "cashFlowOffline": "Du är offline. Kassaflödet beräknas av din Sure-server och kräver en anslutning.",
   "cashFlowOutdated": "Inaktuell",
   "cashFlowTransactionsEmpty": "Inga transaktioner under perioden",
-  "cashFlowTransactionsLoadFailed": "Kunde inte läsa in transaktioner"
+  "cashFlowTransactionsLoadFailed": "Kunde inte läsa in transaktioner",
+
+  "introTitle": "Introduktionen kommer snart",
+  "@introTitle": {
+    "description": "Localized introTitle displayed by the mobile application."
+  },
+  "introBody": "Vi bygger en mer omfattande introduktion för att lära känna dina mål, milstolpar och vardagsbehov. Gå till chatten för att prata med Sure och berätta var du befinner dig på din ekonomiska resa.",
+  "@introBody": {
+    "description": "Localized introBody displayed by the mobile application."
+  },
+  "navTogglePrivacy": "Växla sekretessläge",
+  "@navTogglePrivacy": {
+    "description": "Localized navTogglePrivacy displayed by the mobile application."
+  },
+  "dashboardNetWorth": "Nettoförmögenhet",
+  "@dashboardNetWorth": {
+    "description": "Localized dashboardNetWorth displayed by the mobile application."
+  },
+  "syncPending": "Väntar",
+  "@syncPending": {
+    "description": "Localized syncPending displayed by the mobile application."
+  },
+  "syncDeleting": "Tar bort",
+  "@syncDeleting": {
+    "description": "Localized syncDeleting displayed by the mobile application."
+  },
+  "syncFailed": "Misslyckades",
+  "@syncFailed": {
+    "description": "Localized syncFailed displayed by the mobile application."
+  },
+  "syncPendingSemantics": "Transaktion väntar på synkronisering",
+  "@syncPendingSemantics": {
+    "description": "Localized syncPendingSemantics displayed by the mobile application."
+  },
+  "syncDeletingSemantics": "Transaktion väntar på borttagning",
+  "@syncDeletingSemantics": {
+    "description": "Localized syncDeletingSemantics displayed by the mobile application."
+  },
+  "buttonLoading": "{label}, laddar",
+  "@buttonLoading": {
+    "description": "Localized buttonLoading displayed by the mobile application.",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "biometricUnlockReason": "Lås upp Sure för att fortsätta",
+  "@biometricUnlockReason": {
+    "description": "Localized biometricUnlockReason displayed by the mobile application."
+  },
+  "accountTypeDepository": "Bankkonto",
+  "@accountTypeDepository": {
+    "description": "Localized accountTypeDepository displayed by the mobile application."
+  },
+  "accountTypeCreditCard": "Kreditkort",
+  "@accountTypeCreditCard": {
+    "description": "Localized accountTypeCreditCard displayed by the mobile application."
+  },
+  "accountTypeInvestment": "Investering",
+  "@accountTypeInvestment": {
+    "description": "Localized accountTypeInvestment displayed by the mobile application."
+  },
+  "accountTypeLoan": "Lån",
+  "@accountTypeLoan": {
+    "description": "Localized accountTypeLoan displayed by the mobile application."
+  },
+  "accountTypeProperty": "Fastighet",
+  "@accountTypeProperty": {
+    "description": "Localized accountTypeProperty displayed by the mobile application."
+  },
+  "accountTypeVehicle": "Fordon",
+  "@accountTypeVehicle": {
+    "description": "Localized accountTypeVehicle displayed by the mobile application."
+  },
+  "accountTypeCrypto": "Krypto",
+  "@accountTypeCrypto": {
+    "description": "Localized accountTypeCrypto displayed by the mobile application."
+  },
+  "accountTypeOtherAsset": "Övrig tillgång",
+  "@accountTypeOtherAsset": {
+    "description": "Localized accountTypeOtherAsset displayed by the mobile application."
+  },
+  "accountTypeOtherLiability": "Övrig skuld",
+  "@accountTypeOtherLiability": {
+    "description": "Localized accountTypeOtherLiability displayed by the mobile application."
+  },
+  "proxyHeaderNameRequired": "Headernamn krävs",
+  "@proxyHeaderNameRequired": {
+    "description": "Localized proxyHeaderNameRequired displayed by the mobile application."
+  },
+  "proxyHeaderNameInvalid": "Ange ett giltigt HTTP-headernamn",
+  "@proxyHeaderNameInvalid": {
+    "description": "Localized proxyHeaderNameInvalid displayed by the mobile application."
+  },
+  "proxyHeaderReserved": "Denna header hanteras av appen",
+  "@proxyHeaderReserved": {
+    "description": "Localized proxyHeaderReserved displayed by the mobile application."
+  },
+  "proxyHeaderValueRequired": "Headervärde krävs",
+  "@proxyHeaderValueRequired": {
+    "description": "Localized proxyHeaderValueRequired displayed by the mobile application."
+  },
+  "proxyHeaderValueInvalid": "Headervärdet innehåller kontrolltecken",
+  "@proxyHeaderValueInvalid": {
+    "description": "Localized proxyHeaderValueInvalid displayed by the mobile application."
+  },
+  "updateTitle": "Uppdatering tillgänglig",
+  "@updateTitle": {
+    "description": "Localized updateTitle displayed by the mobile application."
+  },
+  "updateBody": "{appName} {storeVersion} är tillgänglig — du har {installedVersion}.\n\nVad är nytt? Läs versionsinformationen i butiken.",
+  "@updateBody": {
+    "description": "Localized updateBody displayed by the mobile application.",
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      },
+      "storeVersion": {
+        "type": "String"
+      },
+      "installedVersion": {
+        "type": "String"
+      }
+    }
+  },
+  "updateNow": "Uppdatera nu",
+  "@updateNow": {
+    "description": "Localized updateNow displayed by the mobile application."
+  },
+  "updateLater": "Senare",
+  "@updateLater": {
+    "description": "Localized updateLater displayed by the mobile application."
+  },
+  "errorNetworkUnavailable": "Nätverket är inte tillgängligt",
+  "@errorNetworkUnavailable": {
+    "description": "Localized errorNetworkUnavailable displayed by the mobile application."
+  },
+  "errorTimeout": "Begäran tog för lång tid",
+  "@errorTimeout": {
+    "description": "Localized errorTimeout displayed by the mobile application."
+  },
+  "errorInvalidResponse": "Ogiltigt svar från servern",
+  "@errorInvalidResponse": {
+    "description": "Localized errorInvalidResponse displayed by the mobile application."
+  },
+  "errorUnexpected": "Ett oväntat fel uppstod",
+  "@errorUnexpected": {
+    "description": "Localized errorUnexpected displayed by the mobile application."
+  },
+  "errorLogin": "Inloggningen misslyckades",
+  "@errorLogin": {
+    "description": "Localized errorLogin displayed by the mobile application."
+  },
+  "errorSignup": "Registreringen misslyckades",
+  "@errorSignup": {
+    "description": "Localized errorSignup displayed by the mobile application."
+  },
+  "errorTokenRefresh": "Kunde inte förnya åtkomsttoken",
+  "@errorTokenRefresh": {
+    "description": "Localized errorTokenRefresh displayed by the mobile application."
+  },
+  "errorLoginStatus": "Inloggningen misslyckades (status {code})",
+  "@errorLoginStatus": {
+    "description": "Localized errorLoginStatus displayed by the mobile application.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "errorSsoLogin": "SSO-inloggningen misslyckades",
+  "@errorSsoLogin": {
+    "description": "Localized errorSsoLogin displayed by the mobile application."
+  },
+  "errorSsoCallback": "Ogiltigt SSO-callbacksvar",
+  "@errorSsoCallback": {
+    "description": "Localized errorSsoCallback displayed by the mobile application."
+  },
+  "errorTokenExchange": "Kunde inte byta token",
+  "@errorTokenExchange": {
+    "description": "Localized errorTokenExchange displayed by the mobile application."
+  },
+  "errorAuthorizationCode": "Kunde inte byta auktoriseringskod",
+  "@errorAuthorizationCode": {
+    "description": "Localized errorAuthorizationCode displayed by the mobile application."
+  },
+  "errorAccountLink": "Kunde inte länka kontot",
+  "@errorAccountLink": {
+    "description": "Localized errorAccountLink displayed by the mobile application."
+  },
+  "errorAccountCreate": "Kunde inte skapa kontot",
+  "@errorAccountCreate": {
+    "description": "Localized errorAccountCreate displayed by the mobile application."
+  },
+  "errorNetwork": "Nätverksfel",
+  "@errorNetwork": {
+    "description": "Localized errorNetwork displayed by the mobile application."
+  },
+  "errorNetworkDetails": "Nätverksfel: {error}",
+  "@errorNetworkDetails": {
+    "description": "Localized errorNetworkDetails displayed by the mobile application.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "errorInvalidMfa": "Ogiltig autentiseringskod. Försök igen.",
+  "@errorInvalidMfa": {
+    "description": "Localized errorInvalidMfa displayed by the mobile application."
+  },
+  "errorConnectRetry": "Kunde inte ansluta. Kontrollera nätverket och försök igen.",
+  "@errorConnectRetry": {
+    "description": "Localized errorConnectRetry displayed by the mobile application."
+  },
+  "errorBrowser": "Kunde inte öppna webbläsaren för inloggning.",
+  "@errorBrowser": {
+    "description": "Localized errorBrowser displayed by the mobile application."
+  },
+  "errorStartSignIn": "Kunde inte starta inloggningen. Försök igen.",
+  "@errorStartSignIn": {
+    "description": "Localized errorStartSignIn displayed by the mobile application."
+  },
+  "errorSignInRetry": "Inloggningen misslyckades. Försök igen.",
+  "@errorSignInRetry": {
+    "description": "Localized errorSignInRetry displayed by the mobile application."
+  },
+  "errorNoSsoSession": "Ingen väntande SSO-session. Försök logga in igen.",
+  "@errorNoSsoSession": {
+    "description": "Localized errorNoSsoSession displayed by the mobile application."
+  },
+  "errorAccountLinkRetry": "Kunde inte länka kontot. Försök igen.",
+  "@errorAccountLinkRetry": {
+    "description": "Localized errorAccountLinkRetry displayed by the mobile application."
+  },
+  "errorAccountCreateRetry": "Kunde inte skapa kontot. Försök igen.",
+  "@errorAccountCreateRetry": {
+    "description": "Localized errorAccountCreateRetry displayed by the mobile application."
+  },
+  "errorRetry": "Något gick fel. Försök igen.",
+  "@errorRetry": {
+    "description": "Localized errorRetry displayed by the mobile application."
+  },
+  "errorChatCreate": "Kunde inte skapa chatten",
+  "@errorChatCreate": {
+    "description": "Localized errorChatCreate displayed by the mobile application."
+  },
+  "errorChatSend": "Kunde inte skicka meddelandet",
+  "@errorChatSend": {
+    "description": "Localized errorChatSend displayed by the mobile application."
+  },
+  "errorChatUpdate": "Kunde inte uppdatera chatten",
+  "@errorChatUpdate": {
+    "description": "Localized errorChatUpdate displayed by the mobile application."
+  },
+  "errorChatRetry": "Kunde inte försöka skicka meddelandet igen",
+  "@errorChatRetry": {
+    "description": "Localized errorChatRetry displayed by the mobile application."
+  },
+  "errorChatNotFound": "Chatten hittades inte",
+  "@errorChatNotFound": {
+    "description": "Localized errorChatNotFound displayed by the mobile application."
+  },
+  "errorAiDisabled": "AI-funktionerna är inte aktiverade",
+  "@errorAiDisabled": {
+    "description": "Localized errorAiDisabled displayed by the mobile application."
+  },
+  "errorAssistantTimeout": "Assistenten tog för lång tid på sig att svara. Försök igen.",
+  "@errorAssistantTimeout": {
+    "description": "Localized errorAssistantTimeout displayed by the mobile application."
+  },
+  "errorAccountsOffline": "Du är offline. Anslut till internet för att ladda konton.",
+  "@errorAccountsOffline": {
+    "description": "Localized errorAccountsOffline displayed by the mobile application."
+  },
+  "errorNetworkRetry": "Nätverksfel. Kontrollera internetanslutningen och försök igen.",
+  "@errorNetworkRetry": {
+    "description": "Localized errorNetworkRetry displayed by the mobile application."
+  },
+  "errorTimeoutRetry": "Begäran tog för lång tid. Kontrollera anslutningen och försök igen.",
+  "@errorTimeoutRetry": {
+    "description": "Localized errorTimeoutRetry displayed by the mobile application."
+  },
+  "errorServerRetry": "Fel i serversvaret. Försök igen senare.",
+  "@errorServerRetry": {
+    "description": "Localized errorServerRetry displayed by the mobile application."
+  },
+  "errorSecureConnection": "Fel i den säkra anslutningen. Kontrollera internetanslutningen och försök igen.",
+  "@errorSecureConnection": {
+    "description": "Localized errorSecureConnection displayed by the mobile application."
+  },
+
+  "biometricHint": "Verifiera identitet",
+  "@biometricHint": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricNotRecognized": "Kändes inte igen. Försök igen.",
+  "@biometricNotRecognized": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricSuccess": "Klart",
+  "@biometricSuccess": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricRequired": "Biometri krävs",
+  "@biometricRequired": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricCredentialsRequired": "Enhetens inloggningsuppgifter krävs",
+  "@biometricCredentialsRequired": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricGoToSettings": "Öppna inställningar",
+  "@biometricGoToSettings": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricAndroidSetup": "Biometrisk autentisering har inte ställts in på enheten. Öppna Inställningar > Säkerhet för att lägga till den.",
+  "@biometricAndroidSetup": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricAuthenticationRequired": "Autentisering krävs",
+  "@biometricAuthenticationRequired": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricLockout": "Biometrisk autentisering är inaktiverad. Lås och lås upp skärmen för att aktivera den.",
+  "@biometricLockout": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricIosSetup": "Biometrisk autentisering har inte ställts in på enheten. Aktivera Touch ID eller Face ID på telefonen.",
+  "@biometricIosSetup": {
+    "description": "Native biometric authentication dialog text."
+  },
+  "biometricOk": "OK",
+  "@biometricOk": {
+    "description": "Native biometric authentication dialog text."
+  },
+
+  "accountTransactions": "Transaktioner",
+  "@accountTransactions": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "chatThinking": "Tänker",
+  "@chatThinking": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorUploadTransaction": "Kunde inte ladda upp transaktionen. Den synkroniseras när du är online.",
+  "@errorUploadTransaction": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorEditOffline": "Anslut till internet innan du redigerar synkroniserade transaktioner.",
+  "@errorEditOffline": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorSyncOffline": "Kan inte synkronisera offline",
+  "@errorSyncOffline": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorSyncInProgress": "Synkronisering pågår redan",
+  "@errorSyncInProgress": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorNoFields": "Inga fält att uppdatera",
+  "@errorNoFields": {
+    "description": "Localized mobile interface or transaction error text."
+  },
+  "errorDeleteTransactionsCount": "Kunde inte ta bort {count} transaktioner",
+  "@errorDeleteTransactionsCount": {
+    "description": "Localized mobile interface or transaction error text.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "errorDeleteTransactionDetails": "Kunde inte ta bort transaktionen: {error}",
+  "@errorDeleteTransactionDetails": {
+    "description": "Localized mobile interface or transaction error text.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "transactionFormDefaultNotes": "Denna transaktion skapades via mobilappen.",
+  "@transactionFormDefaultNotes": {
+    "description": "Default note for a newly created mobile transaction; existing notes are never translated."
+  }
 }

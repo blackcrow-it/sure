@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../../docs/vi/design/tokens/README.md)
+
 # Sure design tokens
 
 This is where the design system actually lives. Tailwind reads from here, and any external tooling (Figma Tokens Studio, AI design tools, anything that shows up later) is meant to read the same JSON.

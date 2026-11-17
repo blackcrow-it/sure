@@ -240,7 +240,7 @@ RSpec.configure do |config|
             required: %w[error],
             properties: {
               error: { type: :string },
-              message: { type: :string, nullable: true },
+              message: { type: :string, nullable: true, description: 'Localized user-facing message; use error for machine-readable handling.' },
               details: {
                 oneOf: [
                   { type: :array, items: { type: :string } },
@@ -261,7 +261,7 @@ RSpec.configure do |config|
             required: %w[error import_id],
             properties: {
               error: { type: :string },
-              message: { type: :string, nullable: true },
+              message: { type: :string, nullable: true, description: 'Localized user-facing message; use error for machine-readable handling.' },
               import_id: {
                 type: :string,
                 format: :uuid,
@@ -889,7 +889,7 @@ RSpec.configure do |config|
               transactions_modified: { type: :integer, minimum: 0 },
               pending_jobs_count: { type: :integer, minimum: 0 },
               executed_at: { type: :string, format: :'date-time' },
-              error_message: { type: :string, nullable: true },
+              error_message: { type: :string, nullable: true, description: 'Localized user-facing message; use error for machine-readable handling.' },
               rule: {
                 type: :object,
                 nullable: true,

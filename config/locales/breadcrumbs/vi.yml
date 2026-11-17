@@ -28,9 +28,9 @@ vi:
     enable_banking_items: Enable Banking
     exports: Xuất dữ liệu
     family_exports: Xuất dữ liệu
-    family_merchants: Nhà cung cấp
+    family_merchants: Đơn vị giao dịch
     guides: Hướng dẫn
-    holdings: Danh mục nắm giữ
+    holdings: Khoản nắm giữ
     home: Trang chủ
     hostings: Tự lưu trữ
     ibkr_items: Interactive Brokers
@@ -46,7 +46,7 @@ vi:
     llm_usages: Sử dụng LLM
     loans: Khoản vay
     lunchflow_items: Lunch Flow
-    merchants: Nhà cung cấp
+    merchants: Đơn vị giao dịch
     mercury_items: Mercury
     messages: Tin nhắn
     mfa: Xác thực hai yếu tố
@@ -85,3 +85,12 @@ vi:
     users: Người dùng
     valuations: Định giá
     vehicles: Phương tiện
+    changelog: Có gì mới
+    classifier: Bộ phân loại
+    feedback: Phản hồi
+    mcp: Máy chủ MCP
+    monobank_items: Monobank
+    plan: Kế hoạch
+    portfolio: Danh mục đầu tư
+    redbark_items: Redbark
+    system_health: Tình trạng hệ thống

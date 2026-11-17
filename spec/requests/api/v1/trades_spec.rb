@@ -71,6 +71,8 @@ RSpec.describe 'API V1 Trades', type: :request do
 
   path '/api/v1/trades' do
     get 'List trades' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Trades'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -140,6 +142,10 @@ RSpec.describe 'API V1 Trades', type: :request do
     end
 
     post 'Create trade' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Trades'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'
@@ -472,6 +478,10 @@ RSpec.describe 'API V1 Trades', type: :request do
     parameter name: :id, in: :path, type: :string, required: true, description: 'Trade ID'
 
     get 'Retrieve trade' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Trades'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -503,6 +513,10 @@ RSpec.describe 'API V1 Trades', type: :request do
     end
 
     patch 'Update trade' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Trades'
       security [ { apiKeyAuth: [] } ]
       consumes 'application/json'
@@ -583,6 +597,10 @@ RSpec.describe 'API V1 Trades', type: :request do
     end
 
     delete 'Delete trade' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Trades'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

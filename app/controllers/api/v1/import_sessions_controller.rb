@@ -21,7 +21,7 @@ class Api::V1::ImportSessionsController < Api::V1::BaseController
   rescue ActiveRecord::RecordInvalid => e
     render_error(
       "validation_failed",
-      "Import session could not be created",
+      I18n.t("vietnamese_ui.imports.session_create_failed"),
       :unprocessable_entity,
       errors: e.record.errors.full_messages
     )
@@ -50,7 +50,7 @@ class Api::V1::ImportSessionsController < Api::V1::BaseController
   rescue ActiveRecord::RecordInvalid => e
     render_error(
       "validation_failed",
-      "Import chunk could not be created",
+      I18n.t("vietnamese_ui.imports.chunk_create_failed"),
       :unprocessable_entity,
       errors: e.record.errors.full_messages
     )
@@ -61,9 +61,9 @@ class Api::V1::ImportSessionsController < Api::V1::BaseController
     @import_session.reload
     render_import_session(status: :accepted)
   rescue Import::MaxRowCountExceededError
-    render_error("max_row_count_exceeded", "Import session has too many rows to publish.", :unprocessable_entity)
+    render_error("max_row_count_exceeded", I18n.t("vietnamese_ui.imports.session_too_large"), :unprocessable_entity)
   rescue ImportSession::EnqueueError
-    render_error("import_enqueue_failed", "Import session could not be queued.", :service_unavailable)
+    render_error("import_enqueue_failed", I18n.t("vietnamese_ui.imports.session_queue_failed"), :service_unavailable)
   rescue ImportSession::ConflictError => e
     render_import_session_conflict(e.message)
   end
@@ -99,7 +99,7 @@ class Api::V1::ImportSessionsController < Api::V1::BaseController
       elsif params[:raw_file_content].present?
         sure_import_raw_content_attributes(params[:raw_file_content].to_s)
       else
-        render_error("missing_content", "Provide a Sure NDJSON file or raw_file_content.", :unprocessable_entity)
+        render_error("missing_content", I18n.t("vietnamese_ui.api.ndjson_required"), :unprocessable_entity)
         nil
       end
     end
@@ -108,7 +108,7 @@ class Api::V1::ImportSessionsController < Api::V1::BaseController
       if file.size > SureImport.max_ndjson_size
         render_error(
           "file_too_large",
-          "File is too large. Maximum size is #{SureImport.max_ndjson_size / 1.megabyte}MB.",
+          t("vietnamese_ui.api.file_size", size: SureImport.max_ndjson_size / 1.megabyte),
           :unprocessable_entity
         )
         return
@@ -116,7 +116,7 @@ class Api::V1::ImportSessionsController < Api::V1::BaseController
 
       extension = File.extname(file.original_filename.to_s).downcase
       unless SureImport::ALLOWED_NDJSON_CONTENT_TYPES.include?(file.content_type) || extension.in?(%w[.ndjson .json])
-        render_error("invalid_file_type", "Invalid file type. Please upload a Sure NDJSON file.", :unprocessable_entity)
+        render_error("invalid_file_type", I18n.t("vietnamese_ui.api.ndjson_file_type"), :unprocessable_entity)
         return
       end
 
@@ -131,7 +131,7 @@ class Api::V1::ImportSessionsController < Api::V1::BaseController
       if content.bytesize > SureImport.max_ndjson_size
         render_error(
           "content_too_large",
-          "Content is too large. Maximum size is #{SureImport.max_ndjson_size / 1.megabyte}MB.",
+          t("vietnamese_ui.api.content_size", size: SureImport.max_ndjson_size / 1.megabyte),
           :unprocessable_entity
         )
         return
@@ -146,7 +146,7 @@ class Api::V1::ImportSessionsController < Api::V1::BaseController
 
     def sure_import_validated_attributes(content:, filename:, content_type:)
       unless SureImport.valid_ndjson_first_line?(content)
-        render_error("invalid_ndjson", "Invalid Sure NDJSON content.", :unprocessable_entity)
+        render_error("invalid_ndjson", I18n.t("vietnamese_ui.api.ndjson_invalid"), :unprocessable_entity)
         return
       end
 

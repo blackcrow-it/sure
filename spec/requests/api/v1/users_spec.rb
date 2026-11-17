@@ -38,6 +38,8 @@ RSpec.describe 'API V1 Users', type: :request do
 
   path '/api/v1/users/reset' do
     delete 'Reset account' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Users'
       description 'Resets all financial data (accounts, categories, merchants, tags, etc.) ' \
                   'for the current user\'s family while keeping the user account intact. ' \
@@ -92,6 +94,8 @@ RSpec.describe 'API V1 Users', type: :request do
 
   path '/api/v1/users/reset/status' do
     get 'Retrieve reset status' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Users'
       description 'Returns counts of family-owned data targeted by account reset. ' \
                   'Use this after DELETE /api/v1/users/reset to decide whether reset materialization has completed. ' \
@@ -125,6 +129,8 @@ RSpec.describe 'API V1 Users', type: :request do
 
   path '/api/v1/users/me' do
     delete 'Delete account' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       tags 'Users'
       description 'Permanently deactivates the current user account and all associated data. ' \
                   'This action cannot be undone.'

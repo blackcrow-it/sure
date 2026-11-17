@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/testing.md)
+
 # Testing
 
 Use Rails Minitest and fixtures for behavioral tests; do not introduce RSpec

@@ -1,0 +1,196 @@
+---
+vi:
+  settings:
+    classifiers:
+      account:
+        account_field: Đưa tài khoản vào dưới dạng một token
+        account_field_hint: 'Tài khoản chứa giao dịch được tính làm bằng chứng. Nó không tự quyết định: giao dịch
+          cần có từ hoặc đơn vị giao dịch đã biết.'
+      amount:
+        amount_by_direction: Bao gồm chiều tiền vào hoặc ra
+        amount_by_direction_hint: Mỗi danh mục học chiều dòng tiền, và khoản hoàn tiền được tách khỏi khoản mua
+          tại cùng cửa hàng.
+        amount_field: Bao gồm số tiền
+        amount_field_hint: So sánh số tiền với mức thông thường của từng danh mục bằng cùng tiền tệ trên thang logarit.
+      category_training:
+        apply: Áp dụng
+        categories: Danh mục
+        categories_all: Tất cả danh mục
+        categories_hint: Danh mục không chọn cùng danh mục con bị loại khỏi huấn luyện, nên Bayes không bao giờ
+          chọn chúng.
+        categories_some: '%{count} trên %{total} danh mục'
+        exclude_transfers: Loại chuyển khoản
+        exclude_transfers_hint: Chuyển khoản và thanh toán giữa các tài khoản của bạn.
+        search_categories: Tìm danh mục
+        skip_self_labels: Không học từ dự đoán của Bayes cho đến khi được xác nhận hoặc đủ số ngày này
+        skip_self_labels_hint: Xác nhận nghĩa là bạn đã sửa hoặc khóa. Dự đoán sai không được học lại để củng cố;
+          dự đoán giữ nguyên đủ lâu được coi là chấp nhận.
+      add_rule:
+        success: Đã thêm quy tắc %{name} lên đầu danh sách.
+      classifier:
+        apply: Áp dụng
+        lock_results: Khóa danh mục do bộ phân loại đặt
+        lock_results_hint: Ngăn quy tắc đổi lựa chọn Bayes trừ khi bạn nhấn Áp dụng trên quy tắc. AI không bao giờ
+          đổi lựa chọn Bayes dù có khóa hay không.
+        rule: Phân loại bằng bộ phân loại
+        rule_hint: Quy tắc Bộ phân loại danh mục, bật/tắt cùng mục tương ứng trong Quy tắc. Nó phân loại giao dịch
+          chưa có danh mục theo thứ tự quy tắc sau mỗi lần đồng bộ; phần chưa chắc chắn để lại cho quy tắc Tự động
+          phân loại.
+        threshold: Ngưỡng
+        threshold_hint: Điểm thấp nhất để Bayes hành động (0.05–0.99). Giảm ngưỡng phân loại nhiều hơn nhưng sai
+          nhiều hơn.
+      clear_locks:
+        success: Đang xóa khóa của Bayes. Có thể mất vài giây.
+      evaluation:
+        apply_best: Áp dụng cài đặt này
+        best: Tốt nhất tìm được
+        best_changes: 'Tốt nhất tìm được, các thay đổi so với cài đặt của bạn:'
+        best_no_changes: Không có cấu hình đạt điểm cao hơn cài đặt của bạn.
+        buttons_hint: Thử cài đặt của tôi chấm điểm cấu hình hiện tại. Tìm cài đặt tốt nhất tìm trên %{tuning} tháng
+          trước các tháng đang hiển thị để đánh giá bằng tháng chưa từng thấy. Tiêu chí ROC-AUC đo khả năng xếp
+          giao dịch của từng danh mục cao hơn phần còn lại ở mọi ngưỡng; chỉ giữ thay đổi khi điểm tổng cao hơn
+          và cao hơn ở mọi tháng trong %{tuning} tháng đó, trừ tối đa một tháng. Trước hết chọn đầu vào (mọi tổ
+          hợp token đơn vị giao dịch, số tiền và tài khoản; rồi chấm riêng đơn vị giao dịch và tài khoản; rồi tên
+          đơn vị và ghi chú dạng từ), tiếp đó thử từng thay đổi cài đặt khác, cuối cùng là Chấm điểm. Mặc định là
+          cấu hình bộ phân loại ban đầu với danh mục bạn chọn; Đặt lại mặc định chuyển sang cấu hình đó rồi thử.
+        categories_heading: Bộ phân loại danh mục
+        change: '%{setting}: %{value}'
+        confusion: '%{actual} → %{predicted}'
+        confusions: 'Lỗi phổ biến nhất: %{column} tại %{threshold}'
+        current: Cài đặt của tôi
+        defaults: Mặc định
+        description: Mỗi cột được chấm trên %{months} tháng qua như giao dịch mới; mỗi tháng huấn luyện bằng lịch
+          sử trước đó rồi so với danh mục của bạn. Thử nghiệm không đổi danh mục giao dịch; cài đặt chỉ đổi khi
+          bạn áp dụng hoặc đặt lại.
+        find_best: Tìm cài đặt tốt nhất
+        matcher_confusions: 'Lỗi đơn vị giao dịch phổ biến nhất: %{column} tại %{similarity}'
+        matcher_description: 'Đơn vị giao dịch mà bộ đối chiếu điền trong cùng %{months} tháng: %{count} giao dịch
+          có đơn vị, mỗi giao dịch được đối chiếu với lịch sử trước tháng của nó khi ẩn đơn vị; kết quả đúng là
+          đơn vị hiện có. Mọi ngưỡng cắt và số đơn vị đều được chấm; Tốt nhất tìm được là ô tốt nhất theo chi phí
+          lỗi, được đặt khi Áp dụng. Thử nghiệm không điền đơn vị giao dịch.'
+        merchants_heading: Bộ đối chiếu đơn vị giao dịch
+        no_confusions: Không có lỗi tại ngưỡng này.
+        no_matcher_confusions: Không có lỗi đơn vị giao dịch tại độ tương đồng này.
+        no_uncategorized: Không còn giao dịch chưa phân loại tại ngưỡng này.
+        no_unfilled: Không còn giao dịch thiếu đơn vị tại độ tương đồng này.
+        none: Chưa thử nghiệm.
+        'off': tắt
+        'on': vào
+        ran_at: Đã chấm %{time} trước trên %{count} giao dịch (%{months}).
+        reset: Đặt lại mặc định
+        reset_confirm: Đặt lại mọi cài đặt bộ phân loại về mặc định rồi thử nghiệm?
+        right_wrong: Mỗi ô là đúng / sai.
+        run: Thử cài đặt của tôi
+        running: Đang thử nghiệm… phần này sẽ cập nhật khi xong.
+        short_history: Chưa đủ lịch sử để tinh chỉnh bộ phân loại danh mục. Cần khoảng %{months} tháng giao dịch
+          đã phân loại, nên Áp dụng tạm giữ nguyên cài đặt.
+        similarity: Độ tương đồng
+        stale: Cài đặt đã thay đổi từ lần thử này.
+        threshold: Ngưỡng
+        trying: Đang thử %{changes}…
+        uncategorized: 'Chưa phân loại phổ biến nhất: %{column} tại %{threshold}'
+        unfilled: 'Chưa điền phổ biến nhất: %{column} tại %{similarity}'
+        weight: Một lỗi tương đương
+        weight_hint: 'Chọn cấu hình khi Áp dụng: các ô in đậm có số trả lời đúng trừ chi phí này cho mỗi lỗi cao
+          nhất. Ngưỡng của cấu hình tốt nhất cho danh mục; ngưỡng cắt, độ tương đồng và số đơn vị cho bộ đối chiếu.'
+        weight_option:
+          other: '%{count} câu trả lời đúng'
+      matcher:
+        lock_similar_merchants: Khóa đơn vị giao dịch do bộ đối chiếu đặt
+        lock_similar_merchants_hint: Ngăn quy tắc, AI và đồng bộ thay đổi trừ khi bạn nhấn Áp dụng trên quy tắc.
+          Khóa do chính nó đặt không tính là xác nhận (Tinh chỉnh bộ đối chiếu đơn vị giao dịch).
+        rule: Điền đơn vị giao dịch còn thiếu từ các giao dịch gần trùng
+        rule_hint: Quy tắc Bộ đối chiếu đơn vị giao dịch, bật/tắt cùng mục tương ứng trong Quy tắc. Theo thứ tự
+          quy tắc, giao dịch thiếu đơn vị nhận đơn vị chung của các giao dịch gần trùng, như "NETFLIX.COM 8812"
+          và "Netflix com". Bỏ qua chuyển khoản.
+        similar_threshold: Độ tương đồng
+        similar_threshold_hint: Độ tương đồng thấp nhất của mô tả, bỏ qua số và mã tham chiếu (0.5–0.99). Giảm sẽ
+          điền nhiều hơn nhưng sai nhiều hơn. Áp dụng của Tự tinh chỉnh cũng đặt giá trị này.
+      matcher_tuning:
+        similar_common_share: Ngưỡng cắt
+        similar_common_share_hint: Từ hoặc đoạn 3 ký tự xuất hiện trong tỷ lệ giao dịch nguồn lớn hơn mức này (0.01–1)
+          và ít nhất 50 giao dịch được coi là quá phổ biến để phân biệt, như "card" hoặc "payment", nên bị bỏ qua.
+          Tăng sẽ tính thêm các từ đó. Áp dụng của Tự tinh chỉnh cũng đặt giá trị này.
+        similar_min_neighbours: Đơn vị giao dịch đồng thuận
+        similar_min_neighbours_hint: Số giao dịch gần trùng phải có cùng đơn vị và không giao dịch nào có đơn vị
+          khác. Giá trị 1 sao chép một giao dịch, kể cả lỗi.
+        similar_min_neighbours_option:
+          other: '%{count} đơn vị giao dịch'
+        similar_skip_self: Không sao chép từ đơn vị do bộ đối chiếu tự đặt cho đến khi được xác nhận hoặc đủ số
+          ngày này
+        similar_skip_self_hint: Xác nhận nghĩa là bạn đã sửa hoặc khóa. Sao chép sai không bị lan truyền; mục giữ
+          nguyên đủ lâu được coi là chấp nhận.
+      merchant:
+        merchant_field: Đưa đơn vị giao dịch vào dưới dạng một token khi đã đặt
+        merchant_field_hint: Tính theo danh tính nên đổi tên đơn vị vẫn giữ lịch sử.
+        merchant_name_words: Đưa tên đơn vị giao dịch vào dưới dạng các từ
+        merchant_name_words_hint: Đọc như mô tả theo cách ban đầu, để tên tương tự chia sẻ bằng chứng. Có trùng
+          lặp với token bên dưới.
+      run:
+        success: Bayes đang phân loại giao dịch chưa có danh mục. Có thể mất vài giây.
+      scoring:
+        complement: Dùng complement naive Bayes
+        complement_hint: Chấm mỗi danh mục theo mức giao dịch không phù hợp các danh mục khác, xử lý tốt hơn khi
+          kích thước danh mục chênh lệch nhiều. Tắt để dùng multinomial ban đầu.
+        prior: Bao gồm tần suất dùng mỗi danh mục
+        prior_hint: Ưu tiên danh mục bạn dùng nhiều. Tắt để coi mọi danh mục như nhau theo cách ban đầu.
+        separate_fields: Chấm đơn vị giao dịch và tài khoản riêng với các từ
+        separate_fields_hint: Mỗi trường có phân phối riêng để mô tả dài không lấn át. Cần bao gồm đơn vị hoặc tài
+          khoản; số tiền luôn được chấm riêng.
+        smoothing: Làm trơn
+        smoothing_hint: Cộng vào mỗi số đếm để từ chưa gặp không loại bỏ một danh mục (0.001–10). Giá trị ban đầu
+          là 1; giá trị thấp tin dữ liệu đã thấy hơn.
+      show:
+        add_rule_body: Danh sách chưa có quy tắc %{name} nên không có gì để bật. Thêm lên đầu danh sách?
+        add_rule_cancel: Không
+        add_rule_confirm: Thêm quy tắc
+        add_rule_title: Thêm quy tắc %{name}?
+        account: Tinh chỉnh tài khoản
+        amount: Tinh chỉnh số tiền
+        auto_tune: Tự tinh chỉnh
+        category_training: Tinh chỉnh bộ phân loại danh mục
+        clear_locks: Xóa khóa Bayes
+        clear_locks_confirm_body: Mở khóa danh mục Bayes đã khóa và đơn vị bộ đối chiếu đã khóa nếu vẫn là giá trị
+          chúng đặt, để quy tắc và AI có thể sửa lại. Danh mục và đơn vị vẫn được giữ.
+        clear_locks_confirm_button: Xóa khóa
+        clear_locks_confirm_title: Xóa khóa Bayes?
+        description: Bộ phân loại danh mục Bayes học từ giao dịch đã phân loại và phân loại giao dịch mới trước
+          mọi nhà cung cấp AI. Thay đổi cài đặt có hiệu lực từ lần phân loại tiếp theo; giao dịch đã phân loại giữ
+          nguyên danh mục.
+        matcher: Bộ đối chiếu
+        matcher_description: Điền đơn vị giao dịch còn thiếu từ giao dịch gần trùng qua quy tắc Bộ đối chiếu đơn
+          vị giao dịch (sau mỗi lần đồng bộ) và khi nhấn Chạy. Thao tác thay đổi đơn vị đã lưu.
+        matcher_tuning: Tinh chỉnh bộ đối chiếu đơn vị giao dịch
+        merchant: Tinh chỉnh đơn vị giao dịch
+        run: Chạy
+        scoring: Chấm điểm
+        title: Bộ phân loại
+        training: Huấn luyện
+        words: Tinh chỉnh giao dịch
+      training:
+        max_training_transactions: Giao dịch huấn luyện
+        max_training_transactions_hint: 'Số giao dịch mới nhất cần dùng (100–20.000): giao dịch đã phân loại để
+          bộ phân loại học và giao dịch có đơn vị để bộ đối chiếu sao chép.'
+      words:
+        bigrams: Bao gồm cặp từ
+        bigrams_hint: Các từ liền nhau cũng được tính chung, như "card payment".
+        binary: Loại từ lặp
+        binary_hint: Mỗi từ chỉ được tính một lần trên mỗi giao dịch.
+        drop_codes: Loại mã tham chiếu
+        drop_codes_hint: Từ kết hợp chữ với từ 2 chữ số trở lên, như 2k4l19.
+        drop_numbers: Loại số
+        drop_numbers_hint: Số cửa hàng, ngày và số tiền trong mô tả.
+        include_notes: Bao gồm ghi chú
+        include_notes_hint: Đọc cả ghi chú lẫn tên.
+        keep_single_chars: Bao gồm từ một ký tự
+        keep_single_chars_hint: Chữ và số đơn lẻ còn lại sau khi tách, như "s" trong mcdonald's.
+        spread_filter: Loại từ mọi danh mục dùng tương tự nhau
+        spread_filter_hint: Chúng không cho biết danh mục. Con số là mức sử dụng của một danh mục phải vượt tỷ lệ
+          phân bố đều bao nhiêu.
+        word_split: Từ được tạo từ
+        word_split_ascii: a–z và 0–9
+        word_split_hint: Mọi ký tự khác sẽ tách từ. Chữ của mọi hệ chữ giữ nguyên từ như Geschäft hoặc Кофейня;
+          khi cho phép ký hiệu bên trong, chữ nối bằng một ký hiệu vẫn là một từ, như mcdonald's, s/o và m&s (ký
+          hiệu đầu hoặc cuối như *netflix vẫn bị bỏ).
+        word_split_symbols: Chữ, số, ký hiệu bên trong
+        word_split_unicode: Chữ và số, mọi hệ chữ

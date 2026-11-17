@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+**English** | [Tiếng Việt](../../docs/vi/.github/ISSUE_TEMPLATE/other.md)
+
 ## Before you start (required)
 
 ### Is this a bug?

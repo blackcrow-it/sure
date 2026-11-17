@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../../docs/vi/charts/sure/README.md)
+
 # Sure Helm Chart
 
 Official Helm chart for deploying the Sure Rails application on Kubernetes. It supports web (Rails) and worker (Sidekiq) workloads, optional in-cluster PostgreSQL (CloudNativePG) and Redis subcharts for turnkey self-hosting, and production-grade features like pre-upgrade migrations, pod security contexts, HPAs, and optional ServiceMonitor.

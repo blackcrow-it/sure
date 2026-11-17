@@ -74,6 +74,8 @@ RSpec.describe 'API V1 Transfers', type: :request do
 
   path '/api/v1/transfers' do
     get 'List transfers' do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language; a saved user locale takes precedence. Error codes remain unchanged.'
       tags 'Transfers'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'
@@ -130,6 +132,10 @@ RSpec.describe 'API V1 Transfers', type: :request do
     parameter name: :id, in: :path, type: :string, required: true, description: 'Transfer ID'
 
     get 'Retrieve a transfer' do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language; a saved user locale takes precedence. Error codes remain unchanged.'
       tags 'Transfers'
       security [ { apiKeyAuth: [] } ]
       produces 'application/json'

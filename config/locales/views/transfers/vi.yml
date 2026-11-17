@@ -3,14 +3,17 @@ vi:
   transfers:
     create:
       success: Chuyển khoản đã được tạo
+      exchange_rate_unavailable: Chưa có tỷ giá cho tiền tệ và ngày đã chọn
+      date_invalid: không hợp lệ
+      stale_form: Biểu mẫu này đã gửi với thông tin khác. Vui lòng làm mới trang rồi thử lại.
     destroy:
       success: Chuyển khoản đã được xóa
     form:
       amount: Số tiền
       date: Ngày
       destination_amount: Số tiền đích
-      destination_amount_display: "Số tiền đích: %{amount}"
-      exchange_rate_display: "Tỷ giá: %{rate}"
+      destination_amount_display: 'Số tiền đích: %{amount}'
+      exchange_rate_display: 'Tỷ giá: %{rate}'
       expense: Chi tiêu
       from: Từ
       income: Thu nhập
@@ -19,6 +22,9 @@ vi:
       submit: Tạo chuyển khoản
       to: Đến
       transfer: Chuyển khoản
+      bank_charges: Phí ngân hàng
+      outgoing_fee: Phí chuyển tiền đi
+      incoming_fee: Phí nhận tiền
     new:
       title: Chuyển khoản mới
     show:
@@ -27,7 +33,8 @@ vi:
       delete_title: Xóa chuyển khoản?
       details: Chi tiết
       mark_recurring: Đánh dấu là định kỳ
-      mark_recurring_subtitle: Theo dõi chuyển khoản này như một mẫu định kỳ trong nguồn cấp sắp tới và trang định kỳ.
+      mark_recurring_subtitle: Theo dõi chuyển khoản này như một mẫu định kỳ trong nguồn cấp sắp tới và trang định
+        kỳ.
       mark_recurring_title: Đánh dấu chuyển khoản là định kỳ
       note_label: Ghi chú
       note_placeholder: Thêm ghi chú cho chuyển khoản này
@@ -41,5 +48,11 @@ vi:
       uncategorized: Chưa phân loại
       total: '[Total]'
       transfer_amount: '[Transfer amount]'
+      investment_contribution_subtitle: Tính chuyển khoản này là chi tiêu trong ngân sách và báo cáo. Tắt khi tài
+        khoản môi giới hoặc tiền mã hóa chỉ quy đổi tiền sang tiền tệ khác.
+      investment_contribution_title: Đóng góp đầu tư
+      bank_charges: Phí ngân hàng
+      source_fee: Phí bên gửi
+      destination_fee: Phí bên nhận
     update:
       success: Chuyển khoản đã được cập nhật

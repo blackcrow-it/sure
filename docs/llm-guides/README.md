@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/llm-guides/README.md)
+
 # Development guides
 
 Start with [repository guidance](../../AGENTS.md), then read the guide for the work

@@ -1261,4 +1261,294 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get cashFlowTransactionsLoadFailed =>
       'Kunde inte läsa in transaktioner';
+
+  @override
+  String get introTitle => 'Introduktionen kommer snart';
+
+  @override
+  String get introBody =>
+      'Vi bygger en mer omfattande introduktion för att lära känna dina mål, milstolpar och vardagsbehov. Gå till chatten för att prata med Sure och berätta var du befinner dig på din ekonomiska resa.';
+
+  @override
+  String get navTogglePrivacy => 'Växla sekretessläge';
+
+  @override
+  String get dashboardNetWorth => 'Nettoförmögenhet';
+
+  @override
+  String get syncPending => 'Väntar';
+
+  @override
+  String get syncDeleting => 'Tar bort';
+
+  @override
+  String get syncFailed => 'Misslyckades';
+
+  @override
+  String get syncPendingSemantics => 'Transaktion väntar på synkronisering';
+
+  @override
+  String get syncDeletingSemantics => 'Transaktion väntar på borttagning';
+
+  @override
+  String buttonLoading(String label) {
+    return '$label, laddar';
+  }
+
+  @override
+  String get biometricUnlockReason => 'Lås upp Sure för att fortsätta';
+
+  @override
+  String get accountTypeDepository => 'Bankkonto';
+
+  @override
+  String get accountTypeCreditCard => 'Kreditkort';
+
+  @override
+  String get accountTypeInvestment => 'Investering';
+
+  @override
+  String get accountTypeLoan => 'Lån';
+
+  @override
+  String get accountTypeProperty => 'Fastighet';
+
+  @override
+  String get accountTypeVehicle => 'Fordon';
+
+  @override
+  String get accountTypeCrypto => 'Krypto';
+
+  @override
+  String get accountTypeOtherAsset => 'Övrig tillgång';
+
+  @override
+  String get accountTypeOtherLiability => 'Övrig skuld';
+
+  @override
+  String get proxyHeaderNameRequired => 'Headernamn krävs';
+
+  @override
+  String get proxyHeaderNameInvalid => 'Ange ett giltigt HTTP-headernamn';
+
+  @override
+  String get proxyHeaderReserved => 'Denna header hanteras av appen';
+
+  @override
+  String get proxyHeaderValueRequired => 'Headervärde krävs';
+
+  @override
+  String get proxyHeaderValueInvalid =>
+      'Headervärdet innehåller kontrolltecken';
+
+  @override
+  String get updateTitle => 'Uppdatering tillgänglig';
+
+  @override
+  String updateBody(
+      String appName, String storeVersion, String installedVersion) {
+    return '$appName $storeVersion är tillgänglig — du har $installedVersion.\n\nVad är nytt? Läs versionsinformationen i butiken.';
+  }
+
+  @override
+  String get updateNow => 'Uppdatera nu';
+
+  @override
+  String get updateLater => 'Senare';
+
+  @override
+  String get errorNetworkUnavailable => 'Nätverket är inte tillgängligt';
+
+  @override
+  String get errorTimeout => 'Begäran tog för lång tid';
+
+  @override
+  String get errorInvalidResponse => 'Ogiltigt svar från servern';
+
+  @override
+  String get errorUnexpected => 'Ett oväntat fel uppstod';
+
+  @override
+  String get errorLogin => 'Inloggningen misslyckades';
+
+  @override
+  String get errorSignup => 'Registreringen misslyckades';
+
+  @override
+  String get errorTokenRefresh => 'Kunde inte förnya åtkomsttoken';
+
+  @override
+  String errorLoginStatus(String code) {
+    return 'Inloggningen misslyckades (status $code)';
+  }
+
+  @override
+  String get errorSsoLogin => 'SSO-inloggningen misslyckades';
+
+  @override
+  String get errorSsoCallback => 'Ogiltigt SSO-callbacksvar';
+
+  @override
+  String get errorTokenExchange => 'Kunde inte byta token';
+
+  @override
+  String get errorAuthorizationCode => 'Kunde inte byta auktoriseringskod';
+
+  @override
+  String get errorAccountLink => 'Kunde inte länka kontot';
+
+  @override
+  String get errorAccountCreate => 'Kunde inte skapa kontot';
+
+  @override
+  String get errorNetwork => 'Nätverksfel';
+
+  @override
+  String errorNetworkDetails(String error) {
+    return 'Nätverksfel: $error';
+  }
+
+  @override
+  String get errorInvalidMfa => 'Ogiltig autentiseringskod. Försök igen.';
+
+  @override
+  String get errorConnectRetry =>
+      'Kunde inte ansluta. Kontrollera nätverket och försök igen.';
+
+  @override
+  String get errorBrowser => 'Kunde inte öppna webbläsaren för inloggning.';
+
+  @override
+  String get errorStartSignIn => 'Kunde inte starta inloggningen. Försök igen.';
+
+  @override
+  String get errorSignInRetry => 'Inloggningen misslyckades. Försök igen.';
+
+  @override
+  String get errorNoSsoSession =>
+      'Ingen väntande SSO-session. Försök logga in igen.';
+
+  @override
+  String get errorAccountLinkRetry => 'Kunde inte länka kontot. Försök igen.';
+
+  @override
+  String get errorAccountCreateRetry => 'Kunde inte skapa kontot. Försök igen.';
+
+  @override
+  String get errorRetry => 'Något gick fel. Försök igen.';
+
+  @override
+  String get errorChatCreate => 'Kunde inte skapa chatten';
+
+  @override
+  String get errorChatSend => 'Kunde inte skicka meddelandet';
+
+  @override
+  String get errorChatUpdate => 'Kunde inte uppdatera chatten';
+
+  @override
+  String get errorChatRetry => 'Kunde inte försöka skicka meddelandet igen';
+
+  @override
+  String get errorChatNotFound => 'Chatten hittades inte';
+
+  @override
+  String get errorAiDisabled => 'AI-funktionerna är inte aktiverade';
+
+  @override
+  String get errorAssistantTimeout =>
+      'Assistenten tog för lång tid på sig att svara. Försök igen.';
+
+  @override
+  String get errorAccountsOffline =>
+      'Du är offline. Anslut till internet för att ladda konton.';
+
+  @override
+  String get errorNetworkRetry =>
+      'Nätverksfel. Kontrollera internetanslutningen och försök igen.';
+
+  @override
+  String get errorTimeoutRetry =>
+      'Begäran tog för lång tid. Kontrollera anslutningen och försök igen.';
+
+  @override
+  String get errorServerRetry => 'Fel i serversvaret. Försök igen senare.';
+
+  @override
+  String get errorSecureConnection =>
+      'Fel i den säkra anslutningen. Kontrollera internetanslutningen och försök igen.';
+
+  @override
+  String get biometricHint => 'Verifiera identitet';
+
+  @override
+  String get biometricNotRecognized => 'Kändes inte igen. Försök igen.';
+
+  @override
+  String get biometricSuccess => 'Klart';
+
+  @override
+  String get biometricRequired => 'Biometri krävs';
+
+  @override
+  String get biometricCredentialsRequired =>
+      'Enhetens inloggningsuppgifter krävs';
+
+  @override
+  String get biometricGoToSettings => 'Öppna inställningar';
+
+  @override
+  String get biometricAndroidSetup =>
+      'Biometrisk autentisering har inte ställts in på enheten. Öppna Inställningar > Säkerhet för att lägga till den.';
+
+  @override
+  String get biometricAuthenticationRequired => 'Autentisering krävs';
+
+  @override
+  String get biometricLockout =>
+      'Biometrisk autentisering är inaktiverad. Lås och lås upp skärmen för att aktivera den.';
+
+  @override
+  String get biometricIosSetup =>
+      'Biometrisk autentisering har inte ställts in på enheten. Aktivera Touch ID eller Face ID på telefonen.';
+
+  @override
+  String get biometricOk => 'OK';
+
+  @override
+  String get accountTransactions => 'Transaktioner';
+
+  @override
+  String get chatThinking => 'Tänker';
+
+  @override
+  String get errorUploadTransaction =>
+      'Kunde inte ladda upp transaktionen. Den synkroniseras när du är online.';
+
+  @override
+  String get errorEditOffline =>
+      'Anslut till internet innan du redigerar synkroniserade transaktioner.';
+
+  @override
+  String get errorSyncOffline => 'Kan inte synkronisera offline';
+
+  @override
+  String get errorSyncInProgress => 'Synkronisering pågår redan';
+
+  @override
+  String get errorNoFields => 'Inga fält att uppdatera';
+
+  @override
+  String errorDeleteTransactionsCount(String count) {
+    return 'Kunde inte ta bort $count transaktioner';
+  }
+
+  @override
+  String errorDeleteTransactionDetails(String error) {
+    return 'Kunde inte ta bort transaktionen: $error';
+  }
+
+  @override
+  String get transactionFormDefaultNotes =>
+      'Denna transaktion skapades via mobilappen.';
 }

@@ -36,7 +36,7 @@ class Api::V1::MessagesController < Api::V1::BaseController
       )
 
       AssistantResponseJob.perform_later(new_message)
-      render json: { message: "Retry initiated", message_id: new_message.id }, status: :accepted
+      render json: { message: t("vietnamese_ui.api.retry_started"), message_id: new_message.id }, status: :accepted
     else
       render json: { error: "No assistant message to retry" }, status: :unprocessable_entity
     end

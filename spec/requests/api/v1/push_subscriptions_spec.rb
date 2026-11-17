@@ -17,6 +17,8 @@ RSpec.describe "API V1 Push Subscriptions", type: :request do
 
   path "/api/v1/push_subscriptions" do
     post "Register an APNs device token" do
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description "Available only in hosted (managed) mode. Requires write scope."
       tags "Push Subscriptions"
       security [ { apiKeyAuth: [] } ]
@@ -60,6 +62,10 @@ RSpec.describe "API V1 Push Subscriptions", type: :request do
     let(:id) { subscription.id }
 
     delete "Unregister an APNs device token" do
+
+      parameter name: :'Accept-Language', in: :header, type: :string, required: false,
+
+                description: 'Preferred response language (for example vi-VN). A saved user locale takes precedence; machine-readable codes are unchanged.'
       description "Available only in hosted (managed) mode. Requires write scope."
       tags "Push Subscriptions"
       security [ { apiKeyAuth: [] } ]

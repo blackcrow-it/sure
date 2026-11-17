@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="import"
 export default class extends Controller {
   static values = {
+    selectValue: String,
     csv: { type: Array, default: [] },
     amountTypeColumnKey: { type: String, default: "" },
   };
@@ -89,7 +90,7 @@ export default class extends Controller {
 
     // Only add the prompt if there's no current value
     if (!currentValue) {
-      fragment.appendChild(new Option("Select value", ""));
+      fragment.appendChild(new Option(this.selectValueValue, ""));
     }
 
     selectableValues.forEach((value) => {

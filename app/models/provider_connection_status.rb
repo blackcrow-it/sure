@@ -204,7 +204,7 @@ class ProviderConnectionStatus
 
     def sync_status_summary
       if provider[:key] == "financekit"
-        return item.last_imported_at ? "Wallet publisher imported" : "Waiting for Wallet publisher"
+        return item.last_imported_at ? I18n.t("vietnamese_ui.sync.wallet_imported") : I18n.t("vietnamese_ui.sync.wallet_waiting")
       end
 
       stats = latest_completed_sync_stats
@@ -214,11 +214,11 @@ class ProviderConnectionStatus
       unlinked = stats.fetch("unlinked_accounts", [ total - linked, 0 ].max).to_i
 
       if total.zero?
-        "No accounts found"
+        I18n.t("vietnamese_ui.sync.no_accounts")
       elsif unlinked.zero?
-        "#{linked} #{'account'.pluralize(linked)} synced"
+        I18n.t("vietnamese_ui.sync.complete", count: linked)
       else
-        "#{linked} synced, #{unlinked} need setup"
+        I18n.t("vietnamese_ui.sync.partial", linked: linked, unlinked: unlinked)
       end
     end
 
@@ -268,7 +268,7 @@ class ProviderConnectionStatus
       # generic sync API suppresses stale-without-error payloads.
       {
         present: true,
-        message: sync.stale? ? "Sync became stale before completion" : "Sync failed"
+        message: sync.stale? ? I18n.t("vietnamese_ui.sync.stale") : I18n.t("vietnamese_ui.sync.failed")
       }
     end
 

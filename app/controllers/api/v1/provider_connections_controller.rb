@@ -12,7 +12,7 @@ class Api::V1::ProviderConnectionsController < Api::V1::BaseController
 
     render_json({
       error: "internal_server_error",
-      message: "An unexpected error occurred"
+      message: t("vietnamese_ui.api.unexpected_error")
     }, status: :internal_server_error)
   end
 

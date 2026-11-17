@@ -50,6 +50,7 @@ pub fn setup(app: &tauri::App) -> Result<(), Box<dyn std::error::Error>> {
 
     // Overlay titlebar + inset traffic lights so content sits under a clean bar.
     window.create_overlay_titlebar()?;
+    #[cfg(target_os = "macos")]
     window.set_traffic_lights_inset(16.0, 20.0)?;
 
     Ok(())
@@ -303,8 +304,8 @@ impl DownloadToast {
 }
 
 /// Title and body of the native notification for a finished download: the
-/// toast's own text when the page provides it, English otherwise.
-pub fn download_notification(success: bool, toast: &DownloadToast) -> (String, String) {
+/// toast's own text when the page provides it, the shell's language otherwise.
+pub fn download_notification(success: bool, toast: &DownloadToast, locale: crate::localization::Locale) -> (String, String) {
     let message = toast.message.clone().filter(|text| !text.is_empty());
     let description = toast.description.clone().filter(|text| !text.is_empty());
     match (message, description) {
@@ -314,11 +315,11 @@ pub fn download_notification(success: bool, toast: &DownloadToast) -> (String, S
         // Downloads directory and adds a suffix when a filename already exists.
         (None, _) if success => (
             "Sure".to_string(),
-            "Download complete. The file is in your Downloads folder.".to_string(),
+            crate::localization::strings(locale).notifications.download_complete.clone(),
         ),
         (None, _) => (
             "Sure".to_string(),
-            "Download failed. Please try again.".to_string(),
+            crate::localization::strings(locale).notifications.download_failed.clone(),
         ),
     }
 }
@@ -376,7 +377,8 @@ fn report_download(webview: &tauri::Webview, success: bool) {
 }
 
 fn notify_download(app: &AppHandle, success: bool, toast: &DownloadToast) {
-    let (title, body) = download_notification(success, toast);
+    let locale = *app.state::<crate::state::AppState>().locale.lock().unwrap();
+    let (title, body) = download_notification(success, toast, locale);
     if let Err(error) = app.notification().builder().title(title).body(body).show() {
         eprintln!("[sure] failed to show download notification: {error}");
     }

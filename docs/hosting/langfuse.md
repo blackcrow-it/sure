@@ -1,3 +1,5 @@
+**English** | [Tiếng Việt](../vi/docs/hosting/langfuse.md)
+
 # Langfuse
 
 This app can send traces of all LLM interactions to [Langfuse](https://langfuse.com) for debugging and usage analytics.  Find them here [on

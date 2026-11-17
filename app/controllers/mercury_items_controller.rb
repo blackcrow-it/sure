@@ -596,7 +596,7 @@ class MercuryItemsController < ApplicationController
     rescue StandardError => e
       Rails.logger.error("Mercury account setup failed unexpectedly: #{e.class} - #{e.message}")
       Rails.logger.error(e.backtrace.first(10).join("\n"))
-      flash[:alert] = t(".creation_failed", error: "An unexpected error occurred")
+      flash[:alert] = t(".creation_failed", error: t("vietnamese_ui.common.unexpected_error"))
       redirect_to accounts_path, status: :see_other
       return
     end

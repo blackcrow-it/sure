@@ -4,6 +4,45 @@ vi:
     errors:
       models:
         rule:
-          min_actions: "phải có ít nhất một hành động"
-          duplicate_actions: "Quy tắc không được có các hành động trùng lặp %{types}"
-          nested_conditions: "Điều kiện phức hợp không thể lồng nhau"
+          min_actions: phải có ít nhất một hành động
+          duplicate_actions: Quy tắc không được có các hành động trùng lặp %{types}
+          nested_conditions: Điều kiện phức hợp không thể lồng nhau
+          split_not_alone: Quy tắc chia giao dịch không thể có hành động khác
+        rule/action:
+          attributes:
+            value:
+              invalid_config: phải là cấu hình chia giao dịch hợp lệ
+              invalid_split_count: phải có từ %{min} đến %{max} phần chia
+              split_name_required: 'phần chia #%{index} thiếu tên'
+              split_name_too_long: 'tên phần chia #%{index} quá dài (tối đa 255 ký tự)'
+              split_name_invalid: 'tên phần chia #%{index} chứa ký tự không hợp lệ'
+              split_type_invalid: 'loại phần chia #%{index} phải là cố định hoặc phần trăm'
+              split_share_invalid: 'giá trị phần chia #%{index} phải là số dương'
+              split_category_invalid: 'danh mục của phần chia #%{index} không thuộc hộ gia đình này'
+              split_merchant_invalid: 'đơn vị giao dịch của phần chia #%{index} không thuộc hộ gia đình này'
+              split_tags_invalid: 'phần chia #%{index} có nhãn không thuộc hộ gia đình này'
+              percentages_must_total_100: tổng tỷ lệ phần trăm phải bằng 100 (hiện là %{total})
+              fixed_requires_exact_amount_condition: 'chia theo số tiền cố định yêu cầu điều kiện quy tắc khớp chính
+                xác số tiền giao dịch (ví dụ: Số tiền = 42.00); nếu không, tổng các phần chia có thể không bằng
+                tổng của từng giao dịch khớp quy tắc'
+              fixed_shares_must_equal_condition_amount: tổng các phần chia phải bằng %{amount}, số tiền chính xác
+                mà điều kiện của quy tắc này yêu cầu
+        rule/condition:
+          attributes:
+            value:
+              regex_invalid: không phải biểu thức chính quy hợp lệ
+              regex_too_complex: quá phức tạp để thực thi an toàn
+              regex_too_long: quá dài (tối đa %{count} ký tự)
+              regex_backreference: không được sử dụng tham chiếu ngược (\1 đến \9)
+    attributes:
+      rule:
+        new_rule_group_name: Nhóm mới
+        rule_group: Nhóm
+  rule:
+    actions:
+      set_transaction_merchant:
+        not_accessible: Đơn vị giao dịch trên tài khoản bạn không có quyền truy cập
+        unassigned: '%{name} (không còn được gán)'
+        unavailable: Đơn vị giao dịch không còn khả dụng
+    conditions:
+      unsupported_label: Không được hỗ trợ (%{type})

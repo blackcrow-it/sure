@@ -36,15 +36,15 @@ class Api::V1::TradesController < Api::V1::BaseController
 
   def create
     unless trade_params[:account_id].present?
-      return render_validation_error("Account ID is required", [ "Account ID is required" ])
+      return render_validation_error(t("vietnamese_ui.api.account_id_required"), [ t("vietnamese_ui.api.account_id_required") ])
     end
 
     account = current_resource_owner.family.accounts.visible.find(trade_params[:account_id])
 
     unless account.supports_trades?
       return render_validation_error(
-        "Account does not support trades (investment or crypto exchange only)",
-        [ "Account must be an investment or crypto exchange account" ]
+        t("vietnamese_ui.api.trade_account"),
+        [ t("vietnamese_ui.api.trade_account_type") ]
       )
     end
 
@@ -62,8 +62,8 @@ class Api::V1::TradesController < Api::V1::BaseController
     end
 
     unless model.persisted?
-      errors = model.is_a?(Entry) ? model.errors.full_messages : [ "Trade could not be created" ]
-      return render_validation_error("Trade could not be created", errors)
+      errors = model.is_a?(Entry) ? model.errors.full_messages : [ t("vietnamese_ui.api.trade_create_failed") ]
+      return render_validation_error(t("vietnamese_ui.api.trade_create_failed"), errors)
     end
 
     if model.is_a?(Entry)
@@ -88,7 +88,7 @@ class Api::V1::TradesController < Api::V1::BaseController
       render :show, status: :created
     end
   rescue ActiveRecord::RecordNotFound => e
-    message = (e.model == "Account") ? "Account not found" : "Security not found"
+    message = (e.model == "Account") ? t("vietnamese_ui.api.account_not_found") : t("vietnamese_ui.api.security_not_found")
     render json: { error: "not_found", message: message }, status: :not_found
   rescue => e
     log_and_render_error("create", e)
@@ -115,7 +115,7 @@ class Api::V1::TradesController < Api::V1::BaseController
         @trade = @entry.trade
         render :show
       else
-        render_validation_error("Trade could not be updated", @entry.errors.full_messages)
+        render_validation_error(t("vietnamese_ui.api.trade_update_failed"), @entry.errors.full_messages)
         raise ActiveRecord::Rollback
       end
     end
@@ -128,7 +128,7 @@ class Api::V1::TradesController < Api::V1::BaseController
     @entry.destroy!
     @entry.sync_account_later
 
-    render json: { message: "Trade deleted successfully" }, status: :ok
+    render json: { message: t("vietnamese_ui.api.trade_deleted") }, status: :ok
   rescue => e
     log_and_render_error("destroy", e)
   end
@@ -140,7 +140,7 @@ class Api::V1::TradesController < Api::V1::BaseController
       @trade = family.trades.visible.find(params[:id])
       @entry = @trade.entry
     rescue ActiveRecord::RecordNotFound
-      render json: { error: "not_found", message: "Trade not found" }, status: :not_found
+      render json: { error: "not_found", message: t("vietnamese_ui.api.trade_not_found") }, status: :not_found
     end
 
     def ensure_read_scope
@@ -243,12 +243,12 @@ class Api::V1::TradesController < Api::V1::BaseController
       case type
       when "deposit", "withdrawal"
         unless trade_params[:amount].present?
-          render_validation_error("Amount is required", [ "amount must be present for deposit/withdrawal" ])
+          render_validation_error(t("vietnamese_ui.api.amount_required"), [ t("vietnamese_ui.api.amount_context", context: "deposit/withdrawal") ])
           return nil
         end
 
         unless trade_params[:date].present?
-          render_validation_error("Date is required", [ "date must be present" ])
+          render_validation_error(t("vietnamese_ui.api.date_required"), [ t("vietnamese_ui.api.date_present") ])
           return nil
         end
 
@@ -263,12 +263,12 @@ class Api::V1::TradesController < Api::V1::BaseController
 
       when "interest", "fee"
         unless trade_params[:date].present?
-          render_validation_error("Date is required", [ "date must be present" ])
+          render_validation_error(t("vietnamese_ui.api.date_required"), [ t("vietnamese_ui.api.date_present") ])
           return nil
         end
 
         unless trade_params[:amount].present?
-          render_validation_error("Amount is required", [ "amount must be present" ])
+          render_validation_error(t("vietnamese_ui.api.amount_required"), [ t("vietnamese_ui.api.amount_present") ])
           return nil
         end
 
@@ -306,7 +306,7 @@ class Api::V1::TradesController < Api::V1::BaseController
       manual_ticker_value = nil
 
       unless trade_params[:date].present?
-        render_validation_error("Date is required", [ "date must be present" ])
+        render_validation_error(t("vietnamese_ui.api.date_required"), [ t("vietnamese_ui.api.date_present") ])
         return nil
       end
 
@@ -318,21 +318,21 @@ class Api::V1::TradesController < Api::V1::BaseController
       elsif trade_params[:manual_ticker].present?
         manual_ticker_value = trade_params[:manual_ticker]
       else
-        render_validation_error("Security identifier required", [ "Provide security_id, ticker, or manual_ticker" ])
+        render_validation_error(t("vietnamese_ui.api.security_required"), [ t("vietnamese_ui.api.security_identifier") ])
         return nil
       end
 
       qty_raw = trade_params[:qty].to_s.strip
       price_raw = trade_params[:price].to_s.strip
-      return render_validation_error("Quantity and price are required", [ "qty and price must be present and positive" ]) if qty_raw.blank? || price_raw.blank?
+      return render_validation_error(t("vietnamese_ui.api.quantity_price_required"), [ t("vietnamese_ui.api.qty_price_positive") ]) if qty_raw.blank? || price_raw.blank?
 
       qty = qty_raw.to_d
       price = price_raw.to_d
       if qty <= 0 || price <= 0
         # Non-numeric input (e.g. "abc") becomes 0 with to_d; give a clearer message than "must be present"
         non_numeric = (qty.zero? && qty_raw !~ /\A0(\.0*)?\z/) || (price.zero? && price_raw !~ /\A0(\.0*)?\z/)
-        return render_validation_error("Quantity and price must be valid numbers", [ "qty and price must be valid positive numbers" ]) if non_numeric
-        return render_validation_error("Quantity and price are required", [ "qty and price must be present and positive" ])
+        return render_validation_error(t("vietnamese_ui.api.quantity_price_invalid"), [ t("vietnamese_ui.api.qty_price_numbers") ]) if non_numeric
+        return render_validation_error(t("vietnamese_ui.api.quantity_price_required"), [ t("vietnamese_ui.api.qty_price_positive") ])
       end
 
       {
@@ -353,7 +353,7 @@ class Api::V1::TradesController < Api::V1::BaseController
       manual_ticker_value = nil
 
       unless trade_params[:date].present?
-        render_validation_error("Date is required", [ "date must be present" ])
+        render_validation_error(t("vietnamese_ui.api.date_required"), [ t("vietnamese_ui.api.date_present") ])
         return nil
       end
 
@@ -365,12 +365,12 @@ class Api::V1::TradesController < Api::V1::BaseController
       elsif trade_params[:manual_ticker].present?
         manual_ticker_value = trade_params[:manual_ticker]
       else
-        render_validation_error("Security identifier required", [ "Provide security_id, ticker, or manual_ticker" ])
+        render_validation_error(t("vietnamese_ui.api.security_required"), [ t("vietnamese_ui.api.security_identifier") ])
         return nil
       end
 
       unless trade_params[:amount].present?
-        render_validation_error("Amount is required", [ "amount must be present for dividend" ])
+        render_validation_error(t("vietnamese_ui.api.amount_required"), [ t("vietnamese_ui.api.amount_context", context: "dividend") ])
         return nil
       end
 
@@ -463,7 +463,7 @@ class Api::V1::TradesController < Api::V1::BaseController
     def parse_date!(value, param_name)
       Date.parse(value)
     rescue Date::Error, ArgumentError, TypeError
-      raise ArgumentError, "Invalid #{param_name} format"
+      raise ArgumentError, t("vietnamese_ui.api.invalid_format", parameter: param_name)
     end
 
     def log_and_render_error(action, exception)
@@ -471,17 +471,17 @@ class Api::V1::TradesController < Api::V1::BaseController
       Rails.logger.error exception.backtrace.join("\n")
       render json: {
         error: "internal_server_error",
-        message: "An unexpected error occurred"
+        message: t("vietnamese_ui.api.unexpected_error")
       }, status: :internal_server_error
     end
 
     def parse_positive_amount!(raw, context:)
       value_raw = raw.to_s.strip
-      return render_validation_error("Amount is required", [ "amount must be present for #{context}" ]) if value_raw.blank?
+      return render_validation_error(t("vietnamese_ui.api.amount_required"), [ t("vietnamese_ui.api.amount_context", context: context) ]) if value_raw.blank?
 
       value = value_raw.to_d
       non_numeric = value.zero? && value_raw !~ /\A0(\.0*)?\z/
-      return render_validation_error("Amount must be a valid number", [ "amount must be a valid positive number" ]) if non_numeric || value <= 0
+      return render_validation_error(t("vietnamese_ui.api.amount_invalid"), [ t("vietnamese_ui.api.amount_positive") ]) if non_numeric || value <= 0
 
       value
          end

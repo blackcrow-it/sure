@@ -36,14 +36,14 @@ class Api::V1::ImportsController < Api::V1::BaseController
 
   rescue StandardError => e
     Rails.logger.error "ImportsController#index error: #{e.message}"
-    render json: { error: "internal_server_error", message: "An unexpected error occurred." }, status: :internal_server_error
+    render json: { error: "internal_server_error", message: t("vietnamese_ui.api.unexpected_error_period") }, status: :internal_server_error
   end
 
   def show
     render :show
   rescue StandardError => e
     Rails.logger.error "ImportsController#show error: #{e.message}"
-    render json: { error: "internal_server_error", message: "An unexpected error occurred." }, status: :internal_server_error
+    render json: { error: "internal_server_error", message: t("vietnamese_ui.api.unexpected_error_period") }, status: :internal_server_error
   end
 
   def rows
@@ -59,7 +59,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
     render :rows
   rescue StandardError => e
     Rails.logger.error "ImportsController#rows error: #{e.message}"
-    render json: { error: "internal_server_error", message: "An unexpected error occurred." }, status: :internal_server_error
+    render json: { error: "internal_server_error", message: t("vietnamese_ui.api.unexpected_error_period") }, status: :internal_server_error
   end
 
   def create
@@ -75,7 +75,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
     if type == "MonarchImport"
       return render json: {
         error: "unsupported_type",
-        message: "Monarch imports need per-account choices that only the web app collects. Use the import flow in the web app."
+        message: t("vietnamese_ui.api.monarch_web")
       }, status: :unprocessable_entity
     end
 
@@ -90,14 +90,14 @@ class Api::V1::ImportsController < Api::V1::BaseController
       if file.size > Import.max_csv_size
         return render json: {
           error: "file_too_large",
-          message: "File is too large. Maximum size is #{Import.max_csv_size / 1.megabyte}MB."
+          message: t("vietnamese_ui.api.file_size", size: Import.max_csv_size / 1.megabyte)
         }, status: :unprocessable_entity
       end
 
       unless Import::ALLOWED_CSV_MIME_TYPES.include?(file.content_type)
         return render json: {
           error: "invalid_file_type",
-          message: "Invalid file type. Please upload a CSV file."
+          message: t("vietnamese_ui.api.csv_file_type")
         }, status: :unprocessable_entity
       end
 
@@ -106,7 +106,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
       if params[:raw_file_content].bytesize > Import.max_csv_size
         return render json: {
           error: "content_too_large",
-          message: "Content is too large. Maximum size is #{Import.max_csv_size / 1.megabyte}MB."
+          message: t("vietnamese_ui.api.content_size", size: Import.max_csv_size / 1.megabyte)
         }, status: :unprocessable_entity
       end
 
@@ -130,7 +130,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
 
       if @import.configured? && params[:publish] == "true"
         if current_resource_owner.guest? && @import.creates_categories_or_tags?
-          return render_json({ error: "forbidden", message: "Guests cannot create categories or tags", import_id: @import.id }, status: :forbidden)
+          return render_json({ error: "forbidden", message: t("vietnamese_ui.api.guest_categories"), import_id: @import.id }, status: :forbidden)
         end
 
         @import.publish_later
@@ -140,14 +140,14 @@ class Api::V1::ImportsController < Api::V1::BaseController
     else
       render json: {
         error: "validation_failed",
-        message: "Import could not be created",
+        message: t("vietnamese_ui.api.import_create_failed"),
         errors: @import.errors.full_messages
       }, status: :unprocessable_entity
     end
 
   rescue StandardError => e
     Rails.logger.error "ImportsController#create error: #{e.message}"
-    render json: { error: "internal_server_error", message: "An unexpected error occurred." }, status: :internal_server_error
+    render json: { error: "internal_server_error", message: t("vietnamese_ui.api.unexpected_error_period") }, status: :internal_server_error
   end
 
   def preflight
@@ -156,12 +156,12 @@ class Api::V1::ImportsController < Api::V1::BaseController
   rescue ActiveRecord::RecordNotFound
     render json: {
       error: "record_not_found",
-      message: "The requested resource was not found"
+      message: t("vietnamese_ui.api.resource_not_found")
     }, status: :not_found
   rescue CSV::MalformedCSVError => e
     render json: {
       error: "invalid_csv",
-      message: "CSV content could not be parsed",
+      message: t("vietnamese_ui.api.csv_parse_failed"),
       errors: [ e.message ]
     }, status: :unprocessable_entity
   rescue StandardError => e
@@ -170,7 +170,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
 
     render json: {
       error: "internal_server_error",
-      message: "Import preflight could not be completed."
+      message: t("vietnamese_ui.api.preflight_failed")
     }, status: :internal_server_error
   end
 
@@ -199,7 +199,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
     end
 
     def render_import_not_found
-      render json: { error: "not_found", message: "Import not found" }, status: :not_found
+      render json: { error: "not_found", message: t("vietnamese_ui.api.import_not_found") }, status: :not_found
     end
 
     def ensure_read_scope
@@ -248,7 +248,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
       rescue ActiveRecord::RecordInvalid => e
         render json: {
           error: "validation_failed",
-          message: "Import could not be created",
+          message: t("vietnamese_ui.api.import_create_failed"),
           errors: e.record&.errors&.full_messages || @import&.errors&.full_messages || []
         }, status: :unprocessable_entity
         return
@@ -256,7 +256,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
         Rails.logger.error "Sure import creation failed: #{e.message}"
         render json: {
           error: "internal_server_error",
-          message: "Import could not be created"
+          message: t("vietnamese_ui.api.import_create_failed")
         }, status: :internal_server_error
         return
       end
@@ -266,14 +266,14 @@ class Api::V1::ImportsController < Api::V1::BaseController
       rescue Import::MaxRowCountExceededError
         render json: {
           error: "max_row_count_exceeded",
-          message: "Import was uploaded but has too many rows to publish automatically.",
+          message: t("vietnamese_ui.api.import_too_many_rows"),
           import_id: @import.id
         }, status: :unprocessable_entity
         return
       rescue SureImport::PreflightError
         render json: {
           error: "preflight_failed",
-          message: "Import was uploaded but did not pass Sure NDJSON preflight.",
+          message: t("vietnamese_ui.api.import_preflight"),
           errors: sure_import_error_lines,
           import_id: @import.id
         }, status: :unprocessable_entity
@@ -282,7 +282,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
         Rails.logger.warn "Sure import not publishable for import #{@import.id}: #{e.message}"
         render json: {
           error: "not_publishable",
-          message: "Import was uploaded but has no publishable records.",
+          message: t("vietnamese_ui.api.import_no_records"),
           import_id: @import.id
         }, status: :unprocessable_entity
         return
@@ -291,7 +291,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
         restore_pending_sure_import_after_publish_failure
         render json: {
           error: "publish_failed",
-          message: "Import was uploaded but could not be queued for processing.",
+          message: t("vietnamese_ui.api.import_queue_failed"),
           import_id: @import.id
         }, status: :internal_server_error
         return
@@ -342,7 +342,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
       else
         render json: {
           error: "missing_content",
-          message: "Provide a Sure NDJSON file or raw_file_content."
+          message: t("vietnamese_ui.api.ndjson_required")
         }, status: :unprocessable_entity
         nil
       end
@@ -352,7 +352,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
       if file.size > SureImport.max_ndjson_size
         render json: {
           error: "file_too_large",
-          message: "File is too large. Maximum size is #{SureImport.max_ndjson_size / 1.megabyte}MB."
+          message: t("vietnamese_ui.api.file_size", size: SureImport.max_ndjson_size / 1.megabyte)
         }, status: :unprocessable_entity
         return
       end
@@ -361,7 +361,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
       unless SureImport::ALLOWED_NDJSON_CONTENT_TYPES.include?(file.content_type) || extension.in?(%w[.ndjson .json])
         render json: {
           error: "invalid_file_type",
-          message: "Invalid file type. Please upload a Sure NDJSON file."
+          message: t("vietnamese_ui.api.ndjson_file_type")
         }, status: :unprocessable_entity
         return
       end
@@ -378,7 +378,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
       if content.bytesize > SureImport.max_ndjson_size
         render json: {
           error: "content_too_large",
-          message: "Content is too large. Maximum size is #{SureImport.max_ndjson_size / 1.megabyte}MB."
+          message: t("vietnamese_ui.api.content_size", size: SureImport.max_ndjson_size / 1.megabyte)
         }, status: :unprocessable_entity
         return
       end
@@ -394,7 +394,7 @@ class Api::V1::ImportsController < Api::V1::BaseController
       unless SureImport.valid_ndjson_first_line?(content)
         render json: {
           error: "invalid_ndjson",
-          message: "Invalid Sure NDJSON content."
+          message: t("vietnamese_ui.api.ndjson_invalid")
         }, status: :unprocessable_entity
         return
       end

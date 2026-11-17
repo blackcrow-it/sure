@@ -26,14 +26,14 @@ class PushSubscription < ApplicationRecord
         candidate = new(user: user, token: token, environment: environment,
           platform: platform, last_registered_at: Time.current)
         if !device_key.nil? && !(device_key.is_a?(String) && device_key.match?(/\A[0-9a-f]{64}\z/))
-          candidate.errors.add(:base, "Invalid device key")
+          candidate.errors.add(:base, I18n.t("vietnamese_ui.validation.invalid_device_key"))
           raise ActiveRecord::RecordInvalid, candidate
         end
         digest = Digest::SHA256.hexdigest(device_key) if device_key.present?
         if subscription && subscription.user_id != user.id
           unless digest && subscription.device_key_digest &&
               ActiveSupport::SecurityUtils.secure_compare(subscription.device_key_digest, digest)
-            candidate.errors.add(:base, "Device token is already registered")
+            candidate.errors.add(:base, I18n.t("vietnamese_ui.validation.device_registered"))
             raise ActiveRecord::RecordInvalid, candidate
           end
           subscription.destroy!

@@ -86,7 +86,7 @@ class PushNotificationTest
     end
 
     result = PushSubscription::Delivery.new(subscription).call do |client|
-      I18n.with_locale(user.locale.presence || user.family.locale) do
+      I18n.with_locale(user.resolved_locale) do
         client.deliver_test(
           token: subscription.token,
           title: I18n.t("admin.system_health.push_notification.title"),

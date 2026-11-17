@@ -1,19 +1,22 @@
 import { invoke } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import { P, S } from "./strings";
+import { localizePage, stringsFor } from "./strings";
+import { shellLocale } from "./locale";
 import { serverErrorMessage } from "./status";
 
 interface ServerEntry { url: string; label: string; }
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 
-$("prefs-title").textContent = P.title;
-$("servers-title").textContent = P.servers;
-$("prefs-add-btn").textContent = P.add;
-$("autostart-label").textContent = P.launchAtLogin;
-($("prefs-url") as HTMLInputElement).placeholder = S.urlPlaceholder;
+let { connect: S, preferences: P } = stringsFor(navigator.language);
 
 async function renderServers() {
-  const servers = await invoke<ServerEntry[]>("list_servers");
+  let servers: ServerEntry[];
+  try {
+    servers = await invoke<ServerEntry[]>("list_servers");
+  } catch {
+    $("prefs-status").textContent = S.loadError;
+    return;
+  }
   const list = $("prefs-server-list");
   list.innerHTML = "";
   for (const s of servers) {
@@ -21,24 +24,26 @@ async function renderServers() {
     const open = document.createElement("button");
     open.className = "server-open";
     open.textContent = s.label;
+    open.setAttribute("aria-label", `${P.switchTo}: ${s.label}`);
     open.addEventListener("click", async () => {
       try {
         await invoke("set_active_server", { url: s.url });
         await getCurrentWindow().hide();
       } catch (err) {
-        $("prefs-status").textContent = serverErrorMessage(err);
+        $("prefs-status").textContent = serverErrorMessage(err, S);
       }
     });
     const rm = document.createElement("button");
     rm.className = "server-remove";
     rm.textContent = S.remove;
+    rm.setAttribute("aria-label", `${S.remove}: ${s.label}`);
     rm.addEventListener("click", async (e) => {
       e.stopPropagation();
       try {
         await invoke("remove_server", { url: s.url });
         renderServers();
       } catch (err) {
-        $("prefs-status").textContent = serverErrorMessage(err);
+        $("prefs-status").textContent = serverErrorMessage(err, S);
       }
     });
     li.append(open, rm);
@@ -59,12 +64,34 @@ $("prefs-add").addEventListener("submit", async (e) => {
     $("prefs-status").textContent = "";
     renderServers();
   } catch (err) {
-    $("prefs-status").textContent = serverErrorMessage(err);
+    $("prefs-status").textContent = serverErrorMessage(err, S);
   }
 });
 
 const autostart = $("autostart") as HTMLInputElement;
-invoke<boolean>("get_launch_at_login").then((v) => (autostart.checked = v));
-autostart.addEventListener("change", () => invoke("set_launch_at_login", { enabled: autostart.checked }));
+autostart.addEventListener("change", async () => {
+  const enabled = autostart.checked;
+  autostart.disabled = true;
+  try {
+    await invoke("set_launch_at_login", { enabled });
+    $("prefs-status").textContent = "";
+  } catch {
+    autostart.checked = !enabled;
+    $("prefs-status").textContent = P.autostartError;
+  } finally {
+    autostart.disabled = false;
+  }
+});
 
-renderServers();
+async function boot() {
+  const locale = await shellLocale();
+  ({ connect: S, preferences: P } = stringsFor(locale));
+  localizePage(document, locale, "preferences");
+  await renderServers();
+  try {
+    autostart.checked = await invoke<boolean>("get_launch_at_login");
+  } catch {
+    $("prefs-status").textContent = P.autostartLoadError;
+  }
+}
+boot();

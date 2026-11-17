@@ -58,7 +58,7 @@ vi:
           start_principal: Số dư gốc đầu ngày
           start_value: Giá trị tài sản đầu ngày
       chart:
-        no_data_available: "Không có dữ liệu"
+        no_data_available: Không có dữ liệu
         title:
           balance: Số dư
           cash_value: Giá trị tiền mặt
@@ -68,14 +68,51 @@ vi:
           holdings_value: Giá trị danh mục
           remaining_principal_balance: Số dư gốc còn lại
           total_account_value: Tổng giá trị tài khoản
+          loan_remaining_balance: Dư nợ còn lại
+          total_gains: Tổng lợi nhuận
         views:
           cash: Tiền mặt
           holdings: Danh mục
           total_value: Tổng giá trị
+          gains: Lợi nhuận / ROI
         vs_available_history: so với lịch sử hiện có
+        loan:
+          actual: Số dư đã ghi nhận
+          scheduled: Lịch ban đầu
+          projected: Dự kiến từ hôm nay
+          today: Hôm nay
+          interactive_chart: biểu đồ tương tác
+          no_payoff: không theo mức trả nợ hiện tại
+          aria_description: Biểu đồ dư nợ. Số dư đã ghi nhận %{current_balance}. Ngày trả hết theo lịch ban đầu
+            %{scheduled_payoff_date}. Ngày trả hết dự kiến từ số dư hôm nay %{projected_payoff_date}.
+          aria_extra_payoff: Ngày trả hết dự kiến nếu trả bổ sung %{date}.
+          extra: Có trả nợ bổ sung
+          aria_actual_history_starts: Lịch sử số dư đã ghi nhận bắt đầu %{date}.
+          aria_interest_share: Trong các khoản trả năm đầu, khoảng %{first}% số tiền là lãi; trong năm cuối, khoảng
+            %{last}%.
+          aria_interest_share_overall: Trong toàn bộ các khoản trả, khoảng %{share}% số tiền là lãi.
+          aria_composition: Chú giải trên từng khoản trả theo lịch chia thành %{principal} và %{interest}.
+          interest_share: Tỷ trọng lãi
+          principal_share: Tỷ trọng gốc
+          projected_payoff: Ngày trả hết dự kiến
+          months_saved:
+            other: Sớm hơn lịch %{count} tháng
+          on_schedule: Đúng lịch
+          interest_saved: Lãi tiết kiệm được
+          not_converged: Với mức trả hiện tại, số dư này chưa được trả hết vào ngày đáo hạn ban đầu; vẫn còn nợ
+            %{balloon}.
+          projection_basis: So sánh số dư ghi nhận hôm nay với số dư theo lịch cùng ngày. Khoản trả được ghi sổ
+            trước ngày dự kiến được tính là vượt tiến độ đến ngày đó; ghi sổ sau ngày dự kiến được tính là chậm
+            tiến độ.
+          legend: Chuỗi dữ liệu biểu đồ
+          since_start: từ khi bắt đầu khoản vay
       activity_date:
-        balance_tooltip: "Số dư cuối ngày, sau tất cả giao dịch và điều chỉnh"
-        no_balance_data: "Không có dữ liệu số dư cho ngày này"
+        balance_tooltip: Số dư cuối ngày, sau tất cả giao dịch và điều chỉnh
+        no_balance_data: Không có dữ liệu số dư cho ngày này
+        projected: Dự kiến
+        projected_balance_tooltip: 'Ước tính: số dư hiện tại cộng các bút toán đã lên lịch đến ngày này'
+    period_picker:
+      aria_label: 'Khoảng thời gian: %{period}'
   ds:
     alert:
       variants:
@@ -85,7 +122,7 @@ vi:
         error: Lỗi
         destructive: Lỗi
     pill:
-      aria_label: "%{label}"
+      aria_label: '%{label}'
       default_label: Xem trước
     dialog:
       close: Đóng
@@ -95,25 +132,27 @@ vi:
       trigger_label: Thêm thông tin
     link:
       opens_in_new_tab: (mở trong tab mới)
+    icon_picker:
+      no_matching_icons: Không có biểu tượng phù hợp
+      search_placeholder: Tìm biểu tượng...
   provider_sync_summary:
     title: Tóm tắt đồng bộ
-    last_sync: "Đồng bộ lần cuối: %{time_ago} trước"
+    last_sync: 'Đồng bộ lần cuối: %{time_ago} trước'
     accounts:
       title: Tài khoản
-      total: "Tổng: %{count}"
-      linked: "Đã liên kết: %{count}"
-      unlinked: "Chưa liên kết: %{count}"
-      institutions: "Tổ chức: %{count}"
+      total: 'Tổng: %{count}'
+      linked: 'Đã liên kết: %{count}'
+      unlinked: 'Chưa liên kết: %{count}'
+      institutions: 'Tổ chức: %{count}'
     transactions:
       title: Giao dịch
-      seen: "Đã thấy: %{count}"
-      imported: "Đã nhập: %{count}"
-      updated: "Đã cập nhật: %{count}"
-      skipped: "Đã bỏ qua: %{count}"
-      fetching: "Đang tải từ sàn giao dịch..."
+      seen: 'Đã thấy: %{count}'
+      imported: 'Đã nhập: %{count}'
+      updated: 'Đã cập nhật: %{count}'
+      skipped: 'Đã bỏ qua: %{count}'
+      fetching: Đang tải từ sàn giao dịch...
       protected:
-        one: "%{count} mục được bảo vệ (không ghi đè)"
-        other: "%{count} mục được bảo vệ (không ghi đè)"
+        other: '%{count} mục được bảo vệ (không ghi đè)'
       view_protected: Xem các mục được bảo vệ
     skip_reasons:
       excluded: Đã loại trừ
@@ -121,42 +160,36 @@ vi:
       import_locked: Nhập CSV
       protected: Được bảo vệ
     holdings:
-      title: Danh mục nắm giữ
-      found: "Tìm thấy: %{count}"
-      processed: "Đã xử lý: %{count}"
+      title: Khoản nắm giữ
+      found: 'Tìm thấy: %{count}'
+      processed: 'Đã xử lý: %{count}'
     trades:
       title: Giao dịch chứng khoán
-      imported: "Đã nhập: %{count}"
-      skipped: "Đã bỏ qua: %{count}"
-      fetching: "Đang tải hoạt động từ sàn giao dịch..."
+      imported: 'Đã nhập: %{count}'
+      skipped: 'Đã bỏ qua: %{count}'
+      fetching: Đang tải hoạt động từ sàn giao dịch...
     health:
       title: Tình trạng
       view_error_details: Xem chi tiết lỗi
-      rate_limited: "Bị giới hạn tốc độ %{time_ago}"
+      rate_limited: Bị giới hạn tốc độ %{time_ago}
       recently: gần đây
-      errors: "Lỗi: %{count}"
+      errors: 'Lỗi: %{count}'
       pending_reconciled:
-        one: "%{count} giao dịch chờ trùng lặp đã được đối chiếu"
-        other: "%{count} giao dịch chờ trùng lặp đã được đối chiếu"
+        other: '%{count} giao dịch chờ trùng lặp đã được đối chiếu'
       view_reconciled: Xem giao dịch đã đối chiếu
       duplicate_suggestions:
-        one: "%{count} giao dịch có thể trùng lặp cần xem xét"
-        other: "%{count} giao dịch có thể trùng lặp cần xem xét"
+        other: '%{count} giao dịch có thể trùng lặp cần xem xét'
       view_duplicate_suggestions: Xem các giao dịch trùng lặp được đề xuất
       stale_pending:
-        one: "%{count} giao dịch chờ cũ (không tính vào ngân sách)"
-        other: "%{count} giao dịch chờ cũ (không tính vào ngân sách)"
+        other: '%{count} giao dịch chờ cũ (không tính vào ngân sách)'
       view_stale_pending: Xem các tài khoản bị ảnh hưởng
       stale_pending_count:
-        one: "%{count} giao dịch"
-        other: "%{count} giao dịch"
+        other: '%{count} giao dịch'
       stale_unmatched:
-        one: "%{count} giao dịch chờ cần xem xét thủ công"
-        other: "%{count} giao dịch chờ cần xem xét thủ công"
+        other: '%{count} giao dịch chờ cần xem xét thủ công'
       view_stale_unmatched: Xem giao dịch cần xem xét
       stale_unmatched_count:
-        one: "%{count} giao dịch"
-        other: "%{count} giao dịch"
-      data_warnings: "Cảnh báo dữ liệu: %{count}"
-      notices: "Thông báo: %{count}"
+        other: '%{count} giao dịch'
+      data_warnings: 'Cảnh báo dữ liệu: %{count}'
+      notices: 'Thông báo: %{count}'
       view_data_quality: Xem chi tiết chất lượng dữ liệu

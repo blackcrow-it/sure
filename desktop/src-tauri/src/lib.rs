@@ -3,6 +3,7 @@ pub mod badge;
 pub mod commands;
 pub mod deep_link;
 pub mod menu;
+pub mod localization;
 pub mod notifications;
 pub mod servers;
 pub mod sso;
@@ -31,10 +32,17 @@ pub fn run() {
             commands::get_launch_at_login,
             commands::set_launch_at_login,
             commands::start_sso,
+            commands::desktop_locale,
         ])
         .setup(|app| {
+            use tauri::Manager;
+            let locale = localization::resolve_locale(localization::system_locale().as_deref());
+            *app.state::<AppState>().locale.lock().unwrap() = locale;
             window::setup(app)?;
-            let menu = menu::build(app.handle())?;
+            if let Some(prefs) = app.get_webview_window("prefs") {
+                prefs.set_title(&localization::strings(locale).preferences.title)?;
+            }
+            let menu = menu::build(app.handle(), locale)?;
             app.set_menu(menu)?;
             app.on_menu_event(|app, event| menu::on_event(app, event.id().as_ref()));
             notifications::register(app.handle());
@@ -143,12 +151,13 @@ pub fn run() {
         })
         .build(tauri::generate_context!())
         .expect("error while running Sure Desktop")
-        .run(|app, event| {
+        .run(|_app, _event| {
             // Clicking the dock icon (while the main window is hidden, not
             // destroyed) fires Reopen — re-show and focus the main window.
-            if let tauri::RunEvent::Reopen { .. } = event {
+            #[cfg(target_os = "macos")]
+            if let tauri::RunEvent::Reopen { .. } = _event {
                 use tauri::Manager;
-                if let Some(w) = app.get_webview_window("main") {
+                if let Some(w) = _app.get_webview_window("main") {
                     let _ = w.show();
                     let _ = w.set_focus();
                 }

@@ -1,0 +1,434 @@
+en:
+  vietnamese_ui:
+    validation:
+      same_family_account: must belong to the same family as the account
+      exclusive_publisher: already has an exclusive FinanceKit publisher
+      financekit_family: must belong to the FinanceKit enrollment family
+      account_owner: is already the owner of this account
+      same_family: must be in the same family
+      permission_required: must include at least one permission
+      one_permission: can only have one permission level
+      permission_value: must be either 'read' or 'read_write'
+      viewer_owner: can't be the owner
+      category_depth: can't have more than 2 levels of subcategories
+      psu_type: must be one of the ASPSP supported types
+      split_exclusion: cannot be toggled off for a split transaction
+      split_date: must match the parent transaction date for split children
+      password_length: must be at least 8 characters
+      password_case: must include both uppercase and lowercase letters
+      password_number: must include at least one number
+      password_special: must include at least one special character
+      impersonator_role: must be a super admin to impersonate
+      impersonated_role: cannot be a super admin
+      impersonation_self: cannot be the same as the impersonated user
+      own_family: must belong to your family
+      import_chunk: must be present for import session chunks
+      object_required: must be an object
+      sure_import: must be SureImport
+      matching_session: must match import session
+      must_exist: must exist
+      required: is required
+      currency_code: is not a valid currency code
+      pending_invitation: already has a pending invitation from another family
+      duplicate_invitation: has already been invited to this family
+      cancel_subscription: Could not cancel active Stripe subscription. Please cancel it manually before deleting
+        the family.
+      start_before_end: must be before end date
+      invalid_device_key: Invalid device key
+      device_registered: Device token is already registered
+      oidc_required: is required for OpenID Connect providers
+      valid_url: must be a valid URL
+      oauth_required: is required for OAuth providers
+      default_role: default_role must be guest, member, admin, or super_admin
+      discovery_issuer: discovery endpoint did not return valid issuer
+      discovery_json: discovery endpoint returned invalid JSON
+      window_end: must be greater than window_start_date
+      number: must be a number
+      positive: must be greater than 0
+      profile_image: must be a JPEG or PNG
+      rows_to_skip: must be less than the number of lines in the file (%{count})
+      date_format: 'must exactly match the format: %{format}'
+      date_range: must be between %{min} and %{max}
+      valid_date: must be a valid date, got %{value}
+      discovery_status: discovery endpoint returned %{status}
+      discovery_connection: 'could not connect to discovery endpoint: %{message}'
+      discovery_failed: 'discovery validation failed: %{message}'
+      strategy: '%{value} is not a supported strategy'
+      provider_name: must contain only lowercase letters, numbers, and underscores
+      icon_blank: cannot be blank or contain only whitespace
+    common:
+      coming_soon: Coming soon...
+      deleting: (deletion in progress...)
+      missing_account: 'Data Error: Missing account'
+      component_preview: Component Preview
+      authorization: Sure Authorization
+      and: and
+      redirecting: Redirecting you back to the application...
+      configuration: Configuration can be set via environment variables or overridden below.
+      community_fork: (community fork of Maybe Finance)
+      version: 'Version: %{version}'
+      as_of: as of %{date}
+      ago: '%{time} ago'
+      balance: 'Balance: %{balance}'
+      select_subtype: Please select a subtype
+      select_type: Please select a type
+      http_status: 'HTTP Status: %{status}'
+      confirm: Are you sure?
+      delete: Delete
+      preview: Preview
+      transfer_id: 'Transfer ID: %{id}'
+      unknown_error: Unknown error
+      unexpected_error: An unexpected error occurred
+      new_chat: New chat
+      date_unavailable: Date unavailable
+      no_release_notes: No release notes available
+    rules:
+      if: IF
+      for: FOR
+      back: Back to rules
+      new: New %{resource} rule
+      activated: '%{resource} rule activated'
+      actions:
+        set_transaction_category: Set transaction category
+        set_transaction_merchant: Set transaction merchant
+        set_transaction_tags: Set transaction tags
+        set_transaction_name: Set transaction name
+        set_as_transfer_or_payment: Set as transfer or payment
+        split_transaction: Split transaction
+        auto_categorize: Auto-categorize transactions with AI
+        auto_detect_merchants: Auto-detect merchants
+        auto_detect_merchants_ai: Auto-detect merchants with AI ($$)
+        bayes_categorize: Categorize with the classifier (no AI)
+        exclude_transaction: Exclude from budgeting and reports
+        fill_similar_merchants: Fill missing merchants from similar transactions (no AI)
+        send_email_notification: Send email notification
+        set_investment_activity_label: Set investment activity label
+      cost_unavailable: ' (cost: N/A)'
+      cost_estimate: ' (~$%{cost} per 20 transactions)'
+      no_provider: '%{label} (no categorization provider configured)'
+      filters:
+        transaction_account: Transaction account
+        transaction_amount: Transaction amount
+        transaction_category: Transaction category
+        transaction_details: Transaction details
+        transaction_merchant: Transaction merchant
+        transaction_name: Transaction name
+        transaction_notes: Transaction notes
+        transaction_tag: Transaction tag
+        transaction_type: Transaction type
+    subscriptions:
+      annually: Charged annually
+      monthly: Charged monthly
+      monthly_contribution: Monthly Contribution
+      annual_contribution: Annual Contribution
+      open_demo: Open demo
+      statuses:
+        incomplete: Incomplete
+        incomplete_expired: Incomplete expired
+        trialing: Trialing
+        active: Active
+        past_due: Past due
+        canceled: Canceled
+        unpaid: Unpaid
+        paused: Paused
+    support:
+      session: Access Session
+      request: Access Request
+      pending: Sure support staff has requested access to your account (likely to help you with a support request).
+        If you approve the request, all activity they take will be logged for security and audit purposes.
+      active: Someone from the Sure Finances team is currently viewing your data.  You may end the session at any
+        time.
+      error: Something went wrong.  Please contact us.
+      approve: Approve
+      reject: Reject
+      end: End Session
+    authorization:
+      consent: By authorizing, you allow this app to access your %{product} data according to the permissions above.
+    javascript:
+      csv_required: Please upload a valid CSV file.
+      uploading: Uploading %{name}...
+      contrast: Poor contrast, choose darker color or auto-adjust.
+      select_value: Select value
+      enter_value: Enter a value
+      tag_failed: Could not create tag
+      network_error: Network error
+      load_failed: Failed to load (%{status})
+      price_warning: Your price (%{entered}/share) differs significantly from %{ticker}'s current market price (%{market}).
+        If this seems wrong, you may have selected the wrong security — try using "Enter custom ticker" to specify
+        the correct one.
+    sso:
+      copy_failed: Failed to copy to clipboard
+      copied: Copied!
+      valid_issuer: Valid OIDC issuer
+      issuer_mismatch: 'Issuer mismatch: discovery returned %{issuer}. Copy the issuer exactly as returned by the
+        provider.'
+      issuer_slash: 'Issuer mismatch: discovery returned %{issuer}. This is usually a trailing slash mismatch, so
+        copy the issuer exactly as returned.'
+      cors: Could not validate from browser (CORS). Provider can still be saved.
+      testing: Testing...
+      test_connection: Test Connection
+      request_failed: 'Request failed: %{error}'
+      device_required: Device information is required
+      session_expired: Mobile SSO session expired
+      device_failed: Unable to register device
+    transactions:
+      one_time_income: One-time income (excluded from averages)
+      one_time_expense: One-time expense (excluded from averages)
+      updated:
+        one: '%{count} transaction updated'
+        other: '%{count} transactions updated'
+      deleted:
+        one: '%{count} transaction deleted'
+        other: '%{count} transactions deleted'
+    providers:
+      credit_card_setup: Credit cards will be automatically set up as credit card accounts.
+      other_assets_setup: Other assets will be set up as general assets.
+      crypto_setup: Crypto accounts track cryptocurrency holdings.
+      other_assets_options: No additional options needed for Other Assets.
+      add_connection: Add Connection
+      mercury_setup: Set Up Mercury Accounts
+      sophtron_setup: Set Up Sophtron Accounts
+      indexa_connection: Indexa Capital Connection
+      lunchflow_connection: Lunch Flow Connection
+      questrade_connection: Questrade Connection
+    assistant:
+      external_configuration: External assistant is not configured. Set the URL and token in Settings > Self-Hosting
+        or via environment variables.
+      external_forbidden: Your account is not authorized to use the external assistant.
+      external_empty: External assistant returned an empty response.
+      external_error: Something went wrong with the external assistant. Check server logs for details.
+      no_provider: No LLM provider configured
+      no_history: No charge history to analyze
+      provider_failed: 'Provider failed: %{message}'
+    api:
+      unexpected_error: An unexpected error occurred
+      unexpected_error_period: An unexpected error occurred.
+      account_not_found: Account not found
+      statement_file_required: file is required (multipart/form-data)
+      statement_store_failed: Statement could not be stored
+      statement_account: No account you can write to matched account_id. Omit account_id to upload the statement
+        unlinked.
+      statement_exists: This file is already in the Statement Vault
+      statement_role: The Statement Vault requires an admin or member role
+      authorization_code_required: Authorization code is required
+      authorization_code_invalid: Authorization code is invalid or expired
+      token_missing: Access token is invalid, expired, or missing
+      token_scope: Access token is invalid, expired, or missing required scope
+      token_user: Access token is invalid - user not found
+      account_deactivated: Account has been deactivated
+      token_owner: Access token is invalid - missing resource owner
+      credentials_invalid: Access token or API key is invalid, expired, or missing
+      guest_configuration: Guests cannot modify family configuration
+      resource_not_found: The requested resource was not found
+      token_expired: Access token is invalid or expired
+      parameters_invalid: Required parameters are missing or invalid
+      resource_forbidden: Access denied to this resource
+      ai_disabled: AI features are not enabled for this user
+      categories_locked: Categories are locked. Unlock them to add a new category.
+      category_parent: Parent must be a category in your family
+      category_not_found: Category not found
+      export_parameters: Family export creation does not accept request parameters
+      export_not_ready: Export is not ready for download
+      export_admin: Family exports require a family admin
+      holding_not_found: Holding not found
+      monarch_web: Monarch imports need per-account choices that only the web app collects. Use the import flow
+        in the web app.
+      csv_file_type: Invalid file type. Please upload a CSV file.
+      guest_categories: Guests cannot create categories or tags
+      import_create_failed: Import could not be created
+      csv_parse_failed: CSV content could not be parsed
+      preflight_failed: Import preflight could not be completed.
+      import_not_found: Import not found
+      import_too_many_rows: Import was uploaded but has too many rows to publish automatically.
+      import_preflight: Import was uploaded but did not pass Sure NDJSON preflight.
+      import_no_records: Import was uploaded but has no publishable records.
+      import_queue_failed: Import was uploaded but could not be queued for processing.
+      ndjson_required: Provide a Sure NDJSON file or raw_file_content.
+      ndjson_file_type: Invalid file type. Please upload a Sure NDJSON file.
+      ndjson_invalid: Invalid Sure NDJSON content.
+      preview_disabled: Preview features are not enabled for this user
+      csv_required: Please provide a CSV file.
+      csv_name_required: CSV must include a 'name' column.
+      retry_started: Retry initiated
+      device_registered: Device token is already registered
+      push_hosted_only: Push notifications are available only in hosted mode
+      internal_error: Internal server error
+      recurring_create_failed: Recurring transaction could not be created
+      recurring_exists: Recurring transaction already exists
+      recurring_update_failed: Recurring transaction could not be updated
+      recurring_deleted: Recurring transaction deleted successfully
+      active_values: 'active must be one of: true, false, 1, 0'
+      prices_failed: Prices were not imported
+      prices_self_hosted: Security prices are shared across families, so importing them is only available on self-hosted
+        instances
+      prices_list: prices must be a list
+      period_invalid: Pass both start_date and end_date as ISO dates in order, or neither for the current month
+      account_write_forbidden: You do not have write access to this account
+      not_split: Transaction is not split
+      account_id_required: Account ID is required
+      trade_create_failed: Trade could not be created
+      trade_update_failed: Trade could not be updated
+      trade_deleted: Trade deleted successfully
+      trade_not_found: Trade not found
+      amount_required: Amount is required
+      date_required: Date is required
+      security_required: Security identifier required
+      quantity_price_required: Quantity and price are required
+      quantity_price_invalid: Quantity and price must be valid numbers
+      amount_invalid: Amount must be a valid number
+      source_external_id: Source requires external_id
+      tag_ids_array: tag_ids must be an array of tag ids
+      tag_not_found: Unknown tag id
+      category_id_unknown: Unknown category id
+      merchant_id_unknown: Unknown merchant id
+      transaction_create_failed: Transaction could not be created
+      split_child_edit: Split child transactions cannot be edited directly. Use the split editor.
+      split_parent_edit: Split parent amount, date, and type cannot be changed directly. Use the split editor.
+      transaction_update_failed: Transaction could not be updated
+      split_child_delete: Split child transactions cannot be deleted individually.
+      transaction_deleted: Transaction deleted successfully
+      external_id_exists: External ID already exists for a non-transaction entry
+      usage_api_key: Detailed usage tracking is available for API key authentication
+      usage_unavailable: Unable to determine usage information
+      reset_queue_failed: Account reset could not be queued
+      reset_started: Account reset has been initiated
+      account_deleted: Account has been deleted
+      action_forbidden: You are not authorized to perform this action
+      valuation_create_failed: Valuation could not be created
+      valuation_account_not_found: Account or valuation entry not found
+      reconciliation_required: Both amount and date are required when updating reconciliation
+      valuation_update_failed: Valuation could not be updated
+      valuation_not_found: Valuation not found
+      uuid: '%{field} must be a valid UUID'
+      allowed_values: '%{field} must be one of: %{values}'
+      iso_date: '%{field} must be an ISO 8601 date'
+      iso_timestamp: '%{field} must be an ISO 8601 timestamp'
+      rate_limit: Rate limit exceeded. Try again in %{seconds} seconds.
+      required_scope: This action requires the '%{permission}' scope
+      file_size: File is too large. Maximum size is %{size}MB.
+      content_size: Content is too large. Maximum size is %{size}MB.
+      csv_error: 'CSV could not be parsed: %{message}'
+      amount_present: amount must be present
+      amount_context: amount must be present for %{context}
+      date_present: date must be present
+      security_identifier: Provide security_id, ticker, or manual_ticker
+      qty_price_positive: qty and price must be present and positive
+      qty_price_numbers: qty and price must be valid positive numbers
+      amount_positive: amount must be a valid positive number
+      trade_account: Account does not support trades (investment or crypto exchange only)
+      trade_account_type: Account must be an investment or crypto exchange account
+      security_not_found: Security not found
+      invalid_format: Invalid %{parameter} format
+      boolean: '%{field} must be true or false'
+      cannot_split: Transaction cannot be split
+      splits_array: splits must be a non-empty array
+      split_object: each split must be an object
+      split_amount_range: split amount is out of range
+      split_numeric: each split requires a numeric amount
+      transfer_split: Transaction is part of a transfer
+      already_split: Transaction is already split
+      pending_split: Transaction is pending
+      excluded_split: Transaction is excluded
+      not_splittable: Transaction is not splittable
+      id_required: '%{field} must be an id'
+      unknown_id: 'Unknown %{kind}: %{id}'
+      amount_date_required: Amount and date must both be provided
+    sso_test:
+      unknown_strategy: 'Unknown strategy: %{strategy}'
+      issuer_required: Issuer URL is required
+      discovery_status: Discovery endpoint returned HTTP %{status}
+      missing_fields: 'Discovery document missing required fields: %{fields}'
+      issuer_mismatch: 'Issuer mismatch: expected %{expected}, got %{actual}'
+      oidc_valid: OIDC discovery validated successfully
+      timeout: Connection timed out
+      connection_failed: 'Connection failed: %{message}'
+      json_invalid: Invalid JSON response from discovery endpoint
+      error: 'Error: %{message}'
+      client_id: Client ID is required
+      client_secret: Client Secret is required
+      google_valid: Google OAuth2 configuration looks valid
+      github_valid: GitHub OAuth configuration looks valid
+      saml_url: Either IdP Metadata URL or IdP SSO URL is required
+      metadata_status: Metadata endpoint returned HTTP %{status}
+      saml_invalid: Response does not appear to be valid SAML metadata
+      saml_fetched: SAML metadata fetched successfully
+      saml_valid: SAML configuration looks valid
+      trailing_slash: trailing slash mismatch. This usually means the issuer URL differs only by a trailing slash.
+        Update the configured issuer to exactly match the discovery document
+    date_formats:
+      full: '%B %d, %Y'
+      month_year: '%B %Y'
+      short_with_year: '%b %d, %Y'
+      timestamp: '%b %d, %Y %I:%M %p'
+    prices:
+      rows_required: prices must contain at least one row
+      too_many_rows: a request can carry at most %{count} prices
+      cash: prices cannot be imported for a cash position
+      tracked: prices can only be imported for a security no provider tracks
+      row: row must be an object with date, price and currency
+      currency: currency must be an ISO 4217 code
+      duplicate_date: date appears more than once in this batch
+      future_date: date must not be in the future
+      date: date must be an ISO 8601 date
+      positive: price must be greater than 0
+      precision: price must have at most 4 decimal places
+      too_large: price is too large
+      number: price must be a number
+      same_currency: every row in one request must use the same currency
+      no_currency: no trade or holding of this security records a currency, so none can be chosen for its prices
+      existing_currency: currency must be %{currencies}, %{noun} of this security's prices
+      currency_singular: the currency
+      currency_plural: the currencies
+      multiple_currencies: this security's %{source} are in more than one currency (%{currencies}); none can be
+        chosen for its prices
+      position_currency: currency must be %{currency}, the currency of your %{source} in this security
+      trades: trades
+      holdings: holdings
+      or: ' or '
+    sync:
+      wallet_imported: Wallet publisher imported
+      wallet_waiting: Waiting for Wallet publisher
+      no_accounts: No accounts found
+      partial: '%{linked} synced, %{unlinked} need setup'
+      stale: Sync became stale before completion
+      failed: Sync failed
+      complete:
+        one: '%{count} account synced'
+        other: '%{count} accounts synced'
+    import_types:
+      TransactionImport: Transaction Import
+      TradeImport: Trade Import
+      AccountImport: Account Import
+      CategoryImport: Category Import
+      RuleImport: Rule Import
+      MerchantImport: Merchant Import
+      PdfImport: PDF Import
+      QifImport: QIF Import
+      MintImport: Mint Import
+      ActualImport: Actual Import
+      YnabImport: Ynab Import
+      MonarchImport: Monarch Import
+      SureImport: Sure Import
+    imports:
+      csv_content: Provide a CSV file or raw_file_content.
+      preflight_types: Preflight supports CSV import types and SureImport.
+      no_rows: No data rows were found.
+      missing_columns: 'Missing required columns: %{columns}'
+      session_create_failed: Import session could not be created
+      chunk_create_failed: Import chunk could not be created
+      session_too_large: Import session has too many rows to publish.
+      session_queue_failed: Import session could not be queued.
+      session_failed: Import session failed.
+      family_sync_queue_failed: Family sync could not be queued after import completion.
+      expected_chunks_conflict: client_session_id already exists with a different expected_chunks value
+      sequence_positive: sequence must be a positive integer
+      sequence_exceeds: sequence exceeds expected_chunks
+      publishing_started: cannot add chunks after publishing starts
+      chunk_conflict: chunk already exists with different content
+      chunk_identifiers_conflict: sequence and client_chunk_id refer to different chunks
+      chunk_sequence_conflict: client_chunk_id already exists with a different sequence
+      sequence_chunk_conflict: sequence already exists with a different client_chunk_id
+      chunk_incomplete: chunk already exists but is incomplete
+      no_chunks: import session has no chunks
+      chunks_incomplete: import session chunks are incomplete
+      sequences_mismatch: import session chunks do not match expected sequences (%{details})

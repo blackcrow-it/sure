@@ -52,6 +52,15 @@ class Insight::BodyWriterTest < ActiveSupport::TestCase
     end
   end
 
+  test "explicit family locale renders independently of the worker locale" do
+    I18n.with_locale(:en) do
+      body = Insight::BodyWriter.new.write(generated_insight, locale: :vi)
+      assert_equal I18n.t("insights.templates.idle_cash", locale: :vi,
+                         **generated_insight.facts.symbolize_keys), body
+      assert_equal :en, I18n.locale
+    end
+  end
+
   private
     # One representative facts hash per template a generator can emit. Keeps
     # the i18n templates honest: a renamed key or interpolation raises here
